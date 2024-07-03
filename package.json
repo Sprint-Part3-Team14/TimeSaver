@@ -23,13 +23,13 @@
     "eject": "react-scripts eject",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache .",
-    "prepare": "husky install"
+    "lint": "eslint --cache ."
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:react-hooks/recommended"
     ]
   },
   "browserslist": {
@@ -47,6 +47,10 @@
   "devDependencies": {
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
     "husky": "^9.0.11",
     "prettier": "^3.3.2"
   },
