@@ -1,17 +1,32 @@
-import styled from "styled-components";
-import ArrowBackwardIcon from "./components/Icons/ArrowBackwardIcon";
-import theme from "./styles/theme";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Signup from "./pages/Singup";
+import Mypage from "./pages/Mypage";
+import Dashboard from "./pages/Dashboard";
+import Edit from "./pages/Edit";
+import DashboardLayout from "./DashboardLayout";
+import MyDashboard from "./pages/MyDashboard/indext";
+import Notfound from "./pages/Notfound/indext";
 
-function App() {
-  const Test = styled.h2`
-    color: ${({ theme }) => theme.color.pink900};
-    font-size: 10rem;
-  `;
+const App = () => {
   return (
-    <Test>
-      열심히 해봅시당 <ArrowBackwardIcon width={40} height={40} color={theme.color.pink400} />
-    </Test>
+    <BrowserRouter>
+      <Routes>
+        <Route index path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="my-dashboard" element={<MyDashboard />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/dashboard/:id/edit" element={<Edit />} />
+          <Route path="/my-page" element={<Mypage />} />
+          <Route path="*" element={<Navigate to="/notFound" />} />
+        </Route>
+        <Route path="/notFound" element={<Notfound />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
