@@ -16,6 +16,13 @@ const theme = {
     blue400: "#76a5ea",
   },
 
+  fontSize: {
+    large: "18rem",
+    normal: "16rem",
+    small: "14rem",
+    extraSmall: "12rem",
+  },
+
   device: {
     tablet: "screen and (max-width: 1124px)",
     mobile: "screen and (max-width: 768px)",
