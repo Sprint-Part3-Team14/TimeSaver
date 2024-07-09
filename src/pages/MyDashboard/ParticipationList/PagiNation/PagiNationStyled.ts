@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Page = styled.p`
-  color: var(--black-black_700, #333236);
+  color: ${({ theme }) => theme.color.black700};
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -26,8 +26,8 @@ export const LeftButton = styled.button`
   padding: 0;
 
   border-radius: 4px 0px 0px 4px;
-  border: 1px solid var(--gray-gray_700, #d9d9d9);
-  background: #fff;
+  border: 1px solid ${({ theme }) => theme.color.gray700};
+  background: ${({ theme }) => theme.color.white};
 
   display: inline-flex;
   justify-content: center;
@@ -40,8 +40,8 @@ export const RightButton = styled.button`
   padding: 0;
 
   border-radius: 0px 4px 4px 0px;
-  border: 1px solid var(--gray-gray_700, #d9d9d9);
-  background: #fff;
+  border: 1px solid ${({ theme }) => theme.color.gray700};
+  background: ${({ theme }) => theme.color.white};
 
   display: inline-flex;
   justify-content: center;

@@ -7,15 +7,15 @@ export const Container = styled.div`
   margin: 0 28px;
   gap: 8px;
   border-radius: 6px;
-  border: 1px solid var(--gray-gray_700, #d9d9d9);
-  background: #fff;
+  border: 1px solid ${({ theme }) => theme.color.gray700};
+  background: ${({ theme }) => theme.color.white};
 `;
 
 export const Input = styled.input`
   border: none;
   outline: none;
   ::placeholder {
-    color: var(--gray-gray_800, #9fa6b2);
+    color: ${({ theme }) => theme.color.gray800};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;

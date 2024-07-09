@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Text = styled.p`
   padding-top: 24px;
 
-  color: var(--gray-gray_800, #9fa6b2);
+  color: ${({ theme }) => theme.color.gray800};
   text-align: center;
   font-family: Inter;
   font-size: 18px;
