@@ -15,7 +15,7 @@ export const Layout = styled.section`
 export const Title = styled.h1`
   padding: 0 28px;
 
-  color: var(--black-black_700, #333236);
+  color: ${({ theme }) => theme.color.black700};
   font-family: Inter;
   font-size: 24px;
   font-style: normal;
@@ -27,8 +27,10 @@ export const CategoryBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 4px 28px 4px;
+`;
 
-  color: var(--gray-gray_800, #9fa6b2);
+export const CategoryTitle = styled.h2`
+  color: ${({ theme }) => theme.color.gray800};
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
