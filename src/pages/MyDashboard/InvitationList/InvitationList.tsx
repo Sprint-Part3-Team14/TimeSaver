@@ -2,11 +2,13 @@ import InvitationDashboard from "./InvitationDashboard/InvitationDashboard";
 import SearchBar from "./SearchBar/SearchBar";
 
 import * as S from "./InvitaionListStyled";
+import EmptyInvitation from "./EmptyInvitation/EmptyInvitation";
 
 const InvitationList = () => {
   return (
     <S.Layout>
       <S.Title>초대받은 대시보드</S.Title>
+      <EmptyInvitation />
       <SearchBar />
       <S.CategoryBox>
         <h2>이름</h2>
