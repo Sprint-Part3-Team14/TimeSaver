@@ -1,20 +1,17 @@
 import { Outlet } from "react-router-dom";
-import styled from "styled-components";
-import Sidebar from "./components/Sidebar/Sidebar";
 
-function DashboardLayout() {
-  const Temp = styled.div`
-    display: flex;
-  `;
+import * as S from "./DashboardLayoutStyled";
+
+
 
   return (
-    <>
-      <div>header</div>
-      <Temp>
-        <Sidebar />
+    <S.DashboardLayout>
+      <S.HeaderLayout>header</S.HeaderLayout>
+      <S.SideBarLayout>sidebar</S.SideBarLayout>
+      <S.ContentLayout>
         <Outlet />
-      </Temp>
-    </>
+      </S.ContentLayout>
+    </S.DashboardLayout>
   );
 }
 
