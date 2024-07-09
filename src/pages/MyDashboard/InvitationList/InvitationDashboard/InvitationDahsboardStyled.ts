@@ -4,7 +4,7 @@ export const InvitationDashboardBox = styled.li`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  padding: 20px 28px;
+  padding: 24px 28px;
   border-bottom: 1px solid ${({ theme }) => theme.color.gray600};
 
   &:last-child {
@@ -14,7 +14,7 @@ export const InvitationDashboardBox = styled.li`
 
 export const Name = styled.h3`
   padding-left: 36px;
-  color: var(--black-black_700, #333236);
+  color: ${({ theme }) => theme.color.black700};
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -23,7 +23,7 @@ export const Name = styled.h3`
 `;
 
 export const Invitor = styled.h3`
-  color: var(--black-black_700, #333236);
+  color: ${({ theme }) => theme.color.black700};
   font-family: Inter;
   font-size: 16px;
   font-style: normal;

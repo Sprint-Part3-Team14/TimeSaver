@@ -4,13 +4,22 @@ import EllipseIcon from "../../../../components/Icons/EllipseIcon";
 
 import * as S from "./ParticipationDashboardStyeld";
 
-const ParticipationDashboard = () => {
+interface DashboardItemProps {
+  dashboardItem: {
+    id: number;
+    title: string;
+    color: string;
+    createdByMe: boolean;
+  };
+}
+
+const ParticipationDashboard = ({ dashboardItem }: DashboardItemProps) => {
   return (
     <S.Container>
       <S.TitleBox>
-        <EllipseIcon width={8} height={8} />
-        <S.Title>대시보드 제목</S.Title>
-        <CrownIcon width={20} height={16} />
+        <EllipseIcon width={8} height={8} color={dashboardItem.color} />
+        <S.Title>{dashboardItem.title}</S.Title>
+        {dashboardItem.createdByMe && <CrownIcon width={20} height={16} />}
       </S.TitleBox>
       <ArrowBackwardIcon width={18} height={18} />
     </S.Container>

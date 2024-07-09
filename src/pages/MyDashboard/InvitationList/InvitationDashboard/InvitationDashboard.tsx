@@ -1,10 +1,18 @@
 import * as S from "./InvitationDahsboardStyled";
 
-const InvitationDashboard = () => {
+interface InviteProps {
+  invite: {
+    id: number;
+    name: string;
+    invitor: string;
+  };
+}
+
+const InvitationDashboard = ({ invite }: InviteProps) => {
   return (
     <S.InvitationDashboardBox>
-      <S.Name>대시보드이름</S.Name>
-      <S.Invitor>이름</S.Invitor>
+      <S.Name>{invite.name}</S.Name>
+      <S.Invitor>{invite.invitor}</S.Invitor>
       <S.ButtonBox>
         <button>수락</button>
         <button>거절</button>
