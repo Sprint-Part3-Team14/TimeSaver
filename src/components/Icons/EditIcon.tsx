@@ -2,7 +2,7 @@ import { IconProps } from "../../types/IconType";
 
 const EditIcon = ({ width, height, color = "#FFFFFF" }: IconProps) => {
   return (
-    <svg width={width} height={height} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 30 30" fill={color} xmlns="http://www.w3.org/2000/svg">
       <g id="edit_FILL1_wght300_GRAD0_opsz24 2">
         <path
           id="Vector"
