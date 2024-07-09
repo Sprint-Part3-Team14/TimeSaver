@@ -6,8 +6,8 @@ import Mypage from "./pages/Mypage";
 import Dashboard from "./pages/Dashboard";
 import Edit from "./pages/Edit";
 import DashboardLayout from "./DashboardLayout";
-import MyDashboard from "./pages/MyDashboard/indext";
-import Notfound from "./pages/Notfound/indext";
+import MyDashboard from "./pages/MyDashboard";
+import Notfound from "./pages/Notfound";
 
 const App = () => {
   return (
