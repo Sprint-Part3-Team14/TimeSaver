@@ -4,7 +4,6 @@ export const Layout = styled.section`
   display: flex;
   flex-direction: column;
   max-width: 1022px;
-
   padding-top: 32px;
   gap: 20px;
 
@@ -16,11 +15,8 @@ export const Title = styled.h1`
   padding: 0 28px;
 
   color: ${({ theme }) => theme.color.black700};
-  font-family: Inter;
   font-size: 24px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 `;
 
 export const CategoryBox = styled.div`
@@ -31,11 +27,8 @@ export const CategoryBox = styled.div`
 
 export const CategoryTitle = styled.h2`
   color: ${({ theme }) => theme.color.gray800};
-  font-family: Inter;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
 `;
 
 export const ListContainer = styled.ul`

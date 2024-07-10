@@ -1,5 +1,5 @@
+import Pagination from "../../../components/PagiNation/PagiNation";
 import AddDashboard from "./AddDashboard/AddDashboard";
-import PagiNation from "./PagiNation/PagiNation";
 import ParticipationDashboard from "./ParicipationDashboard/ParticipationDashboard";
 import * as S from "./ParticipationListStyled";
 
@@ -45,7 +45,7 @@ const ParticipationList = () => {
           <ParticipationDashboard dashboardItem={dashboard} key={dashboard.id} />
         ))}
       </S.Grid>
-      {DashboardList.length > 0 && <PagiNation />}
+      {DashboardList.length > 0 && <Pagination />}
     </S.Layout>
   );
 };

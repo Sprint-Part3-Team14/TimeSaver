@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const buttonSize = {
-  large: "14rem 0",
-  normal: "7rem 0",
-  small: "6rem 0",
+  large: "1.4rem 0",
+  normal: "0.7rem 0",
+  small: "0.6rem 0",
 };
 
 export const Container = styled.button<{

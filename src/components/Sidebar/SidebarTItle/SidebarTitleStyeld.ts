@@ -9,11 +9,8 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.color.gray900};
-  font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 `;
 
 export const IconButton = styled.button`

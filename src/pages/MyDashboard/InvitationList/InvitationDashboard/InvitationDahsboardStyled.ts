@@ -15,23 +15,16 @@ export const InvitationDashboardBox = styled.li`
 export const Name = styled.h3`
   padding-left: 36px;
   color: ${({ theme }) => theme.color.black700};
-  font-family: Inter;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 `;
 
 export const Invitor = styled.h3`
   color: ${({ theme }) => theme.color.black700};
-  font-family: Inter;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 `;
 
 export const ButtonBox = styled.div`
   display: flex;
+  width: 178px;
   gap: 10px;
 `;

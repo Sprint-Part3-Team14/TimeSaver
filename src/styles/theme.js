@@ -17,10 +17,10 @@ const theme = {
   },
 
   fontSize: {
-    large: "18rem",
-    normal: "16rem",
-    small: "14rem",
-    extraSmall: "12rem",
+    large: "1.8rem",
+    normal: "1.6rem",
+    small: "1.4rem",
+    extraSmall: "1.2rem",
   },
 
   device: {
