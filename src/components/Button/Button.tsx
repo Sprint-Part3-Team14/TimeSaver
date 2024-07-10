@@ -4,19 +4,15 @@ import * as S from "./ButtonStyeld";
  * Button Component
  *
  * @param fontSize : large : 18rem , small : 14rem, extraSmall : 12rem
- * @param styleVariant : default (?묓겕) , white
- * @param size : y異??⑤뵫??湲곗?  large : 14rem, normal : 7rem , small : 6rem
+ * @param styleVariant : default pink , white
+ * @param size :  large : 14rem, normal : 7rem , small : 6rem
  */
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  type?: "button" | "submit";
-  onClick?: () => void;
-  onKeyDown?: () => void;
   fontSize?: "large" | "small" | "extraSmall";
   styleVariant?: "default" | "white";
   size?: "large" | "normal" | "small";
-  disabled?: boolean;
   width?: string;
 }
 
