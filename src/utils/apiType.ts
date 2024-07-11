@@ -23,12 +23,12 @@ export interface ChangePassword {
 export interface CardListSearch {
   size: number;
   cursorId: number;
-  columnId: number;
+  [key: string]: number;
 }
 
 // 카드 상세 조회 쿼리 타입
 export interface CardSearch {
-  id: number;
+  [key: string]: number;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface CardSearch {
 
 // 컬럼 목록 조회
 export interface ColumnsListSearch {
-  dashboardId: number;
+  [key: string]: number;
 }
 
 /**
@@ -46,7 +46,7 @@ export interface ColumnsListSearch {
 export interface CommentsListSearch {
   size: number;
   cursorId: number;
-  cardId: number;
+  [key: string]: number;
 }
 
 /**
@@ -65,14 +65,14 @@ export interface DashboardListSearch {
 
 // 대시보드 상세 조회
 export interface DashboardSearch {
-  dashboardId: number;
+  [key: string]: number;
 }
 
 // 대시보드 초대 불러오기
 export interface DashboardInvitation {
-  dashboardId: number;
-  page?: number;
-  size?: number;
+  [key: string]: number;
+  page: number;
+  size: number;
 }
 
 /**
@@ -86,9 +86,16 @@ export interface InvitationsListSearch {
   title?: string;
 }
 
+// 대시보드 멤버 목록 조회
+export interface MembersSearch {
+  [key: string]: number;
+  page: number;
+  size: number;
+}
+
 /**
  * Body
- * 본문에 해당하는 내용은 동사가 앞에 있습니다 :D
+ * 동사가 앞에 있기에 Body가 맞습니다.
  */
 
 // 카드 생성
