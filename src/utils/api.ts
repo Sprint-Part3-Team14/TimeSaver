@@ -80,6 +80,8 @@ export function postCards(body: CreateCard) {
   return fetcher("/cards", "POST", body);
 }
 
+console.log(postColumns);
+
 // 카드 목록 조회
 export function getCardList(query: CardListSearch) {
   const q = convertQuery(query);
