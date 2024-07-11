@@ -7,6 +7,7 @@ import React, {
   useRef,
 } from "react";
 import Button from "../../Button/Button";
+import CloseIcon from "../../Icons/CloseIcon";
 import * as S from "./ModalLayoutStyled";
 
 interface ReservationPopupType {
@@ -57,12 +58,14 @@ const ModalLayOut = ({
         <S.ContentContainer>
           <S.Header>
             {title}
-            <S.CloseButton type="button" onClick={() => setState(false)} />
+            <S.CloseButton type="button" onClick={() => setState(false)}>
+              <CloseIcon width={40} height={40} />
+            </S.CloseButton>
           </S.Header>
           {children}
         </S.ContentContainer>
         {buttonName && (
-          <Button onClick={onButtonClick}>{buttonName}</Button>
+          <Button onClick={onButtonClick} fontSize="extraSmall" size="small">{buttonName}</Button>
         )}
       </S.ModalContainer>
     </>

@@ -17,8 +17,8 @@ export const ModalContainer = styled.div<{ usePortal: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-  width: 100vw;
+  height: 95vh;
+  width: 95vw;
   background: white;
   padding: 1.5rem;
   padding-bottom: 2.5rem;
@@ -57,9 +57,19 @@ export const Header = styled.header`
 export const CloseButton = styled.button`
   height: 2.5rem;
   width: 2.5rem;
-  background-image: url('/icons/CloseIcon.tsx');
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 export const ContentContainer = styled.div`
-  margin-bottom: 4rem; /* equivalent to mb-16 */
+  margin-bottom: 4rem;
 `;

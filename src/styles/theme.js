@@ -20,7 +20,7 @@ const theme = {
     large: "18rem",
     normal: "16rem",
     small: "14rem",
-    extraSmall: "12rem",
+    extraSmall: "1.2rem",
   },
 
   device: {

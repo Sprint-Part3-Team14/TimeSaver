@@ -3,7 +3,7 @@ import styled from "styled-components";
 const buttonSize = {
   large: "14rem 0",
   normal: "7rem 0",
-  small: "6rem 0",
+  small: "1rem 0",
 };
 
 export const Container = styled.button<{
