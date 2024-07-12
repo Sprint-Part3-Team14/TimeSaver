@@ -13,7 +13,6 @@ export const DashboardLayout = styled.div`
 export const HeaderLayout = styled.header`
   grid-area: a;
   background-color: blue;
-  padding: 20px;
 `;
 
 export const SideBarLayout = styled.aside`
