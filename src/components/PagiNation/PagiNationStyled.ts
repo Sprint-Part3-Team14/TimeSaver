@@ -11,9 +11,6 @@ export const Page = styled.p`
   color: ${({ theme }) => theme.color.black700};
   font-family: Inter;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 `;
 
 export const ButtonBox = styled.div`

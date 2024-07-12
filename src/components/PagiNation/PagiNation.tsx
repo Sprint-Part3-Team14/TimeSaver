@@ -1,9 +1,9 @@
-import ArrowBackwardIcon from "../../../../components/Icons/ArrowBackwardIcon";
-import ArrowForwardIcon from "../../../../components/Icons/ArrowForwardIcon";
+import ArrowBackwardIcon from "../Icons/ArrowBackwardIcon";
+import ArrowForwardIcon from "../Icons/ArrowForwardIcon";
 
 import * as S from "./PagiNationStyled";
 
-const PageNation = () => {
+const Pagination = () => {
   return (
     <S.Container>
       <S.Page> 1 페이지 중 1 </S.Page>
@@ -19,4 +19,4 @@ const PageNation = () => {
   );
 };
 
-export default PageNation;
+export default Pagination;

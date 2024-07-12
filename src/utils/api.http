@@ -1,0 +1,145 @@
+### 카드 생성
+POST https://sp-taskify-api.vercel.app/4-14/cards
+Content-Type: application/json
+
+{
+  "assigneeUserId": 1,
+  "dashboardId": 1,
+  "columnId": 1,
+  "title": "샘플이지롱",
+  "description": "샘플카드에 대한 설명입니다!.",
+  "dueDate": "2024-12-31",
+  "tags": ["tag1", "tag2"],
+  "imageUrl": "https://example.com/image.jpg"
+}
+
+### 카드 목록 조회
+GET https://sp-taskify-api.vercel.app/4-14/cards?size=10&cursorId=0
+
+### 카드 수정
+PUT https://sp-taskify-api.vercel.app/4-14/cards/1
+Content-Type: application/json
+
+{
+  "assigneeUserId": 2,
+  "columnId": 2,
+  "title": "두번 쨰 샘플",
+  "description": "샘플입니다!.",
+  "dueDate": "2024-11-30",
+  "tags": ["tag3", "tag4"],
+  "imageUrl": "https://example.com/updated_image.jpg"
+}
+
+### 카드 상세 조회
+GET https://sp-taskify-api.vercel.app/4-14/cards?cardId=1
+
+### 카드 삭제
+DELETE https://sp-taskify-api.vercel.app/4-14/cards/1
+
+### 칼럼 생성
+POST https://sp-taskify-api.vercel.app/4-14/columns
+Content-Type: application/json
+
+{
+  "title": "Sample Column",
+  "dashboardId": 1
+}
+
+### 칼럼 목록 조회
+GET https://sp-taskify-api.vercel.app/4-14/columns?dashboardId=1
+
+### 칼럼 수정
+PUT https://sp-taskify-api.vercel.app/4-14/columns/1
+Content-Type: application/json
+
+{
+  "title": "Updated Sample Column"
+}
+
+### 칼럼 삭제
+DELETE https://sp-taskify-api.vercel.app/4-14/columns/1
+
+### 카드 이미지 업로드
+POST https://sp-taskify-api.vercel.app/4-14/columns/1
+Content-Type: application/json
+
+{
+  "image": "https://example.com/column_image.jpg"
+}
+
+### 댓글 생성
+POST https://sp-taskify-api.vercel.app/4-14/comments
+Content-Type: application/json
+
+{
+  "content": "This is a sample comment.",
+  "cardId": 1,
+  "columnId": 1,
+  "dashboardId": 1
+}
+
+### 댓글 목록 조회
+GET https://sp-taskify-api.vercel.app/4-14/comments?size=10&cursorId=0
+
+### 댓글 수정
+PUT https://sp-taskify-api.vercel.app/4-14/comments/1
+Content-Type: application/json
+
+{
+  "content": "This is an updated sample comment."
+}
+
+### 댓글 삭제
+DELETE https://sp-taskify-api.vercel.app/4-14/comments/1
+
+### 대시보드 생성
+POST https://sp-taskify-api.vercel.app/4-14/dashboards
+Content-Type: application/json
+
+{
+  "title": "Sample Dashboard",
+  "color": "#FF5733"
+}
+
+### 대시보드 상세 조회
+GET https://sp-taskify-api.vercel.app/4-14/dashboards?dashboardId=1
+
+### 대시보드 수정
+PUT https://sp-taskify-api.vercel.app/4-14/dashboards/1
+Content-Type: application/json
+
+{
+  "title": "Updated Sample Dashboard",
+  "color": "#33FF57"
+}
+
+### 대시보드 삭제
+DELETE https://sp-taskify-api.vercel.app/4-14/dashboards/1
+
+### 대시보드 초대하기
+POST https://sp-taskify-api.vercel.app/4-14/dashboards/1/invitations
+Content-Type: application/json
+
+{
+  "email": "invitee@example.com"
+}
+
+### 대시보드 초대 불러오기
+GET https://sp-taskify-api.vercel.app/4-14/dashboards/1/invitations?page=1&size=10
+
+### 대시보드 초대 취소
+DELETE https://sp-taskify-api.vercel.app/4-14/dashboards/1/invitations/1
+
+### 초대 응답
+PUT https://sp-taskify-api.vercel.app/4-14/invitations/1
+Content-Type: application/json
+
+{
+  "inviteAccepted": true
+}
+
+### 대시보드 멤버 목록 조회
+GET https://sp-taskify-api.vercel.app/4-14/members?page=1&size=10
+
+### 대시보드 멤버 삭제
+DELETE https://sp-taskify-api.vercel.app/4-14/members/1

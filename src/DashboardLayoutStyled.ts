@@ -17,8 +17,8 @@ export const HeaderLayout = styled.header`
 
 export const SideBarLayout = styled.aside`
   grid-area: b;
-  background-color: yellow;
   padding: 20px;
+  border-right: 1px solid ${({ theme }) => theme.color.gray700};
 `;
 
 export const ContentLayout = styled.main`

@@ -13,9 +13,5 @@ export const Text = styled.p`
 
   color: ${({ theme }) => theme.color.gray800};
   text-align: center;
-  font-family: Inter;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 `;
