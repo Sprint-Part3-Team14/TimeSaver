@@ -1,6 +1,6 @@
 import CalendarTodayIcon from "../../../../components/Icons/CalendarTodayIcon";
 import formatData from "../../../../utils/formatDate";
-import { CardDataType } from "../../Dashboard";
+import { CardDataType } from "../Column/Column";
 import * as S from "./CardStyled";
 
 const Card = ({ card }: { card: CardDataType }) => {
