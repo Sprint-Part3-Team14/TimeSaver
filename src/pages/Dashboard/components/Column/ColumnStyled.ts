@@ -2,6 +2,12 @@ import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const DashboardColumnLayout = styled.div`
+  width: 35rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  border-right: 2px solid ${theme.color.gray600};
   padding: 0 2rem;
 
   &:last-child {

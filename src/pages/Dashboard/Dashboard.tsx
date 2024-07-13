@@ -76,9 +76,10 @@ const mockData = {
 const Dashboard = () => {
   return (
     <S.DashboardLayout>
-      <S.Column>
-        <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
-      </S.Column>
+      <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
+      <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
+      <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
+      <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
     </S.DashboardLayout>
   );
 };
