@@ -77,7 +77,7 @@ const Dashboard = () => {
   return (
     <S.DashboardLayout>
       <S.Column>
-        <Column columnData={mockData} columnTitle={"To do"} />
+        <Column columnData={mockData} columnTitle={"To do"} columnId={27397} />
       </S.Column>
     </S.DashboardLayout>
   );
