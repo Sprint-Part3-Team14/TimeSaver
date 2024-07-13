@@ -1,8 +1,25 @@
-import theme from "../../styles/theme";
-import PlusIcon from "../../components/Icons/PlusIcon";
-import SettingIcon from "../../components/Icons/SettingIcon";
 import * as S from "./DashboardStyled";
-import CardList from "./components/Card/Card";
+import Column from "./components/Column/Column";
+
+export interface ColumnDataType {
+  cards: CardDataType[];
+  totalCount: number;
+  cursorId: null;
+}
+
+export interface CardDataType {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  dueDate: string;
+  imageUrl: string;
+  teamId: string;
+  dashboardId: number;
+  columnId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const mockData = {
   cards: [
@@ -45,21 +62,7 @@ const Dashboard = () => {
   return (
     <S.DashboardLayout>
       <S.Column>
-        <S.DashboardColumnLayout>
-          <S.ColumnHeader>
-            <S.ColumnName>{mockData.cards[0].title}</S.ColumnName>
-            <S.CardCount>{mockData.totalCount}</S.CardCount>
-            <S.SettingIconLayout>
-              <SettingIcon width={24} height={24} color={theme.color.black600} />
-            </S.SettingIconLayout>
-          </S.ColumnHeader>
-        </S.DashboardColumnLayout>
-        <S.DashboardColumnLayout>
-          <S.AddColumn>
-            <PlusIcon width={22} height={22} color={theme.color.pink900} />
-          </S.AddColumn>
-          <CardList card={mockData.cards} />
-        </S.DashboardColumnLayout>
+        <Column columnData={mockData} columnTitle={"To do"} />
       </S.Column>
     </S.DashboardLayout>
   );
