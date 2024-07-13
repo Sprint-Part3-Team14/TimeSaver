@@ -33,6 +33,11 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
   //   headers.append("Authorization", `Bearer ${accessToken}`);
   // }
 
+  headers.append(
+    "Authorization",
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzA3MSwidGVhbUlkIjoiNC0xNCIsImlhdCI6MTcyMDg2MTUyMCwiaXNzIjoic3AtdGFza2lmeSJ9.XzcoQtYf0_G-6yRobXrCBBFazSvD8rIWYBSjqCKZupE"
+  );
+
   if (!headers.has("Content-Type") && options.body) {
     headers.append("Content-Type", "application/json");
   }
