@@ -9,6 +9,7 @@ export const DashboardColumnLayout = styled.div`
   gap: 1.6rem;
   border-right: 2px solid ${theme.color.gray600};
   padding: 0 2rem;
+  flex-shrink: 0;
 
   &:last-child {
     padding-bottom: 2rem;
