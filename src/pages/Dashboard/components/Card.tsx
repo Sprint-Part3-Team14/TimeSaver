@@ -1,13 +1,7 @@
 import styled from "styled-components";
 import theme from "../../../styles/theme";
-import formatData from "../../../util/formatDate";
+import formatData from "../../../utils/formatDate";
 import CalendarTodayIcon from "../../../components/Icons/CalendarTodayIcon";
-
-// interface CardDataListType {
-//   cards: CardDataType[];
-//   totalCount: number;
-//   cursorId: null;
-// }
 
 interface CardDataType {
   id: number;
