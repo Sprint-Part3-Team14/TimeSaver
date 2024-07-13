@@ -40,7 +40,7 @@ const Dashboard = () => {
   return (
     <S.DashboardLayout>
       {mockColumnListData.data.map((column: Task) => (
-        <Column key={column.id} columnData={mockCardListData} columnTitle={column.title} columnId={column.id} />
+        <Column key={column.id} columnData={mockCardListData} columnTitle={column.title} />
       ))}
     </S.DashboardLayout>
   );
