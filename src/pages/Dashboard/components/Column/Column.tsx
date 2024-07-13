@@ -1,27 +1,65 @@
+import { useQuery } from "@tanstack/react-query";
+import { CardListSearch } from "src/utils/apiType";
 import theme from "src/styles/theme";
-import Card from "../Card";
-import { ColumnDataType } from "../../Dashboard";
+import { getCardList } from "src/utils/api";
 import SettingIcon from "../../../../components/Icons/SettingIcon";
+import Card from "../Card";
 import * as S from "./ColumnStyled";
 
+export interface ColumnDataType {
+  cards: CardDataType[];
+  totalCount: number;
+  cursorId: null;
+}
+
+export interface CardDataType {
+  assignee: { id: number; nickname: string; profileImageUrl: string };
+  columnId: number;
+  createdAt: string;
+  dashboardId: number;
+  description: string;
+  dueDate: string;
+  id: number;
+  imageUrl: string;
+  tags: string[];
+  teamId: string;
+  title: string;
+  updatedAt: string;
+}
+
 interface ColumnPropType {
-  columnData: ColumnDataType;
   columnTitle: string;
   columnId: number;
 }
 
-const Column = ({ columnData, columnTitle, columnId }: ColumnPropType) => {
-  console.log("columnId", columnId);
+const Column = ({ columnTitle, columnId }: ColumnPropType) => {
+  const { data } = useQuery({
+    queryKey: [`column-${columnId}`, "cardList"],
+    queryFn: async (): Promise<ColumnDataType> => {
+      const queryParams: CardListSearch = {
+        size: 10,
+        cursorId: 10,
+        columnId: columnId,
+      };
+      return await getCardList(queryParams);
+    },
+    enabled: !!columnId,
+  });
+
+  if (!data) {
+    return <div>로딩 중...</div>;
+  }
+
   return (
     <S.DashboardColumnLayout>
       <S.ColumnHeader>
         <S.ColumnName>{columnTitle}</S.ColumnName>
-        <S.CardCount>{columnData.totalCount}</S.CardCount>
+        <S.CardCount>{data.totalCount}</S.CardCount>
         <S.SettingIconLayout>
           <SettingIcon width={24} height={24} color={theme.color.black600} />
         </S.SettingIconLayout>
       </S.ColumnHeader>
-      {columnData.cards.map(card => (
+      {data.cards.map(card => (
         <Card card={card} />
       ))}
     </S.DashboardColumnLayout>

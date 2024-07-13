@@ -4,34 +4,13 @@ import { getColumns } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
-import { mockCardListData } from "./mockData";
 
 export interface ColumnDataType {
-  cards: CardDataType[];
-  totalCount: number;
-  cursorId: null;
+  result: "SUCCESS";
+  data: ColumnOneType[];
 }
 
-export interface CardDataType {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  dueDate: string;
-  assignee: {
-    id: number;
-    nickname: string;
-    profileImageUrl: string;
-  };
-  imageUrl: string;
-  teamId: string;
-  dashboardId: number;
-  columnId: number;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Task {
+export interface ColumnOneType {
   id: number;
   title: string;
   teamId: string;
@@ -42,10 +21,8 @@ export interface Task {
 
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
-  if (!dashboardId) {
-    <>로딩 중</>;
-  }
-  const { data: columnList } = useQuery({
+
+  const { data, isLoading, error } = useQuery({
     queryKey: [`dashboard-${dashboardId}`, "columnList"],
     queryFn: async () => {
       const queryParams: ColumnsListSearch = {
@@ -53,18 +30,27 @@ const Dashboard = () => {
       };
       return await getColumns(queryParams);
     },
+    enabled: !!dashboardId,
   });
+
+  if (isLoading) {
+    return <div>로딩 중...</div>;
+  }
+
+  if (error) {
+    return <div>데이터를 불러오는 중 오류가 발생했습니다: {error.message}</div>;
+  }
+
+  if (!data || !data.data) {
+    return <div>데이터가 없습니다</div>;
+  }
 
   return (
     <S.DashboardLayout>
-      {columnList.data.map((column: Task) => (
-        <Column
-          key={column.id}
-          columnData={mockCardListData}
-          columnTitle={column.title}
-          columnId={Number(dashboardId)}
-        />
-      ))}
+      {data.data.map((column: ColumnOneType) => {
+        console.log(column.id);
+        return <Column key={column.id} columnTitle={column.title} columnId={column.id} />;
+      })}
     </S.DashboardLayout>
   );
 };
