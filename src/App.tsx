@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -10,22 +11,25 @@ import MyDashboard from "./pages/MyDashboard";
 import Notfound from "./pages/Notfound";
 
 const App = () => {
+  const queryClient = new QueryClient();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route element={<DashboardLayout />}>
-          <Route path="my-dashboard" element={<MyDashboard />} />
-          <Route path="/dashboard/:id" element={<Dashboard />} />
-          <Route path="/dashboard/:id/edit" element={<Edit />} />
-          <Route path="/my-page" element={<Mypage />} />
-          <Route path="*" element={<Navigate to="/notFound" />} />
-        </Route>
-        <Route path="/notFound" element={<Notfound />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route element={<DashboardLayout />}>
+            <Route path="my-dashboard" element={<MyDashboard />} />
+            <Route path="/dashboard/:id" element={<Dashboard />} />
+            <Route path="/dashboard/:id/edit" element={<Edit />} />
+            <Route path="/my-page" element={<Mypage />} />
+            <Route path="*" element={<Navigate to="/notFound" />} />
+          </Route>
+          <Route path="/notFound" element={<Notfound />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 
