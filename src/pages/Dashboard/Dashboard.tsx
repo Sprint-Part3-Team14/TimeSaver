@@ -2,7 +2,7 @@ import theme from "../../styles/theme";
 import PlusIcon from "../../components/Icons/PlusIcon";
 import SettingIcon from "../../components/Icons/SettingIcon";
 import * as S from "./DashboardStyled";
-import Card from "./components/Card";
+import CardList from "./components/Card/Card";
 
 const mockData = {
   cards: [
@@ -58,7 +58,7 @@ const Dashboard = () => {
           <S.AddColumn>
             <PlusIcon width={22} height={22} color={theme.color.pink900} />
           </S.AddColumn>
-          <Card card={mockData.cards} />
+          <CardList card={mockData.cards} />
         </S.DashboardColumnLayout>
       </S.Column>
     </S.DashboardLayout>
