@@ -121,7 +121,7 @@ export function postColumns(body: CreateColumns) {
 // 칼럼 목록 조회
 export function getColumns(query: ColumnsListSearch) {
   const q = convertQuery(query);
-  return fetcher(`/columns/${q}`, "GET");
+  return fetcher(`/columns${q}`, "GET");
 }
 
 // 칼럼 수정
