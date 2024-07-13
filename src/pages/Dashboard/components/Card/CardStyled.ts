@@ -28,6 +28,12 @@ export const Tag = styled.div`
   border-radius: 0.4rem;
 `;
 
+export const CardFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const CardCreatedAt = styled.div`
   display: flex;
   gap: 0.6rem;
@@ -36,4 +42,10 @@ export const CardCreatedAt = styled.div`
   color: ${theme.color.gray900};
   font-size: 1.2rem;
   font-weight: 500;
+`;
+
+export const CardWriterImage = styled.img`
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
 `;

@@ -10,14 +10,17 @@ const Card = ({ card }: { card: CardDataType }) => {
         {card.imageUrl && <img src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
         <S.CardTagList>
-          {card.tags.map(tag => (
-            <S.Tag>{tag}</S.Tag>
+          {card.tags.map((tag, index) => (
+            <S.Tag key={index}>{tag}</S.Tag>
           ))}
         </S.CardTagList>
-        <S.CardCreatedAt>
-          <CalendarTodayIcon width={18} height={18} color={"#787486"} />
-          {formatData(card.createdAt)}
-        </S.CardCreatedAt>
+        <S.CardFooter>
+          <S.CardCreatedAt>
+            <CalendarTodayIcon width={18} height={18} color={"#787486"} />
+            {formatData(card.createdAt)}
+          </S.CardCreatedAt>
+          <S.CardWriterImage src={card.assignee.profileImageUrl} alt={`${card.assignee.nickname}의 프로필 이미지`} />
+        </S.CardFooter>
       </S.CardLayout>
     </>
   );
