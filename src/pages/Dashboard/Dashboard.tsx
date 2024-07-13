@@ -47,10 +47,9 @@ const Dashboard = () => {
 
   return (
     <S.DashboardLayout>
-      {data.data.map((column: ColumnOneType) => {
-        console.log(column.id);
-        return <Column key={column.id} columnTitle={column.title} columnId={column.id} />;
-      })}
+      {data.data.map((column: ColumnOneType) => (
+        <Column key={column.id} columnTitle={column.title} columnId={column.id} />
+      ))}
     </S.DashboardLayout>
   );
 };
