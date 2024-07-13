@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CardListSearch } from "src/utils/apiType";
 import theme from "src/styles/theme";
 import { getCardList } from "src/utils/api";
+import PlusIcon from "../../../../components/Icons/PlusIcon";
 import SettingIcon from "../../../../components/Icons/SettingIcon";
 import Card from "../Card";
 import * as S from "./ColumnStyled";
@@ -59,6 +60,9 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
           <SettingIcon width={24} height={24} color={theme.color.black600} />
         </S.SettingIconLayout>
       </S.ColumnHeader>
+      <S.AddColumn>
+        <PlusIcon width={22} height={22} color={theme.color.pink900} />
+      </S.AddColumn>
       {data.cards.map(card => (
         <Card card={card} />
       ))}
