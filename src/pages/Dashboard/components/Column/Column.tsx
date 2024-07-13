@@ -7,12 +7,9 @@ import * as S from "./ColumnStyled";
 interface ColumnPropType {
   columnData: ColumnDataType;
   columnTitle: string;
-  columnId: number;
 }
 
-const Column = ({ columnData, columnTitle, columnId }: ColumnPropType) => {
-  console.log(columnId);
-
+const Column = ({ columnData, columnTitle }: ColumnPropType) => {
   return (
     <S.DashboardColumnLayout>
       <S.ColumnHeader>
