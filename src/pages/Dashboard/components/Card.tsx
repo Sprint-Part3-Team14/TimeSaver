@@ -22,6 +22,7 @@ const Card = ({ card }: { card: CardDataType[] }) => {
     <>
       {card.map(cardData => (
         <CardLayout>
+          {cardData.imageUrl && <img src={cardData.imageUrl} alt={cardData.title} />}
           <CardTitle>{cardData.title}</CardTitle>
           <CardTagList>
             {cardData.tags.map(tag => (
