@@ -8,7 +8,12 @@ export const CardLayout = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+`;
+
+export const CardThumbnail = styled.img`
+  aspect-ratio: 1.7 / 1;
+  object-fit: cover;
 `;
 
 export const CardTitle = styled.h3`
