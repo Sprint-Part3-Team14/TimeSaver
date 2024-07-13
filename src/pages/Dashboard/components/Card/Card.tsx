@@ -7,7 +7,7 @@ const Card = ({ card }: { card: CardDataType }) => {
   return (
     <>
       <S.CardLayout>
-        {card.imageUrl && <img src={card.imageUrl} alt={card.title} />}
+        {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
         <S.CardTagList>
           {card.tags.map((tag, index) => (
