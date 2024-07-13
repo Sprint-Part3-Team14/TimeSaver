@@ -48,10 +48,10 @@ const Dashboard = () => {
   const { data: columnList } = useQuery({
     queryKey: [`dashboard-${dashboardId}`, "columnList"],
     queryFn: async () => {
-      const query1: ColumnsListSearch = {
+      const queryParams: ColumnsListSearch = {
         dashboardId: Number(dashboardId),
       };
-      return await getColumns(query1);
+      return await getColumns(queryParams);
     },
   });
 
