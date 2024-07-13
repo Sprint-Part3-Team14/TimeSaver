@@ -3,6 +3,10 @@ import theme from "../../styles/theme";
 
 export const DashboardColumnLayout = styled.div`
   padding: 0 2rem;
+
+  &:last-child {
+    padding-bottom: 2rem;
+  }
 `;
 
 export const ColumnHeader = styled.header`
