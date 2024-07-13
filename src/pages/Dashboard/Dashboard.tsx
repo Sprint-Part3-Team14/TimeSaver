@@ -1,6 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import { getColumns } from "src/utils/api";
+import { ColumnsListSearch } from "src/utils/apiType";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
-import { mockCardListData, mockColumnListData } from "./mockData";
+import { mockCardListData } from "./mockData";
 
 export interface ColumnDataType {
   cards: CardDataType[];
@@ -37,10 +41,29 @@ export interface Task {
 }
 
 const Dashboard = () => {
+  const { id: dashboardId } = useParams();
+  if (!dashboardId) {
+    <>로딩 중</>;
+  }
+  const { data: columnList } = useQuery({
+    queryKey: [`dashboard-${dashboardId}`, "columnList"],
+    queryFn: async () => {
+      const query1: ColumnsListSearch = {
+        dashboardId: Number(dashboardId),
+      };
+      return await getColumns(query1);
+    },
+  });
+
   return (
     <S.DashboardLayout>
-      {mockColumnListData.data.map((column: Task) => (
-        <Column key={column.id} columnData={mockCardListData} columnTitle={column.title} />
+      {columnList.data.map((column: Task) => (
+        <Column
+          key={column.id}
+          columnData={mockCardListData}
+          columnTitle={column.title}
+          columnId={Number(dashboardId)}
+        />
       ))}
     </S.DashboardLayout>
   );
