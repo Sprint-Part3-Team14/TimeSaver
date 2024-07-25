@@ -19,6 +19,7 @@ import {
   ResponseInvitation,
   UploadProfile,
 } from "./apiType";
+import { getCookie } from "./CookieSetting";
 import { convertQuery } from "./querySetting";
 
 // 기본 url
@@ -26,17 +27,20 @@ export const BASE_URL = "https://sp-taskify-api.vercel.app/4-14";
 
 async function fetchWithToken(url: string, options: RequestInit = {}) {
   const headers = new Headers(options.headers as HeadersInit);
-  // 쿠키 사용 전까지 임의 주석처리
-  // const accessToken = getCookie("accessToken");
+  const accessToken = getCookie("accessToken");
 
-  // if (accessToken) {
-  //   headers.append("Authorization", `Bearer ${accessToken}`);
-  // }
+  if (accessToken && !headers.has("Authorization")) {
+    headers.append("Authorization", `Bearer ${accessToken}`);
+  }
 
-  headers.append(
-    "Authorization",
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzA3MSwidGVhbUlkIjoiNC0xNCIsImlhdCI6MTcyMDg2MTUyMCwiaXNzIjoic3AtdGFza2lmeSJ9.XzcoQtYf0_G-6yRobXrCBBFazSvD8rIWYBSjqCKZupE"
-  );
+  if (!headers.has("Authorization")) {
+    headers.append(
+      "Authorization",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzA3MSwidGVhbUlkIjoiNC0xNCIsImlhdCI6MTcyMDg2MTUyMCwiaXNzIjoic3AtdGFza2lmeSJ9.XzcoQtYf0_G-6yRobXrCBBFazSvD8rIWYBSjqCKZupE"
+    );
+  }
+
+  console.log(`AccessToken : ${accessToken}`);
 
   if (!headers.has("Content-Type") && options.body) {
     headers.append("Content-Type", "application/json");
