@@ -20,7 +20,8 @@
       "@components/*": ["src/components/*"],
       "@Icons/*": ["src/components/Icons/*"],
       "@types/*": ["types/*"]
-    }
+    },
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"]
 }
