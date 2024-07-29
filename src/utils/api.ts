@@ -17,6 +17,7 @@ import {
   InviteDashboard,
   MembersSearch,
   ResponseInvitation,
+  SignIn,
   UploadProfile,
 } from "./apiType";
 import { getCookie } from "./CookieSetting";
@@ -74,7 +75,13 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
 /**
  * Auth
  * Auth 관련 부분은 쿠키 로직 작성 후 작성 예정
+ * 로그인
  */
+
+//로그인
+export async function postAuthLogin({ email, password }: SignIn) {
+  return await fetcher("/auth/login", "POST", { email, password });
+}
 
 /** Cards
  * 카드 생성
