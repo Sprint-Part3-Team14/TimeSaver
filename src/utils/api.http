@@ -1,3 +1,22 @@
+### 회원가입
+POST https://sp-taskify-api.vercel.app/4-14/users
+Content-Type: application/json
+
+{
+  "email": "test@naver.com",
+  "password": "qwer1234",
+  "nickname": "testuser"
+}
+
+### 로그인
+POST https://sp-taskify-api.vercel.app/4-14/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@naver.com",
+  "password": "qwer1234"
+}
+
 ### 카드 생성
 POST https://sp-taskify-api.vercel.app/4-14/cards
 Content-Type: application/json
