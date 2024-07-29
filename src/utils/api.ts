@@ -76,11 +76,17 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
  * Auth
  * Auth 관련 부분은 쿠키 로직 작성 후 작성 예정
  * 로그인
+ * 로그아웃
  */
 
-//로그인
+// 로그인
 export async function postAuthLogin({ email, password }: SignIn) {
   return await fetcher("/auth/login", "POST", { email, password });
+}
+
+// 로그아웃(쿠키제거 로직)
+export async function logout() {
+  await fetch("/api/logout", { method: "POST" });
 }
 
 /** Cards
