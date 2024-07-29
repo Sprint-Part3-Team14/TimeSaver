@@ -34,15 +34,6 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
     headers.append("Authorization", `Bearer ${accessToken}`);
   }
 
-  if (!headers.has("Authorization")) {
-    headers.append(
-      "Authorization",
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzA3MSwidGVhbUlkIjoiNC0xNCIsImlhdCI6MTcyMDg2MTUyMCwiaXNzIjoic3AtdGFza2lmeSJ9.XzcoQtYf0_G-6yRobXrCBBFazSvD8rIWYBSjqCKZupE"
-    );
-  }
-
-  console.log(`AccessToken : ${accessToken}`);
-
   if (!headers.has("Content-Type") && options.body) {
     headers.append("Content-Type", "application/json");
   }
@@ -50,6 +41,7 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
   const mergedOptions: RequestInit = {
     ...options,
     headers,
+    credentials: "same-origin", // credentials 옵션 추가
   };
 
   const response = await fetch(url, mergedOptions);
@@ -74,21 +66,19 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
 
 /**
  * Auth
- * Auth 관련 부분은 쿠키 로직 작성 후 작성 예정
- * 로그인
- * 로그아웃
+ * 로그인 및 로그아웃 로직
  */
 
 // 로그인
 export async function postAuthLogin({ email, password }: SignIn) {
   const response = await fetcher("/auth/login", "POST", { email, password });
-  if (response && response.token) {
-    setAccessTokenCookie(response.token); // 쿠키 설정
+  if (response && response.accessToken) {
+    setAccessTokenCookie(response.accessToken); // 쿠키 설정
   }
   return response;
 }
 
-// 로그아웃(쿠키제거 로직)
+// 로그아웃 (쿠키 제거 로직)
 export async function logout() {
   removeAllTokenCookies();
 }
