@@ -20,7 +20,7 @@ import {
   SignIn,
   UploadProfile,
 } from "./apiType";
-import { getCookie } from "./CookieSetting";
+import { getCookie, removeAllTokenCookies, setAccessTokenCookie } from "./CookieSetting";
 import { convertQuery } from "./querySetting";
 
 // 기본 url
@@ -81,12 +81,16 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
 
 // 로그인
 export async function postAuthLogin({ email, password }: SignIn) {
-  return await fetcher("/auth/login", "POST", { email, password });
+  const response = await fetcher("/auth/login", "POST", { email, password });
+  if (response && response.token) {
+    setAccessTokenCookie(response.token); // 쿠키 설정
+  }
+  return response;
 }
 
 // 로그아웃(쿠키제거 로직)
 export async function logout() {
-  await fetch("/api/logout", { method: "POST" });
+  removeAllTokenCookies();
 }
 
 /** Cards
