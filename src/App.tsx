@@ -2,7 +2,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing";
-import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Mypage from "./pages/Mypage";
 import Dashboard from "./pages/Dashboard";
@@ -10,6 +9,7 @@ import Edit from "./pages/Edit";
 import DashboardLayout from "./DashboardLayout";
 import MyDashboard from "./pages/MyDashboard";
 import Notfound from "./pages/Notfound";
+import SignIn from "./pages/SignIn";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<DashboardLayout />}>
             <Route path="my-dashboard" element={<MyDashboard />} />
