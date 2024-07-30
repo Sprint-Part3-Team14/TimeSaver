@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -13,7 +14,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input<{ isInvalid: boolean }>`
-  border: 1px solid ${({ isInvalid }) => (isInvalid ? "red" : "#cccccc")};
+  border: 1px solid ${({ isInvalid }) => (isInvalid ? "red" : theme.color.gray600)};
   outline: none;
   border-radius: 4px;
   padding: 10px;
