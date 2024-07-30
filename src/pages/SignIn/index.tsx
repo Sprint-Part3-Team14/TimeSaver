@@ -38,7 +38,7 @@ const LoginForm = () => {
         <AuthInput
           name="email"
           control={control}
-          label="Email"
+          label="이메일"
           type="text"
           placeholder="Enter your email"
           rules={{
@@ -52,7 +52,7 @@ const LoginForm = () => {
         <AuthInput
           name="password"
           control={control}
-          label="Password"
+          label="비밀번호"
           type="password"
           placeholder="Enter your password"
           rules={{
