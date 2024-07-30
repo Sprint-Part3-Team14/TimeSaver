@@ -30,7 +30,7 @@ export const ErrorMessage = styled.small`
 
 export const ToggleButton = styled.span`
   position: absolute;
-  top: 45px;
+  top: 35px;
   right: 15px;
   cursor: pointer;
 `;
