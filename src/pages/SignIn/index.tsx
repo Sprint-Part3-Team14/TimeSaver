@@ -1,6 +1,6 @@
-import AuthInput from "@components/AuthInput/AuthInput";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import AuthInput from "../../components/AuthInput/AuthInput";
 
 interface IFormInput {
   email: string;
