@@ -10,21 +10,15 @@ interface InputFieldProps {
   type: string;
   rules: any;
   showPasswordToggle?: boolean;
-  showPassword?: boolean;
-  setShowPassword?: (show: boolean) => void;
 }
 
-const AuthInput = ({
-  name,
-  control,
-  label,
-  placeholder,
-  rules,
-  type,
-  showPasswordToggle, // 비밀번호 표시/숨기기 기능을 사용할 건지에 대한 여부
-  showPassword, // 비밀번호가 나타나는지 숨겨지는지의 상태
-  setShowPassword, // ShowPassword를 업데이트
-}: InputFieldProps) => {
+interface AuthInputProps {
+  inputProps: InputFieldProps;
+}
+
+const AuthInput = ({ inputProps }: AuthInputProps) => {
+  const { name, control, label, placeholder, rules, type, showPasswordToggle = false } = inputProps;
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -55,7 +49,7 @@ const AuthInput = ({
                 placeholder={placeholder}
                 isInvalid={fieldState.invalid}
               />
-              {showPasswordToggle && setShowPassword && (
+              {showPasswordToggle && (
                 <S.ToggleButton onClick={() => setShowPassword(!showPassword)}>
                   <img
                     src={showPassword ? "/images/Icons/visible_eye.svg" : "/images/Icons/hidden_eye.svg"}
