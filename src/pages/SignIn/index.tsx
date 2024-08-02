@@ -1,43 +1,43 @@
-import AuthInput from "src/components/AuthInput/AuthInput";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import AuthInput from "@components/AuthInput/AuthInput";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 
-const Signin = () => {
-  const { handleSubmit, control } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
+interface IFormInput {
+  email: string;
+  password: string;
+}
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle signin logic here
+const LoginForm = () => {
+  const { control, handleSubmit } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
+
+  const emailInputProps = {
+    name: "email",
+    control: control,
+    label: "Email",
+    placeholder: "Enter your email",
+    type: "email",
+    rules: { required: "Email is required" },
+    showPasswordToggle: false,
+  };
+
+  const passwordInputProps = {
+    name: "password",
+    control: control,
+    label: "Password",
+    placeholder: "Enter your password",
+    type: "password",
+    rules: { required: "Password is required" },
+    showPasswordToggle: true,
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <AuthInput
-          name="email"
-          control={control}
-          label="Email"
-          type="text"
-          placeholder="Enter your email"
-          rules={{ required: "Email is required" }}
-        />
-        <AuthInput
-          name="password"
-          control={control}
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          rules={{ required: "Password is required" }}
-          showPasswordToggle={true}
-          showPassword={showPassword}
-          setShowPassword={setShowPassword}
-        />
-        <button type="submit">Sign In</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <AuthInput inputProps={emailInputProps} />
+      <AuthInput inputProps={passwordInputProps} />
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
-export default Signin;
+export default LoginForm;
