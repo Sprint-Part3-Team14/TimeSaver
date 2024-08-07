@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getColumns } from "src/utils/api";
+import { getColumns, postAuthLogin } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
+import TodoDetail from "./components/TodoDetail/TodoDetail";
 
 export interface ColumnDataType {
   result: "SUCCESS";
@@ -21,6 +22,7 @@ export interface ColumnOneType {
 
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
+  postAuthLogin({ email: "test@codeit.com", password: "sprint101" });
 
   const { data, isLoading, error } = useQuery({
     queryKey: [`dashboard-${dashboardId}`, "columnList"],
@@ -46,11 +48,14 @@ const Dashboard = () => {
   }
 
   return (
-    <S.DashboardLayout>
-      {data.data.map((column: ColumnOneType) => (
-        <Column key={column.id} columnTitle={column.title} columnId={column.id} />
-      ))}
-    </S.DashboardLayout>
+    <>
+      <TodoDetail />
+      <S.DashboardLayout>
+        {data.data.map((column: ColumnOneType) => (
+          <Column key={column.id} columnTitle={column.title} columnId={column.id} />
+        ))}
+      </S.DashboardLayout>
+    </>
   );
 };
 
