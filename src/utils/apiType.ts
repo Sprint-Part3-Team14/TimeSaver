@@ -143,6 +143,26 @@ export interface FixColumns {
   title: string;
 }
 
+// 댓글 조회
+export interface GetComments {
+  cursorId: number;
+  comments: Comment[];
+}
+
+// 댓글
+export interface Comment {
+  id: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  cardId: number;
+  author: {
+    profileImageUrl: string;
+    nickname: string;
+    id: number;
+  };
+}
+
 // 댓글 생성
 export interface CreateComments {
   content: string;
@@ -152,7 +172,7 @@ export interface CreateComments {
 }
 
 // 댓글 수정
-export interface FixCommnets {
+export interface FixComments {
   content: string;
 }
 
