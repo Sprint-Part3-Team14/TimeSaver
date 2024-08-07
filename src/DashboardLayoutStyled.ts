@@ -22,6 +22,7 @@ export const SideBarLayout = styled.aside`
 `;
 
 export const ContentLayout = styled.main`
+  position: relative;
   grid-area: c;
   min-width: 0;
 `;
