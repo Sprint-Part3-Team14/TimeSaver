@@ -12,7 +12,7 @@ import {
   FetchMethod,
   FixCard,
   FixColumns,
-  FixCommnets as FixComments,
+  FixComments,
   FixDashboard,
   InviteDashboard,
   MembersSearch,
