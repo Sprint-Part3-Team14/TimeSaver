@@ -24,12 +24,14 @@ const todoDetailData = {
   updatedAt: "2024-07-13T17:10:45.808Z",
 };
 
-const TodoDetail = () => {
+const TodoDetail = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <Portal>
       <DetailContainer>
         <DetailHeader>
-          <ArrowBackwardIcon width={16} height={16} />
+          <button type="button" onClick={handleClose}>
+            <ArrowBackwardIcon width={16} height={16} />
+          </button>
           <KebabIcon width={13} height={16} />
         </DetailHeader>
         <TodoDetailContent todoDetailData={todoDetailData} />

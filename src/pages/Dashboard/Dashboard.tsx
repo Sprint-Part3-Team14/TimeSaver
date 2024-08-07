@@ -4,7 +4,6 @@ import { getColumns, postAuthLogin } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
-import TodoDetail from "./components/TodoDetail/TodoDetail";
 
 export interface ColumnDataType {
   result: "SUCCESS";
@@ -48,14 +47,11 @@ const Dashboard = () => {
   }
 
   return (
-    <>
-      <TodoDetail />
-      <S.DashboardLayout>
-        {data.data.map((column: ColumnOneType) => (
-          <Column key={column.id} columnTitle={column.title} columnId={column.id} />
-        ))}
-      </S.DashboardLayout>
-    </>
+    <S.DashboardLayout>
+      {data.data.map((column: ColumnOneType) => (
+        <Column key={column.id} columnTitle={column.title} columnId={column.id} />
+      ))}
+    </S.DashboardLayout>
   );
 };
 
