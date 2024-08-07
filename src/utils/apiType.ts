@@ -97,6 +97,25 @@ export interface MembersSearch {
  * Body
  * 동사가 앞에 있기에 Body가 맞습니다.
  */
+// 카드 상세 조회
+export interface DetailCard {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  dueDate: string;
+  assignee: {
+    id: number;
+    nickname: string;
+    profileImageUrl: string;
+  };
+  imageUrl: string;
+  teamId: string;
+  columnId: number;
+  dashboardId: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 // 카드 생성
 export interface CreateCard {
