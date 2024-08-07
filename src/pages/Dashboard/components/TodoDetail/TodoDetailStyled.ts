@@ -6,7 +6,7 @@ export const DetailContainer = styled.div`
   top: 0;
   right: 0;
   z-index: 20;
-  width: 70%;
+  width: 60%;
   height: 100%;
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
