@@ -1,6 +1,6 @@
 import KebabIcon from "src/components/Icons/KebabIcon";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
-import { DetailContainer, DetailHeader, DetailMain } from "./TodoDetailStyled";
+import { DetailComments, DetailContainer, DetailContent, DetailHeader } from "./TodoDetailStyled";
 
 const TodoDetail = () => {
   return (
@@ -9,9 +9,8 @@ const TodoDetail = () => {
         <ArrowBackwardIcon width={16} height={16} />
         <KebabIcon width={13} height={16} />
       </DetailHeader>
-      <DetailMain>
-        <>할 일 상세보기</>
-      </DetailMain>
+      <DetailContent>할 일 상세보기</DetailContent>
+      <DetailComments>댓글 목록</DetailComments>
     </DetailContainer>
   );
 };
