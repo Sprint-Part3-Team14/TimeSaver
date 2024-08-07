@@ -67,7 +67,9 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
           </S.SettingIconLayout>
         </S.ColumnHeader>
         <S.AddColumn>
-          <PlusIcon width={22} height={22} color={theme.color.pink900} />
+          <S.RowCenter>
+            <PlusIcon width={22} height={22} color={theme.color.pink900} />
+          </S.RowCenter>
         </S.AddColumn>
         {data.cards.map(card => (
           <Card card={card} handleOpenDetail={handleTrue} />
