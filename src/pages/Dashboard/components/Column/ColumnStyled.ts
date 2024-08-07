@@ -70,3 +70,7 @@ export const ColumnTitle = styled.h3`
   color: ${theme.color.black700};
   font-weight: 500;
 `;
+
+export const RowCenter = styled.div`
+  padding-left: calc(50% - 1.1rem);
+`;
