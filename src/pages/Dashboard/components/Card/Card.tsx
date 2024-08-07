@@ -3,9 +3,9 @@ import formatData from "../../../../utils/formatDate";
 import { CardDataType } from "../Column/Column";
 import * as S from "./CardStyled";
 
-const Card = ({ card }: { card: CardDataType }) => {
+const Card = ({ card, handleOpenDetail }: { card: CardDataType; handleOpenDetail: () => void }) => {
   return (
-    <>
+    <div onClick={handleOpenDetail}>
       <S.CardLayout>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
@@ -22,7 +22,7 @@ const Card = ({ card }: { card: CardDataType }) => {
           <S.CardWriterImage src={card.assignee.profileImageUrl} alt={`${card.assignee.nickname}의 프로필 이미지`} />
         </S.CardFooter>
       </S.CardLayout>
-    </>
+    </div>
   );
 };
 
