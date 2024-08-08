@@ -5,6 +5,7 @@ import Portal from "src/components/common/Portal";
 import { getCardInformation } from "src/utils/api";
 import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
 import * as S from "./TodoDetailStyled";
+import CommentSection from "./CommentSection/CommentSection";
 
 const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: number }) => {
   const { data: cardDetail } = useQuery({
@@ -30,7 +31,7 @@ const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: 
           </S.Button>
         </S.DetailHeader>
         <TodoDetailContent todoDetailData={cardDetail} />
-        <S.DetailComments>댓글 목록</S.DetailComments>
+        <CommentSection />
       </S.DetailContainer>
     </Portal>
   );
