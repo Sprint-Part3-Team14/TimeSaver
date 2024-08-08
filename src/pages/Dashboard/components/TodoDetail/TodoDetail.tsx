@@ -1,7 +1,7 @@
 import KebabIcon from "src/components/Icons/KebabIcon";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Portal from "src/components/common/Portal";
-import { DetailComments, DetailContainer, DetailHeader } from "./TodoDetailStyled";
+import * as S from "./TodoDetailStyled";
 import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
 
 const todoDetailData = {
@@ -27,16 +27,16 @@ const todoDetailData = {
 const TodoDetail = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <Portal>
-      <DetailContainer>
-        <DetailHeader>
+      <S.DetailContainer>
+        <S.DetailHeader>
           <button type="button" onClick={handleClose}>
             <ArrowBackwardIcon width={16} height={16} />
           </button>
           <KebabIcon width={13} height={16} />
-        </DetailHeader>
+        </S.DetailHeader>
         <TodoDetailContent todoDetailData={todoDetailData} />
-        <DetailComments>댓글 목록</DetailComments>
-      </DetailContainer>
+        <S.DetailComments>댓글 목록</S.DetailComments>
+      </S.DetailContainer>
     </Portal>
   );
 };
