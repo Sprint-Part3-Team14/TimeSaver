@@ -1,0 +1,106 @@
+import styled from "styled-components";
+import theme from "src/styles/theme";
+import { DetailComments } from "../TodoDetailStyled";
+
+export const Container = styled(DetailComments)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0;
+`;
+
+// 댓글 리스트
+export const CommentList = styled.div`
+  padding: 2.3rem;
+  flex-basis: 80%;
+  max-height: 58rem;
+  overflow: scroll;
+  flex-grow: 1;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.color.gray700};
+    border-radius: 1.2rem;
+  }
+`;
+
+export const Comment = styled.div`
+  display: flex;
+  gap: 1.2rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
+`;
+
+export const AuthorImage = styled.img`
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+`;
+
+export const CommentContent = styled.div``;
+
+export const BaseText = styled.div`
+  color: ${theme.color.black700};
+  font-size: 1.4rem;
+`;
+
+export const AuthorNickName = styled(BaseText)`
+  line-height: 3.2rem;
+  font-weight: 700;
+`;
+
+export const CreatedAt = styled.div`
+  color: ${theme.color.gray800};
+  font-size: 1.2rem;
+  margin-top: 0.9rem;
+`;
+
+// 댓글 생성
+export const AddComment = styled.div`
+  padding: 2.3rem;
+  border-top: 0.1rem solid ${theme.color.gray700};
+`;
+
+export const Title = styled.h2`
+  color: ${theme.color.black700};
+  font-size: 1.6rem;
+`;
+
+export const CommentBox = styled.div`
+  position: relative;
+`;
+
+export const CommentInputBox = styled.textarea`
+  outline-color: ${theme.color.pink400};
+  padding: 1rem;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  resize: none;
+  border: 0.1rem solid ${theme.color.gray700};
+  border-radius: 0.6rem;
+  width: 100%;
+  height: 11rem;
+
+  &::placeholder {
+    color: ${theme.color.gray800};
+    font-size: 1.4rem;
+  }
+`;
+
+export const Button = styled.button`
+  background-color: ${theme.color.pink900};
+  color: ${theme.color.white};
+  padding: 0.9rem 1rem;
+  border-radius: 0.4rem;
+
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+`;

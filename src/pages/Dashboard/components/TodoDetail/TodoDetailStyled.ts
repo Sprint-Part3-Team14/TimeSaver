@@ -34,7 +34,11 @@ export const DetailContent = styled.div`
   grid-area: b;
 `;
 
-export const DetailComments = styled.div`
+export const DetailComments = styled.section`
   padding: 2.3rem;
   grid-area: c;
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
 `;
