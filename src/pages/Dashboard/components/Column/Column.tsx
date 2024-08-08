@@ -34,7 +34,7 @@ interface ColumnPropType {
 }
 
 const Column = ({ columnTitle, columnId }: ColumnPropType) => {
-  const { data } = useQuery({
+  const { data: cardList } = useQuery({
     queryKey: [`column-${columnId}`, "cardList"],
     queryFn: async (): Promise<ColumnDataType> => {
       const queryParams: CardListSearch = {
@@ -47,7 +47,7 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
     enabled: !!columnId,
   });
 
-  if (!data) {
+  if (!cardList) {
     return <div>로딩 중...</div>;
   }
 
@@ -56,7 +56,7 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>
-          <S.CardCount>{data.totalCount}</S.CardCount>
+          <S.CardCount>{cardList.totalCount}</S.CardCount>
           <S.SettingIconLayout>
             <SettingIcon width={24} height={24} color={theme.color.black600} />
           </S.SettingIconLayout>
@@ -66,7 +66,7 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
             <PlusIcon width={22} height={22} color={theme.color.pink900} />
           </S.RowCenter>
         </S.AddColumn>
-        {data.cards.map(card => (
+        {cardList.cards.map(card => (
           <Card card={card} />
         ))}
       </S.DashboardColumnLayout>
