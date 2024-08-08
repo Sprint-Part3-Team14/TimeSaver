@@ -2,13 +2,21 @@ import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const CardLayout = styled.div`
-  margin-top: 1.6rem;
   background-color: ${theme.color.white};
-  border-radius: 0.6rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+
+  &:hover {
+    box-shadow: 0.2rem 0.2rem 0.8rem 0rem rgba(80, 80, 80, 0.5);
+    transform: scale(1.01);
+  }
 `;
 
 export const CardThumbnail = styled.img`
