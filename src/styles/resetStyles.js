@@ -51,6 +51,10 @@ table {
 button {
   all : unset;
 } 
+
+textarea {
+  all : unset;
+}
 `;
 
 export default ResetStyles;
