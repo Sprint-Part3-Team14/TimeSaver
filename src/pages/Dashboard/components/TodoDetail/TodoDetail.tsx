@@ -14,6 +14,10 @@ const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: 
     },
   });
 
+  if (!cardDetail) {
+    return <div>데이터가 없어용</div>;
+  }
+
   return (
     <Portal>
       <S.DetailContainer>
