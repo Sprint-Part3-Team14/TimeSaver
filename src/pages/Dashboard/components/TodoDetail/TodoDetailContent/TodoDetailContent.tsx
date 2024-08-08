@@ -1,26 +1,18 @@
 import { DetailCard } from "src/utils/apiType";
-import {
-  Assignee,
-  Container,
-  ContentText,
-  CreatedDate,
-  Header,
-  ThumbnailImage,
-  Title,
-} from "./TodoDetailContentStyled";
+import * as S from "./TodoDetailContentStyled";
 
 const TodoDetailContent = ({ todoDetailData }: { todoDetailData: DetailCard }) => {
   return (
-    <Container>
-      <Header>
-        <Title>{todoDetailData.title}</Title>
+    <S.Container>
+      <S.Header>
+        <S.Title>{todoDetailData.title}</S.Title>
         <>뱃지</>
-        <Assignee>작성자</Assignee>
-      </Header>
-      <CreatedDate>{todoDetailData.createdAt}</CreatedDate>
-      <ThumbnailImage src={todoDetailData.imageUrl} alt={`${todoDetailData.title} 썸네일 이미지`} />
-      <ContentText>{todoDetailData.description}</ContentText>
-    </Container>
+        <S.Assignee>작성자</S.Assignee>
+      </S.Header>
+      <S.CreatedDate>{todoDetailData.createdAt}</S.CreatedDate>
+      <S.ThumbnailImage src={todoDetailData.imageUrl} alt={`${todoDetailData.title} 썸네일 이미지`} />
+      <S.ContentText>{todoDetailData.description}</S.ContentText>
+    </S.Container>
   );
 };
 
