@@ -4,9 +4,7 @@ import theme from "src/styles/theme";
 import { getCardList } from "src/utils/api";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import SettingIcon from "src/components/Icons/SettingIcon";
-import useToggle from "src/hooks/useToggle";
 import Card from "../Card";
-import TodoDetail from "../TodoDetail/TodoDetail";
 import * as S from "./ColumnStyled";
 
 export interface ColumnDataType {
@@ -36,8 +34,6 @@ interface ColumnPropType {
 }
 
 const Column = ({ columnTitle, columnId }: ColumnPropType) => {
-  const { isTrue, handleTrue, handleFalse } = useToggle();
-
   const { data } = useQuery({
     queryKey: [`column-${columnId}`, "cardList"],
     queryFn: async (): Promise<ColumnDataType> => {
@@ -57,7 +53,6 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
 
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} />}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>
@@ -72,7 +67,7 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
           </S.RowCenter>
         </S.AddColumn>
         {data.cards.map(card => (
-          <Card card={card} handleOpenDetail={handleTrue} />
+          <Card card={card} />
         ))}
       </S.DashboardColumnLayout>
     </>
