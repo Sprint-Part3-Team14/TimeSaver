@@ -1,6 +1,5 @@
 import {
   CardListSearch,
-  CardSearch,
   ColumnsListSearch,
   CommentsListSearch,
   CreateCard,
@@ -108,9 +107,8 @@ export function putCard(cardId: number, body: FixCard) {
 }
 
 // 카드 상세 조회
-export function getCardInformation(query: CardSearch) {
-  const q = convertQuery(query);
-  return fetcher(`/cards/${q}`, "GET");
+export function getCardInformation(cardId: number) {
+  return fetcher(`/cards/${cardId}`, "GET");
 }
 
 // 카드 삭제
