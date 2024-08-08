@@ -44,7 +44,9 @@ export const AuthorImage = styled.img`
   height: 3.2rem;
 `;
 
-export const CommentContent = styled.div``;
+export const CommentContent = styled.div`
+  flex-grow: 1;
+`;
 
 export const BaseText = styled.div`
   color: ${theme.color.black700};
@@ -56,7 +58,7 @@ export const AuthorNickName = styled(BaseText)`
   font-weight: 700;
 `;
 
-export const CreatedAt = styled.div`
+export const GrayText = styled.div`
   color: ${theme.color.gray800};
   font-size: 1.2rem;
   margin-top: 0.9rem;
@@ -103,4 +105,18 @@ export const Button = styled.button`
   position: absolute;
   bottom: 1rem;
   right: 1rem;
+`;
+
+export const CommentFooter = styled.div`
+  display: flex;
+`;
+
+export const CommentEdit = styled(GrayText)`
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 1.1rem;
+    margin-left: auto;
+  }
 `;

@@ -11,7 +11,16 @@ const CommentSection = () => {
             <S.CommentContent>
               <S.AuthorNickName>{element.author.nickname}</S.AuthorNickName>
               <S.BaseText>{element.content}</S.BaseText>
-              <S.CreatedAt>{element.createdAt}</S.CreatedAt>
+              <S.CommentFooter>
+                <S.GrayText>{"2024-07-12 12:00"}</S.GrayText>
+
+                <S.CommentEdit as="button" type="button">
+                  수정
+                </S.CommentEdit>
+                <S.CommentEdit as="button" type="button">
+                  삭제
+                </S.CommentEdit>
+              </S.CommentFooter>
             </S.CommentContent>
           </S.Comment>
         ))}
