@@ -38,3 +38,7 @@ export const DetailComments = styled.div`
   padding: 2.3rem;
   grid-area: c;
 `;
+
+export const Button = styled.button`
+  cursor: pointer;
+`;

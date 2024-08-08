@@ -22,10 +22,12 @@ const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: 
     <Portal>
       <S.DetailContainer>
         <S.DetailHeader>
-          <button type="button" onClick={handleClose}>
-            <ArrowBackwardIcon width={16} height={16} />
-          </button>
-          <KebabIcon width={13} height={16} />
+          <S.Button type="button" onClick={handleClose}>
+            <ArrowBackwardIcon width={22} height={22} />
+          </S.Button>
+          <S.Button>
+            <KebabIcon width={13} height={20} />
+          </S.Button>
         </S.DetailHeader>
         <TodoDetailContent todoDetailData={cardDetail} />
         <S.DetailComments>댓글 목록</S.DetailComments>
