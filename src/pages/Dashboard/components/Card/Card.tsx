@@ -1,15 +1,16 @@
 import useToggle from "src/hooks/useToggle";
-import CalendarTodayIcon from "../../../../components/Icons/CalendarTodayIcon";
-import formatData from "../../../../utils/formatDate";
-import { CardDataType } from "../Column/Column";
+import { DetailCard } from "src/utils/apiType";
+import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
+import formatData from "src/utils/formatDate";
 import TodoDetail from "../TodoDetail/TodoDetail";
 import * as S from "./CardStyled";
 
-const Card = ({ card }: { card: CardDataType }) => {
+const Card = ({ card, cardId }: { card: DetailCard; cardId: number }) => {
   const { isTrue, handleTrue, handleFalse } = useToggle();
+
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} />}
+      {isTrue && <TodoDetail handleClose={handleFalse} cardId={cardId} />}
       <S.CardLayout onClick={handleTrue}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
