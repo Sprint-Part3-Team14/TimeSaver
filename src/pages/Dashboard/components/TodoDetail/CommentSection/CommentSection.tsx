@@ -1,16 +1,16 @@
+import { Comment } from "src/utils/apiType";
 import * as S from "./CommentsSectionStyled";
-import { mockData } from "./mockData";
 
-const CommentSection = () => {
+const CommentSection = ({ commentList }: { commentList: Comment[] }) => {
   return (
     <S.Container>
       <S.CommentList>
-        {mockData.comments.map(element => (
+        {commentList.map(comment => (
           <S.Comment>
-            <S.AuthorImage src={element.author.profileImageUrl} alt={`${element.author.nickname}의 프로필 이미지`} />
+            <S.AuthorImage src={comment.author.profileImageUrl} alt={`${comment.author.nickname}의 프로필 이미지`} />
             <S.CommentContent>
-              <S.AuthorNickName>{element.author.nickname}</S.AuthorNickName>
-              <S.BaseText>{element.content}</S.BaseText>
+              <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
+              <S.BaseText>{comment.content}</S.BaseText>
               <S.CommentFooter>
                 <S.GrayText>{"2024-07-12 12:00"}</S.GrayText>
 
