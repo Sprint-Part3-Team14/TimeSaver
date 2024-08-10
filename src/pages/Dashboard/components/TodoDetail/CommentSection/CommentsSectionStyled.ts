@@ -73,6 +73,7 @@ export const AddComment = styled.div`
 export const Title = styled.h2`
   color: ${theme.color.black700};
   font-size: 1.6rem;
+  font-weight: 600;
 `;
 
 export const CommentBox = styled.form`
