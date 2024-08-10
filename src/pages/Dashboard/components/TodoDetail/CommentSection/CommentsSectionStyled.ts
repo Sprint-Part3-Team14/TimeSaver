@@ -70,7 +70,7 @@ export const AddComment = styled.div`
   border-top: 0.1rem solid ${theme.color.gray700};
 `;
 
-export const Title = styled.h2`
+export const Title = styled.label`
   color: ${theme.color.black700};
   font-size: 1.6rem;
   font-weight: 600;
