@@ -75,7 +75,7 @@ export const Title = styled.h2`
   font-size: 1.6rem;
 `;
 
-export const CommentBox = styled.div`
+export const CommentBox = styled.form`
   position: relative;
 `;
 
