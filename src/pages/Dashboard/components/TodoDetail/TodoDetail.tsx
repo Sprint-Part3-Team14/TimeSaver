@@ -4,22 +4,28 @@ import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Portal from "src/components/common/Portal";
 import { getCardInformation, getComments } from "src/utils/api";
 import { GetComments } from "src/utils/apiType";
+import { CurrentIdListType } from "../Card/Card";
 import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
 import * as S from "./TodoDetailStyled";
 import CommentSection from "./CommentSection/CommentSection";
 
-const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: number }) => {
+interface TodoDetailProps {
+  handleClose: () => void;
+  currentIdList: CurrentIdListType;
+}
+
+const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
   const { data: cardDetail } = useQuery({
-    queryKey: ["cardDetail", cardId],
+    queryKey: ["cardDetail", currentIdList.cardId],
     queryFn: async () => {
-      return getCardInformation(cardId);
+      return getCardInformation(currentIdList.cardId);
     },
   });
 
   const { data: cardComment } = useQuery<GetComments>({
-    queryKey: ["comments", cardId],
+    queryKey: ["comments", currentIdList.cardId],
     queryFn: async () => {
-      return getComments({ size: 10, cursorId: 1, cardId: cardId });
+      return getComments({ size: 10, cardId: currentIdList.cardId });
     },
   });
 
@@ -43,7 +49,7 @@ const TodoDetail = ({ handleClose, cardId }: { handleClose: () => void; cardId: 
           </S.Button>
         </S.DetailHeader>
         <TodoDetailContent todoDetailData={cardDetail} />
-        <CommentSection commentList={cardComment.comments} />
+        <CommentSection commentList={cardComment.comments} currentIdList={currentIdList} />
       </S.DetailContainer>
     </Portal>
   );

@@ -45,7 +45,6 @@ export interface ColumnsListSearch {
  */
 export interface CommentsListSearch {
   size: number;
-  cursorId: number;
   [key: string]: number;
 }
 
