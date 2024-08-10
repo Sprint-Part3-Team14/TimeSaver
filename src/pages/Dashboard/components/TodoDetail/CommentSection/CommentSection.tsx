@@ -1,8 +1,8 @@
-import { FormEvent } from "react";
+import { FormEvent, MouseEvent } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Comment, CreateComments } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
-import { postComments } from "src/utils/api";
+import { deleteComments, postComments } from "src/utils/api";
 import { CurrentIdListType } from "../../Card/Card";
 import * as S from "./CommentsSectionStyled";
 import EmptyComment from "./EmptyComment";
@@ -19,7 +19,7 @@ const CommentSection = ({
   const { value, handleChangeValue, handleResetValue } = useInputValue();
   const { cardId, columnId, dashboardId } = currentIdList;
 
-  const commentMutation = useMutation({
+  const postCommentMutation = useMutation({
     mutationFn: (props: CreateComments) => {
       return postComments(props);
     },
@@ -28,10 +28,23 @@ const CommentSection = ({
     },
   });
 
+  const deleteCommentMutation = useMutation({
+    mutationFn: (commentId: number) => {
+      return deleteComments(commentId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
+    },
+  });
+
   function handleSubmitComment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    commentMutation.mutate({ cardId: cardId, columnId: columnId, dashboardId: dashboardId, content: value });
+    postCommentMutation.mutate({ cardId: cardId, columnId: columnId, dashboardId: dashboardId, content: value });
     handleResetValue();
+  }
+
+  function handleDeleteComment(event: MouseEvent<HTMLButtonElement>) {
+    deleteCommentMutation.mutate(Number(event.currentTarget.value));
   }
 
   return (
@@ -39,7 +52,7 @@ const CommentSection = ({
       <S.CommentList>
         {commentList.length !== 0 ? (
           commentList.map(comment => (
-            <S.Comment>
+            <S.Comment key={comment.id}>
               <S.AuthorImage src={comment.author.profileImageUrl} alt={`${comment.author.nickname}의 프로필 이미지`} />
               <S.CommentContent>
                 <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
@@ -49,7 +62,7 @@ const CommentSection = ({
                   <S.CommentEdit as="button" type="button">
                     수정
                   </S.CommentEdit>
-                  <S.CommentEdit as="button" type="button">
+                  <S.CommentEdit as="button" type="button" value={String(comment.id)} onClick={handleDeleteComment}>
                     삭제
                   </S.CommentEdit>
                 </S.CommentFooter>
