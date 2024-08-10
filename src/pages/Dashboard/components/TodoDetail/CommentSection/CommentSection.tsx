@@ -1,13 +1,36 @@
-import { Comment } from "src/utils/apiType";
+import { FormEvent } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Comment, CreateComments } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
+import { postComments } from "src/utils/api";
+import { CurrentIdListType } from "../../Card/Card";
 import * as S from "./CommentsSectionStyled";
 import EmptyComment from "./EmptyComment";
 
-const CommentSection = ({ commentList }: { commentList: Comment[] }) => {
-  const { value, handleChangeValue, handleResetValue } = useInputValue();
+const CommentSection = ({
+  commentList,
+  currentIdList,
+}: {
+  commentList: Comment[];
+  currentIdList: CurrentIdListType;
+}) => {
+  const queryClient = useQueryClient();
 
-  function handleSubmitComment() {
-    console.log(value);
+  const { value, handleChangeValue, handleResetValue } = useInputValue();
+  const { cardId, columnId, dashboardId } = currentIdList;
+
+  const commentMutation = useMutation({
+    mutationFn: (props: CreateComments) => {
+      return postComments(props);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
+    },
+  });
+
+  function handleSubmitComment(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    commentMutation.mutate({ cardId: cardId, columnId: columnId, dashboardId: dashboardId, content: value });
     handleResetValue();
   }
 
@@ -38,9 +61,9 @@ const CommentSection = ({ commentList }: { commentList: Comment[] }) => {
         )}
       </S.CommentList>
       <S.AddComment>
-        <S.Title>댓글</S.Title>
         <S.CommentBox onSubmit={handleSubmitComment}>
-          <S.CommentInputBox placeholder="댓글 작성하기" value={value} onChange={handleChangeValue} />
+          <S.Title htmlFor="comment">댓글</S.Title>
+          <S.CommentInputBox id="comment" placeholder="댓글 작성하기" value={value} onChange={handleChangeValue} />
           <S.Button type="submit">대체</S.Button>
         </S.CommentBox>
       </S.AddComment>

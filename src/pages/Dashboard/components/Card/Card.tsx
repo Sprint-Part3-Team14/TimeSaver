@@ -7,11 +7,13 @@ import * as S from "./CardStyled";
 
 interface CardProps {
   card: DetailCard;
-  currentIdList: {
-    dashboardId: number;
-    columnId: number;
-    cardId: number;
-  };
+  currentIdList: CurrentIdListType;
+}
+
+export interface CurrentIdListType {
+  dashboardId: number;
+  columnId: number;
+  cardId: number;
 }
 
 const Card = ({ card, currentIdList }: CardProps) => {
@@ -19,7 +21,7 @@ const Card = ({ card, currentIdList }: CardProps) => {
 
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} cardId={currentIdList.cardId} />}
+      {isTrue && <TodoDetail handleClose={handleFalse} currentIdList={currentIdList} />}
       <S.CardLayout onClick={handleTrue}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
