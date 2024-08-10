@@ -49,7 +49,7 @@ const Dashboard = () => {
   return (
     <S.DashboardLayout>
       {data.data.map((column: ColumnOneType) => (
-        <Column key={column.id} columnTitle={column.title} columnId={column.id} />
+        <Column key={column.id} columnTitle={column.title} columnId={column.id} dashboardId={Number(dashboardId)} />
       ))}
     </S.DashboardLayout>
   );

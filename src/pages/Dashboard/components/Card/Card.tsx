@@ -5,12 +5,21 @@ import formatData from "src/utils/formatDate";
 import TodoDetail from "../TodoDetail/TodoDetail";
 import * as S from "./CardStyled";
 
-const Card = ({ card, cardId }: { card: DetailCard; cardId: number }) => {
+interface CardProps {
+  card: DetailCard;
+  currentIdList: {
+    dashboardId: number;
+    columnId: number;
+    cardId: number;
+  };
+}
+
+const Card = ({ card, currentIdList }: CardProps) => {
   const { isTrue, handleTrue, handleFalse } = useToggle();
 
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} cardId={cardId} />}
+      {isTrue && <TodoDetail handleClose={handleFalse} cardId={currentIdList.cardId} />}
       <S.CardLayout onClick={handleTrue}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>

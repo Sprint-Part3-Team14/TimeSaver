@@ -16,9 +16,10 @@ export interface ColumnDataType {
 interface ColumnPropType {
   columnTitle: string;
   columnId: number;
+  dashboardId: number;
 }
 
-const Column = ({ columnTitle, columnId }: ColumnPropType) => {
+const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
   const { data: cardList } = useQuery({
     queryKey: [`column-${columnId}`, "cardList"],
     queryFn: async (): Promise<ColumnDataType> => {
@@ -51,7 +52,7 @@ const Column = ({ columnTitle, columnId }: ColumnPropType) => {
         </S.RowCenter>
       </S.AddColumn>
       {cardList.cards.map(card => (
-        <Card card={card} cardId={card.id} />
+        <Card card={card} currentIdList={{ dashboardId: dashboardId, columnId: columnId, cardId: card.id }} />
       ))}
     </S.DashboardColumnLayout>
   );
