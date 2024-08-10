@@ -49,7 +49,7 @@ const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
           </S.Button>
         </S.DetailHeader>
         <TodoDetailContent todoDetailData={cardDetail} />
-        <CommentSection commentList={cardComment.comments} currentIdList={currentIdList} />
+        <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
       </S.DetailContainer>
     </Portal>
   );
