@@ -1,11 +1,17 @@
-import { FormEvent, MouseEvent } from "react";
+import { FormEvent, MouseEvent, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Comment, CreateComments } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
 import { deleteComments, postComments } from "src/utils/api";
 import { CurrentIdListType } from "../../Card/Card";
-import * as S from "./CommentsSectionStyled";
 import EmptyComment from "./EmptyComment";
+import EditingComment from "./EditingComment/EditingComment";
+import * as S from "./CommentsSectionStyled";
+
+interface EditingState {
+  isEditing: boolean;
+  commentId: number | null;
+}
 
 const CommentSection = ({
   commentList,
@@ -18,6 +24,7 @@ const CommentSection = ({
 
   const { value, handleChangeValue, handleResetValue } = useInputValue();
   const { cardId, columnId, dashboardId } = currentIdList;
+  const [isEditingComment, setIsEditingComment] = useState<EditingState>();
 
   const postCommentMutation = useMutation({
     mutationFn: (props: CreateComments) => {
@@ -47,28 +54,49 @@ const CommentSection = ({
     deleteCommentMutation.mutate(Number(event.currentTarget.value));
   }
 
+  function handleEditingComment(event: MouseEvent<HTMLButtonElement>) {
+    setIsEditingComment({
+      isEditing: true,
+      commentId: Number(event.currentTarget.value),
+    });
+  }
+
+  function handleEditingEnd() {
+    setIsEditingComment({
+      isEditing: false,
+      commentId: null,
+    });
+  }
+
   return (
     <S.Container>
       <S.CommentList>
         {commentList.length !== 0 ? (
-          commentList.map(comment => (
-            <S.Comment key={comment.id}>
-              <S.AuthorImage src={comment.author.profileImageUrl} alt={`${comment.author.nickname}의 프로필 이미지`} />
-              <S.CommentContent>
-                <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
-                <S.BaseText>{comment.content}</S.BaseText>
-                <S.CommentFooter>
-                  <S.GrayText>{"2024-07-12 12:00"}</S.GrayText>
-                  <S.CommentEdit as="button" type="button">
-                    수정
-                  </S.CommentEdit>
-                  <S.CommentEdit as="button" type="button" value={String(comment.id)} onClick={handleDeleteComment}>
-                    삭제
-                  </S.CommentEdit>
-                </S.CommentFooter>
-              </S.CommentContent>
-            </S.Comment>
-          ))
+          commentList.map(comment => {
+            return isEditingComment?.isEditing === true && isEditingComment.commentId === comment.id ? (
+              <EditingComment comment={comment} handleSave={handleEditingEnd} />
+            ) : (
+              <S.Comment key={comment.id}>
+                <S.AuthorImage
+                  src={comment.author.profileImageUrl}
+                  alt={`${comment.author.nickname}의 프로필 이미지`}
+                />
+                <S.CommentContent>
+                  <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
+                  <S.BaseText>{comment.content}</S.BaseText>
+                  <S.CommentFooter>
+                    <S.GrayText>{"2024-07-12 12:00"}</S.GrayText>
+                    <S.CommentEdit as="button" type="button" value={comment.id} onClick={handleEditingComment}>
+                      수정
+                    </S.CommentEdit>
+                    <S.CommentEdit as="button" type="button" value={String(comment.id)} onClick={handleDeleteComment}>
+                      삭제
+                    </S.CommentEdit>
+                  </S.CommentFooter>
+                </S.CommentContent>
+              </S.Comment>
+            );
+          })
         ) : (
           <EmptyComment />
         )}
