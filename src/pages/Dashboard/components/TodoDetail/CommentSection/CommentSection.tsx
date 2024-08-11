@@ -36,9 +36,7 @@ const CommentSection = ({
   });
 
   const deleteCommentMutation = useMutation({
-    mutationFn: (commentId: number) => {
-      return deleteComments(commentId);
-    },
+    mutationFn: async (commentId: number) => await deleteComments(commentId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
     },
@@ -51,7 +49,7 @@ const CommentSection = ({
   }
 
   function handleDeleteComment(event: MouseEvent<HTMLButtonElement>) {
-    deleteCommentMutation.mutate(Number(event.currentTarget.value));
+    deleteCommentMutation.mutateAsync(Number(event.currentTarget.value));
   }
 
   function handleEditingComment(event: MouseEvent<HTMLButtonElement>) {

@@ -19,9 +19,7 @@ const EditingComment = ({
   const queryClient = useQueryClient();
 
   const editCommentMutation = useMutation({
-    mutationFn: () => {
-      return putComments(comment.id, { content: value });
-    },
+    mutationFn: async () => await putComments(comment.id, { content: value }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
       handleSave();
