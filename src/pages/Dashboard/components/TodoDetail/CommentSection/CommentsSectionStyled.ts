@@ -90,10 +90,10 @@ export const CommentInputBox = styled.textarea`
   border-radius: 0.6rem;
   width: 100%;
   height: 11rem;
+  font-size: 1.4rem;
 
   &::placeholder {
     color: ${theme.color.gray800};
-    font-size: 1.4rem;
   }
 `;
 
