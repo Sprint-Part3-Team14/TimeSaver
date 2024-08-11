@@ -51,6 +51,10 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
     return;
   }
 
+  if (response.status === 204) {
+    return response;
+  }
+
   return response.json();
 }
 
