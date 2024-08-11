@@ -1,15 +1,47 @@
-import { useEffect } from "react";
+import { MouseEvent, useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Comment } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
+import { putComments } from "src/utils/api";
 import * as S from "../CommentsSectionStyled";
 import * as T from "./EditingCommentStyled";
 
-const EditingComment = ({ comment, handleSave }: { comment: Comment; handleSave: () => void }) => {
+const EditingComment = ({
+  comment,
+  handleSave,
+  cardId,
+}: {
+  comment: Comment;
+  handleSave: () => void;
+  cardId: number;
+}) => {
   const { value, handleSetValue, handleChangeValue } = useInputValue();
+  const queryClient = useQueryClient();
+
+  const editCommentMutation = useMutation({
+    mutationFn: () => {
+      return putComments(comment.id, { content: value });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
+      handleSave();
+    },
+  });
+
+  const { data: newComment } = editCommentMutation;
+
+  const handleEditingComment = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    editCommentMutation.mutate();
+  };
 
   useEffect(() => {
     handleSetValue(comment.content);
   }, []);
+
+  useEffect(() => {
+    comment = newComment;
+  }, [newComment]);
 
   return (
     <S.Comment key={comment.id}>
@@ -18,7 +50,7 @@ const EditingComment = ({ comment, handleSave }: { comment: Comment; handleSave:
         <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
         <S.CommentBox>
           <T.EditingCommentInput as="input" value={value} onChange={handleChangeValue} />
-          <S.Button type="button" onClick={handleSave}>
+          <S.Button type="button" onClick={handleEditingComment}>
             저장
           </S.Button>
         </S.CommentBox>

@@ -74,7 +74,7 @@ const CommentSection = ({
         {commentList.length !== 0 ? (
           commentList.map(comment => {
             return isEditingComment?.isEditing === true && isEditingComment.commentId === comment.id ? (
-              <EditingComment comment={comment} handleSave={handleEditingEnd} />
+              <EditingComment cardId={cardId} comment={comment} handleSave={handleEditingEnd} />
             ) : (
               <S.Comment key={comment.id}>
                 <S.AuthorImage
