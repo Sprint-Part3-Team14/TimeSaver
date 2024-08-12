@@ -1,7 +1,27 @@
 import theme from "src/styles/theme";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const DetailContainer = styled.div`
+// 슬라이드 인 애니메이션
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+// 슬라이드 아웃 애니메이션
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+`;
+
+export const DetailContainer = styled.div<{ isClose: boolean }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -16,6 +36,8 @@ export const DetailContainer = styled.div`
   grid-template-areas:
     "a a"
     "b c";
+
+  animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
 `;
 
 export const DetailHeader = styled.header`
