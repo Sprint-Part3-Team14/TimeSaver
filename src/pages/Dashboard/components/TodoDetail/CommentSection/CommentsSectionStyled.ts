@@ -3,21 +3,17 @@ import theme from "src/styles/theme";
 import { DetailComments } from "../TodoDetailStyled";
 
 export const Container = styled(DetailComments)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-rows: calc(100vh - 25rem) 15rem;
   padding: 0;
 `;
 
 // 댓글 리스트
 export const CommentList = styled.div`
   padding: 2.3rem;
-  flex-basis: 80%;
-  max-height: 58rem;
-  overflow: scroll;
-  flex-grow: 1;
+  overflow-y: scroll;
   overflow-x: hidden;
+  border-bottom: 0.1rem solid ${theme.color.gray700};
 
   &::-webkit-scrollbar {
     width: 0.8rem;
@@ -66,8 +62,8 @@ export const GrayText = styled.div`
 
 // 댓글 생성
 export const AddComment = styled.div`
+  margin-top: auto;
   padding: 2.3rem;
-  border-top: 0.1rem solid ${theme.color.gray700};
 `;
 
 export const Title = styled.label`

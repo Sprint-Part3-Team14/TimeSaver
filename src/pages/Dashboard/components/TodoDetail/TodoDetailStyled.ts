@@ -31,7 +31,7 @@ export const DetailContainer = styled.div<{ isClose: boolean }>`
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
   display: grid;
-  grid-template-columns: 1fr 34rem;
+  grid-template-columns: 60% 40%;
   grid-template-rows: 7.1rem 1fr;
   grid-template-areas:
     "a a"
