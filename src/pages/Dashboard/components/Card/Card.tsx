@@ -21,7 +21,6 @@ const Card = ({ card, currentIdList }: CardProps) => {
 
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} currentIdList={currentIdList} />}
       <S.CardLayout onClick={handleTrue}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
