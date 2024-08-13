@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import KebabIcon from "src/components/Icons/KebabIcon";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
-import Portal from "src/components/common/Portal";
+import Portal from "src/components/_common/Portal";
 import { getCardInformation, getComments } from "src/utils/api";
 import { GetComments } from "src/utils/apiType";
 import useToggle from "src/hooks/useToggle";
