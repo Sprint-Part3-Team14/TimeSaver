@@ -10,6 +10,7 @@ import useOutsideClick from "src/hooks/useOutsideClick";
 import { CurrentIdListType } from "../Card/Card";
 import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
 import CommentSection from "./CommentSection/CommentSection";
+import EditingDashboard from "./Editing/EditingDashboard";
 import * as S from "./TodoDetailStyled";
 
 interface TodoDetailProps {
@@ -19,6 +20,7 @@ interface TodoDetailProps {
 
 const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
+  const { isTrue: isEditing, handleToggle: handleEditingToggle, handleFalse: handleEditClose } = useToggle();
   const CardDetailRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CardDetailRef, handleClosing);
@@ -53,20 +55,23 @@ const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
   }
 
   return (
-    <Portal>
-      <S.DetailContainer isClose={isClose} ref={CardDetailRef}>
-        <S.DetailHeader>
-          <S.Button type="button" onClick={handleClosing}>
-            <ArrowBackwardIcon width={22} height={22} />
-          </S.Button>
-          <S.Button>
-            <KebabIcon width={13} height={20} />
-          </S.Button>
-        </S.DetailHeader>
-        <TodoDetailContent todoDetailData={cardDetail} />
-        <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
-      </S.DetailContainer>
-    </Portal>
+    <>
+      <Portal>
+        <S.DetailContainer isClose={isClose} ref={CardDetailRef}>
+          <S.DetailHeader>
+            <S.Button type="button" onClick={handleClosing}>
+              <ArrowBackwardIcon width={22} height={22} />
+            </S.Button>
+            <S.Button type="button" onClick={handleEditingToggle}>
+              {isEditing && <EditingDashboard handleClose={handleEditClose} />}
+              <KebabIcon width={13} height={20} />
+            </S.Button>
+          </S.DetailHeader>
+          <TodoDetailContent todoDetailData={cardDetail} />
+          <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
+        </S.DetailContainer>
+      </Portal>
+    </>
   );
 };
 

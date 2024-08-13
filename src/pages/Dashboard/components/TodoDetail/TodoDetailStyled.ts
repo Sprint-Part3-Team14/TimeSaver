@@ -63,4 +63,5 @@ export const DetailComments = styled.section`
 
 export const Button = styled.button`
   cursor: pointer;
+  position: relative;
 `;
