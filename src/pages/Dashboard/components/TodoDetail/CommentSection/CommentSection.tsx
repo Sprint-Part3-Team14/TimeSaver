@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Comment, CreateComments } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
 import { deleteComments, postComments } from "src/utils/api";
+import Button from "src/components/Button/Button";
 import { CurrentIdListType } from "../../Card/Card";
 import EmptyComment from "./EmptyComment";
 import EditingComment from "./EditingComment/EditingComment";
@@ -42,7 +43,7 @@ const CommentSection = ({
     },
   });
 
-  function handleSubmitComment(event: FormEvent<HTMLFormElement>) {
+  function handleSubmitComment(event: FormEvent<HTMLFormElement | HTMLButtonElement>) {
     event.preventDefault();
     postCommentMutation.mutate({ cardId: cardId, columnId: columnId, dashboardId: dashboardId, content: value });
     handleResetValue();
@@ -103,7 +104,12 @@ const CommentSection = ({
         <S.CommentBox onSubmit={handleSubmitComment}>
           <S.Title htmlFor="comment">댓글</S.Title>
           <S.CommentInputBox id="comment" placeholder="댓글 작성하기" value={value} onChange={handleChangeValue} />
-          <S.Button type="submit">대체</S.Button>
+          <Button
+            type="submit"
+            exceptionStyle={"position: absolute;   bottom: 1rem;   right: 1rem; width : 5.7rem; font-size: 1.2rem;"}
+            onSubmit={handleSubmitComment}>
+            입력
+          </Button>
         </S.CommentBox>
       </S.AddComment>
     </S.Container>
