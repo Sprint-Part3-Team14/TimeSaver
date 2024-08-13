@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import KebabIcon from "src/components/Icons/KebabIcon";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
@@ -5,6 +6,7 @@ import Portal from "src/components/_common/Portal";
 import { getCardInformation, getComments } from "src/utils/api";
 import { GetComments } from "src/utils/apiType";
 import useToggle from "src/hooks/useToggle";
+import useOutsideClick from "src/hooks/useOutsideClick";
 import { CurrentIdListType } from "../Card/Card";
 import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
 import CommentSection from "./CommentSection/CommentSection";
@@ -17,6 +19,9 @@ interface TodoDetailProps {
 
 const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
+  const CardDetailRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(CardDetailRef, handleClosing);
 
   function handleClosing() {
     handleAnimationClosing();
@@ -49,7 +54,7 @@ const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
 
   return (
     <Portal>
-      <S.DetailContainer isClose={isClose}>
+      <S.DetailContainer isClose={isClose} ref={CardDetailRef}>
         <S.DetailHeader>
           <S.Button type="button" onClick={handleClosing}>
             <ArrowBackwardIcon width={22} height={22} />
