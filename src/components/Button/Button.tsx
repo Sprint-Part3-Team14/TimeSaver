@@ -14,6 +14,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   styleVariant?: "default" | "white";
   size?: "large" | "normal" | "small";
   width?: string;
+  exceptionStyle?: string;
 }
 
 const Button = ({
@@ -26,6 +27,7 @@ const Button = ({
   size = "normal",
   width = "100%",
   disabled,
+  exceptionStyle,
 }: ButtonProps) => {
   return (
     <S.Container
@@ -36,7 +38,8 @@ const Button = ({
       styleVariant={styleVariant}
       size={size}
       width={width}
-      disabled={disabled}>
+      disabled={disabled}
+      exceptionStyle={exceptionStyle}>
       {children}
     </S.Container>
   );

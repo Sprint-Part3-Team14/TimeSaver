@@ -11,7 +11,9 @@ export const Container = styled.button<{
   styleVariant: "default" | "white";
   size: "large" | "normal" | "small";
   width: string;
+  exceptionStyle?: string;
 }>`
+  text-align: center;
   width: ${({ width }) => width};
   background-color: ${({ theme, styleVariant }) =>
     styleVariant === "white" ? theme.color.white : theme.color.pink900};
@@ -23,6 +25,7 @@ export const Container = styled.button<{
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
   font-weight: 500;
   transition: background-color 0.3s;
+  ${({ exceptionStyle }) => (exceptionStyle ? exceptionStyle : "")}
 
   &:hover {
     background-color: ${({ theme, styleVariant }) =>
