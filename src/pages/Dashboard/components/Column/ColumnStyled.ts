@@ -64,6 +64,15 @@ export const AddColumn = styled.button`
   border-radius: 0.6rem;
   border: 1px solid ${theme.color.gray700};
   width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${theme.color.gray500};
+  }
+
+  &:active {
+    background-color: ${theme.color.gray600};
+  }
 `;
 
 export const ColumnTitle = styled.h3`
