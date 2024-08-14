@@ -1,25 +1,11 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import AuthInput from "../../components/AuthInput/AuthInput";
+import AuthInput from "src/components/AuthInput/AuthInput";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import Button from "../../components/Button/Button";
 
-interface IFormInput {
-  email: string;
-  password: string;
-}
-
-const LoginForm = () => {
-  const { control, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
-
-  const emailInputProps = {
-    name: "email",
-    control: control,
-    label: "Email",
-    placeholder: "Enter your email",
-    type: "email",
-    rules: { required: "Email is required" },
-    showPasswordToggle: false,
-  };
+const Signin = () => {
+  const { handleSubmit, control } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
 
   const passwordInputProps = {
     name: "password",
@@ -57,16 +43,20 @@ const LoginForm = () => {
           placeholder="Enter your password"
           rules={{
             required: "비밀번호를 입력해주세요",
+            minLength: {
+              value: 8,
+              message: "8자 이상 작성해 주세요.",
+            },
             pattern: {
               value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-              message: "비밀번호는 8자 이상이며, 영어 대/소문자와 숫자를 적어도 1개 이상 포함해야 합니다.",
+              message: "비밀번호는 8자 이상이어야하며, 영어 대/소문자와 숫자를 적어도 1개 이상 포함해야 합니다.",
             },
           }}
           showPasswordToggle={true}
           showPassword={showPassword}
           setShowPassword={setShowPassword}
         />
-        <button type="submit">Sign In</button>
+        <Button> 로그인 </Button>
       </form>
     </div>
   );
