@@ -1,14 +1,7 @@
 "use client";
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ModalLayOut from "./ModalPortal/ModalLayout";
-
-
 
 interface ReservationPopupType {
   title: string;
@@ -46,18 +39,18 @@ const ModalPortal = ({
   }, []);
   if (usePortal && mounted) {
     const portalElement = document.getElementById("portal");
-    return ReactDOM.createPortal(
-      <ModalLayOut
-        title={title}
-        setState={setState}
-        buttonName={buttonName}
-        onButtonClick={onButtonClick}
-        usePortal={usePortal}
-      >
-        {children}
-      </ModalLayOut>,
-      portalElement!,
-    );
+    if (portalElement)
+      return ReactDOM.createPortal(
+        <ModalLayOut
+          title={title}
+          setState={setState}
+          buttonName={buttonName}
+          onButtonClick={onButtonClick}
+          usePortal={usePortal}>
+          {children}
+        </ModalLayOut>,
+        portalElement
+      );
   }
 
   return (
@@ -66,8 +59,7 @@ const ModalPortal = ({
       setState={setState}
       buttonName={buttonName}
       onButtonClick={onButtonClick}
-      usePortal={usePortal}
-    >
+      usePortal={usePortal}>
       {children}
     </ModalLayOut>
   );
