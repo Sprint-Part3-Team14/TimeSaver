@@ -23,15 +23,15 @@ const SignIn = () => {
       <S.SignInfoBox />
       <S.SignInBox>
         <S.SignLogoBox />
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <S.Form onSubmit={handleSubmit(onSubmit)}>
           <AuthInput
             name="email"
             control={control}
             label="이메일"
             type="text"
-            placeholder="Enter your email"
+            placeholder="이메일을 입력해주세요"
             rules={{
-              required: "이메일을 입력해주세요.",
+              required: "이메일을 입력해주세요!",
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "이메일 형식으로 작성해주세요.",
@@ -43,9 +43,9 @@ const SignIn = () => {
             control={control}
             label="비밀번호"
             type="password"
-            placeholder="Enter your password"
+            placeholder="비밀번호를 입력해주세요"
             rules={{
-              required: "비밀번호를 입력해주세요",
+              required: "비밀번호를 입력해주세요!",
               minLength: {
                 value: 8,
                 message: "8자 이상 작성해 주세요.",
@@ -60,7 +60,7 @@ const SignIn = () => {
             setShowPassword={setShowPassword}
           />
           <Button> 로그인 </Button>
-        </form>
+        </S.Form>
       </S.SignInBox>
     </S.Container>
   );
