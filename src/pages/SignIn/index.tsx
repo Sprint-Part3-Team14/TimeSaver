@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { postAuthLogin } from "src/utils/api";
@@ -8,14 +8,12 @@ import * as S from "./SignInStyled";
 
 const SignIn = () => {
   const { handleSubmit, control, setError } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
     try {
       const response = await postAuthLogin(data);
       if (response && response.accessToken) {
-        console.log("ture");
         navigate("/my-dashboard");
       } else {
         setError("password", {
@@ -70,10 +68,8 @@ const SignIn = () => {
               },
             }}
             showPasswordToggle={true}
-            showPassword={showPassword}
-            setShowPassword={setShowPassword}
           />
-          <Button> 로그인 </Button>
+          <Button>로그인</Button>
         </S.Form>
       </S.SignInBox>
     </S.Container>
