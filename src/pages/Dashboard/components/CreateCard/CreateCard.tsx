@@ -6,7 +6,6 @@ import useToggle from "src/hooks/useToggle";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Button from "src/components/Button/Button";
 import { getMembers } from "src/utils/api";
-import DropDown from "src/components/DropDown/DropDown";
 import * as S from "./CreateCardStyled";
 
 export interface GetMembersResponse {
@@ -64,7 +63,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
                 <S.DueDateLabel htmlFor="dueDate">마감일</S.DueDateLabel>
                 <S.DueDateInput type="datetime-local" id="dueDate" />
               </S.DueDayContainer>
-              <DropDown isOpen={false}>프로필사진이랑 프로필 있는 거</DropDown>
+              <div>드롭다운</div>
             </S.CardAttributes>
             <S.ThumbNailContainer>
               <S.ThumbNailImage src={"public/images/landing1.jpg"} alt="썸네일 미리보기" />
