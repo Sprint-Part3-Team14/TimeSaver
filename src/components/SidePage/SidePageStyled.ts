@@ -2,7 +2,7 @@ import theme from "src/styles/theme";
 import styled, { keyframes } from "styled-components";
 
 // 슬라이드 인 애니메이션
-const slideIn = keyframes`
+export const slideIn = keyframes`
   from {
     transform: translateX(100%);
   }
@@ -12,7 +12,7 @@ const slideIn = keyframes`
 `;
 
 // 슬라이드 아웃 애니메이션
-const slideOut = keyframes`
+export const slideOut = keyframes`
   from {
     transform: translateX(0);
   }
@@ -21,7 +21,7 @@ const slideOut = keyframes`
   }
 `;
 
-export const Container = styled.div<{ isClose: boolean; customStyle?: string }>`
+export const SidePageContainer = styled.div<{ isClose: boolean }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -30,8 +30,12 @@ export const Container = styled.div<{ isClose: boolean; customStyle?: string }>`
   height: 100%;
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
-
-  ${({ customStyle }) => (customStyle ? customStyle : "")}
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 7.1rem 1fr;
+  grid-template-areas:
+    "a a"
+    "b c";
 
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
 `;
