@@ -30,12 +30,16 @@ export const SidePageContainer = styled.div<{ isClose: boolean }>`
   height: 100%;
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 7.1rem 1fr;
-  grid-template-areas:
-    "a a"
-    "b c";
 
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
+`;
+
+export const SidePageHeader = styled.header`
+  padding: 1.5rem 2.3rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid ${theme.color.gray600};
+`;
+
+export const SidePageBody = styled.div`
+  padding: 2.3rem;
 `;
