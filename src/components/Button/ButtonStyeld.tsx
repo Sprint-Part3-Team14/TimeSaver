@@ -28,7 +28,7 @@ export const Container = styled.button<{
   ${({ exceptionStyle }) => (exceptionStyle ? exceptionStyle : "")}
 
   &:hover {
-    background-color: #eb7575;
+    background-color: ${({ theme, styleVariant }) => (styleVariant === "white" ? theme.color.gray600 : "#eb7575")};
   }
 
   &:disabled {
@@ -36,6 +36,6 @@ export const Container = styled.button<{
   }
 
   &:active {
-    background-color: #df5656;
+    background-color: background-color: ${({ theme, styleVariant }) => (styleVariant === "white" ? theme.color.black500 : "#df5656")};
   }
 `;
