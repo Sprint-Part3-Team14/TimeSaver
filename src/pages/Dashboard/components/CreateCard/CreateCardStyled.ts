@@ -9,6 +9,7 @@ export const PageContainer = styled(SidePageContainer)`
   grid-template-areas:
     "a"
     "b";
+  width: 40%;
 `;
 
 export const PageHeader = styled(SidePageHeader)`
@@ -42,8 +43,13 @@ export const CardAttributes = styled.div`
   display: flex;
   justify-content: space-between;
   algin-items: center;
+`;
 
-  padding: 1.5rem 0;
+export const CreateForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
 `;
 
 export const DueDayContainer = styled.div`
@@ -102,4 +108,18 @@ export const InputImage = styled.input`
 export const ThumbNailImage = styled.img`
   border-radius: 0.6rem;
   background-color: ${theme.color.gray700};
+`;
+
+export const CardExplanation = styled.textarea`
+  border: 0.1rem solid ${theme.color.gray700};
+  flex-grow: 1;
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  color: ${theme.color.black900};
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `;
