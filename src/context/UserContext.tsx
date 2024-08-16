@@ -1,4 +1,4 @@
-import React, { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 
 interface User {
   id: number;
@@ -7,15 +7,19 @@ interface User {
 
 interface UserContextState {
   user: User | null;
-  setUser: Dispatch<SetStateAction<User | null>>;
+  handleSetUserInfo: ({ userData }: { userData: User }) => void;
 }
 
-const UserContext = React.createContext<UserContextState | null>(null);
+export const UserContext = React.createContext<UserContextState | null>(null);
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
 
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  function handleSetUserInfo({ userData }: { userData: User }) {
+    setUser(userData);
+  }
+
+  return <UserContext.Provider value={{ user, handleSetUserInfo }}>{children}</UserContext.Provider>;
 };
 
 export const useUser = () => {
