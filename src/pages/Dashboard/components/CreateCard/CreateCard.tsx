@@ -1,22 +1,50 @@
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Portal from "src/components/_common/Portal";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import useToggle from "src/hooks/useToggle";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Button from "src/components/Button/Button";
+import { getMembers } from "src/utils/api";
 import * as S from "./CreateCardStyled";
 
-const CreateCard = ({ handleClose }: { handleClose: () => void }) => {
+export interface GetMembersResponse {
+  members: MembersData[];
+  totalCount: number;
+}
+
+export interface MembersData {
+  id: number;
+  email: string;
+  nickname: string;
+  profileImageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+  isOwner: boolean;
+  userId: number;
+}
+
+const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
+
+  const { data: dashboardMemberList } = useQuery<GetMembersResponse>({
+    queryKey: ["dashboard", "memberList", dashboardId],
+    queryFn: async () => await getMembers({ page: 1, dashboardId: Number(dashboardId), size: 20 }),
+    enabled: !!dashboardId,
+  });
 
   function handleClosing() {
     handleAnimationClosing();
     setTimeout(() => {
       handleClose();
     }, 500);
+  }
+
+  if (!dashboardMemberList) {
+    return <div>멤버 조회 중 키킼</div>;
   }
 
   return (
