@@ -59,7 +59,7 @@ export const SettingIconLayout = styled.div`
   margin-left: auto;
 `;
 
-export const AddColumn = styled.button`
+export const AddCard = styled.button`
   background-color: ${theme.color.white};
   border-radius: 0.6rem;
   border: 1px solid ${theme.color.gray700};
