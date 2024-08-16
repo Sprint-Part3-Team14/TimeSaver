@@ -85,3 +85,11 @@ export const Form = styled.form`
     padding: 0;
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
