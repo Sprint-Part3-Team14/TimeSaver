@@ -11,9 +11,11 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
+    console.log("폼 제출 데이터:", data);
     try {
       const response = await postAuthLogin(data);
       if (response && response.accessToken) {
+        console.log("로그인 성공:", response);
         navigate("/my-dashboard");
       } else {
         setError("password", {
@@ -69,7 +71,9 @@ const SignIn = () => {
             }}
             showPasswordToggle={true}
           />
-          <Button>로그인</Button>
+          <S.ButtonWrapper>
+            <Button type="submit">로그인</Button>
+          </S.ButtonWrapper>
         </S.Form>
       </S.SignInBox>
     </S.Container>
