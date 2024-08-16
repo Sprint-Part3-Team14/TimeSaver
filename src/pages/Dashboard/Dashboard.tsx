@@ -19,6 +19,9 @@ export interface ColumnOneType {
   updatedAt: string;
 }
 
+// 임시 유저 정보 (없앨 예정)
+export const CurrentUserId = 3071;
+
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
   postAuthLogin({ email: "test@codeit.com", password: "sprint101" });

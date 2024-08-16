@@ -46,11 +46,11 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
           <SettingIcon width={24} height={24} color={theme.color.black600} />
         </S.SettingIconLayout>
       </S.ColumnHeader>
-      <S.AddColumn>
+      <S.AddCard>
         <S.RowCenter>
           <PlusIcon width={22} height={22} color={theme.color.pink900} />
         </S.RowCenter>
-      </S.AddColumn>
+      </S.AddCard>
       {cardList.cards.map(card => (
         <Card card={card} currentIdList={{ dashboardId: dashboardId, columnId: columnId, cardId: card.id }} />
       ))}
