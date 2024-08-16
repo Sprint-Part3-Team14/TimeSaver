@@ -3,6 +3,7 @@ import Portal from "src/components/_common/Portal";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import useToggle from "src/hooks/useToggle";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
+import Button from "src/components/Button/Button";
 import * as S from "./CreateCardStyled";
 
 const CreateCard = ({ handleClose }: { handleClose: () => void }) => {
@@ -27,7 +28,7 @@ const CreateCard = ({ handleClose }: { handleClose: () => void }) => {
           </S.CloseButton>
         </S.PageHeader>
         <S.PageContent>
-          <form>
+          <S.CreateForm>
             <S.TitleInput id="cardTitle" type="text" placeholder="제목을 입력해주세요" />
             <S.CardAttributes>
               <S.DueDayContainer>
@@ -41,7 +42,17 @@ const CreateCard = ({ handleClose }: { handleClose: () => void }) => {
               <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
               <S.InputImage id="thumbNailImage" type="file" />
             </S.ThumbNailContainer>
-          </form>
+            <S.CardExplanation placeholder="설명을 적어주세요" />
+            <S.ButtonContainer>
+              <Button
+                onClick={handleClosing}
+                styleVariant="white"
+                exceptionStyle="max-width : 12rem; padding : 1rem 2rem; border-radius : 0.4rem;">
+                취소
+              </Button>
+              <Button>생성</Button>
+            </S.ButtonContainer>
+          </S.CreateForm>
         </S.PageContent>
       </S.PageContainer>
     </Portal>
