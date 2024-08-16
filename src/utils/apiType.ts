@@ -87,9 +87,9 @@ export interface InvitationsListSearch {
 
 // 대시보드 멤버 목록 조회
 export interface MembersSearch {
-  [key: string]: number;
+  [key: string]: number | undefined;
   page: number;
-  size: number;
+  size?: number;
 }
 
 /**
