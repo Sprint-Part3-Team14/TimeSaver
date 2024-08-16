@@ -10,5 +10,5 @@ export const ProfileContainer = styled.div`
 
 export const UserNickName = styled.div`
   color: ${theme.color.black700};
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 `;
