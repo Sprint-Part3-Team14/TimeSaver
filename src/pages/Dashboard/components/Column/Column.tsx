@@ -42,7 +42,7 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
 
   return (
     <>
-      {isCreateCard && <CreateCard handleClose={handleCloseCreateCard} />}
+      {isCreateCard && <CreateCard handleClose={handleCloseCreateCard} dashboardId={dashboardId} />}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>
