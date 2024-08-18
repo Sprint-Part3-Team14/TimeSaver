@@ -1,6 +1,6 @@
 import * as S from "./UserProfileImageStyled";
 
-const UserProfileImage = ({ profileImageUrl, size = "2.6rem" }: { profileImageUrl: string; size?: string }) => {
+const UserProfileImage = ({ profileImageUrl, size = "2.6rem" }: { profileImageUrl: string | null; size?: string }) => {
   return (
     <S.UserProfileImg
       alt="프로필 이미지"
