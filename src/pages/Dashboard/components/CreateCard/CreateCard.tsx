@@ -6,6 +6,7 @@ import useToggle from "src/hooks/useToggle";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Button from "src/components/Button/Button";
 import { getMembers } from "src/utils/api";
+import useInputValue from "src/hooks/useInputValue";
 import * as S from "./CreateCardStyled";
 
 export interface GetMembersResponse {
@@ -26,6 +27,7 @@ export interface MembersData {
 
 const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
+  const { value: titleInputValue, handleChangeValue } = useInputValue();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -57,7 +59,12 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
         </S.PageHeader>
         <S.PageContent>
           <S.CreateForm>
-            <S.TitleInput id="cardTitle" type="text" placeholder="제목을 입력해주세요" />
+            <S.TitleInput
+              type="text"
+              placeholder="제목을 입력해주세요"
+              value={titleInputValue}
+              onChange={handleChangeValue}
+            />
             <S.CardAttributes>
               <S.DueDayContainer>
                 <S.DueDateLabel htmlFor="dueDate">마감일</S.DueDateLabel>
