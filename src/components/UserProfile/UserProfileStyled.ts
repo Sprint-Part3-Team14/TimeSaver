@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
 
-export const ProfileContainer = styled.div`
+export const ProfileContainer = styled.div<{ AdditionalStyle?: string }>`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 1.2rem;
 `;
