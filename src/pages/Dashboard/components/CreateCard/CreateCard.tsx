@@ -9,6 +9,7 @@ import { getMembers } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import * as S from "./CreateCardStyled";
 import DateInput from "./DateInput/DateInput";
+import DropDown from "./DropDown/DropDown";
 
 export interface GetMembersResponse {
   members: MembersData[];
@@ -30,6 +31,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
   const { value: titleInputValue, handleChangeValue } = useInputValue();
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
+  const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -73,7 +75,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               <S.DueDayContainer>
                 <DateInput dateValue={dueDate} onChange={handleChangDateValue} />
               </S.DueDayContainer>
-              <div>드롭다운</div>
+              <DropDown dataList={dashboardMemberList.members} isOpen={isOpenDropDown} handleToggle={handleToggle} />
             </S.CardAttributes>
             <S.ThumbNailContainer>
               <S.ThumbNailImage src={"public/images/landing1.jpg"} alt="썸네일 미리보기" />
