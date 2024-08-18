@@ -58,16 +58,6 @@ export const DueDayContainer = styled.div`
   gap: 1.2rem;
 `;
 
-export const DueDateLabel = styled.label`
-  color: ${theme.color.black700};
-  font-size: 1.6rem;
-  font-weight: 600;
-`;
-
-export const DueDateInput = styled.input`
-  border: none;
-`;
-
 export const ThumbNailContainer = styled.div`
   position: relative;
   width: 100%;

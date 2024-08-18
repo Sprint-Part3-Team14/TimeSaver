@@ -8,6 +8,7 @@ import Button from "src/components/Button/Button";
 import { getMembers } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import * as S from "./CreateCardStyled";
+import DateInput from "./DateInput/DateInput";
 
 export interface GetMembersResponse {
   members: MembersData[];
@@ -28,6 +29,7 @@ export interface MembersData {
 const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
   const { value: titleInputValue, handleChangeValue } = useInputValue();
+  const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -67,8 +69,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
             />
             <S.CardAttributes>
               <S.DueDayContainer>
-                <S.DueDateLabel htmlFor="dueDate">마감일</S.DueDateLabel>
-                <S.DueDateInput type="datetime-local" id="dueDate" />
+                <DateInput dateValue={dueDate} onChange={handleChangDateValue} />
               </S.DueDayContainer>
               <div>드롭다운</div>
             </S.CardAttributes>
