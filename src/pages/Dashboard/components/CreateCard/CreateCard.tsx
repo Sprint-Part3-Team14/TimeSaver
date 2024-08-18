@@ -47,6 +47,8 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
     }, 500);
   }
 
+  // const [date, time] = dueDate.split("T");
+
   if (!dashboardMemberList) {
     return <div>멤버 조회 중 키킼</div>;
   }
