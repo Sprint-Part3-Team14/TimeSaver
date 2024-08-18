@@ -15,13 +15,15 @@ const DropDown = ({
   dataList: MembersData[];
 }) => {
   return (
-    <S.DropDownContainer onClick={handleToggle}>
-      <UserProfile profileImageUrl={null} nickName="김유경" />
+    <S.DropDownContainer onClick={handleToggle} isOpen={isOpen}>
+      <UserProfile profileImageUrl={null} nickName="마구마구마구마구" />
       {isOpen ? <ArrowDropUpIcon width={8} height={8} /> : <ArrowDropdownIcon width={8} height={8} />}
       {isOpen && (
         <S.DropDownUnder>
           {dataList.map(member => (
-            <UserProfile profileImageUrl={member.profileImageUrl} nickName={member.nickname} />
+            <S.DropDownOne>
+              <UserProfile profileImageUrl={member.profileImageUrl} nickName={member.nickname} />
+            </S.DropDownOne>
           ))}
         </S.DropDownUnder>
       )}
