@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Portal from "src/components/_common/Portal";
 import useOutsideClick from "src/hooks/useOutsideClick";
@@ -27,11 +27,18 @@ export interface MembersData {
   userId: number;
 }
 
+export interface WriterInfo {
+  profileImageUrl: string;
+  nickName: string;
+  userId: number;
+}
+
 const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
   const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
   const { value: titleInputValue, handleChangeValue } = useInputValue();
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
+  const [writerInfo, setWriterInfo] = useState<WriterInfo>();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -49,7 +56,9 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
     }, 500);
   }
 
-  // const [date, time] = dueDate.split("T");
+  function handleSelectWriter(writerInfo: WriterInfo) {
+    setWriterInfo(writerInfo);
+  }
 
   if (!dashboardMemberList) {
     return <div>멤버 조회 중 키킼</div>;
@@ -75,7 +84,13 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               <S.DueDayContainer>
                 <DateInput dateValue={dueDate} onChange={handleChangDateValue} />
               </S.DueDayContainer>
-              <DropDown dataList={dashboardMemberList.members} isOpen={isOpenDropDown} handleToggle={handleToggle} />
+              <DropDown
+                currentSelectWriter={writerInfo}
+                handleSelectWriter={handleSelectWriter}
+                dataList={dashboardMemberList.members}
+                isOpen={isOpenDropDown}
+                handleToggle={handleToggle}
+              />
             </S.CardAttributes>
             <S.ThumbNailContainer>
               <S.ThumbNailImage src={"public/images/landing1.jpg"} alt="썸네일 미리보기" />

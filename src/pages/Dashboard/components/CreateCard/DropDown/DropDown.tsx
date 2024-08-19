@@ -1,27 +1,54 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect } from "react";
 import ArrowDropdownIcon from "src/components/Icons/ArrowDropdownIcon";
 import ArrowDropUpIcon from "src/components/Icons/ArrowDropupIcon";
 import UserProfile from "src/components/UserProfile/UserProfile";
-import { MembersData } from "../CreateCard";
+import { MembersData, WriterInfo } from "../CreateCard";
 import * as S from "./DopDownStyled";
 
 const DropDown = ({
   isOpen,
   handleToggle,
   dataList,
+  currentSelectWriter,
+  handleSelectWriter,
 }: {
   isOpen: boolean;
   handleToggle: (event: MouseEvent<HTMLDivElement>) => void;
   dataList: MembersData[];
+  currentSelectWriter: WriterInfo | undefined;
+  handleSelectWriter: (writerInfo: WriterInfo) => void;
 }) => {
+  useEffect(() => {
+    if (!currentSelectWriter) {
+      const initialData = dataList[0];
+      handleSelectWriter({
+        profileImageUrl: initialData.profileImageUrl,
+        nickName: initialData.nickname,
+        userId: initialData.userId,
+      });
+    }
+  }, [currentSelectWriter, dataList, handleSelectWriter]);
+
+  function handleSetWriter(event: MouseEvent<HTMLButtonElement>) {
+    const [profileImageUrl, nickName, userId] = event.currentTarget.value.split(" ");
+    handleSelectWriter({ profileImageUrl: profileImageUrl, nickName: nickName, userId: Number(userId) });
+  }
+
   return (
     <S.DropDownContainer onClick={handleToggle} isOpen={isOpen}>
-      <UserProfile profileImageUrl={null} nickName="마구마구마구마구" />
+      {currentSelectWriter && (
+        <UserProfile profileImageUrl={currentSelectWriter.profileImageUrl} nickName={currentSelectWriter.nickName} />
+      )}
       {isOpen ? <ArrowDropUpIcon width={8} height={8} /> : <ArrowDropdownIcon width={8} height={8} />}
       {isOpen && (
         <S.DropDownUnder>
           {dataList.map(member => (
-            <S.DropDownOne>
+            <S.DropDownOne
+              as="button"
+              type="button"
+              key={member.id}
+              value={`${member.profileImageUrl} ${member.nickname} ${member.userId}`}
+              onClick={handleSetWriter}>
               <UserProfile profileImageUrl={member.profileImageUrl} nickName={member.nickname} />
             </S.DropDownOne>
           ))}
