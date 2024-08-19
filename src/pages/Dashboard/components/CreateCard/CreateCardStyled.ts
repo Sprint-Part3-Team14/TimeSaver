@@ -64,6 +64,7 @@ export const ThumbNailContainer = styled.div`
   height: 30.5rem;
   border: 0.1rem solid ${theme.color.gray700};
   border-radius: 0.6rem;
+  background-color: ${theme.color.gray700};
 `;
 
 export const InputImageLabel = styled.label`
@@ -96,6 +97,10 @@ export const InputImage = styled.input`
 `;
 
 export const ThumbNailImage = styled.img`
+  min-width: 0;
+  width: 100%;
+  height: 30.5rem;
+  object-fit: cover;
   border-radius: 0.6rem;
   background-color: ${theme.color.gray700};
 `;

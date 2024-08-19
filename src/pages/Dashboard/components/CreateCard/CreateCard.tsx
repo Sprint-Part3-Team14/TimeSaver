@@ -7,9 +7,10 @@ import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Button from "src/components/Button/Button";
 import { getMembers } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
-import * as S from "./CreateCardStyled";
+import useInputImage from "src/hooks/useInputFile";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
+import * as S from "./CreateCardStyled";
 
 export interface GetMembersResponse {
   members: MembersData[];
@@ -39,6 +40,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
+  const { imageFile, handleImageChange } = useInputImage();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -93,9 +95,9 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               />
             </S.CardAttributes>
             <S.ThumbNailContainer>
-              <S.ThumbNailImage src={"public/images/landing1.jpg"} alt="썸네일 미리보기" />
+              {imageFile && <S.ThumbNailImage src={imageFile} alt="썸네일 미리보기" />}
               <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
-              <S.InputImage id="thumbNailImage" type="file" />
+              <S.InputImage id="thumbNailImage" type="file" onChange={handleImageChange} />
             </S.ThumbNailContainer>
             <S.CardExplanation placeholder="설명을 적어주세요" />
             <S.ButtonContainer>
