@@ -1,17 +1,9 @@
 import UserProfileImage from "./UserProfileImage/UserProfileImage";
 import * as S from "./UserProfileStyled";
 
-const UserProfile = ({
-  profileImageUrl,
-  nickName,
-  AdditionalStyle,
-}: {
-  profileImageUrl: string | null;
-  nickName: string;
-  AdditionalStyle?: string;
-}) => {
+const UserProfile = ({ profileImageUrl, nickName }: { profileImageUrl: string | null; nickName: string }) => {
   return (
-    <S.ProfileContainer AdditionalStyle={AdditionalStyle}>
+    <S.ProfileContainer>
       <UserProfileImage profileImageUrl={profileImageUrl} />
       <S.UserNickName>{nickName}</S.UserNickName>
     </S.ProfileContainer>
