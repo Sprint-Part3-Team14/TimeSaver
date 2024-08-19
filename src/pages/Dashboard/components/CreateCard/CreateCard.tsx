@@ -95,9 +95,8 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
                 handleToggle={handleToggle}
               />
             </S.CardAttributes>
-            <FileInput onChange={handleImageChange} selectImage={imageUrl}>
-              <S.InputImageLabel>이미지 첨부</S.InputImageLabel>
-            </FileInput>
+            <FileInput onChange={handleImageChange} selectImage={imageUrl} />
+
             <TextArea onChange={handleChangeCardContent} value={cardContent} placeholder={"설명을 적어주세요"} />
             <S.ButtonContainer>
               <Button
