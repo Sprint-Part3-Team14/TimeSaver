@@ -7,8 +7,8 @@ export interface TextAreaProp extends TextareaHTMLAttributes<HTMLTextAreaElement
   additionalStyle?: string;
 }
 
-const CardDescriptionInput = ({ onChange, value, additionalStyle, ...rest }: TextAreaProp) => {
+const TextArea = ({ onChange, value, additionalStyle, ...rest }: TextAreaProp) => {
   return <S.CardExplanation onChange={onChange} value={value} additionalStyle={additionalStyle} {...rest} />;
 };
 
-export default CardDescriptionInput;
+export default TextArea;
