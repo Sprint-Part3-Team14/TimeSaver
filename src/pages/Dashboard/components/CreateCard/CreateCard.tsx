@@ -41,6 +41,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
   const { imageFile, handleImageChange } = useInputImage();
+  const { value: cardContent, handleChangeValue: handleChangeCardContent } = useInputValue();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -99,7 +100,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
               <S.InputImage id="thumbNailImage" type="file" onChange={handleImageChange} />
             </S.ThumbNailContainer>
-            <S.CardExplanation placeholder="설명을 적어주세요" />
+            <S.CardExplanation placeholder="설명을 적어주세요" onChange={handleChangeCardContent} value={cardContent} />
             <S.ButtonContainer>
               <Button
                 onClick={handleClosing}
