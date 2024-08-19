@@ -13,6 +13,8 @@ export const DropDownContainer = styled(DropDownBaseStyle)<{ isOpen: boolean }>`
   align-items: center;
   padding: 0 1.5rem;
   position: relative;
+  min-width: 13rem;
+  text-align: center;
 
   ${({ isOpen }) => (isOpen ? "border-radius: 0.6rem 0.6rem 0 0;" : "")}
 
@@ -33,7 +35,6 @@ export const DropDownUnder = styled.div`
 export const DropDownOne = styled(DropDownBaseStyle)`
   border-radius: 0;
   width: 100%;
-  max-width: 16rem;
   box-sizing: border-box;
 
   &:last-child {
