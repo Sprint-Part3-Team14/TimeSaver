@@ -9,15 +9,15 @@ export const Wrapper = styled.div`
 export const Label = styled.label`
   display: flex;
   margin-bottom: 8px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
 `;
 
 export const Input = styled.input<{ isInvalid: boolean }>`
   border: 1px solid ${({ isInvalid }) => (isInvalid ? "red" : theme.color.gray600)};
   outline: none;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 12px 16px;
   width: 100%;
   box-sizing: border-box;
 `;
@@ -31,7 +31,7 @@ export const ErrorMessage = styled.small`
 
 export const ToggleButton = styled.span`
   position: absolute;
-  top: 35px;
+  top: 30px;
   right: 15px;
   cursor: pointer;
 `;

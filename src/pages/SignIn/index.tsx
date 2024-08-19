@@ -70,7 +70,9 @@ const SignIn = () => {
             showPasswordToggle={true}
           />
           <S.ButtonWrapper>
-            <Button type="submit">로그인</Button>
+            <Button type="submit" size="large" fontSize="small">
+              로그인
+            </Button>
           </S.ButtonWrapper>
         </S.Form>
       </S.SignInBox>
