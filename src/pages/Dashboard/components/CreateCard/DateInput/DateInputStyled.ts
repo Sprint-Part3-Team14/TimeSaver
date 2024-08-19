@@ -1,6 +1,12 @@
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
+export const DateContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+`;
+
 export const DateLabel = styled.label`
   color: ${theme.color.black700};
   font-size: 1.6rem;

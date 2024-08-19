@@ -86,9 +86,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               onChange={handleChangeValue}
             />
             <S.CardAttributes>
-              <S.DueDayContainer>
-                <DateInput dateValue={dueDate} onChange={handleChangDateValue} />
-              </S.DueDayContainer>
+              <DateInput dateValue={dueDate} onChange={handleChangDateValue} />
               <DropDown
                 currentSelectWriter={writerInfo}
                 handleSelectWriter={handleSelectWriter}
