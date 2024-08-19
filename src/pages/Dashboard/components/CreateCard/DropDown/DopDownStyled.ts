@@ -32,6 +32,8 @@ export const DropDownUnder = styled.div`
 
 export const DropDownOne = styled(DropDownBaseStyle)`
   border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
 
   &:last-child {
     border-radius: 0 0 0.6rem 0.6rem;
