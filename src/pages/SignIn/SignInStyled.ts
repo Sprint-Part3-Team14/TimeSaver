@@ -22,10 +22,10 @@ export const Container = styled.div`
 `;
 
 export const SignInfoBox = styled.div`
-  width: 1110px;
+  width: 65%;
   height: 100vh;
   background-image: url("/images/SIGN_INFO.png");
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 
   @media (max-width: 768px) {
@@ -39,22 +39,21 @@ export const SignLogoBox = styled.div`
   background-image: url("/images/SIGN_LOGO.png");
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 768px) {
+    width: 22.1rem;
+    height: 21.8rem;
+  }
 `;
 
 export const SignInBox = styled.div`
-  width: 810px;
+  width: 35%;
   height: 1080px;
   padding: 145px 156px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 1440px) {
-    width: 70%;
-    height: auto;
-    padding: calc(145px * 0.7) calc(156px * 0.7);
-  }
 
   @media (max-width: 768px) {
     width: 100%;
