@@ -8,6 +8,7 @@ import Button from "src/components/Button/Button";
 import { getMembers } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
+import TextArea from "src/components/TextArea/TextArea";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
 import * as S from "./CreateCardStyled";
@@ -100,7 +101,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
               <S.InputImage id="thumbNailImage" type="file" onChange={handleImageChange} />
             </S.ThumbNailContainer>
-            <S.CardExplanation placeholder="설명을 적어주세요" onChange={handleChangeCardContent} value={cardContent} />
+            <TextArea onChange={handleChangeCardContent} value={cardContent} placeholder={"설명을 적어주세요"} />
             <S.ButtonContainer>
               <Button
                 onClick={handleClosing}
