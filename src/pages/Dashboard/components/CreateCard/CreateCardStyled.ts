@@ -58,20 +58,12 @@ export const DueDayContainer = styled.div`
   gap: 1.2rem;
 `;
 
-export const ThumbNailContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 30.5rem;
-  border: 0.1rem solid ${theme.color.gray700};
-  border-radius: 0.6rem;
-  background-color: ${theme.color.gray700};
-`;
-
 export const InputImageLabel = styled.label`
   color: ${theme.color.gray900};
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
+  width: 6rem;
 
   padding: 0.8rem 1.5rem;
   border-radius: 0.6rem;
@@ -90,19 +82,6 @@ export const InputImageLabel = styled.label`
   &:active {
     background-color: ${theme.color.gray600};
   }
-`;
-
-export const InputImage = styled.input`
-  display: none;
-`;
-
-export const ThumbNailImage = styled.img`
-  min-width: 0;
-  width: 100%;
-  height: 30.5rem;
-  object-fit: cover;
-  border-radius: 0.6rem;
-  background-color: ${theme.color.gray700};
 `;
 
 export const CardExplanation = styled.textarea`

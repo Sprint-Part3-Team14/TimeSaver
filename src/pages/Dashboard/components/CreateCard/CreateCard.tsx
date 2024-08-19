@@ -9,6 +9,7 @@ import { getMembers } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
 import TextArea from "src/components/TextArea/TextArea";
+import FileInput from "src/components/FileInput/FileInput";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
 import * as S from "./CreateCardStyled";
@@ -96,11 +97,9 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
                 handleToggle={handleToggle}
               />
             </S.CardAttributes>
-            <S.ThumbNailContainer>
-              {imageUrl && <S.ThumbNailImage src={imageUrl} alt="썸네일 미리보기" />}
-              <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
-              <S.InputImage id="thumbNailImage" type="file" onChange={handleImageChange} />
-            </S.ThumbNailContainer>
+            <FileInput onChange={handleImageChange} selectImage={imageUrl}>
+              <S.InputImageLabel>이미지 첨부</S.InputImageLabel>
+            </FileInput>
             <TextArea onChange={handleChangeCardContent} value={cardContent} placeholder={"설명을 적어주세요"} />
             <S.ButtonContainer>
               <Button
