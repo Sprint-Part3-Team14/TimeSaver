@@ -40,7 +40,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
-  const { imageFile, handleImageChange } = useInputImage();
+  const { imageUrl, handleImageChange } = useInputImage();
   const { value: cardContent, handleChangeValue: handleChangeCardContent } = useInputValue();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
@@ -96,7 +96,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
               />
             </S.CardAttributes>
             <S.ThumbNailContainer>
-              {imageFile && <S.ThumbNailImage src={imageFile} alt="썸네일 미리보기" />}
+              {imageUrl && <S.ThumbNailImage src={imageUrl} alt="썸네일 미리보기" />}
               <S.InputImageLabel htmlFor="thumbNailImage">이미지 첨부</S.InputImageLabel>
               <S.InputImage id="thumbNailImage" type="file" onChange={handleImageChange} />
             </S.ThumbNailContainer>
