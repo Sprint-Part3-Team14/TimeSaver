@@ -12,6 +12,7 @@ import TextArea from "src/components/TextArea/TextArea";
 import FileInput from "src/components/FileInput/FileInput";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
+import AddTag from "./AddTag/AddTag";
 import * as S from "./CreateCardStyled";
 
 export interface GetMembersResponse {
@@ -133,6 +134,7 @@ const CreateCard = ({
             <FileInput onChange={handleImageChange} selectImage={imageUrl} />
 
             <TextArea onChange={handleChangeCardContent} value={descriptionValue} placeholder={"설명을 적어주세요"} />
+            <AddTag tagList={["하이", "반가워", "기분이 어때"]} />
             <S.ButtonContainer>
               <Button
                 onClick={handleClosing}
