@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const DashboardColumnLayout = styled.div`
   width: 35rem;
-  height: 100%;
+  height: 100vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -13,6 +14,15 @@ export const DashboardColumnLayout = styled.div`
 
   &:last-child {
     padding-bottom: 2rem;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.color.gray700};
+    border-radius: 0.8rem;
   }
 `;
 
