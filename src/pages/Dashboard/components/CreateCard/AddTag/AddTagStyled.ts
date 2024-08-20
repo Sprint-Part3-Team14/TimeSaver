@@ -25,11 +25,13 @@ export const TagInput = styled.input`
 `;
 
 export const TagContainer = styled.div`
+  min-height: 2.2rem;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
   gap: 1rem;
   text-align: center;
+  max-width: 100%;
 
   &::-webkit-scrollbar {
     display: none;

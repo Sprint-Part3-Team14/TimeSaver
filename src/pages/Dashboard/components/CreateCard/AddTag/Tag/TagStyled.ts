@@ -11,6 +11,7 @@ export const Container = styled.div<{ textColor: string }>`
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 `;
 
 export const DeleteButton = styled.button<{ textColor: string }>`
