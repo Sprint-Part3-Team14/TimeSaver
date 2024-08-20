@@ -1,5 +1,5 @@
 import { DetailCard } from "src/utils/apiType";
-import * as S from "./TodoDetailContentStyled";
+import * as S from "./CardDetailContentStyled";
 
 const TodoDetailContent = ({ todoDetailData }: { todoDetailData: DetailCard }) => {
   return (

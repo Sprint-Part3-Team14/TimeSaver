@@ -8,10 +8,10 @@ import { GetComments } from "src/utils/apiType";
 import useToggle from "src/hooks/useToggle";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import { CurrentIdListType } from "../Card/Card";
-import TodoDetailContent from "./TodoDetailContent/TodoDetailContent";
+import TodoDetailContent from "./CardDetailContent/CardDetailContent";
 import CommentSection from "./CommentSection/CommentSection";
 import EditingDashboard from "./Editing/EditingDashboard";
-import * as S from "./TodoDetailStyled";
+import * as S from "./CardDetailStyled";
 
 interface TodoDetailProps {
   handleClose: () => void;

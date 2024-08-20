@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
-import { DetailComments } from "../TodoDetailStyled";
+import { DetailComments } from "../CardDetailStyled";
 
 export const Container = styled(DetailComments)`
   display: grid;
