@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const DashboardColumnLayout = styled.div`
   box-sizing: border-box;
   width: 35rem;
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 8rem);
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -26,6 +26,7 @@ export const DashboardColumnLayout = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.color.gray700};
     border-radius: 0.8rem;
+    cursor: pointer;
   }
 `;
 

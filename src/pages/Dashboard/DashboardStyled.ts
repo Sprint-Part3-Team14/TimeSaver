@@ -9,6 +9,13 @@ export const DashboardLayout = styled.div`
   overflow: scroll;
 
   &::-webkit-scrollbar {
-    display: none;
+    background-color: ${theme.color.gray500};
+    height: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.color.gray700};
+    border-radius: 0.8rem;
+    cursor: pointer;
   }
 `;
