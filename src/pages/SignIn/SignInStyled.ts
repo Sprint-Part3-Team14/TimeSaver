@@ -10,14 +10,11 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     width: 100%;
-    height: 100vh;
-    padding: 2rem 2rem;
   }
 
   @media (max-width: 480px) {
     padding: 0 12px;
     width: 100%;
-    height: auto;
   }
 `;
 
@@ -49,22 +46,21 @@ export const SignLogoBox = styled.div`
 export const SignInBox = styled.div`
   width: 35%;
   height: 1080px;
-  padding: 145px 156px;
+  padding: 10% 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 60%;
     height: 100%;
-    padding: 2rem 2rem;
+    padding: 0;
   }
 
   @media (max-width: 480px) {
-    width: 100%;
     height: auto;
-    padding: auto 12px;
+    padding: 0;
   }
 `;
 
@@ -77,7 +73,6 @@ export const Form = styled.form`
 
   @media (max-width: 768px) {
     max-width: 100%;
-    padding: 0 24px;
   }
 
   @media (max-width: 480px) {
