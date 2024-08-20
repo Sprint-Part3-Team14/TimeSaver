@@ -17,6 +17,7 @@ import {
   MembersSearch,
   ResponseInvitation,
   SignIn,
+  SignUp,
   UploadProfile,
 } from "./apiType";
 import { getCookie, removeAllTokenCookies, setAccessTokenCookie } from "./CookieSetting";
@@ -69,7 +70,9 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
 
 /**
  * Auth
- * 로그인 및 로그아웃 로직
+ * 로그인
+ * 로그아웃
+ * 회원가입
  */
 
 // 로그인
@@ -84,6 +87,11 @@ export async function postAuthLogin({ email, password }: SignIn) {
 // 로그아웃 (쿠키 제거 로직)
 export async function logout() {
   removeAllTokenCookies();
+}
+
+// 회원가입
+export async function postAuthRegister(body: SignUp) {
+  return fetcher("/users", "POST", body);
 }
 
 /** Cards
