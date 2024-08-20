@@ -5,11 +5,13 @@ export const DashboardColumnLayout = styled.div`
   width: 35rem;
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   border-right: 2px solid ${theme.color.gray600};
-  padding: 0 2rem;
+  padding: 2rem 2rem;
   flex-shrink: 0;
 
   &:last-child {
@@ -29,7 +31,6 @@ export const DashboardColumnLayout = styled.div`
 export const ColumnHeader = styled.header`
   display: flex;
   align-items: center;
-  padding-top: 2rem;
 `;
 
 export const ColumnName = styled.h3`

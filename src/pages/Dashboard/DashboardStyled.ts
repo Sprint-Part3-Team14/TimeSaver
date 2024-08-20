@@ -7,4 +7,8 @@ export const DashboardLayout = styled.div`
   background-color: ${theme.color.gray500};
   gap: 1.6rem;
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
