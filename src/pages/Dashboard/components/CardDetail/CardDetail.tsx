@@ -63,7 +63,14 @@ const TodoDetail = ({ handleClose, currentIdList }: TodoDetailProps) => {
               <ArrowBackwardIcon width={22} height={22} />
             </S.Button>
             <S.Button type="button" onClick={handleEditingToggle}>
-              {isEditing && <EditingDashboard handleClose={handleEditClose} />}
+              {isEditing && (
+                <EditingDashboard
+                  handleClose={handleEditClose}
+                  columnId={currentIdList.columnId}
+                  cardId={currentIdList.cardId}
+                  handleDetailClose={handleClosing}
+                />
+              )}
               <KebabIcon width={13} height={20} />
             </S.Button>
           </S.DetailHeader>
