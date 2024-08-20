@@ -50,6 +50,7 @@ const CreateCard = ({
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
   const { value: descriptionValue, handleChangeValue: handleChangeCardContent } = useInputValue();
+  const [tagList, setTagList] = useState<string[]>([]);
   const { imageUrl, handleImageChange, handleSetFile, imageFile } = useInputImage(({ file }: { file: File }) => {
     CardImageMutation.mutate({ columnId: columnId, image: file });
   });
@@ -105,6 +106,12 @@ const CreateCard = ({
     console.log("data", data);
   }
 
+  function handleTagList(tagText: string) {
+    setTagList(prevList => [...prevList, tagText]);
+  }
+
+  console.log("tagList", tagList, handleTagList);
+
   return (
     <Portal>
       <S.PageContainer isClose={isClose} ref={CreateCardRef}>
@@ -134,7 +141,7 @@ const CreateCard = ({
             <FileInput onChange={handleImageChange} selectImage={imageUrl} />
 
             <TextArea onChange={handleChangeCardContent} value={descriptionValue} placeholder={"설명을 적어주세요"} />
-            <AddTag tagList={["하이", "반가워", "기분이 어때"]} />
+            <AddTag handleAddList={handleTagList} tagList={tagList} />
             <S.ButtonContainer>
               <Button
                 onClick={handleClosing}
