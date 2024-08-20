@@ -2,8 +2,9 @@ import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const DashboardColumnLayout = styled.div`
+  box-sizing: border-box;
   width: 35rem;
-  height: 100vh;
+  height: calc(100vh - 7rem);
   overflow-y: scroll;
   overflow-x: hidden;
 
