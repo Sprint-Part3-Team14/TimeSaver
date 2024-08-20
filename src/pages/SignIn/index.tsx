@@ -75,6 +75,9 @@ const SignIn = () => {
             </Button>
           </S.ButtonWrapper>
         </S.Form>
+        <S.FooterText>
+          회원이 아니신가요? <S.SignUpLink onClick={() => navigate("/signUp")}>회원 가입하기</S.SignUpLink>
+        </S.FooterText>
       </S.SignInBox>
     </S.Container>
   );

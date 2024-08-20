@@ -87,3 +87,20 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const FooterText = styled.div`
+  margin-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  color: ${({ theme }) => theme.color.gray900};
+`;
+
+export const SignUpLink = styled.span`
+  color: ${({ theme }) => theme.color.pink900};
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.pink400};
+  }
+`;
