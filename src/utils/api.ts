@@ -33,7 +33,7 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
     headers.append("Authorization", `Bearer ${accessToken}`);
   }
 
-  if (!headers.has("Content-Type") && options.body) {
+  if (options.body) {
     headers.append("Content-Type", "application/json");
   }
 
@@ -146,6 +146,23 @@ export function deleteColumns(columnId: number) {
 }
 
 // 카드 이미지 업로드
+export async function postCardImageFetch(columnId: number, file: File) {
+  const accessToken = getCookie("accessToken");
+
+  const imageFormData = new FormData();
+  imageFormData.append("image", file);
+
+  const response = await fetch(`${BASE_URL}/columns/${columnId}/card-image`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: imageFormData,
+  });
+  const result = await response.json();
+  return result;
+}
+
 export function postCardImage(columnId: number, body: UploadProfile) {
   return fetcher(`/columns/${columnId}`, "POST", body);
 }
