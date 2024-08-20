@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const DashboardLayout = styled.div`
+  box-sizing: border-box;
   height: 100vh;
   display: grid;
-  grid-template-rows: 70px 1fr;
-  grid-template-columns: 300px 1fr;
+  grid-template-rows: 7rem 1fr;
+  grid-template-columns: 30rem 1fr;
   grid-template-areas:
     "a a a"
     "b c c";
@@ -17,8 +18,7 @@ export const HeaderLayout = styled.header`
 
 export const SideBarLayout = styled.aside`
   grid-area: b;
-  padding: 20px;
-  border-right: 1px solid ${({ theme }) => theme.color.gray700};
+  border-right: 0.1rem solid ${({ theme }) => theme.color.gray700};
 `;
 
 export const ContentLayout = styled.main`

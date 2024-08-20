@@ -7,8 +7,8 @@ function DashboardLayout() {
   return (
     <S.DashboardLayout>
       <S.HeaderLayout>
-        <OptionalHeader/>
-      </S.HeaderLayout>      
+        <OptionalHeader />
+      </S.HeaderLayout>
       <S.SideBarLayout>
         <Sidebar />
       </S.SideBarLayout>
