@@ -8,6 +8,8 @@ const AddTag = ({ tagList, handleAddList }: { tagList: string[]; handleAddList: 
 
   function handleEnterEvent(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
+      event.preventDefault();
+
       handleResetValue();
       handleAddList(value);
     }
