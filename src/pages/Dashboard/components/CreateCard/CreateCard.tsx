@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Portal from "src/components/_common/Portal";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import useToggle from "src/hooks/useToggle";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import Button from "src/components/Button/Button";
-import { getMembers } from "src/utils/api";
+import { getMembers, postCardImageFetch } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
 import TextArea from "src/components/TextArea/TextArea";
@@ -36,14 +36,25 @@ export interface WriterInfo {
   userId: number;
 }
 
-const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
-  const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
+const CreateCard = ({
+  handleClose,
+  dashboardId,
+  columnId,
+}: {
+  handleClose: () => void;
+  dashboardId: number;
+  columnId: number;
+}) => {
   const { value: titleInputValue, handleChangeValue } = useInputValue();
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
-  const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
-  const { imageUrl, handleImageChange } = useInputImage();
-  const { value: cardContent, handleChangeValue: handleChangeCardContent } = useInputValue();
+  const { value: descriptionValue, handleChangeValue: handleChangeCardContent } = useInputValue();
+  const { imageUrl, handleImageChange, handleSetFile, imageFile } = useInputImage(({ file }: { file: File }) => {
+    CardImageMutation.mutate({ columnId: columnId, image: file });
+  });
+
+  const { isTrue: isClose, handleTrue: handleAnimationClosing } = useToggle();
+  const { isTrue: isOpenDropDown, handleToggle } = useToggle();
   const CreateCardRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(CreateCardRef, handleClosing);
@@ -52,6 +63,15 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
     queryKey: ["dashboard", "memberList", dashboardId],
     queryFn: async () => await getMembers({ page: 1, dashboardId: Number(dashboardId) }),
     enabled: !!dashboardId,
+  });
+
+  const CardImageMutation = useMutation({
+    mutationFn: async ({ columnId, image }: { columnId: number; image: File }) => {
+      return await postCardImageFetch(columnId, image);
+    },
+    onSuccess: (data: { imageUrl: string }) => {
+      handleSetFile(data.imageUrl);
+    },
   });
 
   function handleClosing() {
@@ -67,6 +87,21 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
 
   if (!dashboardMemberList) {
     return <div>멤버 조회 중 키킼</div>;
+  }
+
+  function handleData() {
+    const [date, time] = dueDate.split("T");
+    const data = {
+      assigneeUserId: writerInfo?.userId,
+      dashboardId: 8137,
+      columnId: 29373,
+      title: titleInputValue,
+      description: descriptionValue,
+      dueDate: `${date} ${time}`,
+      tags: ["하하"],
+      imageUrl: imageFile,
+    };
+    console.log("data", data);
   }
 
   return (
@@ -97,7 +132,7 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
             </S.CardAttributes>
             <FileInput onChange={handleImageChange} selectImage={imageUrl} />
 
-            <TextArea onChange={handleChangeCardContent} value={cardContent} placeholder={"설명을 적어주세요"} />
+            <TextArea onChange={handleChangeCardContent} value={descriptionValue} placeholder={"설명을 적어주세요"} />
             <S.ButtonContainer>
               <Button
                 onClick={handleClosing}
@@ -105,7 +140,9 @@ const CreateCard = ({ handleClose, dashboardId }: { handleClose: () => void; das
                 exceptionStyle="max-width : 12rem; padding : 1rem 2rem; border-radius : 0.4rem;">
                 취소
               </Button>
-              <Button>생성</Button>
+              <Button type="button" onClick={handleData}>
+                생성
+              </Button>
             </S.ButtonContainer>
           </S.CreateForm>
         </S.PageContent>

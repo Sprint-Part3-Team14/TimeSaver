@@ -52,12 +52,6 @@ export const CreateForm = styled.form`
   height: 100%;
 `;
 
-export const DueDayContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-`;
-
 export const InputImageLabel = styled.label`
   color: ${theme.color.gray900};
   text-align: center;
