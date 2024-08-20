@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
-import { DetailContent } from "../TodoDetailStyled";
+import { DetailContent } from "../CardDetailStyled";
 
 export const Container = styled(DetailContent)``;
 

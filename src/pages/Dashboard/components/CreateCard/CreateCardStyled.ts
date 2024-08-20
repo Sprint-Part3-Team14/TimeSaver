@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SidePageBody, SidePageContainer, SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
-import { Button } from "../TodoDetail/TodoDetailStyled";
+import { Button } from "../CardDetail/CardDetailStyled";
 
 export const PageContainer = styled(SidePageContainer)`
   display: grid;
