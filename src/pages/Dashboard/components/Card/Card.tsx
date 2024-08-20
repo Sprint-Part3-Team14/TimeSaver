@@ -17,12 +17,12 @@ export interface CurrentIdListType {
 }
 
 const Card = ({ card, currentIdList }: CardProps) => {
-  const { isTrue, handleTrue, handleFalse } = useToggle();
+  const { isTrue: isDetail, handleTrue: handleOpenDetail, handleFalse: handleDetailClose } = useToggle();
 
   return (
     <>
-      {isTrue && <TodoDetail handleClose={handleFalse} currentIdList={currentIdList} />}
-      <S.CardLayout onClick={handleTrue}>
+      {isDetail && <TodoDetail handleClose={handleDetailClose} currentIdList={currentIdList} />}
+      <S.CardLayout onClick={handleOpenDetail}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
         <S.CardTagList>
