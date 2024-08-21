@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { postAuthLogin } from "src/utils/api";
 import { useNavigate } from "react-router-dom";
+import { getEmailInputProps, getPasswordInputProps } from "src/context/InputProps";
 import Button from "../../components/Button/Button";
 import * as S from "./SignInStyled";
 
@@ -36,39 +37,8 @@ const SignIn = () => {
       <S.SignInBox>
         <S.SignLogoBox />
         <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <AuthInput
-            name="email"
-            control={control}
-            label="이메일"
-            type="text"
-            placeholder="이메일을 입력해주세요"
-            rules={{
-              required: "이메일을 입력해주세요!",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "이메일 형식으로 작성해주세요.",
-              },
-            }}
-          />
-          <AuthInput
-            name="password"
-            control={control}
-            label="비밀번호"
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            rules={{
-              required: "비밀번호를 입력해주세요!",
-              minLength: {
-                value: 8,
-                message: "8자 이상 작성해 주세요.",
-              },
-              pattern: {
-                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                message: "비밀번호는 8자 이상이어야 하며, 영어 대/소문자와 숫자를 적어도 1개 이상 포함해야 합니다.",
-              },
-            }}
-            showPasswordToggle={true}
-          />
+          <AuthInput {...getEmailInputProps(control)} />
+          <AuthInput {...getPasswordInputProps(control)} />
           <S.ButtonWrapper>
             <Button type="submit" size="large" fontSize="small">
               로그인
@@ -76,7 +46,7 @@ const SignIn = () => {
           </S.ButtonWrapper>
         </S.Form>
         <S.FooterText>
-          회원이 아니신가요? <S.SignUpLink onClick={() => navigate("/signUp")}>회원 가입하기</S.SignUpLink>
+          회원이 아니신가요? <S.SignUpLink onClick={() => navigate("/signup")}>회원 가입하기</S.SignUpLink>
         </S.FooterText>
       </S.SignInBox>
     </S.Container>
