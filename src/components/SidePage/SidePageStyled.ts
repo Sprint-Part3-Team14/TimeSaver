@@ -50,7 +50,9 @@ export const SidePageHeader = styled.header`
   align-items: center;
 `;
 
-export const SidePageBody = styled.div`
+export const SidePageBody = styled.div<{ addStyle?: string }>`
   padding: 2.3rem;
   grid-area: b;
+
+  ${({ addStyle }) => (addStyle ? addStyle : "")}
 `;

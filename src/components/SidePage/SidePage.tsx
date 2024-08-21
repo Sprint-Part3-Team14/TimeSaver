@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import Portal from "src/components/_common/Portal";
 import useToggle from "src/hooks/useToggle";
 import { Button } from "src/pages/Dashboard/components/CardDetail/CardDetailStyled";
@@ -28,7 +28,7 @@ export const SidePage = ({ handleClose, children }: { handleClose: () => void; c
   );
 };
 
-export const SidePageHeader = ({ handleClosing, children }: { handleClosing: () => void; children: ReactNode }) => {
+export const SidePageHeader = ({ handleClosing, children }: { handleClosing: () => void; children?: ReactNode }) => {
   return (
     <S.SidePageHeader>
       <Button type="button" onClick={handleClosing}>
@@ -39,6 +39,6 @@ export const SidePageHeader = ({ handleClosing, children }: { handleClosing: () 
   );
 };
 
-export const SidePageBody = ({ children }: PropsWithChildren) => {
-  return <S.SidePageBody>{children}</S.SidePageBody>;
+export const SidePageBody = ({ children, addStyle }: { children: ReactNode; addStyle?: string }) => {
+  return <S.SidePageBody addStyle={addStyle}>{children}</S.SidePageBody>;
 };
