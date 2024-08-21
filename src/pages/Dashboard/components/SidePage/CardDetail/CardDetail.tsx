@@ -3,10 +3,10 @@ import KebabIcon from "src/components/Icons/KebabIcon";
 import { SidePage, SidePageBody, SidePageHeader } from "src/components/SidePage/SidePage";
 import { getCardInformation, getComments } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
-import { CurrentIdListType } from "../../../Card/Card";
-import TodoDetailContent from "../CardDetailContent/CardDetailContent";
-import EditingDashboard from "../Editing/EditingDashboard";
-import CommentSection from "./CommentSection";
+import { CurrentIdListType } from "../../Card/Card";
+import TodoDetailContent from "./CardDetailContent/CardDetailContent";
+import EditingDashboard from "./Editing/EditingDashboard";
+import CommentSection from "./CommentSection/CommentSection";
 import * as S from "./CardDetailStyled";
 import type { GetComments } from "src/utils/apiType";
 

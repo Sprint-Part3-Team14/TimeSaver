@@ -1,7 +1,7 @@
 import { ReactNode, useRef } from "react";
 import Portal from "src/components/_common/Portal";
 import useToggle from "src/hooks/useToggle";
-import { Button } from "src/pages/Dashboard/components/SidePage/CardDetail/CommentSection/CardDetailStyled";
+import { Button } from "src/pages/Dashboard/components/SidePage/CardDetail/CardDetailStyled";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import * as S from "./SidePageStyled";
