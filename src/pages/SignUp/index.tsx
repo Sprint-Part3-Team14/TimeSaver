@@ -2,7 +2,6 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
 import { postAuthRegister } from "src/utils/api";
 import {
   getEmailInputProps,
@@ -17,27 +16,7 @@ const SignUp = () => {
   const { handleSubmit, control, setError, getValues } = useForm();
   const navigate = useNavigate();
 
-  const mutation = useMutation(postAuthRegister, {
-    onSuccess: response => {
-      if (response && response.success) {
-        navigate("/my-dashboard");
-      } else {
-        setError("email", {
-          type: "manual",
-          message: "회원 가입에 실패했습니다. 입력 내용을 확인해주세요.",
-        });
-      }
-    },
-    onError: error => {
-      console.error("회원 가입 요청 중 오류가 발생했습니다:", error);
-      setError("email", {
-        type: "manual",
-        message: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
-      });
-    },
-  });
-
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (!data.terms) {
       setError("terms", {
         type: "manual",
@@ -46,7 +25,23 @@ const SignUp = () => {
       return;
     }
 
-    mutation.mutate(data);
+    try {
+      const response = await postAuthRegister(data);
+      if (response) {
+        navigate("/signin");
+      } else {
+        setError("email", {
+          type: "manual",
+          message: "회원 가입에 실패했습니다. 입력 내용을 확인해주세요.",
+        });
+      }
+    } catch (error) {
+      console.error("회원 가입 요청 중 오류가 발생했습니다:", error);
+      setError("email", {
+        type: "manual",
+        message: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
+      });
+    }
   };
 
   return (

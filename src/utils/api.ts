@@ -89,8 +89,17 @@ export async function logout() {
   removeAllTokenCookies();
 }
 
+interface ApiResponse {
+  id: number;
+  email: string;
+  nickname: string;
+  profileImageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // 회원가입
-export async function postAuthRegister(body: SignUp) {
+export async function postAuthRegister(body: SignUp): Promise<ApiResponse> {
   return fetcher("/users", "POST", body);
 }
 
