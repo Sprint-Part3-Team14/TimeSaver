@@ -2,7 +2,9 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
 import { postAuthRegister } from "src/utils/api";
+import { SignUp } from "src/utils/apiType";
 import Button from "../../components/Button/Button";
 import * as S from "./SignUpStyled";
 
@@ -10,17 +12,8 @@ const SignUp = () => {
   const { handleSubmit, control, setError, getValues } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
-    if (!data.terms) {
-      setError("terms", {
-        type: "manual",
-        message: "이용약관에 동의해주세요.",
-      });
-      return;
-    }
-
-    try {
-      const response = await postAuthRegister(data);
+  const mutation = useMutation(postAuthRegister, {
+    onSuccess: (response: { success: any }) => {
       if (response && response.success) {
         navigate("/my-dashboard");
       } else {
@@ -29,13 +22,26 @@ const SignUp = () => {
           message: "회원 가입에 실패했습니다. 입력 내용을 확인해주세요.",
         });
       }
-    } catch (error) {
+    },
+    onError: (error: any) => {
       console.error("회원 가입 요청 중 오류가 발생했습니다:", error);
       setError("email", {
         type: "manual",
         message: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
       });
+    },
+  });
+
+  const onSubmit = (data: SignUp) => {
+    if (!data.terms) {
+      setError("terms", {
+        type: "manual",
+        message: "이용약관에 동의해주세요.",
+      });
+      return;
     }
+
+    mutation.mutate(data);
   };
 
   return (
