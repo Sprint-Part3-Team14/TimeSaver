@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
 
+export const Container = styled.div<{ addStyle?: string }>`
+  ${({ addStyle }) => (addStyle ? addStyle : "")}
+`;
+
 export const Header = styled.div`
   display: flex;
   gap: 1rem;
