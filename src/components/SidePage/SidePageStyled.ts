@@ -21,25 +21,36 @@ export const slideOut = keyframes`
   }
 `;
 
-export const SidePageContainer = styled.div<{ isClose: boolean }>`
+export const SidePageContainer = styled.div<{ isClose: boolean; width?: string }>`
   position: absolute;
   top: 0;
   right: 0;
   z-index: 20;
-  width: 60%;
+  width: ${({ width }) => (width ? width : "60%")};
   height: 100%;
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
 
+  display: grid;
+  grid-template-rows: 7.1rem 1fr;
+  grid-template-areas:
+    "a"
+    "b";
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
 `;
 
 export const SidePageHeader = styled.header`
   padding: 1.5rem 2.3rem;
   box-sizing: border-box;
-  border-bottom: 1px solid ${theme.color.gray600};
+  grid-area: a;
+  border: 0.1rem solid ${theme.color.gray600};
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const SidePageBody = styled.div`
   padding: 2.3rem;
+  grid-area: b;
 `;
