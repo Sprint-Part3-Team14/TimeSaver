@@ -10,8 +10,8 @@ export const EditingContainer = styled.div`
   width: max-content;
 
   position: absolute;
-  top: 1.5rem;
-  right: 0.8rem;
+  top: -3rem;
+  right: 3rem;
   z-index: 30;
 `;
 
