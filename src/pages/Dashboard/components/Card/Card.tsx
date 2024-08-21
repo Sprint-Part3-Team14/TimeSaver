@@ -2,7 +2,7 @@ import useToggle from "src/hooks/useToggle";
 import { DetailCard } from "src/utils/apiType";
 import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
 import formatData from "src/utils/formatDate";
-import TodoDetail from "../CardDetail/CardDetail";
+import CardDetail from "../CardDetail/CardDetail";
 import * as S from "./CardStyled";
 
 interface CardProps {
@@ -21,7 +21,7 @@ const Card = ({ card, currentIdList }: CardProps) => {
 
   return (
     <>
-      {isDetail && <TodoDetail handleClose={handleDetailClose} currentIdList={currentIdList} />}
+      {isDetail && <CardDetail handleClose={handleDetailClose} currentIdList={currentIdList} />}
       <S.CardLayout onClick={handleOpenDetail}>
         {card.imageUrl && <S.CardThumbnail src={card.imageUrl} alt={card.title} />}
         <S.CardTitle>{card.title}</S.CardTitle>
