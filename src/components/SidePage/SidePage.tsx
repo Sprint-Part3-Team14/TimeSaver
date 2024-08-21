@@ -6,7 +6,15 @@ import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import * as S from "./SidePageStyled";
 
-export const SidePage = ({ handleClose, children }: { handleClose: () => void; children: ReactNode }) => {
+export const SidePage = ({
+  handleClose,
+  children,
+  addStyle,
+}: {
+  handleClose: () => void;
+  children: ReactNode;
+  addStyle?: string;
+}) => {
   const { isTrue: isAnimationClose, handleTrue: handleAnimationClose } = useToggle();
   const sidePageRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +29,7 @@ export const SidePage = ({ handleClose, children }: { handleClose: () => void; c
 
   return (
     <Portal>
-      <S.SidePageContainer isClose={isAnimationClose} ref={sidePageRef}>
+      <S.SidePageContainer isClose={isAnimationClose} ref={sidePageRef} addStyle={addStyle}>
         {children}
       </S.SidePageContainer>
     </Portal>

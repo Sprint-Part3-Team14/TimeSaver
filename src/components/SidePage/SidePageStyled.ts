@@ -21,12 +21,12 @@ export const slideOut = keyframes`
   }
 `;
 
-export const SidePageContainer = styled.div<{ isClose: boolean; width?: string }>`
+export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: string }>`
   position: absolute;
   top: 0;
   right: 0;
   z-index: 20;
-  width: ${({ width }) => (width ? width : "60%")};
+  width: 60%;
   height: 100%;
   background-color: ${theme.color.white};
   box-shadow: 0rem 2rem 2rem 0rem rgba(90, 90, 90, 0.5);
@@ -37,6 +37,8 @@ export const SidePageContainer = styled.div<{ isClose: boolean; width?: string }
     "a"
     "b";
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
+
+  ${({ addStyle }) => (addStyle ? addStyle : "")}
 `;
 
 export const SidePageHeader = styled.header`
