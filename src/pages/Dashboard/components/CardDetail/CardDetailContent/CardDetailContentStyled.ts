@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
-import { DetailContent } from "../CardDetailStyled";
-
-export const Container = styled(DetailContent)``;
 
 export const Header = styled.div`
   display: flex;
