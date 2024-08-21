@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 0 12px;
+    padding: 0 1.2rem;
     width: 100%;
   }
 `;
@@ -46,7 +46,7 @@ export const SignLogoBox = styled.div`
 export const SignUpBox = styled.div`
   width: 35%;
   min-height: 100vh;
-  padding: 10% 10%;
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,8 +89,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const FooterText = styled.div`
-  margin-top: 16px;
-  font-size: 12px;
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
   text-align: center;
   color: ${({ theme }) => theme.color.gray900};
 `;
@@ -106,7 +106,7 @@ export const SignInLink = styled.span`
 `;
 
 export const CheckboxContainer = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
 
