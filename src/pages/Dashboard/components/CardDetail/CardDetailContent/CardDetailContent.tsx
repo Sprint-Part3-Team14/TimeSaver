@@ -3,7 +3,7 @@ import * as S from "./CardDetailContentStyled";
 
 const TodoDetailContent = ({ todoDetailData }: { todoDetailData: DetailCard }) => {
   return (
-    <S.Container>
+    <div>
       <S.Header>
         <S.Title>{todoDetailData.title}</S.Title>
         <>뱃지</>
@@ -12,7 +12,7 @@ const TodoDetailContent = ({ todoDetailData }: { todoDetailData: DetailCard }) =
       <S.CreatedDate>{`마감일 ${todoDetailData.dueDate}`}</S.CreatedDate>
       <S.ThumbnailImage src={todoDetailData.imageUrl} alt={`${todoDetailData.title} 썸네일 이미지`} />
       <S.ContentText>{todoDetailData.description}</S.ContentText>
-    </S.Container>
+    </div>
   );
 };
 
