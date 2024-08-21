@@ -4,9 +4,9 @@ import { Comment, CreateComments } from "src/utils/apiType";
 import useInputValue from "src/hooks/useInputValue";
 import { deleteComments, postComments } from "src/utils/api";
 import Button from "src/components/Button/Button";
-import { CurrentIdListType } from "../../Card/Card";
-import EmptyComment from "./EmptyComment";
+import { CurrentIdListType } from "../../../Card/Card";
 import EditingComment from "./EditingComment/EditingComment";
+import EmptyComment from "./EmptyComment";
 import * as S from "./CommentsSectionStyled";
 
 interface EditingState {
