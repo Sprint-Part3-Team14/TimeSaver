@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
-import { DetailComments } from "../CardDetailStyled";
 
-export const Container = styled(DetailComments)`
+export const Container = styled.div`
   display: grid;
   grid-template-rows: calc(100vh - 25rem) 15rem;
   padding: 0;
