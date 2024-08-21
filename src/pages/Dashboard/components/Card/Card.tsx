@@ -2,7 +2,7 @@ import useToggle from "src/hooks/useToggle";
 import { DetailCard } from "src/utils/apiType";
 import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
 import formatData from "src/utils/formatDate";
-import CardDetail from "../SidePage/CardDetail/CommentSection/CardDetail";
+import CardDetail from "../SidePage/CardDetail/CardDetail";
 import * as S from "./CardStyled";
 
 interface CardProps {
