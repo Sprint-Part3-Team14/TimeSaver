@@ -35,7 +35,15 @@ export interface WriterInfo {
   userId: number;
 }
 
-const CreateCard = ({ dashboardId, columnId }: { dashboardId: number; columnId: number }) => {
+const CreateCard = ({
+  dashboardId,
+  columnId,
+  handleClosePage,
+}: {
+  dashboardId: number;
+  columnId: number;
+  handleClosePage: () => void;
+}) => {
   const { value: titleInputValue, handleChangeValue } = useInputValue();
   const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
@@ -68,6 +76,7 @@ const CreateCard = ({ dashboardId, columnId }: { dashboardId: number; columnId: 
     mutationFn: async (cardData: CreateCardProps) => await postCards(cardData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`column-${columnId}`, "cardList"] });
+      handleClosePage();
     },
   });
 
