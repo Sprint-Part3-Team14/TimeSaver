@@ -28,10 +28,6 @@ const EditingDashboard = ({
     },
   });
 
-  function handleDeleteCard() {
-    cardDeleteMutation.mutate(cardId);
-  }
-
   useOutsideClick(EditingRef, handleClose);
 
   return (
@@ -39,7 +35,11 @@ const EditingDashboard = ({
       <S.EditingButton type="button" onClick={handleClose}>
         수정하기
       </S.EditingButton>
-      <S.EditingButton type="button" onClick={handleDeleteCard}>
+      <S.EditingButton
+        type="button"
+        onClick={() => {
+          cardDeleteMutation.mutate(cardId);
+        }}>
         삭제하기
       </S.EditingButton>
     </S.EditingContainer>
