@@ -1,10 +1,15 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { postAuthRegister } from "src/utils/api";
-import { SignUp } from "src/utils/apiType";
+import {
+  getEmailInputProps,
+  getPasswordConfirmInputProps,
+  getPasswordInputProps,
+  getUsernameInputProps,
+} from "src/context/InputProps";
 import Button from "../../components/Button/Button";
 import * as S from "./SignUpStyled";
 
@@ -13,7 +18,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const mutation = useMutation(postAuthRegister, {
-    onSuccess: (response: { success: any }) => {
+    onSuccess: response => {
       if (response && response.success) {
         navigate("/my-dashboard");
       } else {
@@ -23,7 +28,7 @@ const SignUp = () => {
         });
       }
     },
-    onError: (error: any) => {
+    onError: error => {
       console.error("회원 가입 요청 중 오류가 발생했습니다:", error);
       setError("email", {
         type: "manual",
@@ -32,7 +37,7 @@ const SignUp = () => {
     },
   });
 
-  const onSubmit = (data: SignUp) => {
+  const onSubmit = (data: any) => {
     if (!data.terms) {
       setError("terms", {
         type: "manual",
@@ -50,61 +55,10 @@ const SignUp = () => {
       <S.SignUpBox>
         <S.SignLogoBox />
         <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <AuthInput
-            name="email"
-            control={control}
-            label="이메일"
-            type="text"
-            placeholder="이메일을 입력해주세요"
-            rules={{
-              required: "이메일을 입력해주세요!",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "이메일 형식으로 작성해주세요.",
-              },
-            }}
-          />
-          <AuthInput
-            name="username"
-            control={control}
-            label="닉네임"
-            type="text"
-            placeholder="닉네임을 입력해주세요"
-            rules={{
-              required: "닉네임을 입력해주세요!",
-            }}
-          />
-          <AuthInput
-            name="password"
-            control={control}
-            label="비밀번호"
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            rules={{
-              required: "비밀번호를 입력해주세요!",
-              minLength: {
-                value: 8,
-                message: "8자 이상 작성해 주세요.",
-              },
-              pattern: {
-                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                message: "비밀번호는 8자 이상이어야 하며, 영어 대/소문자와 숫자를 적어도 1개 이상 포함해야 합니다.",
-              },
-            }}
-            showPasswordToggle={true}
-          />
-          <AuthInput
-            name="passwordConfirm"
-            control={control}
-            label="비밀번호 확인"
-            type="password"
-            placeholder="비밀번호를 한번 더 입력해 주세요"
-            rules={{
-              required: "비밀번호 확인을 입력해주세요!",
-              validate: (value: string) => value === getValues("password") || "비밀번호가 일치하지 않습니다.",
-            }}
-            showPasswordToggle={true}
-          />
+          <AuthInput {...getEmailInputProps(control)} />
+          <AuthInput {...getUsernameInputProps(control)} />
+          <AuthInput {...getPasswordInputProps(control)} />
+          <AuthInput {...getPasswordConfirmInputProps(control, getValues)} />
           <Controller
             name="terms"
             control={control}
