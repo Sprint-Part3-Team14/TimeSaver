@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 0 12px;
+    padding: 0 1.2rem;
     width: 100%;
   }
 `;
@@ -45,8 +45,7 @@ export const SignLogoBox = styled.div`
 
 export const SignInBox = styled.div`
   width: 35%;
-  height: 1080px;
-  padding: 10% 10%;
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,8 +88,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const FooterText = styled.div`
-  margin-top: 16px;
-  font-size: 12px;
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
   text-align: center;
   color: ${({ theme }) => theme.color.gray900};
 `;
