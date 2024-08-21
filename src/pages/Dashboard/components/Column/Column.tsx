@@ -6,7 +6,7 @@ import useToggle from "src/hooks/useToggle";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import SettingIcon from "src/components/Icons/SettingIcon";
 import Card from "../Card";
-import CreateCard from "../CreateCard/CreateCard";
+import CreateCardPage from "../SidePage/CreateCard/CreateCardPage";
 import * as S from "./ColumnStyled";
 
 export interface ColumnDataType {
@@ -42,7 +42,9 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
 
   return (
     <>
-      {isCreateCard && <CreateCard handleClose={handleCloseCreateCard} dashboardId={dashboardId} columnId={columnId} />}
+      {isCreateCard && (
+        <CreateCardPage handleClose={handleCloseCreateCard} dashboardId={dashboardId} columnId={columnId} />
+      )}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>

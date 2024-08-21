@@ -1,25 +1,15 @@
 import styled from "styled-components";
-import { SidePageBody, SidePageContainer, SidePageHeader } from "src/components/SidePage/SidePageStyled";
+import { SidePageBody, SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
 import { Button } from "../CardDetail/CardDetailStyled";
 
-export const PageContainer = styled(SidePageContainer)`
-  display: grid;
-  grid-template-rows: 7.1rem 1fr;
-  grid-template-areas:
-    "a"
-    "b";
-  width: 40%;
-`;
+export const PageContainer = styled.div``;
 
 export const PageHeader = styled(SidePageHeader)`
   display: flex;
-  grid-area: a;
 `;
 
-export const PageContent = styled(SidePageBody)`
-  grid-area: b;
-`;
+export const PageContent = styled(SidePageBody)``;
 
 export const CloseButton = styled(Button)`
   margin: auto 0;
