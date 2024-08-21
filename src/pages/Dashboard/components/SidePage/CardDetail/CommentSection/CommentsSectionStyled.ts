@@ -76,7 +76,6 @@ export const CommentBox = styled.form`
 `;
 
 export const CommentInputBox = styled.textarea`
-  outline-color: ${theme.color.pink400};
   padding: 1rem;
   margin-top: 1rem;
   box-sizing: border-box;
@@ -89,6 +88,10 @@ export const CommentInputBox = styled.textarea`
 
   &::placeholder {
     color: ${theme.color.gray800};
+  }
+
+  &:focus {
+    border: 0.1rem solid ${theme.color.pink400};
   }
 `;
 

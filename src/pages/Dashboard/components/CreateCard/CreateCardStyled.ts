@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SidePageBody, SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
-import { Button } from "../CardDetail/CardDetailStyled";
+import { Button } from "../SidePage/CardDetail/CommentSection/CardDetailStyled";
 
 export const PageContainer = styled.div``;
 
