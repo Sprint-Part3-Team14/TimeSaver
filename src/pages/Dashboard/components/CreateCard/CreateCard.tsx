@@ -164,7 +164,7 @@ const CreateCard = ({
         <TextArea onChange={handleChangeCardContent} value={descriptionValue} placeholder={"설명을 적어주세요"} />
         <AddTag handleAddList={handleTagList} tagList={tagList} isEdit={true} />
         <S.ButtonContainer>
-          <Button styleVariant="white" exceptionStyle={S.ButtonAddStyle}>
+          <Button type="button" onClick={handleClosePage} styleVariant="white" exceptionStyle={S.ButtonAddStyle}>
             취소
           </Button>
           <Button type="button" onClick={handleCreateCard}>
