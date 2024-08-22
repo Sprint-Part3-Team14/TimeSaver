@@ -7,7 +7,7 @@ import {
   CreateComments,
   CreateDashboard,
   DashboardInvitation,
-  DashboardSearch,
+  DashboardListSearch,
   FetchMethod,
   FixCard,
   FixColumns,
@@ -229,15 +229,13 @@ export function postDashboards(body: CreateDashboard) {
 }
 
 // // 대시보드 목록 조회
-// export function getDashboards (query : DashboardListSearch) {
-//     const q = convertQuery(query);
-//     return fetcher (`/dashboards/${q}`, "GET");
-// }
+export function getDashboards(props: DashboardListSearch) {
+  return fetcher(`/dashboards?navigationMethod=${props.navigationMethod}&page=${props.page}&size=${props.size}`, "GET");
+}
 
 // 대시보드 상세 조회
-export function getDashboardDetails(query: DashboardSearch) {
-  const q = convertQuery(query);
-  return fetcher(`/dashboards/${q}`, "GET");
+export function getDashboardDetails(dashboardId: number) {
+  return fetcher(`/dashboards/${dashboardId}`, "GET");
 }
 
 // 대시보드 수정

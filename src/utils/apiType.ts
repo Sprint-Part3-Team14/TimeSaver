@@ -63,9 +63,7 @@ export interface DashboardListSearch {
 }
 
 // 대시보드 상세 조회
-export interface DashboardSearch {
-  [key: string]: number;
-}
+// dashboardId : number;
 
 // 대시보드 초대 불러오기
 export interface DashboardInvitation {
@@ -90,6 +88,7 @@ export interface MembersSearch {
   [key: string]: number | undefined;
   page: number;
   size?: number;
+  dashboardId: number;
 }
 
 /**
