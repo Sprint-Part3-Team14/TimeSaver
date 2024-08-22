@@ -9,11 +9,13 @@ const EditingDashboard = ({
   columnId,
   cardId,
   handleDetailClose,
+  handleStartEdit,
 }: {
   handleClose: () => void;
   columnId: number;
   cardId: number;
   handleDetailClose: () => void;
+  handleStartEdit: () => void;
 }) => {
   const queryClient = useQueryClient();
   const EditingRef = useRef<HTMLDivElement>(null);
@@ -32,7 +34,7 @@ const EditingDashboard = ({
 
   return (
     <S.EditingContainer ref={EditingRef}>
-      <S.EditingButton type="button" onClick={handleClose}>
+      <S.EditingButton type="button" onClick={handleStartEdit}>
         수정하기
       </S.EditingButton>
       <S.EditingButton

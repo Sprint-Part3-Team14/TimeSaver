@@ -4,6 +4,7 @@ import { SidePage, SidePageBody, SidePageHeader } from "src/components/SidePage/
 import { getCardInformation, getComments } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
 import { CurrentIdListType } from "../../Card/Card";
+import CreateCard from "../../CreateCard/CreateCard";
 import TodoDetailContent from "./CardDetailContent/CardDetailContent";
 import EditingDashboard from "./Editing/EditingDashboard";
 import CommentSection from "./CommentSection/CommentSection";
@@ -16,7 +17,8 @@ interface CardDetailProps {
 }
 
 const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
-  const { isTrue: isEditing, handleToggle: handleToggleEditing, handleFalse: handleCloseEdit } = useToggle();
+  const { isTrue: isEditing, handleTrue: handleStartEdit, handleFalse: handleCloseEdit } = useToggle();
+  const { isTrue: isOpenMenu, handleToggle: handleToggleMenu, handleFalse: handleCloseMenu } = useToggle();
   const { data: cardDetail } = useQuery({
     queryKey: ["cardDetail", currentIdList.cardId],
     queryFn: async () => {
@@ -41,22 +43,32 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
 
   return (
     <>
-      {isEditing && (
-        <EditingDashboard
-          handleClose={handleCloseEdit}
-          columnId={currentIdList.columnId}
-          cardId={currentIdList.cardId}
-          handleDetailClose={handleClose}
-        />
-      )}
       <SidePage handleClose={handleClose}>
         <SidePageHeader handleClosing={handleClose}>
-          <S.Button type="button" onClick={handleToggleEditing}>
+          <S.Button type="button" onClick={handleToggleMenu}>
+            {isOpenMenu && (
+              <EditingDashboard
+                handleClose={handleCloseMenu}
+                columnId={currentIdList.columnId}
+                cardId={currentIdList.cardId}
+                handleDetailClose={handleClose}
+                handleStartEdit={handleStartEdit}
+              />
+            )}
             <KebabIcon width={13} height={20} />
           </S.Button>
         </SidePageHeader>
         <SidePageBody addStyle={S.cardDetailLayout}>
-          <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
+          {isEditing ? (
+            <CreateCard
+              dashboardId={currentIdList.dashboardId}
+              columnId={currentIdList.columnId}
+              handleClosePage={handleCloseEdit}
+            />
+          ) : (
+            <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
+          )}
+
           <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
         </SidePageBody>
       </SidePage>
