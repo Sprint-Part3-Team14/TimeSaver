@@ -63,7 +63,7 @@ const CreateCard = ({
       handleSetUrl(imageUrl);
       handleSetTagList(tags);
     }
-  }, [initialData]);
+  }, []);
 
   const { data: dashboardMemberList } = useQuery<GetMembersResponse>({
     queryKey: ["dashboard", "memberList", dashboardId],
@@ -92,6 +92,7 @@ const CreateCard = ({
     mutationFn: async ({ cardId, cardData }: { cardId: number; cardData: FixCard }) => await putCard(cardId, cardData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cardDetail", cardId] });
+      handleClosePage();
     },
   });
 
@@ -108,15 +109,18 @@ const CreateCard = ({
 
     const [date, time] = dueDate.split("T");
     if (writerInfo) {
+      if (!imageFile) {
+        imageUrl;
+      }
       const data = {
         assigneeUserId: writerInfo.userId,
         dashboardId: dashboardId,
         columnId: columnId,
         title: titleInputValue,
         description: descriptionValue,
-        dueDate: `${date} ${time}`,
+        dueDate: dueDate.includes("T") ? `${date} ${time}` : dueDate,
         tags: tagList,
-        imageUrl: imageFile ? imageFile : "null",
+        imageUrl: imageFile ? imageFile : imageUrl ? imageUrl : "null",
       };
 
       if (initialData) {
@@ -163,15 +167,7 @@ const CreateCard = ({
           <Button styleVariant="white" exceptionStyle="max-width : 12rem; padding : 1rem 2rem; border-radius : 0.4rem;">
             취소
           </Button>
-          <Button
-            type="button"
-            onClick={
-              initialData
-                ? () => {
-                    console.log("수정");
-                  }
-                : handleCreateCard
-            }>
+          <Button type="button" onClick={handleCreateCard}>
             {initialData ? "수정" : "생성"}
           </Button>
         </S.ButtonContainer>
