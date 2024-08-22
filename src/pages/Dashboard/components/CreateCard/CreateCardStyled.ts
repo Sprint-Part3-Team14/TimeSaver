@@ -3,6 +3,12 @@ import { SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
 import { Button } from "../SidePage/CardDetail/CardDetailStyled";
 
+export const ButtonAddStyle = `
+  max-width : 12rem;
+  padding : 1rem 2rem;
+  border-radius : 0,4rem;
+`;
+
 export const PageContainer = styled.div``;
 
 export const PageHeader = styled(SidePageHeader)`
