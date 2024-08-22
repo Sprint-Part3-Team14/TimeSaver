@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useToggle from "src/hooks/useToggle";
 import Button from "src/components/Button/Button";
@@ -11,7 +11,7 @@ import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
 import AddTag from "./AddTag/AddTag";
 import * as S from "./CreateCardStyled";
-import type { CreateCard as CreateCardProps } from "src/utils/apiType";
+import type { CreateCard as CreateCardProps, DetailCard } from "src/utils/apiType";
 import type { GetMembersResponse } from "src/utils/apiResponseType";
 import type { WriterInfo } from "./CreateCardType";
 
@@ -19,23 +19,49 @@ const CreateCard = ({
   dashboardId,
   columnId,
   handleClosePage,
+  initialData,
 }: {
   dashboardId: number;
   columnId: number;
   handleClosePage: () => void;
+  initialData?: DetailCard;
 }) => {
-  const { value: titleInputValue, handleChangeValue } = useInputValue();
-  const { value: dueDate, handleChangeValue: handleChangDateValue } = useInputValue();
+  const { value: titleInputValue, handleChangeValue, handleSetValue: handleInitialTitle } = useInputValue();
+  const {
+    value: dueDate,
+    handleChangeValue: handleChangDateValue,
+    handleSetValue: handleInitialDate,
+  } = useInputValue();
   const [writerInfo, setWriterInfo] = useState<WriterInfo>();
-  const { value: descriptionValue, handleChangeValue: handleChangeCardContent } = useInputValue();
-  const [tagList, setTagList] = useState<string[]>([]);
+  const {
+    value: descriptionValue,
+    handleChangeValue: handleChangeCardContent,
+    handleSetValue: handleInitialDescription,
+  } = useInputValue();
   const { imageUrl, handleImageChange, handleSetFile, imageFile } = useInputImage(({ file }: { file: File }) => {
     CardImageMutation.mutate({ columnId: columnId, image: file });
   });
+  const [tagList, setTagList] = useState<string[]>([]);
 
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
 
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (initialData) {
+      const { title, dueDate, assignee, description, tags, imageUrl } = initialData;
+      handleInitialTitle(title);
+      handleInitialDate(dueDate);
+      handleSelectWriter({
+        nickName: assignee.nickname,
+        profileImageUrl: assignee.profileImageUrl,
+        userId: assignee.id,
+      });
+      handleInitialDescription(description);
+      handleSetFile(imageUrl);
+      handleSetTagList(tags);
+    }
+  }, [initialData]);
 
   const { data: dashboardMemberList } = useQuery<GetMembersResponse>({
     queryKey: ["dashboard", "memberList", dashboardId],
@@ -89,6 +115,10 @@ const CreateCard = ({
 
   function handleTagList(tagText: string) {
     setTagList(prevList => [...prevList, tagText]);
+  }
+
+  function handleSetTagList(tagList: string[]) {
+    setTagList(tagList);
   }
 
   return (

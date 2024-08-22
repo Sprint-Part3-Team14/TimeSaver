@@ -9,7 +9,7 @@ import TodoDetailContent from "./CardDetailContent/CardDetailContent";
 import EditingDashboard from "./Editing/EditingDashboard";
 import CommentSection from "./CommentSection/CommentSection";
 import * as S from "./CardDetailStyled";
-import type { GetComments } from "src/utils/apiType";
+import type { DetailCard, GetComments } from "src/utils/apiType";
 
 interface CardDetailProps {
   handleClose: () => void;
@@ -19,7 +19,7 @@ interface CardDetailProps {
 const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
   const { isTrue: isEditing, handleTrue: handleStartEdit, handleFalse: handleCloseEdit } = useToggle();
   const { isTrue: isOpenMenu, handleToggle: handleToggleMenu, handleFalse: handleCloseMenu } = useToggle();
-  const { data: cardDetail } = useQuery({
+  const { data: cardDetail } = useQuery<DetailCard>({
     queryKey: ["cardDetail", currentIdList.cardId],
     queryFn: async () => {
       return getCardInformation(currentIdList.cardId);
@@ -60,6 +60,7 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
       <SidePageBody addStyle={S.cardDetailLayout}>
         {isEditing ? (
           <CreateCard
+            initialData={cardDetail}
             dashboardId={currentIdList.dashboardId}
             columnId={currentIdList.columnId}
             handleClosePage={handleCloseEdit}
