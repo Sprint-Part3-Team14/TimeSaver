@@ -2,8 +2,9 @@ import { MouseEvent, useEffect } from "react";
 import ArrowDropdownIcon from "src/components/Icons/ArrowDropdownIcon";
 import ArrowDropUpIcon from "src/components/Icons/ArrowDropupIcon";
 import UserProfile from "src/components/UserProfile/UserProfile";
-import { MembersData, WriterInfo } from "../CreateCard";
 import * as S from "./DopDownStyled";
+import type { MembersData } from "src/utils/apiResponseType";
+import type { WriterInfo } from "../CreateCardType";
 
 const DropDown = ({
   isOpen,
