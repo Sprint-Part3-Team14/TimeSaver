@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { CardListSearch, DetailCard } from "src/utils/apiType";
+import { CardListSearch } from "src/utils/apiType";
 import theme from "src/styles/theme";
 import { getCardList } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
@@ -9,12 +9,7 @@ import EditIcon from "src/components/Icons/EditIcon";
 import Card from "../Card";
 import CreateCardPage from "../SidePage/CreateCard/CreateCardPage";
 import * as S from "./ColumnStyled";
-
-export interface ColumnDataType {
-  cards: DetailCard[];
-  totalCount: number;
-  cursorId: null;
-}
+import type { ColumnDataType } from "src/utils/apiResponseType";
 
 interface ColumnPropType {
   columnTitle: string;

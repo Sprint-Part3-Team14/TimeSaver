@@ -1,3 +1,5 @@
+import { DetailCard } from "./apiType";
+
 // 대시보드 멤버 조회하기
 export interface GetMembersResponse {
   members: MembersData[];
@@ -13,4 +15,11 @@ export interface MembersData {
   updatedAt: string;
   isOwner: boolean;
   userId: number;
+}
+
+// 카드 리스트 조회
+export interface ColumnDataType {
+  cards: DetailCard[];
+  totalCount: number;
+  cursorId: null;
 }
