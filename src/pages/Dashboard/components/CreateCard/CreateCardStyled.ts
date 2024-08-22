@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SidePageBody, SidePageHeader } from "src/components/SidePage/SidePageStyled";
+import { SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
 import { Button } from "../SidePage/CardDetail/CardDetailStyled";
 
@@ -9,7 +9,10 @@ export const PageHeader = styled(SidePageHeader)`
   display: flex;
 `;
 
-export const PageContent = styled(SidePageBody)``;
+export const PageContent = styled.div`
+  padding: 2.3rem;
+  border-right: 0.1rem solid ${theme.color.gray600};
+`;
 
 export const CloseButton = styled(Button)`
   margin: auto 0;

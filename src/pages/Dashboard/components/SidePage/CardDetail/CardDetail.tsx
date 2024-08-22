@@ -42,37 +42,35 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
   }
 
   return (
-    <>
-      <SidePage handleClose={handleClose}>
-        <SidePageHeader handleClosing={handleClose}>
-          <S.Button type="button" onClick={handleToggleMenu}>
-            {isOpenMenu && (
-              <EditingDashboard
-                handleClose={handleCloseMenu}
-                columnId={currentIdList.columnId}
-                cardId={currentIdList.cardId}
-                handleDetailClose={handleClose}
-                handleStartEdit={handleStartEdit}
-              />
-            )}
-            <KebabIcon width={13} height={20} />
-          </S.Button>
-        </SidePageHeader>
-        <SidePageBody addStyle={S.cardDetailLayout}>
-          {isEditing ? (
-            <CreateCard
-              dashboardId={currentIdList.dashboardId}
+    <SidePage handleClose={handleClose}>
+      <SidePageHeader handleClosing={handleClose}>
+        <S.Button type="button" onClick={handleToggleMenu}>
+          {isOpenMenu && (
+            <EditingDashboard
+              handleClose={handleCloseMenu}
               columnId={currentIdList.columnId}
-              handleClosePage={handleCloseEdit}
+              cardId={currentIdList.cardId}
+              handleDetailClose={handleClose}
+              handleStartEdit={handleStartEdit}
             />
-          ) : (
-            <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
           )}
+          <KebabIcon width={13} height={20} />
+        </S.Button>
+      </SidePageHeader>
+      <SidePageBody addStyle={S.cardDetailLayout}>
+        {isEditing ? (
+          <CreateCard
+            dashboardId={currentIdList.dashboardId}
+            columnId={currentIdList.columnId}
+            handleClosePage={handleCloseEdit}
+          />
+        ) : (
+          <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
+        )}
 
-          <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
-        </SidePageBody>
-      </SidePage>
-    </>
+        <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
+      </SidePageBody>
+    </SidePage>
   );
 };
 
