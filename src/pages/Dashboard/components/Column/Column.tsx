@@ -4,7 +4,8 @@ import theme from "src/styles/theme";
 import { getCardList } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
 import PlusIcon from "src/components/Icons/PlusIcon";
-import SettingIcon from "src/components/Icons/SettingIcon";
+import DeleteIcon from "src/components/Icons/DeleteIcon";
+import EditIcon from "src/components/Icons/EditIcon";
 import Card from "../Card";
 import CreateCardPage from "../SidePage/CreateCard/CreateCardPage";
 import * as S from "./ColumnStyled";
@@ -53,7 +54,12 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
           <S.ColumnName>{columnTitle}</S.ColumnName>
           <S.CardCount>{cardList.totalCount}</S.CardCount>
           <S.SettingIconLayout>
-            <SettingIcon width={24} height={24} color={theme.color.black600} />
+            <S.EditColumnButton type="button">
+              <EditIcon width={18} height={18} color={theme.color.gray900} />
+            </S.EditColumnButton>
+            <S.EditColumnButton type="button">
+              <DeleteIcon width={16} height={16} color={theme.color.gray900} />
+            </S.EditColumnButton>
           </S.SettingIconLayout>
         </S.ColumnHeader>
         <S.AddCard type="button" onClick={handleCreateCard}>
