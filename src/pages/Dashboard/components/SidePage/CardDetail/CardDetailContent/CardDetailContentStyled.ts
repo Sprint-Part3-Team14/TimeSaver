@@ -27,9 +27,11 @@ export const CreatedDate = styled.div`
 `;
 
 export const ThumbnailImage = styled.img`
+  width: 100%;
   height: 30rem;
   object-fit: cover;
   min-width: 0;
+  border-radius: 0.6rem;
 `;
 
 export const ContentText = styled.p`
