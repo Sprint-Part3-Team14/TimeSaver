@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -8,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.color.gray900};
+  color: ${theme.color.gray900};
   font-size: 1.2rem;
   font-weight: 700;
 `;
