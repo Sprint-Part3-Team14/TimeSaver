@@ -2,30 +2,30 @@ import { FormEvent, useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useToggle from "src/hooks/useToggle";
 import Button from "src/components/Button/Button";
-import { getMembers, postCardImageFetch, postCards } from "src/utils/api";
+import { getMembers, postCardImageFetch, postCards, putCard } from "src/utils/api";
 import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
 import TextArea from "src/components/TextArea/TextArea";
 import FileInput from "src/components/FileInput/FileInput";
+import { CurrentIdListType } from "../Card/Card";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
 import AddTag from "./AddTag/AddTag";
 import * as S from "./CreateCardStyled";
-import type { CreateCard as CreateCardProps, DetailCard } from "src/utils/apiType";
+import type { CreateCard as CreateCardProps, DetailCard, FixCard } from "src/utils/apiType";
 import type { GetMembersResponse } from "src/utils/apiResponseType";
 import type { WriterInfo } from "./CreateCardType";
 
 const CreateCard = ({
-  dashboardId,
-  columnId,
+  currentIdList,
   handleClosePage,
   initialData,
 }: {
-  dashboardId: number;
-  columnId: number;
   handleClosePage: () => void;
   initialData?: DetailCard;
+  currentIdList: CurrentIdListType;
 }) => {
+  const { dashboardId, columnId, cardId } = currentIdList;
   const { value: titleInputValue, handleChangeValue, handleSetValue: handleInitialTitle } = useInputValue();
   const {
     value: dueDate,
@@ -38,9 +38,11 @@ const CreateCard = ({
     handleChangeValue: handleChangeCardContent,
     handleSetValue: handleInitialDescription,
   } = useInputValue();
-  const { imageUrl, handleImageChange, handleSetFile, imageFile } = useInputImage(({ file }: { file: File }) => {
-    CardImageMutation.mutate({ columnId: columnId, image: file });
-  });
+  const { imageUrl, handleImageChange, handleSetFile, imageFile, handleSetUrl } = useInputImage(
+    ({ file }: { file: File }) => {
+      CardImageMutation.mutate({ columnId: columnId, image: file });
+    }
+  );
   const [tagList, setTagList] = useState<string[]>([]);
 
   const { isTrue: isOpenDropDown, handleToggle } = useToggle();
@@ -58,7 +60,7 @@ const CreateCard = ({
         userId: assignee.id,
       });
       handleInitialDescription(description);
-      handleSetFile(imageUrl);
+      handleSetUrl(imageUrl);
       handleSetTagList(tags);
     }
   }, [initialData]);
@@ -86,6 +88,13 @@ const CreateCard = ({
     },
   });
 
+  const EditCardMutation = useMutation({
+    mutationFn: async ({ cardId, cardData }: { cardId: number; cardData: FixCard }) => await putCard(cardId, cardData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cardDetail", cardId] });
+    },
+  });
+
   function handleSelectWriter(writerInfo: WriterInfo) {
     setWriterInfo(writerInfo);
   }
@@ -109,7 +118,14 @@ const CreateCard = ({
         tags: tagList,
         imageUrl: imageFile ? imageFile : "null",
       };
-      CreateCardMutation.mutate(data);
+
+      if (initialData) {
+        if (cardId) {
+          EditCardMutation.mutate({ cardId: cardId, cardData: data });
+        }
+      } else {
+        CreateCardMutation.mutate(data);
+      }
     }
   }
 
@@ -147,8 +163,16 @@ const CreateCard = ({
           <Button styleVariant="white" exceptionStyle="max-width : 12rem; padding : 1rem 2rem; border-radius : 0.4rem;">
             취소
           </Button>
-          <Button type="button" onClick={handleCreateCard}>
-            생성
+          <Button
+            type="button"
+            onClick={
+              initialData
+                ? () => {
+                    console.log("수정");
+                  }
+                : handleCreateCard
+            }>
+            {initialData ? "수정" : "생성"}
           </Button>
         </S.ButtonContainer>
       </S.CreateForm>

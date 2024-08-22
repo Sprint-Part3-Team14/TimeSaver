@@ -24,7 +24,11 @@ function useInputImage(apiCallback?: ({ file }: { file: File }) => void) {
     setImageFile(fileUrl);
   }
 
-  return { imageUrl, handleImageChange, imageFile, handleSetFile };
+  function handleSetUrl(imageUrl: string) {
+    setImageUrl(imageUrl);
+  }
+
+  return { imageUrl, handleImageChange, imageFile, handleSetFile, handleSetUrl };
 }
 
 export default useInputImage;
