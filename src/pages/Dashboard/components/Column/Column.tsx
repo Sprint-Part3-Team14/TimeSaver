@@ -43,7 +43,10 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
   return (
     <>
       {isCreateCard && (
-        <CreateCardPage handleClose={handleCloseCreateCard} dashboardId={dashboardId} columnId={columnId} />
+        <CreateCardPage
+          handleClose={handleCloseCreateCard}
+          currentIdList={{ dashboardId: dashboardId, columnId: columnId, cardId: 0 }}
+        />
       )}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>

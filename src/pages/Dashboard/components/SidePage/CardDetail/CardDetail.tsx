@@ -59,12 +59,7 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
       </SidePageHeader>
       <SidePageBody addStyle={S.cardDetailLayout}>
         {isEditing ? (
-          <CreateCard
-            initialData={cardDetail}
-            dashboardId={currentIdList.dashboardId}
-            columnId={currentIdList.columnId}
-            handleClosePage={handleCloseEdit}
-          />
+          <CreateCard initialData={cardDetail} currentIdList={currentIdList} handleClosePage={handleCloseEdit} />
         ) : (
           <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
         )}
