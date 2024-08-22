@@ -3,7 +3,15 @@ import useInputValue from "src/hooks/useInputValue";
 import * as S from "./AddTagStyled";
 import Tag from "./Tag/Tag";
 
-const AddTag = ({ tagList, handleAddList }: { tagList: string[]; handleAddList: (value: string) => void }) => {
+const AddTag = ({
+  tagList,
+  handleAddList,
+  isEdit,
+}: {
+  tagList: string[];
+  handleAddList: (value: string) => void;
+  isEdit: boolean;
+}) => {
   const { value, handleChangeValue, handleResetValue } = useInputValue();
 
   function handleEnterEvent(event: KeyboardEvent<HTMLInputElement>) {
@@ -27,7 +35,7 @@ const AddTag = ({ tagList, handleAddList }: { tagList: string[]; handleAddList: 
       />
       <S.TagContainer>
         {tagList.map((tag, index) => (
-          <Tag key={`${index}${tag}`} text={tag} />
+          <Tag key={`${index}${tag}`} text={tag} isEdit={isEdit} />
         ))}
       </S.TagContainer>
     </S.Container>
