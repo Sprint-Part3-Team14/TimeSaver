@@ -12,28 +12,8 @@ import DropDown from "./DropDown/DropDown";
 import AddTag from "./AddTag/AddTag";
 import * as S from "./CreateCardStyled";
 import type { CreateCard as CreateCardProps } from "src/utils/apiType";
-
-export interface GetMembersResponse {
-  members: MembersData[];
-  totalCount: number;
-}
-
-export interface MembersData {
-  id: number;
-  email: string;
-  nickname: string;
-  profileImageUrl: string;
-  createdAt: string;
-  updatedAt: string;
-  isOwner: boolean;
-  userId: number;
-}
-
-export interface WriterInfo {
-  profileImageUrl: string;
-  nickName: string;
-  userId: number;
-}
+import type { GetMembersResponse } from "src/utils/apiResponseType";
+import type { WriterInfo } from "./CreateCardType";
 
 const CreateCard = ({
   dashboardId,
