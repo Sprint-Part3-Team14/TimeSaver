@@ -2,7 +2,7 @@ import { createQueryKeys } from "@lukemorales/query-key-factory";
 import { getDashboardDetails, getDashboardInvitations, getDashboards, getMembers } from "src/utils/api";
 import { DashboardInvitation, DashboardListSearch, MembersSearch } from "src/utils/apiType";
 
-export const contentListQueryKeys = createQueryKeys("dashboard", {
+export const dashboardQueryKeys = createQueryKeys("dashboard", {
   list: (props: DashboardListSearch) => ({
     queryKey: ["dashboardList"],
     queryFn: async () => await getDashboards(props),
