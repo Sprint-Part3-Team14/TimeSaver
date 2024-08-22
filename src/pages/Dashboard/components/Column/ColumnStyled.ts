@@ -70,6 +70,24 @@ export const CardCount = styled.div`
 
 export const SettingIconLayout = styled.div`
   margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const EditColumnButton = styled.button`
+  text-align: center;
+  border-radius: 0.4rem;
+  padding: 0.7rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${theme.color.gray600};
+  }
+
+  &:active {
+    background-color: ${theme.color.gray700};
+  }
 `;
 
 export const AddCard = styled.button`
