@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "./styles/theme";
 
 export const DashboardLayout = styled.div`
   display: grid;
@@ -16,7 +17,7 @@ export const HeaderLayout = styled.header`
 
 export const SideBarLayout = styled.aside`
   grid-area: b;
-  border-right: 0.1rem solid ${({ theme }) => theme.color.gray700};
+  border-right: 0.1rem solid ${theme.color.gray700};
   height: 100%;
 `;
 
