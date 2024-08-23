@@ -1,22 +1,20 @@
 import styled from "styled-components";
 
 export const DashboardInfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 34px;
-  gap: 4px;
-  border-right: 1px solid #6B7280;
-  padding-right: 3px;
-  color: #1F2937;
+  ${props => props.theme.displays.rowCenter};
+  height: 3.4rem;
+  gap: 0.4rem;
+  border-right: 1px solid ${props => props.theme.color.gray900};
+  padding-right: 0.3rem;
+  color: ${props => props.theme.color.black800};
 
-  @media (min-width: 768px) {
-    height: 38px;
-    gap: 23px;
-    padding-right: 6px;
+  @media ${props => props.theme.device.mobile} {
+    height: 3.8rem;
+    gap: 2.3rem;
+    padding-right: 0.6rem;
   }
 
-  @media (min-width: 1024px) {
-    gap: 10px;
+  @media ${props => props.theme.device.tablet} {
+    gap: 1rem;
   }
 `;

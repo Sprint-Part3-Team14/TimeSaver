@@ -2,23 +2,21 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const ProfileInfoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${props => props.theme.displays.rowCenter};
   position: relative;
-  gap: 10px;
+  gap: 1rem;
+
   &:hover .profile-popup {
     display: block;
   }
 `;
 
 export const ProfileLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${props => props.theme.displays.rowCenter};
   gap: 6rem;
   text-decoration: none;
   color: inherit;
+
   &:hover,
   &:focus,
   &:active {
@@ -27,10 +25,8 @@ export const ProfileLink = styled(Link)`
 `;
 
 export const NicknameText = styled.div`
-  color: var(--black-black_700, #333236);
+  color: ${props => props.theme.color.black700};
   font-family: Inter;
-  font-size: 1.6rem;
-  font-style: normal;
+  font-size: ${props => props.theme.fontSize.large};
   font-weight: 500;
-  line-height: normal;
 `;
