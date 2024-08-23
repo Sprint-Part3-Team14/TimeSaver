@@ -1,29 +1,35 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const HeaderContainer = styled.div`
-  z-index: var(--z-nav);
-  display: flex;
-  height: 70px;
+export const HeaderContainer = styled.header`
   width: 100%;
-  align-items: center;
+  height: 7rem;
+  display: flex;
   justify-content: space-between;
-  background-color: white;
-  padding: 0 12px;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 export const LogoContainer = styled.div`
-  padding: 4px;
+  flex-shrink: 0;
 `;
 
 export const NavLinks = styled.div`
   display: flex;
-  gap: 5px;
-
-  @media (min-width: 768px) { /* tb breakpoint for example */
-    gap: 9px;
-  }
+  gap: 20px;
+  align-items: center;
 `;
 
-export const Logo = () => (
-  <img src="../../../../public/images/landing1.jpg" alt="Logo" width={121} height={39} />
-);
+export const Logo = styled.div`
+  width: 9.3rem;
+  height: 4rem;
+  background-image: url("/images/Main_Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
