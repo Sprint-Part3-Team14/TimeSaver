@@ -1,40 +1,34 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
   height: 7rem;
   width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 0.1rem solid ${props => props.theme.color.gray300};
-  background-color: ${props => props.theme.color.white};
-  padding-left: 2rem;
-  padding-right: 2rem;
+  ${props => props.theme.displays.spaceBetween};
+  border-bottom: 0.1rem solid ${theme.color.gray700};
+  background-color: ${theme.color.white};
 
-  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+  @media ${theme.device.mobile} {
     padding-left: 4rem;
     padding-right: 4rem;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
+  @media ${theme.device.tablet} {
     padding-right: 8rem;
   }
 `;
 
 export const LogoAndTitleContainer = styled.div`
   width: 35%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${theme.displays.spaceBetween};
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
-  font-size: 1.25rem;
+  font-size: ${theme.fontSize.large};
   font-weight: bold;
   padding-left: 1rem;
   gap: 0.5rem;
@@ -48,6 +42,7 @@ export const LogoContainer = styled.div`
 export const Logo = styled.div`
   width: 9.3rem;
   height: 4rem;
+  padding-left: 2rem;
   background-image: url("/images/Main_Logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -59,16 +54,39 @@ export const NavLinks = styled.div`
   align-items: center;
   gap: 0.75rem;
 
-  @media (min-width: ${props => props.theme.breakpoints.mobile}) {
+  @media ${theme.device.mobile} {
     gap: 2rem;
   }
 `;
 
 export const Text = styled.p`
-  color: ${props => props.theme.color.black700};
+  color: ${theme.color.black700};
   font-family: Inter;
-  font-size: 1.8rem;
+  font-size: ${theme.fontSize.large};
   font-weight: 700;
   line-height: 1.5;
   text-align: center;
+`;
+
+export const Crown = styled.div<{ createdByMe: boolean }>`
+  font-size: 1.25rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: ${({ createdByMe }) => (createdByMe ? "2rem" : "0")}; // 왕관 위치를 고려한 padding
+
+  ${({ createdByMe }) =>
+    createdByMe &&
+    `
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.7rem;
+        height: 1.4rem;
+        background-image: url("/images/Icons/crown.svg");
+        background-size: cover;
+      }
+    `}
 `;
