@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getColumns, postAuthLogin } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
+import Button from "src/components/Button/Button";
+import PlusIcon from "src/components/Icons/PlusIcon";
+import theme from "src/styles/theme";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
 
@@ -26,7 +29,11 @@ const Dashboard = () => {
   const { id: dashboardId } = useParams();
   postAuthLogin({ email: "test@codeit.com", password: "sprint101" });
 
-  const { data, isLoading, error } = useQuery({
+  const {
+    data: columnListData,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: [`dashboard-${dashboardId}`, "columnList"],
     queryFn: async () => {
       const queryParams: ColumnsListSearch = {
@@ -45,15 +52,20 @@ const Dashboard = () => {
     return <div>데이터를 불러오는 중 오류가 발생했습니다: {error.message}</div>;
   }
 
-  if (!data || !data.data) {
+  if (!columnListData || !columnListData.data) {
     return <div>데이터가 없습니다</div>;
   }
 
   return (
     <S.DashboardLayout>
-      {data.data.map((column: ColumnOneType) => (
+      {columnListData.data.map((column: ColumnOneType) => (
         <Column key={column.id} columnTitle={column.title} columnId={column.id} dashboardId={Number(dashboardId)} />
       ))}
+      {columnListData.data.length < 10 && (
+        <Button styleVariant="white" exceptionStyle={S.AddColumnButtonStyled}>
+          새로운 컬럼 추가하기 <PlusIcon width={22} height={22} color={theme.color.pink900} />
+        </Button>
+      )}
     </S.DashboardLayout>
   );
 };

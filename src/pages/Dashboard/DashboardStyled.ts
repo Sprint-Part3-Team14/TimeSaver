@@ -19,3 +19,14 @@ export const DashboardLayout = styled.div`
     cursor: pointer;
   }
 `;
+
+export const AddColumnButtonStyled = `
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content : center;
+
+  height : 5rem;
+  border-radius : 0.8rem;
+  margin : 2.3rem 0;
+`;
