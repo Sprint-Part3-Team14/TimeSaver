@@ -1,15 +1,11 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 7rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 0.1rem solid #d9d9d9;
+  ${props => props.theme.displays.spaceBetween};
+  padding: 2rem;
+  border-bottom: 0.1rem solid ${props => props.theme.color.gray700};
 `;
 
 export const LogoContainer = styled.div`
@@ -18,7 +14,7 @@ export const LogoContainer = styled.div`
 
 export const NavLinks = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   align-items: center;
 `;
 
@@ -33,4 +29,11 @@ export const Logo = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
 `;

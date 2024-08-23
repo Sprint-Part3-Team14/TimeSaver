@@ -5,25 +5,23 @@ export const HeaderContainer = styled.div`
   top: 0;
   z-index: 10;
   display: flex;
-  height: 70px;
+  height: 7rem;
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 0.1rem solid #d9d9d9;
-  background-color: white;
+  border-bottom: 0.1rem solid ${props => props.theme.color.gray300};
+  background-color: ${props => props.theme.color.white};
   padding-left: 2rem;
-  padding-right: 1.2rem;
+  padding-right: 2rem;
 
-  @media (max-width: 768px) {
-    height: 70px;
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     padding-left: 4rem;
     padding-right: 4rem;
   }
 
-  @media (min-width: 1024px) {
-    flex-direction: row;
-    padding-right: 80px;
+  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
+    padding-right: 8rem;
   }
 `;
 
@@ -32,7 +30,6 @@ export const LogoAndTitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 0;
 `;
 
 export const TitleContainer = styled.div`
@@ -40,7 +37,6 @@ export const TitleContainer = styled.div`
   font-size: 1.25rem;
   font-weight: bold;
   padding-left: 1rem;
-  padding-top: 0.25rem;
   gap: 0.5rem;
   align-items: center;
 `;
@@ -60,23 +56,19 @@ export const Logo = styled.div`
 
 export const NavLinks = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  font-weight: normal;
   gap: 0.75rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${props => props.theme.breakpoints.mobile}) {
     gap: 2rem;
   }
 `;
 
 export const Text = styled.p`
-  color: black900;
-  text-align: center;
+  color: ${props => props.theme.color.black700};
   font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
+  font-size: 1.8rem;
   font-weight: 700;
-  line-height: normal;
+  line-height: 1.5;
+  text-align: center;
 `;
