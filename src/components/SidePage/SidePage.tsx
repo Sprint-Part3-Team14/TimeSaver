@@ -6,7 +6,7 @@ import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import * as S from "./SidePageStyled";
 
-export const SidePage = ({
+export const SidePageLayout = ({
   handleClose,
   children,
   addStyle,

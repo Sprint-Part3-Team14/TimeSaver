@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import KebabIcon from "src/components/Icons/KebabIcon";
-import { SidePage, SidePageBody, SidePageHeader } from "src/components/SidePage/SidePage";
+import { SidePageLayout, SidePageBody, SidePageHeader } from "src/components/SidePage/SidePage";
 import { getCardInformation, getComments } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
 import { CurrentIdListType } from "../../Card/Card";
@@ -42,7 +42,7 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
   }
 
   return (
-    <SidePage handleClose={handleClose}>
+    <SidePageLayout handleClose={handleClose}>
       <SidePageHeader handleClosing={handleClose}>
         <S.Button type="button" onClick={handleToggleMenu}>
           {isOpenMenu && (
@@ -66,7 +66,7 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
 
         <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
       </SidePageBody>
-    </SidePage>
+    </SidePageLayout>
   );
 };
 
