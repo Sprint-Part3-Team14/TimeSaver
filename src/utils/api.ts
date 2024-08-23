@@ -1,3 +1,4 @@
+import { DashboardListResponse } from "./apiResponseType";
 import {
   CardListSearch,
   ColumnsListSearch,
@@ -229,8 +230,11 @@ export function postDashboards(body: CreateDashboard) {
 }
 
 // // 대시보드 목록 조회
-export function getDashboards(props: DashboardListSearch) {
-  return fetcher(`/dashboards?navigationMethod=${props.navigationMethod}&page=${props.page}&size=${props.size}`, "GET");
+export function getDashboards(props: DashboardListSearch): Promise<DashboardListResponse> {
+  return fetcher(
+    `/dashboards?navigationMethod=${props.navigationMethod}&page=${props.page ? props.page : 1}&size=${props.size ? props.size : 10}`,
+    "GET"
+  );
 }
 
 // 대시보드 상세 조회
