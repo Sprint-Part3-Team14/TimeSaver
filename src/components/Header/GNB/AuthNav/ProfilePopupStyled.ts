@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ProfilePopupContainer = styled.div`
   position: absolute;
-  right: -3px;
-  top: 6px;
+  left: 2rem;
+  top: 3rem;
   display: none;
   background-color: transparent;
   padding-top: 5px;
@@ -30,7 +30,7 @@ export const ProfilePopupButton = styled.button`
   height: 50px;
   width: 100%;
   &:hover {
-    background-color: #E5E7EB;
-    color: #1F2937;
+    background-color: #e5e7eb;
+    color: #1f2937;
   }
 `;

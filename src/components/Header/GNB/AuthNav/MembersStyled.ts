@@ -14,7 +14,6 @@ export const MemberImage = styled.div<{ positionClass: string }>`
   width: 38px;
   display: flex;
   align-items: center;
-  margin-top: 0.2rem;
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
@@ -39,6 +38,7 @@ export const DefaultMemberContainer = styled.div<{ color: string; positionClass:
   height: 38px;
   width: 38px;
   display: flex;
+  margin-top: 0.2rem;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
