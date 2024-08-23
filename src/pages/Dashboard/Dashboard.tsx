@@ -4,6 +4,8 @@ import { getColumns, postAuthLogin } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
+import CreateColumn from "src/components/Modal/CreateColumn/CretaeColumn";
+import useToggle from "src/hooks/useToggle";
 import theme from "src/styles/theme";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
@@ -28,6 +30,11 @@ export const CurrentUserId = 3071;
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
   postAuthLogin({ email: "test@codeit.com", password: "sprint101" });
+  const {
+    isTrue: isOpenCreateColumn,
+    handleTrue: handleOpenCreateColumn,
+    handleFalse: handleCloseCreateColumn,
+  } = useToggle();
 
   const {
     data: columnListData,
@@ -57,16 +64,19 @@ const Dashboard = () => {
   }
 
   return (
-    <S.DashboardLayout>
-      {columnListData.data.map((column: ColumnOneType) => (
-        <Column key={column.id} columnTitle={column.title} columnId={column.id} dashboardId={Number(dashboardId)} />
-      ))}
-      {columnListData.data.length < 10 && (
-        <Button styleVariant="white" exceptionStyle={S.AddColumnButtonStyled}>
-          새로운 컬럼 추가하기 <PlusIcon width={22} height={22} color={theme.color.pink900} />
-        </Button>
-      )}
-    </S.DashboardLayout>
+    <>
+      {isOpenCreateColumn && <CreateColumn handleClose={handleCloseCreateColumn} dashboardId={Number(dashboardId)} />}
+      <S.DashboardLayout>
+        {columnListData.data.map((column: ColumnOneType) => (
+          <Column key={column.id} columnTitle={column.title} columnId={column.id} dashboardId={Number(dashboardId)} />
+        ))}
+        {columnListData.data.length < 10 && (
+          <Button styleVariant="white" exceptionStyle={S.AddColumnButtonStyled} onClick={handleOpenCreateColumn}>
+            새로운 컬럼 추가하기 <PlusIcon width={22} height={22} color={theme.color.pink900} />
+          </Button>
+        )}
+      </S.DashboardLayout>
+    </>
   );
 };
 
