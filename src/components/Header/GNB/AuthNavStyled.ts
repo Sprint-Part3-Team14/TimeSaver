@@ -12,19 +12,27 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid var(--tp-gray-300);
   background-color: white;
-  padding-left: 24px;
-  padding-right: 12px;
+  padding-left: 2rem;
+  padding-right: 1.2rem;
 
-  @media (min-width: 768px)
+  @media (max-width: 768px) {
     height: 70px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
-  @media (min-width: 1024px)
+  @media (min-width: 1024px) {
     flex-direction: row;
     padding-right: 80px;
   }
+`;
+
+export const LogoAndTitleContainer = styled.div`
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 0;
 `;
 
 export const TitleContainer = styled.div`
@@ -37,6 +45,18 @@ export const TitleContainer = styled.div`
   align-items: center;
 `;
 
+export const LogoContainer = styled.div`
+  flex-shrink: 0;
+`;
+
+export const Logo = styled.div`
+  width: 9.3rem;
+  height: 4rem;
+  background-image: url("/images/Main_Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 export const NavLinks = styled.div`
   display: flex;
@@ -46,14 +66,12 @@ export const NavLinks = styled.div`
   font-weight: normal;
   gap: 0.75rem;
 
-  @media (min-width: 768px)
+  @media (min-width: 768px) {
     gap: 2rem;
   }
 `;
 
 export const Text = styled.p`
-  padding-top: 24px;
-
   color: black900;
   text-align: center;
   font-family: Inter;
