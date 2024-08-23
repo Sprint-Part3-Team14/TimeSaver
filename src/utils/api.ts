@@ -270,10 +270,9 @@ export function deleteDashboardInvitations(dashboardId: number, invitationId: nu
 }
 
 // // 내가 받은 초대 목록 조회
-// export function getInvitations (query : InvitationsListSearch) {
-//     const q = convertQuery(query);
-//     return fetcher (`/invitations/${q}`, "GET");
-// }
+export function getMyInvitations({ size = 10 }: { size?: number }) {
+  return fetcher(`/invitations?size=${size}`, "GET");
+}
 
 // 초대 응답
 export function putInvitations(invitationId: number, body: ResponseInvitation) {
