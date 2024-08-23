@@ -15,6 +15,7 @@ const CreateColumn = ({ handleClose, dashboardId }: { handleClose: () => void; d
     mutationFn: async (titleBody: CreateColumns) => await postColumns(titleBody),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`dashboard-${dashboardId}`, "columnList"] });
+      handleClose();
     },
   });
 
