@@ -1,9 +1,13 @@
 import useToggle from "src/hooks/useToggle";
-import { DetailCard } from "src/utils/apiType";
 import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
 import formatData from "src/utils/formatDate";
+import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
+
 import CardDetail from "../SidePage/CardDetail/CardDetail";
+
 import * as S from "./CardStyled";
+
+import type { DetailCard } from "src/utils/apiType";
 
 interface CardProps {
   card: DetailCard;
@@ -35,7 +39,7 @@ const Card = ({ card, currentIdList }: CardProps) => {
             <CalendarTodayIcon width={18} height={18} color={"#787486"} />
             {formatData(card.createdAt)}
           </S.CardCreatedAt>
-          <S.CardWriterImage src={card.assignee.profileImageUrl} alt={`${card.assignee.nickname}의 프로필 이미지`} />
+          <UserProfileImage profileImageUrl={card.assignee.profileImageUrl} />
         </S.CardFooter>
       </S.CardLayout>
     </>
