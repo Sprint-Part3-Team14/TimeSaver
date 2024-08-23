@@ -17,9 +17,9 @@ const ProfileInfo = () => {
 
   return (
     <S.ProfileInfoContainer>
-      <S.ProfileLink to="/myinvitation">
+      <S.ProfileLink to="/my-invitation">
         <Members members={[myProfile]} totalCount={1} />
-        <div>{myProfile.nickname}</div>
+        <S.NicknameText>{myProfile.nickname}</S.NicknameText>
       </S.ProfileLink>
       <ProfilePopup />
     </S.ProfileInfoContainer>

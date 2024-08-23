@@ -41,17 +41,18 @@ const AuthNav = ({ dashboardId }: Props) => {
   const title = dashboardId ? dashboardInfo?.title : "내 대시보드";
   return (
     <S.HeaderContainer>
-      <S.TitleContainer>
-        <S.Text>{title}</S.Text>
-        {dashboardInfo?.createdByMe && <CrownIcon width={18} height={28} />}
-      </S.TitleContainer>
+      <S.LogoAndTitleContainer>
+        <S.LogoContainer>
+          <S.Logo />
+        </S.LogoContainer>
+        <S.TitleContainer>
+          <S.Text>{title}</S.Text>
+          {dashboardInfo?.createdByMe && <CrownIcon width={18} height={28} />}
+        </S.TitleContainer>
+      </S.LogoAndTitleContainer>
       <S.NavLinks>
         {dashboardId && (
-          <DashboardInfo
-            createdByMe={dashboardInfo?.createdByMe}
-            dashboardId={dashboardId}
-            memberList={memberList}
-          />
+          <DashboardInfo createdByMe={dashboardInfo?.createdByMe} dashboardId={dashboardId} memberList={memberList} />
         )}
         <ProfileInfo />
       </S.NavLinks>
