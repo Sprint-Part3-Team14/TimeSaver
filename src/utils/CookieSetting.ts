@@ -2,23 +2,20 @@ import Cookies from "js-cookie";
 
 // 쿠키를 가져오는 함수
 export function getCookie(name: string): string | undefined {
-  const cookie = Cookies.get(name);
-  console.log(`Get Cookie [${name}]:`, cookie);
-  return cookie;
+  return Cookies.get(name);
 }
 
 // accessToken을 쿠키로 저장하는 함수
 export function setAccessTokenCookie(accessTokenValue: string): void {
   Cookies.set("accessToken", accessTokenValue, {
-    expires: 1 / 48, // 30분
+    expires: 1 / 24, // 수명: 1시간 (1/24일)
     path: "/",
-    // secure: true, // 로컬에서는 주석처리
+    secure: true,
     sameSite: "strict",
   });
-  console.log("AccessToken set in cookie:", accessTokenValue);
 }
 
-// 생성한 쿠키 삭제하는 함수 (accessToken)
+// 생성한 모든 쿠키 삭제하는 함수 (accessToken)
 export function removeAllTokenCookies(): void {
   deleteCookie("accessToken");
 }
