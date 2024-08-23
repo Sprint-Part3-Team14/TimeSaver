@@ -14,6 +14,7 @@ import {
   FixColumns,
   FixComments,
   FixDashboard,
+  FixProfile,
   InviteDashboard,
   MembersSearch,
   ResponseInvitation,
@@ -296,3 +297,31 @@ export function deleteMembers(memberId: number) {
  * 내 정보 수정
  * 프로필 이미지 업로드
  */
+
+// 내 정보 조회
+export function getMyProfile() {
+  return fetcher("/users/me", "GET");
+}
+
+// 내 정보 수정
+export function putMyProfile(body: FixProfile) {
+  return fetcher("/users/me", "PUT", body);
+}
+
+// 프로필 이미지 업로드
+export async function postMyProfile(file: File) {
+  const accessToken = getCookie("accessToken");
+
+  const imageFormData = new FormData();
+  imageFormData.append("image", file);
+
+  const response = await fetch(`${BASE_URL}/users/me/image`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: imageFormData,
+  });
+  const result = await response.json();
+  return result;
+}
