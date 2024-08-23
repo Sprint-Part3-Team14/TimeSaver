@@ -20,7 +20,7 @@ const ColorButton = ({
           <CheckIcon width={20} height={20} color={theme.color.white} />
         </S.CheckIcon>
       )}
-      <S.ColorButton type="button" color={color} onClick={handleSelectColor} />
+      <S.ColorButton type="button" color={color} onClick={handleSelectColor} value={color} />
     </S.ButtonBox>
   );
 };
