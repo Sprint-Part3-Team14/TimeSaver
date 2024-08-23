@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DashboardSearch, MembersSearch } from "src/utils/apiType";
 import { getDashboardDetails, getMembers } from "src/utils/api";
-import CrownIcon from "../../Icons/CrownIcon";
 import * as S from "./AuthNavStyled";
 import DashboardInfo from "./AuthNav/DashboardInfo";
 import { MembersProps } from "./AuthNav/Members";
@@ -26,26 +25,32 @@ const AuthNav = ({ dashboardId }: Props) => {
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
   useEffect(() => {
-    const fetchDashboardData = async () => {
-      if (dashboardId) {
-        try {
-          const dashboardQuery: DashboardSearch = { id: dashboardId };
-          const fetchedDashboardInfo = await getDashboardDetails(dashboardQuery);
-          setDashboardInfo(fetchedDashboardInfo);
+    if (!dashboardId) {
+      return;
+    }
 
-          const memberQuery: MembersSearch = { page: 1, size: 10 };
-          const fetchedMembers = await getMembers(memberQuery);
-          setMemberList(fetchedMembers);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
+    const fetchDashboardData = async () => {
+      try {
+        const dashboardQuery: DashboardSearch = { id: dashboardId };
+        const fetchedDashboardInfo = await getDashboardDetails(dashboardQuery);
+        setDashboardInfo(fetchedDashboardInfo);
+
+        const memberQuery: MembersSearch = { page: 1, size: 10 };
+        const fetchedMembers = await getMembers(memberQuery);
+        setMemberList(fetchedMembers);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchDashboardData();
   }, [dashboardId]);
 
-  const title = dashboardId && dashboardInfo ? dashboardInfo.title : "내 대시보드";
+  if (!dashboardId) {
+    return null;
+  }
+
+  const title = dashboardInfo ? dashboardInfo.title : "내 대시보드";
 
   return (
     <S.HeaderContainer>
@@ -54,12 +59,11 @@ const AuthNav = ({ dashboardId }: Props) => {
           <S.Logo />
         </S.LogoContainer>
         <S.TitleContainer>
-          <S.Text>{title}</S.Text>
-          {dashboardInfo?.createdByMe && <CrownIcon width={18} height={28} />}
+          <S.Crown createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.Crown>
         </S.TitleContainer>
       </S.LogoAndTitleContainer>
       <S.NavLinks>
-        {dashboardId && dashboardInfo && memberList && (
+        {dashboardInfo && memberList && (
           <DashboardInfo createdByMe={dashboardInfo.createdByMe} dashboardId={dashboardId} memberList={memberList} />
         )}
         <ProfileInfo />

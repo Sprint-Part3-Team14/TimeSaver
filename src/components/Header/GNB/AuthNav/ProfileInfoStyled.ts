@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import theme from "src/styles/theme";
 
 export const ProfileInfoContainer = styled.div`
   ${props => props.theme.displays.rowCenter};
@@ -12,7 +13,7 @@ export const ProfileInfoContainer = styled.div`
 `;
 
 export const ProfileLink = styled(Link)`
-  ${props => props.theme.displays.rowCenter};
+  ${theme.displays.rowCenter};
   gap: 6rem;
   text-decoration: none;
   color: inherit;
@@ -25,8 +26,8 @@ export const ProfileLink = styled(Link)`
 `;
 
 export const NicknameText = styled.div`
-  color: ${props => props.theme.color.black700};
+  color: ${theme.color.black700};
   font-family: Inter;
-  font-size: ${props => props.theme.fontSize.large};
+  font-size: ${theme.fontSize.large};
   font-weight: 500;
 `;
