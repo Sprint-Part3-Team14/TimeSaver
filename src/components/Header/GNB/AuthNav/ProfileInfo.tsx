@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getUserProfile } from "src/utils/api";
 import Members from "./Members";
 import * as S from "./ProfileInfoStyled";
 import ProfilePopup from "./ProfilePopup";
 
+interface UserProfile {
+  id: number;
+  nickname: string;
+  profileImageUrl: string | null;
+}
+
 const ProfileInfo = () => {
-  const loginInfo = {
-    id: 1,
-    nickname: "한태욱",
-    profileImageUrl: "",
-  };
-  const myProfile = {
-    id: loginInfo.id,
-    nickname: loginInfo.nickname,
-    profileImageUrl: loginInfo.profileImageUrl,
-  };
+  const [myProfile, setMyProfile] = useState<UserProfile | null>(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const profileData = await getUserProfile();
+        setMyProfile(profileData);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (!myProfile) {
+    return null;
+  }
 
   return (
     <S.ProfileInfoContainer>

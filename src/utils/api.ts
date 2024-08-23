@@ -19,6 +19,7 @@ import {
   SignIn,
   SignUp,
   UploadProfile,
+  UserProfile,
 } from "./apiType";
 import { getCookie, removeAllTokenCookies, setAccessTokenCookie } from "./CookieSetting";
 import { convertQuery } from "./querySetting";
@@ -34,7 +35,7 @@ async function fetchWithToken(url: string, options: RequestInit = {}) {
     headers.append("Authorization", `Bearer ${accessToken}`);
   }
 
-  if (options.body) {
+  if (!headers.has("Content-Type") && options.body) {
     headers.append("Content-Type", "application/json");
   }
 
@@ -89,17 +90,8 @@ export async function logout() {
   removeAllTokenCookies();
 }
 
-interface ApiResponse {
-  id: number;
-  email: string;
-  nickname: string;
-  profileImageUrl: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 // 회원가입
-export async function postAuthRegister(body: SignUp): Promise<ApiResponse> {
+export async function postAuthRegister(body: SignUp) {
   return fetcher("/users", "POST", body);
 }
 
@@ -163,23 +155,6 @@ export function deleteColumns(columnId: number) {
 }
 
 // 카드 이미지 업로드
-export async function postCardImageFetch(columnId: number, file: File) {
-  const accessToken = getCookie("accessToken");
-
-  const imageFormData = new FormData();
-  imageFormData.append("image", file);
-
-  const response = await fetch(`${BASE_URL}/columns/${columnId}/card-image`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: imageFormData,
-  });
-  const result = await response.json();
-  return result;
-}
-
 export function postCardImage(columnId: number, body: UploadProfile) {
   return fetcher(`/columns/${columnId}`, "POST", body);
 }
@@ -294,3 +269,8 @@ export function deleteMembers(memberId: number) {
  * 내 정보 수정
  * 프로필 이미지 업로드
  */
+
+// 내 정보 조회
+export async function getUserProfile(): Promise<UserProfile> {
+  return fetcher("/users/me", "GET");
+}
