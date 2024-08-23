@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
   background-color: white;
   padding: 2.5rem;
   border-radius: 0.6rem;
