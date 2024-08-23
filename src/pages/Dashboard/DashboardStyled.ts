@@ -26,6 +26,7 @@ export const AddColumnButtonStyled = `
   align-items: center;
   justify-content : center;
   min-width : 30rem;
+  max-width : 30rem;
 
   height : 5.5rem;
   border-radius : 0.8rem;
