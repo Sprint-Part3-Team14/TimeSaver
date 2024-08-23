@@ -199,6 +199,7 @@ export interface ResponseInvitation {
 
 // 회원가입
 export interface SignUp {
+  terms: any;
   email: string;
   nickname: string;
   password: string;
@@ -213,4 +214,14 @@ export interface FixProfile {
 // 프로필 이미지 업로드
 export interface UploadProfile {
   image: string;
+}
+
+// 내 정보 조회
+export interface UserProfile {
+  id: number;
+  email: string;
+  nickname: string;
+  profileImageUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
