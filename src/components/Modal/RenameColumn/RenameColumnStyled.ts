@@ -16,7 +16,7 @@ export const ButtonContainerStyled = styled.div`
 
 // input 관련
 export const RenameInput = styled.input`
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
   border: 0.1rem solid ${theme.color.gray700};
   border-radius: 0.6rem;
   outline-color: ${theme.color.pink400};
