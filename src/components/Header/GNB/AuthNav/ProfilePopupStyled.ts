@@ -2,21 +2,21 @@ import styled from "styled-components";
 
 export const ProfilePopupContainer = styled.div`
   position: absolute;
-  left: 2rem;
+  left: 4.3rem;
   top: 3rem;
   display: none;
   background-color: transparent;
-  padding-top: 5px;
+  padding-top: 1rem;
 `;
 
 export const PopupContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   overflow: hidden;
-  height: 100px;
-  width: 130px;
-  border-radius: 5px;
+  height: 6rem;
+  width: 10rem;
+  border-radius: 8px;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 `;
