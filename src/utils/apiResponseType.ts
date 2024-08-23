@@ -23,3 +23,20 @@ export interface ColumnDataType {
   totalCount: number;
   cursorId: null;
 }
+
+// 대시보드 목록 조회
+export interface DashboardListResponse {
+  dashboards: DashboardInfoData[];
+  totalCount: number;
+  cursorId: null | number;
+}
+
+export interface DashboardInfoData {
+  color: string;
+  createdAt: string;
+  createdByMe: boolean;
+  id: number;
+  title: string;
+  updatedAt: string;
+  userId: number;
+}
