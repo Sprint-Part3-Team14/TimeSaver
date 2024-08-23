@@ -6,6 +6,7 @@ import useToggle from "src/hooks/useToggle";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import DeleteIcon from "src/components/Icons/DeleteIcon";
 import EditIcon from "src/components/Icons/EditIcon";
+import RenameColumnModal from "src/components/Modal/RenameColumn/RenameColumn";
 import Card from "../Card";
 import CreateCardPage from "../SidePage/CreateCard/CreateCardPage";
 import * as S from "./ColumnStyled";
@@ -18,6 +19,7 @@ interface ColumnPropType {
 }
 
 const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
+  const { handleFalse, isTrue, handleTrue } = useToggle();
   const { isTrue: isCreateCard, handleTrue: handleCreateCard, handleFalse: handleCloseCreateCard } = useToggle();
   const { data: cardList } = useQuery({
     queryKey: [`column-${columnId}`, "cardList"],
@@ -44,12 +46,13 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
           currentIdList={{ dashboardId: dashboardId, columnId: columnId, cardId: 0 }}
         />
       )}
+      {isTrue && <RenameColumnModal handleClose={handleFalse} dashboardId={dashboardId} columnId={columnId} />}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>
           <S.CardCount>{cardList.totalCount}</S.CardCount>
           <S.SettingIconLayout>
-            <S.EditColumnButton type="button">
+            <S.EditColumnButton type="button" onClick={handleTrue}>
               <EditIcon width={18} height={18} color={theme.color.gray900} />
             </S.EditColumnButton>
             <S.EditColumnButton type="button">
