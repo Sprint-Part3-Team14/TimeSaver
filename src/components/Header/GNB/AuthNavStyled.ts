@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--tp-gray-300);
+  border-bottom: 0.1rem solid #d9d9d9;
   background-color: white;
   padding-left: 2rem;
   padding-right: 1.2rem;
