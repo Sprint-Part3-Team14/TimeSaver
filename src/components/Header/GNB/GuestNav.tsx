@@ -1,24 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Button from "../../Button/Button";
-import { HeaderContainer, LogoContainer, NavLinks, Logo } from "./GuestNavStyled";
-
+import * as S from "./GuestNavStyled";
 
 const GuestNav = () => {
   return (
-    <HeaderContainer>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
-      <NavLinks>
-        <Link to="/signin">
-          <Button styleVariant="default" size="normal" fontSize="small" width="10%">로그인</Button>
-        </Link>
-        <Link to="/signup">
-          <Button styleVariant="default" size="normal" fontSize="small" width="10%">회원가입</Button>
-        </Link>
-      </NavLinks>
-    </HeaderContainer>
+    <S.HeaderContainer>
+      <S.LogoContainer>
+        <S.Logo />
+      </S.LogoContainer>
+      <S.NavLinks>
+        <S.StyledLink to="/signin">
+          <Button styleVariant="default" size="normal" fontSize="small" width="6rem">
+            로그인
+          </Button>
+        </S.StyledLink>
+        <S.StyledLink to="/signup">
+          <Button styleVariant="default" size="normal" fontSize="small" width="8rem">
+            회원가입
+          </Button>
+        </S.StyledLink>
+      </S.NavLinks>
+    </S.HeaderContainer>
   );
 };
 
