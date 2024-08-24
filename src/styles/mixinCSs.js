@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
-export const AfterCrownIcon = styled.css`
+export const AfterCrownIcon = css`
   &::after {
     content: "";
     width: 1.7rem;

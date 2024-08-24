@@ -1,3 +1,4 @@
+import { AfterCrownIcon } from "src/styles/mixinCSS";
 import styled from "styled-components";
 
 export const Container = styled.ul`
@@ -25,16 +26,7 @@ export const Title = styled.div<{ createdByMe: boolean }>`
   align-items: center;
   gap: 4px;
 
-  ${({ createdByMe }) =>
-    createdByMe
-      ? `&::after {
-    content: "";
-    width: 1.7rem;
-    height: 1.4rem;
-    background-image: url("/images/Icons/crown.svg");
-    background-size: cover;
-  }`
-      : ""}
+  ${({ createdByMe }) => (createdByMe ? AfterCrownIcon : "")}
 `;
 
 export const Name = styled.div`
