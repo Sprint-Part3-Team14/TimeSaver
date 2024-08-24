@@ -224,3 +224,8 @@ export interface UserProfile {
   createdAt: string;
   updatedAt: string;
 }
+
+//
+export interface DashboardSearch {
+  id: number;
+}

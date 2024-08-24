@@ -32,10 +32,10 @@ const AuthNav = ({ dashboardId }: Props) => {
     const fetchDashboardData = async () => {
       try {
         const dashboardQuery: DashboardSearch = { id: dashboardId };
-        const fetchedDashboardInfo = await getDashboardDetails(dashboardQuery);
+        const fetchedDashboardInfo = await getDashboardDetails(dashboardQuery.id);
         setDashboardInfo(fetchedDashboardInfo);
 
-        const memberQuery: MembersSearch = { page: 1, size: 10 };
+        const memberQuery: MembersSearch = { page: 1, size: 10, dashboardId: dashboardId };
         const fetchedMembers = await getMembers(memberQuery);
         setMemberList(fetchedMembers);
       } catch (error) {
