@@ -1,5 +1,5 @@
-import { AfterCrownIcon } from "src/styles/mixinCSS";
 import styled from "styled-components";
+import { AfterCrownIcon } from "src/styles/mixinCSs";
 
 export const Container = styled.ul`
   display: flex;
