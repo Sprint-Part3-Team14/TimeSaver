@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { deleteCookie } from "src/utils/CookieSetting";
 import Button from "../../../Button/Button";
 import * as S from "./ProfilePopupStyled";
 
@@ -12,7 +13,7 @@ const ProfilePopup = () => {
   };
 
   const logout = () => {
-    // removeAccessToken(); // Handle token removal
+    deleteCookie;
     navigate("/signin");
   };
 

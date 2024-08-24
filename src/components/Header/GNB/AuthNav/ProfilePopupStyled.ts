@@ -1,36 +1,37 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const ProfilePopupContainer = styled.div`
   position: absolute;
-  right: -3px;
-  top: 6px;
+  left: 4.3rem;
+  top: 3rem;
   display: none;
   background-color: transparent;
-  padding-top: 5px;
+  padding-top: 1rem;
 `;
 
 export const PopupContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
   overflow: hidden;
-  height: 100px;
-  width: 130px;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  height: 6rem;
+  width: 10rem;
+  border-radius: 0.8rem;
+  background-color: ${theme.color.white};
+  box-shadow: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
 `;
 
 export const ProfilePopupButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
+  ${theme.displays.rowCenter};
+  font-size: ${theme.fontSize.normal};
   font-weight: bold;
-  height: 50px;
+  height: 5rem;
   width: 100%;
+
   &:hover {
-    background-color: #E5E7EB;
-    color: #1F2937;
+    background-color: ${theme.color.gray600};
+    color: ${theme.color.black800};
   }
 `;

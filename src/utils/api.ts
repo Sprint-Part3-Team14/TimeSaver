@@ -21,6 +21,7 @@ import {
   SignIn,
   SignUp,
   UploadProfile,
+  UserProfile,
 } from "./apiType";
 import { getCookie, removeAllTokenCookies, setAccessTokenCookie } from "./CookieSetting";
 import { convertQuery } from "./querySetting";
@@ -323,4 +324,8 @@ export async function postMyProfile(file: File) {
   });
   const result = await response.json();
   return result;
+}
+
+export async function getUserProfile(): Promise<UserProfile> {
+  return fetcher("/users/me", "GET");
 }
