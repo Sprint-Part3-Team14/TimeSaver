@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useQuery } from "@tanstack/react-query";
 import Pagination from "src/components/PagiNation/PagiNation";
 import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
@@ -25,7 +26,7 @@ const ParticipationList = () => {
           })}
           <AddDashboard />
         </S.Grid>
-        {dashboardList.dashboards.length > 0 && <Pagination />}
+        {dashboardList.dashboards.length > 0 && <Pagination currentPage={0} totalPages={0} onPageChange={() => {}} />}
       </S.Layout>
     </>
   );

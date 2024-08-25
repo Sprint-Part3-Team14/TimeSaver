@@ -1,12 +1,24 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
+
+import Pagination from "src/components/PagiNation/PagiNation";
 import { AddButtonStyle } from "../DashboardMember/DashboardMemberStyled";
 import * as S from "./DashboardInvitationStyled";
 
 const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
-  const { data: invitationList } = useQuery(dashboardQueryKeys.invitations(dashboardId, { size: 4, page: 1 }));
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 4;
+
+  const { data: invitationList } = useQuery(
+    dashboardQueryKeys.invitations(dashboardId, { size: pageSize, page: currentPage })
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   if (!invitationList) {
     return <div>없음</div>;
@@ -16,7 +28,11 @@ const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
     <S.SectionContainer>
       <S.SectionHeader>
         <S.SectionTitle>초대 내역</S.SectionTitle>
-        <div>페이지네이션</div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil((invitationList.totalCount || 0) / pageSize)}
+          onPageChange={handlePageChange}
+        />
         <Button width="10rem" exceptionStyle={S.ButtonLayout}>
           <PlusIcon width={16} height={16} color={"#fff"} />
           초대하기
@@ -26,7 +42,7 @@ const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
         <S.InvitationText>이메일</S.InvitationText>
         <S.InvitationContainer>
           {invitationList.invitations.map(invitation => (
-            <S.InvitationOne>
+            <S.InvitationOne key={invitation.id}>
               <S.EmailText>{invitation.inviter.email}</S.EmailText>
               <Button styleVariant="white" exceptionStyle={AddButtonStyle}>
                 취소
