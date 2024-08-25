@@ -78,3 +78,8 @@ export interface MyProfileResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+// 프로필 이미지 업로드
+export interface ProfileImageUploadResponse {
+  profileImageUrl: string;
+}

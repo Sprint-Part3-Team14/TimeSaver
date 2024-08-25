@@ -207,7 +207,7 @@ export interface SignUp {
 // 내 정보 수정
 export interface FixProfile {
   nickname: string;
-  profileImageUrl: string;
+  profileImageUrl: string | null;
 }
 
 // 프로필 이미지 업로드
