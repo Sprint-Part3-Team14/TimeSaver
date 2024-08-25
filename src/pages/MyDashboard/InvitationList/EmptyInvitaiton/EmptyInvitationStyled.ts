@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -5,13 +6,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding: 66px 0;
+  padding: 6.6rem 0;
 `;
 
 export const Text = styled.p`
-  padding-top: 24px;
+  padding-top: 2.4rem;
 
-  color: ${({ theme }) => theme.color.gray800};
+  color: ${theme.color.gray800};
   text-align: center;
-  font-size: 18px;
+  font-size: 1.8rem;
 `;

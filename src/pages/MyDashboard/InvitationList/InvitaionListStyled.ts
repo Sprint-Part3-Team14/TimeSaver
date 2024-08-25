@@ -1,34 +1,34 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const Layout = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 1022px;
-  padding-top: 32px;
-  gap: 20px;
+  max-width: 102.2rem;
+  padding-top: 3.2rem;
+  gap: 2rem;
 
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.color.white};
+  border-radius: 0.8rem;
+  background-color: ${theme.color.white};
 `;
 
 export const Title = styled.h1`
-  padding: 0 28px;
+  padding: 0 2.8rem;
 
-  color: ${({ theme }) => theme.color.black700};
-  font-size: 24px;
+  color: ${theme.color.black700};
+  font-size: 2.4rem;
   font-weight: 700;
 `;
 
 export const CategoryBox = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 4px 28px 4px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.4rem 2.8rem 0.4rem;
 `;
 
 export const CategoryTitle = styled.h2`
-  color: ${({ theme }) => theme.color.gray800};
-  font-size: 16px;
-  font-weight: 400;
+  color: ${theme.color.gray800};
+  font-size: 1.6rem;
 `;
 
 export const ListContainer = styled.ul`

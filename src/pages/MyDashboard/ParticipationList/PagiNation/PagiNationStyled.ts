@@ -1,19 +1,17 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  gap: 11px;
+  gap: 1.1rem;
   align-items: center;
   justify-content: flex-end;
 `;
 
 export const Page = styled.p`
-  color: ${({ theme }) => theme.color.black700};
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
+  color: ${theme.color.black700};
+  font-size: 1.4rem;
   font-weight: 400;
-  line-height: normal;
 `;
 
 export const ButtonBox = styled.div`
@@ -21,13 +19,13 @@ export const ButtonBox = styled.div`
 `;
 
 export const LeftButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   padding: 0;
 
-  border-radius: 4px 0px 0px 4px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-  background: ${({ theme }) => theme.color.white};
+  border-radius: 0.4rem 0 0 0.4rem;
+  border: 1px solid ${theme.color.gray700};
+  background: ${theme.color.white};
 
   display: inline-flex;
   justify-content: center;
@@ -35,13 +33,13 @@ export const LeftButton = styled.button`
 `;
 
 export const RightButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   padding: 0;
 
-  border-radius: 0px 4px 4px 0px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-  background: ${({ theme }) => theme.color.white};
+  border-radius: 0 0.4 0.4 0;
+  border: 1px solid ${theme.color.gray700};
+  background: ${theme.color.white};
 
   display: inline-flex;
   justify-content: center;

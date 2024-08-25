@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const Layout = styled.main`
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 4.4rem;
   height: 100vh;
-  padding: 38px 40px;
-  background-color: ${({ theme }) => theme.color.gray500};
+  padding: 3.8rem 4rem;
+  background-color: ${theme.color.gray500};
 `;

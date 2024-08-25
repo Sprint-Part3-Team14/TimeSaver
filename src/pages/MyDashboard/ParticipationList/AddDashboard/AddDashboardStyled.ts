@@ -1,25 +1,23 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 332px;
-  padding: 25.5px 0;
+  max-width: 33.2rem;
+  padding: 2.5rem 0;
   cursor: pointer;
-  gap: 3px;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
+  gap: 0.3rem;
+  border-radius: 0.8rem;
+  border: 1px solid ${theme.color.gray700};
 
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${theme.color.white};
 `;
 
 export const Title = styled.h2`
-  color: ${({ theme }) => theme.color.black700};
+  color: ${theme.color.black700};
   text-align: center;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: normal;
 `;
