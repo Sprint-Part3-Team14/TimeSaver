@@ -4,14 +4,20 @@ import EditIcon from "../../../../components/Icons/EditIcon";
 import * as S from "./AddDashboardStyled";
 
 const AddDashboard = () => {
-  const { isTrue: isModalOpen, handleTrue: handleOpenModal, handleFalse: handleCloseModal } = useToggle();
+  const {
+    isTrue: isOpenCreateDashboard,
+    handleTrue: handleOpenCreateDashboard,
+    handleFalse: handleCloseCreateDashboard,
+  } = useToggle();
 
   return (
-    <S.Container onClick={handleOpenModal} style={{ cursor: "pointer" }}>
-      <S.Title>새로운 대시보드</S.Title>
-      <EditIcon width={16} height={16} color="#33333" />
-      {isModalOpen && <CreateDashboard handleClose={handleCloseModal} />}
-    </S.Container>
+    <>
+      {isOpenCreateDashboard && <CreateDashboard handleClose={handleCloseCreateDashboard} />}
+      <S.Container onClick={handleOpenCreateDashboard} style={{ cursor: "pointer" }}>
+        <S.Title>새로운 대시보드</S.Title>
+        <EditIcon width={16} height={16} color="#33333" />
+      </S.Container>
+    </>
   );
 };
 
