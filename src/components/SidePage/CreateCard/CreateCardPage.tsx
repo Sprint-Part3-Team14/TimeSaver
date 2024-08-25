@@ -1,6 +1,6 @@
 import { SidePageLayout, SidePageHeader } from "src/components/SidePage/SidePage";
-import CreateCard from "../../CreateCard/CreateCard";
-import type { CurrentIdListType } from "../../Card/Card";
+import CreateCard from "src/pages/Dashboard/components/CreateCard/CreateCard";
+import type { CurrentIdListType } from "src/pages/Dashboard/components/Card/Card";
 
 const CreateCardWidth = `
   width : 40%;

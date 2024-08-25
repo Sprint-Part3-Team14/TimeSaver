@@ -8,8 +8,8 @@ import DeleteIcon from "src/components/Icons/DeleteIcon";
 import EditIcon from "src/components/Icons/EditIcon";
 import RenameColumnModal from "src/components/Modal/RenameColumn/RenameColumn";
 import DeleteColumn from "src/components/Modal/DeleteColumn/DeleteColumn";
+import CreateCardPage from "src/components/SidePage/CreateCard/CreateCardPage";
 import Card from "../Card";
-import CreateCardPage from "../SidePage/CreateCard/CreateCardPage";
 import * as S from "./ColumnStyled";
 import type { ColumnDataType } from "src/utils/apiResponseType";
 
