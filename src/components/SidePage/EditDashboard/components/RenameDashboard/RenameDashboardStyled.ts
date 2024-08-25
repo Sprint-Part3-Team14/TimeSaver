@@ -7,7 +7,7 @@ import { EditDashboardSection } from "../../EditDashboardStyled";
 export const ContainerStyled = styled(EditDashboardSection)`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.9rem;
   justify-content: center;
   flex-grow: 0;
 `;
@@ -21,7 +21,7 @@ export const Title = styled.label`
 export const ColorButtonSection = styled(ColorButtonContainer)``;
 
 export const RenameInput = styled(InputStyle)`
-  padding: 0.1rem 1rem;
+  padding: 1.6rem 1rem;
   outline-color: ${theme.color.pink400};
   width: auto;
 
@@ -39,4 +39,5 @@ export const HeaderLayout = styled.div`
 
 export const ButtonLayout = `
   margin-left : auto;
+  padding : 1.3rem 0;
 `;
