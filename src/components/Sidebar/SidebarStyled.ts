@@ -24,7 +24,7 @@ export const List = styled.a`
 export const Title = styled.div<{ createdByMe: boolean }>`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 1rem;
 
   ${({ createdByMe }) => (createdByMe ? AfterCrownIcon : "")}
 `;
