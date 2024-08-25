@@ -35,6 +35,10 @@ export const GridText = styled.p`
   ${CommonPadding}
 `;
 
+export const MemberContainr = styled.div`
+  min-height: 22rem;
+`;
+
 export const MemberOne = styled.div`
   display: flex;
   justify-content: space-between;

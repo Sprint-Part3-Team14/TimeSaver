@@ -21,7 +21,7 @@ const EditDashboard = ({ handleClose, dashboardId }: { handleClose: () => void; 
       </SidePageHeader>
       <S.EditDashboardLayout>
         <RenameDashboard dashboardId={dashboardId} />
-        <DashboardMember dashboardMemberList={dashboardMemberList} />
+        <DashboardMember dashboardMemberList={dashboardMemberList} dashboardId={dashboardId} />
         <S.EditDashboardSection>초대 내역</S.EditDashboardSection>
       </S.EditDashboardLayout>
     </SidePageLayout>
