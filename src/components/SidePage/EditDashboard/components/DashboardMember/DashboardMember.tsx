@@ -12,12 +12,14 @@ const DashboardMember = ({ dashboardMemberList }: { dashboardMemberList: GetMemb
       </S.HeaderLayout>
       <S.BodyLayout>
         <S.GridText>이름</S.GridText>
-        {dashboardMemberList.members.map(member => (
+        {dashboardMemberList.members.map((member, index) => (
           <S.MemberOne>
             <UserProfile profileImageUrl={member.profileImageUrl} nickName={member.nickname} />
-            <Button styleVariant="white" width={"8.4rem"}>
-              삭제
-            </Button>
+            {index !== 0 && (
+              <Button styleVariant="white" width={"8.4rem"}>
+                삭제
+              </Button>
+            )}
           </S.MemberOne>
         ))}
       </S.BodyLayout>
