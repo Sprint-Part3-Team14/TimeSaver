@@ -1,58 +1,103 @@
+import { CommonPadding } from "src/components/SidePage/EditDashboard/components/DashboardMember/DashboardMemberStyled";
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
-export const Layout = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-  width: 62rem;
-
-  padding: 3.2rem 2.8rem 2.8rem;
-
-  border-radius: 8px;
-  background: ${({ theme }) => theme.color.white};
+export const PageSetting = `
+  width : 40%;
+  max-height : 100vh;
+  overflow-y : scroll;
+  overflow-x : hidden;
 `;
 
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.color.black700};
+export const AddHeaderStyle = `
+  gap : 1.5rem;
+`;
+
+export const AddButtonStyle = `
+  margin-top : -1.5rem;
+
+`;
+
+export const Container = styled.div`
+  ${CommonPadding}
+  padding: 3.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+`;
+
+export const TitleStyle = styled.h2`
+  color: ${theme.color.black700};
   font-size: 2.4rem;
   font-weight: 700;
 `;
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 2rem;
+export const PageTitleStyle = styled(TitleStyle)`
+  margin-right: auto;
 `;
 
-export const InputBox = styled.div`
+export const FormLayout = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+export const InputLabel = styled.label`
+  color: ${theme.color.black700};
+  font-size: 1.8rem;
+  font-weight: 500;
+
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
 `;
 
-export const Label = styled.label`
-  color: ${({ theme }) => theme.color.black700};
+export const InputStyle = styled.input`
+  border-radius: 0.6rem;
+  border: 0.1rem solid ${theme.color.gray700};
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  outline-color: ${theme.color.pink400};
+
+  &:placeholder {
+    color: v ${theme.color.gray800};
+  }
+`;
+
+export const PassWordInputBox = styled(InputLabel)`
+  height: 11rem;
+`;
+
+export const UserEmailStyle = styled.p`
+  color: ${theme.color.gray700};
   font-size: 1.8rem;
   font-weight: 500;
+  text-align: center;
+  margin-top: -1.5rem;
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  height: 4.8rem;
-
-  border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-  background: ${({ theme }) => theme.color.white};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.color.gray800};
-  }
-
-  font-size: 1.6rem;
+export const ImageLabel = styled.label`
+  text-align: center;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
 `;
 
-export const ButtonBox = styled.div`
-  width: 8.4rem;
-  align-self: flex-end;
+export const ImageButton = styled.img`
+  border-radius: 50%;
+  background-color: ${theme.color.gray600};
+  width: 21.5rem;
+  height: 21.5rem;
+`;
+
+export const ImageInput = styled.input`
+  display: none;
+`;
+
+export const IconBox = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

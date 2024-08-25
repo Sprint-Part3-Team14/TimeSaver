@@ -1,28 +1,61 @@
-import Button from "../../../components/Button/Button";
+import { SidePageHeader, SidePageLayout } from "src/components/SidePage/SidePage";
+import { MyProfileResponse } from "src/utils/apiResponseType";
+import PlusIcon from "src/components/Icons/PlusIcon";
+import theme from "src/styles/theme";
+import Button from "src/components/Button/Button";
 import * as S from "./ChangePasswordStyled";
 
-const ChangePassword = () => {
+const ChangePassword = ({
+  handleClose,
+  userProfileData,
+}: {
+  handleClose: () => void;
+  userProfileData: MyProfileResponse;
+}) => {
   return (
-    <S.Layout>
-      <S.Title>비밀번호 변경</S.Title>
-      <S.InputContainer>
-        <S.InputBox>
-          <S.Label>현재 비밀번호</S.Label>
-          <S.Input />
-        </S.InputBox>
-        <S.InputBox>
-          <S.Label>새 비밀번호</S.Label>
-          <S.Input />
-        </S.InputBox>
-        <S.InputBox>
-          <S.Label>새 비밀번호 확인</S.Label>
-          <S.Input />
-        </S.InputBox>
-      </S.InputContainer>
-      <S.ButtonBox>
-        <Button>변경</Button>
-      </S.ButtonBox>
-    </S.Layout>
+    <SidePageLayout handleClose={handleClose} addStyle={S.PageSetting}>
+      <SidePageHeader handleClosing={handleClose} addStyle={S.AddHeaderStyle}>
+        <S.PageTitleStyle>계정 관리</S.PageTitleStyle>
+      </SidePageHeader>
+      <S.Container>
+        <S.FormLayout>
+          <S.TitleStyle>프로필 변경</S.TitleStyle>
+          <S.ImageLabel htmlFor="profile-image">
+            <S.IconBox>
+              <PlusIcon width={35} height={35} color={theme.color.pink900} />
+            </S.IconBox>
+            <S.ImageButton />
+          </S.ImageLabel>
+          <S.ImageInput type="file" id="profile-image" />
+          <S.UserEmailStyle>{userProfileData.email}</S.UserEmailStyle>
+          <S.InputLabel>
+            닉네임 변경
+            <S.InputStyle placeholder="새로운 닉네임을 입력해주세요" value={userProfileData.nickname} />
+          </S.InputLabel>
+          <Button type="button" size="large" exceptionStyle={S.AddButtonStyle}>
+            저장
+          </Button>
+        </S.FormLayout>
+        <S.FormLayout>
+          <S.TitleStyle>비밀번호 변경</S.TitleStyle>
+          <S.PassWordInputBox>
+            현재 비밀번호
+            <S.InputStyle placeholder="현재 비밀번호 입력" />
+          </S.PassWordInputBox>
+          <S.PassWordInputBox>
+            새 비밀번호
+            <S.InputStyle placeholder="새 비밀번호 입력" />
+          </S.PassWordInputBox>
+          <S.PassWordInputBox>
+            새 비밀번호 확인
+            <S.InputStyle placeholder="새 비밀번호 입력" />
+          </S.PassWordInputBox>
+          <Button type="button" size="large" exceptionStyle={S.AddButtonStyle}>
+            변경
+          </Button>
+        </S.FormLayout>
+      </S.Container>
+    </SidePageLayout>
   );
 };
 
