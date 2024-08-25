@@ -1,19 +1,12 @@
-import Button from "../../../../components/Button/Button";
+import Button from "src/components/Button/Button";
 import * as S from "./InvitationDahsboardStyled";
+import type { InviterResponse } from "src/utils/apiResponseType";
 
-interface InviteProps {
-  invite: {
-    id: number;
-    name: string;
-    invitor: string;
-  };
-}
-
-const InvitationDashboard = ({ invite }: InviteProps) => {
+const InvitationDashboard = ({ invite }: { invite: InviterResponse }) => {
   return (
     <S.InvitationDashboardBox>
-      <S.Name>{invite.name}</S.Name>
-      <S.Invitor>{invite.invitor}</S.Invitor>
+      <S.Name>{invite.nickname}</S.Name>
+      <S.Invitor>{invite.email}</S.Invitor>
       <S.ButtonBox>
         <Button>수락</Button>
         <Button styleVariant="white">거절</Button>

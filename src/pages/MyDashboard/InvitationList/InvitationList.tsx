@@ -1,42 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
+import { userQueryKeys } from "src/queryFactory/userQueryKeys";
 import InvitationDashboard from "./InvitationDashboard/InvitationDashboard";
 import SearchBar from "./SearchBar/SearchBar";
-
-import * as S from "./InvitaionListStyled";
 import EmptyInvitation from "./EmptyInvitaiton/EmptyInvitation";
-
-const Invitation = [
-  {
-    id: 1,
-    name: "대시보드1",
-    invitor: "초대자1",
-  },
-  {
-    id: 2,
-    name: "대시보드2",
-    invitor: "초대자2",
-  },
-  {
-    id: 3,
-    name: "대시보드3",
-    invitor: "초대자3",
-  },
-  {
-    id: 4,
-    name: "대시보드4",
-    invitor: "초대자4",
-  },
-  {
-    id: 5,
-    name: "대시보드5",
-    invitor: "초대자5",
-  },
-];
+import * as S from "./InvitaionListStyled";
 
 const InvitationList = () => {
+  const { data: invitationList } = useQuery(userQueryKeys.invitationList);
+
+  if (!invitationList) {
+    return <div>없다잉</div>;
+  }
+
   return (
     <S.Layout>
       <S.Title>초대받은 대시보드</S.Title>
-      {Invitation.length > 0 ? (
+      {invitationList.invitations.length > 0 ? (
         <>
           <SearchBar />
           <S.CategoryBox>
@@ -45,8 +24,8 @@ const InvitationList = () => {
             <S.CategoryTitle>수락여부</S.CategoryTitle>
           </S.CategoryBox>
           <S.ListContainer>
-            {Invitation.map(invite => (
-              <InvitationDashboard invite={invite} />
+            {invitationList.invitations.map(invitation => (
+              <InvitationDashboard invite={invitation.inviter} />
             ))}
           </S.ListContainer>
         </>
