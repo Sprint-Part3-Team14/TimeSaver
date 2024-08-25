@@ -1,31 +1,28 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 332px;
-  padding: 25px 20px;
+  max-width: 33.2rem;
+  padding: 2.5rem 2rem;
   cursor: pointer;
-  gap: 3px;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-
-  background-color: ${({ theme }) => theme.color.white};
+  gap: 0.3rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid ${theme.color.gray700};
+  background-color: ${theme.color.white};
 `;
 
 export const TitleBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1.6rem;
 `;
 
 export const Title = styled.h2`
-  color: ${({ theme }) => theme.color.black700};
+  color: ${theme.color.black700};
   text-align: center;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: normal;
 `;

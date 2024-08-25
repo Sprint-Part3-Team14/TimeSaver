@@ -1,19 +1,11 @@
-import ArrowBackwardIcon from "../../../../components/Icons/ArrowBackwardIcon";
-import CrownIcon from "../../../../components/Icons/CrownIcon";
-import EllipseIcon from "../../../../components/Icons/EllipseIcon";
+import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
+import CrownIcon from "src/components/Icons/CrownIcon";
+import EllipseIcon from "src/components/Icons/EllipseIcon";
+import { DashboardInfoData } from "src/utils/apiResponseType";
 
 import * as S from "./ParticipationDashboardStyeld";
 
-interface DashboardItemProps {
-  dashboardItem: {
-    id: number;
-    title: string;
-    color: string;
-    createdByMe: boolean;
-  };
-}
-
-const ParticipationDashboard = ({ dashboardItem }: DashboardItemProps) => {
+const ParticipationDashboard = ({ dashboardItem }: { dashboardItem: DashboardInfoData }) => {
   return (
     <S.Container>
       <S.TitleBox>

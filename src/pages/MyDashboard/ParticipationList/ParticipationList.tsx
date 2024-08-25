@@ -1,51 +1,30 @@
-import Pagination from "../../../components/PagiNation/PagiNation";
+import { useQuery } from "@tanstack/react-query";
+import Pagination from "src/components/PagiNation/PagiNation";
+import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import AddDashboard from "./AddDashboard/AddDashboard";
 import ParticipationDashboard from "./ParicipationDashboard/ParticipationDashboard";
 import * as S from "./ParticipationListStyled";
 
-const DashboardList = [
-  {
-    id: 1,
-    title: "테스트1",
-    color: "#123123",
-    createdByMe: true,
-  },
-  {
-    id: 2,
-    title: "테스트2",
-    color: "#456456",
-    createdByMe: false,
-  },
-  {
-    id: 3,
-    title: "테스트3",
-    color: "#789789",
-    createdByMe: true,
-  },
-  {
-    id: 4,
-    title: "테스트4",
-    color: "#ABCABC",
-    createdByMe: false,
-  },
-  {
-    id: 5,
-    title: "테스트5",
-    color: "#DEFDEF",
-    createdByMe: true,
-  },
-];
-
 const ParticipationList = () => {
+  const { data: dashboardList } = useQuery(dashboardQueryKeys.list({ navigationMethod: "pagination" }));
+
+  if (!dashboardList?.dashboards) {
+    return <div>데이터가 없어요</div>;
+  }
+
   return (
     <S.Layout>
       <S.Grid>
         <AddDashboard />
-        {DashboardList.map(dashboard => (
-          <ParticipationDashboard dashboardItem={dashboard} key={dashboard.id} />
-        ))}
+        {dashboardList.dashboards.map((dashboard, index) => {
+          if (index > 4) {
+            return;
+          } else {
+            return <ParticipationDashboard dashboardItem={dashboard} key={dashboard.id} />;
+          }
+        })}
       </S.Grid>
-      {DashboardList.length > 0 && <Pagination />}
+      {dashboardList.dashboards.length > 0 && <Pagination />}
     </S.Layout>
   );
 };
