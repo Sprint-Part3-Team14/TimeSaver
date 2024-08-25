@@ -3,7 +3,7 @@ import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
 import formatData from "src/utils/formatDate";
 import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
 
-import CardDetail from "../SidePage/CardDetail/CardDetail";
+import CardDetail from "../../../../components/SidePage/CardDetail/CardDetail";
 
 import * as S from "./CardStyled";
 

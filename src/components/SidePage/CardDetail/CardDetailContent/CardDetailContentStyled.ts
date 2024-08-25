@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
-import { Container as TagBox } from "../../../CreateCard/AddTag/AddTagStyled";
+import { Container as TagBox } from "src/pages/Dashboard/components/CreateCard/AddTag/AddTagStyled";
 
 export const Container = styled.div<{ addStyle?: string }>`
   display: flex;

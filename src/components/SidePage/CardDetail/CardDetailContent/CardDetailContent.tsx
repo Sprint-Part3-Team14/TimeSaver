@@ -1,7 +1,7 @@
 import { DetailCard } from "src/utils/apiType";
 import UserProfile from "src/components/UserProfile/UserProfile";
-import Tag from "../../../CreateCard/AddTag/Tag/Tag";
-import * as T from "../../../CreateCard/AddTag/AddTagStyled";
+import Tag from "src/pages/Dashboard/components/CreateCard/AddTag/Tag/Tag";
+import * as T from "src/pages/Dashboard/components/CreateCard/AddTag/AddTagStyled";
 import * as S from "./CardDetailContentStyled";
 
 const TodoDetailContent = ({ todoDetailData, addStyle }: { todoDetailData: DetailCard; addStyle?: string }) => {

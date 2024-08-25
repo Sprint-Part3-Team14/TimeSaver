@@ -3,11 +3,11 @@ import KebabIcon from "src/components/Icons/KebabIcon";
 import { SidePageLayout, SidePageBody, SidePageHeader } from "src/components/SidePage/SidePage";
 import { getCardInformation, getComments } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
-import { CurrentIdListType } from "../../Card/Card";
-import CreateCard from "../../CreateCard/CreateCard";
+import EditingDashboard from "src/components/SidePage/CardDetail/EditCard/EditingDashboard";
+import CommentSection from "src/components/SidePage/CardDetail/CommentSection/CommentSection";
+import { CurrentIdListType } from "../../../pages/Dashboard/components/Card/Card";
+import CreateCard from "../../../pages/Dashboard/components/CreateCard/CreateCard";
 import TodoDetailContent from "./CardDetailContent/CardDetailContent";
-import EditingDashboard from "./Editing/EditingDashboard";
-import CommentSection from "./CommentSection/CommentSection";
 import * as S from "./CardDetailStyled";
 import type { DetailCard, GetComments } from "src/utils/apiType";
 

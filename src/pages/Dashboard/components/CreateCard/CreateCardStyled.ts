@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SidePageHeader } from "src/components/SidePage/SidePageStyled";
 import theme from "src/styles/theme";
-import { Button } from "../SidePage/CardDetail/CardDetailStyled";
+import { Button } from "src/components/SidePage/CardDetail/CardDetailStyled";
 
 export const ButtonAddStyle = `
   max-width : 12rem;
