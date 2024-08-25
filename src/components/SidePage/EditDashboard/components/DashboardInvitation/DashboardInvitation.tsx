@@ -28,15 +28,15 @@ const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
     <S.SectionContainer>
       <S.SectionHeader>
         <S.SectionTitle>초대 내역</S.SectionTitle>
+        <Button width="10rem" exceptionStyle={S.ButtonLayout}>
+          <PlusIcon width={16} height={16} color={"#fff"} />
+          초대하기
+        </Button>
         <Pagination
           currentPage={currentPage}
           totalPages={Math.ceil((invitationList.totalCount || 0) / pageSize)}
           onPageChange={handlePageChange}
         />
-        <Button width="10rem" exceptionStyle={S.ButtonLayout}>
-          <PlusIcon width={16} height={16} color={"#fff"} />
-          초대하기
-        </Button>
       </S.SectionHeader>
       <div>
         <S.InvitationText>이메일</S.InvitationText>
