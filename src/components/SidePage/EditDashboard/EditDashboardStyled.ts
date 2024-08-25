@@ -14,7 +14,7 @@ export const EditDashboardLayout = styled.form`
 `;
 
 export const EditDashboardSection = styled.div`
-  padding: 3.5rem;
+  padding: 2rem 3rem 3rem;
   flex-basis: 0;
 
   &:not(:last-child) {

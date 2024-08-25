@@ -1,46 +1,37 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  gap: 11px;
-  align-items: center;
-  justify-content: flex-end;
+export const PaginationContainer = styled.div`
+  ${theme.displays.rowCenter};
+  margin: 20px 0;
 `;
 
-export const Page = styled.p`
-  color: ${({ theme }) => theme.color.black700};
-  font-family: Inter;
-  font-size: 14px;
-`;
-
-export const ButtonBox = styled.div`
-  display: flex;
-`;
-
-export const LeftButton = styled.button`
+export const PageButton = styled.button<{ disabled?: boolean }>`
+  ${theme.displays.rowCenter};
   width: 40px;
   height: 40px;
-  padding: 0;
+  border: 1px solid ${theme.color.gray600};
+  background-color: ${({ disabled }) => (disabled ? theme.color.gray500 : theme.color.white)};
+  color: ${({ disabled }) => (disabled ? theme.color.gray900 : theme.color.black900)};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
 
-  border-radius: 4px 0px 0px 4px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-  background: ${({ theme }) => theme.color.white};
+  &:first-child {
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+  }
 
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  &:last-child {
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: ${theme.color.gray600};
+  }
 `;
 
-export const RightButton = styled.button`
-  width: 40px;
-  height: 40px;
-  padding: 0;
-
-  border-radius: 0px 4px 4px 0px;
-  border: 1px solid ${({ theme }) => theme.color.gray700};
-  background: ${({ theme }) => theme.color.white};
-
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+export const PageNumber = styled.span`
+  font-size: ${theme.fontSize.normal};
+  margin: 0 1rem;
 `;
