@@ -25,7 +25,7 @@ const InvitationList = () => {
           </S.CategoryBox>
           <S.ListContainer>
             {invitationList.invitations.map(invitation => (
-              <InvitationDashboard invite={invitation.inviter} />
+              <InvitationDashboard key={invitation.id} invite={invitation.inviter} invitationId={invitation.id} />
             ))}
           </S.ListContainer>
         </>

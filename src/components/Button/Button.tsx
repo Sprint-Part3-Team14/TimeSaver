@@ -28,6 +28,7 @@ const Button = ({
   width = "100%",
   disabled,
   exceptionStyle,
+  ...rest
 }: ButtonProps) => {
   return (
     <S.Container
@@ -39,7 +40,8 @@ const Button = ({
       size={size}
       width={width}
       disabled={disabled}
-      exceptionStyle={exceptionStyle}>
+      exceptionStyle={exceptionStyle}
+      {...rest}>
       {children}
     </S.Container>
   );
