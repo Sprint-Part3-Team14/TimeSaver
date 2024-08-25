@@ -68,3 +68,13 @@ export interface InvitationType {
   id: number;
   inviter: InviterResponse;
 }
+
+// 내 정보 조회
+export interface MyProfileResponse {
+  id: number;
+  email: string;
+  nickname: string;
+  profileImageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+}
