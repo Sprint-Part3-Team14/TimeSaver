@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
+import Button from "src/components/Button/Button";
 import { SidePageHeader, SidePageLayout } from "../SidePage";
 import DashboardMember from "./components/DashboardMember/DashboardMember";
 import RenameDashboard from "./components/RenameDashboard/RenameDashboard";
@@ -24,6 +25,9 @@ const EditDashboard = ({ handleClose, dashboardId }: { handleClose: () => void; 
         <RenameDashboard dashboardId={dashboardId} />
         <DashboardMember dashboardMemberList={dashboardMemberList} dashboardId={dashboardId} />
         <DashboardInvitation dashboardId={dashboardId} />
+        <Button styleVariant="white" size="large" exceptionStyle={S.AddButtonStyle}>
+          대시보드 삭제하기
+        </Button>
       </S.EditDashboardLayout>
     </SidePageLayout>
   );

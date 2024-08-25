@@ -32,3 +32,9 @@ export const SidePageTitleStyled = styled.h1`
   font-size: 2.4rem;
   font-weight: 700;
 `;
+
+export const AddButtonStyle = `
+  margin : 3.5rem;
+  font-weight : 900;
+  color : ${theme.color.pink900};
+`;
