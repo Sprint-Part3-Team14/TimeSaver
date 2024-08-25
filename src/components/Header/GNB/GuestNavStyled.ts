@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
   height: 7rem;
   ${props => props.theme.displays.spaceBetween};
   border-bottom: 0.1rem solid ${props => props.theme.color.gray700};
+  margin: 0 2rem;
 `;
 
 export const LogoContainer = styled.div`
