@@ -1,11 +1,11 @@
-import { SidePageHeader, SidePageLayout } from "src/components/SidePage/SidePage";
 import { MyProfileResponse } from "src/utils/apiResponseType";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import theme from "src/styles/theme";
 import Button from "src/components/Button/Button";
-import * as S from "./ChangePasswordStyled";
+import { SidePageHeader, SidePageLayout } from "../SidePage";
+import * as S from "./EditAcountStyled";
 
-const ChangePassword = ({
+const EditAccount = ({
   handleClose,
   userProfileData,
 }: {
@@ -59,4 +59,4 @@ const ChangePassword = ({
   );
 };
 
-export default ChangePassword;
+export default EditAccount;

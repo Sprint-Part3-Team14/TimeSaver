@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import Landing from "./pages/Landing";
 import Signup from "./pages/SignUp";
-import Mypage from "./pages/Mypage";
 import Dashboard from "./pages/Dashboard";
 import Edit from "./pages/Edit";
 import DashboardLayout from "./DashboardLayout";
@@ -26,7 +25,7 @@ const App = () => {
               <Route path="my-dashboard" element={<MyDashboard />} />
               <Route path="/dashboard/:id" element={<Dashboard />} />
               <Route path="/dashboard/:id/edit" element={<Edit />} />
-              <Route path="/my-page" element={<Mypage />} />
+
               <Route path="*" element={<Navigate to="/notFound" />} />
             </Route>
             <Route path="/notFound" element={<Notfound />} />
