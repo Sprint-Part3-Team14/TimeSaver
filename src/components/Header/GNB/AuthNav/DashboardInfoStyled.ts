@@ -38,8 +38,8 @@ export const CustomButton = styled.button`
 `;
 
 export const Icon = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 1.8rem;
+  height: 1.8rem;
   vertical-align: middle;
 `;
 
