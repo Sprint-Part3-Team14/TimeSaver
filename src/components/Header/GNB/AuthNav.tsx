@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { DashboardSearch, MembersSearch } from "src/utils/apiType";
+import { useParams } from "react-router-dom";
 import { getDashboardDetails, getMembers } from "src/utils/api";
 import * as S from "./AuthNavStyled";
 import DashboardInfo from "./AuthNav/DashboardInfo";
 import { MembersProps } from "./AuthNav/Members";
 import ProfileInfo from "./AuthNav/ProfileInfo";
 
-interface Props {
-  dashboardId?: number;
-}
-
-export interface I_dashboardData {
+interface I_dashboardData {
   id: number;
   title: string;
   color: string;
@@ -20,22 +16,23 @@ export interface I_dashboardData {
   userId: number;
 }
 
-const AuthNav = ({ dashboardId }: Props) => {
+const AuthNav = () => {
+  const { id } = useParams<{ id: string }>();
   const [dashboardInfo, setDashboardInfo] = useState<I_dashboardData | null>(null);
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
   useEffect(() => {
-    if (!dashboardId) {
+    if (!id) {
       return;
     }
 
     const fetchDashboardData = async () => {
       try {
-        const dashboardQuery: DashboardSearch = { id: dashboardId };
-        const fetchedDashboardInfo = await getDashboardDetails(dashboardQuery.id);
+        const numericDashboardId = parseInt(id, 10);
+        const fetchedDashboardInfo = await getDashboardDetails(numericDashboardId);
         setDashboardInfo(fetchedDashboardInfo);
 
-        const memberQuery: MembersSearch = { page: 1, size: 10, dashboardId: dashboardId };
+        const memberQuery = { page: 1, size: 10, dashboardId: numericDashboardId };
         const fetchedMembers = await getMembers(memberQuery);
         setMemberList(fetchedMembers);
       } catch (error) {
@@ -44,9 +41,9 @@ const AuthNav = ({ dashboardId }: Props) => {
     };
 
     fetchDashboardData();
-  }, [dashboardId]);
+  }, [id]);
 
-  if (!dashboardId) {
+  if (!id || !dashboardInfo) {
     return null;
   }
 
@@ -54,20 +51,25 @@ const AuthNav = ({ dashboardId }: Props) => {
 
   return (
     <S.HeaderContainer>
+      <S.LogoContainer>
+        <S.Logo />
+      </S.LogoContainer>
       <S.LogoAndTitleContainer>
-        <S.LogoContainer>
-          <S.Logo />
-        </S.LogoContainer>
         <S.TitleContainer>
-          <S.Crown createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.Crown>
+          <S.Crown createdByMe={dashboardInfo.createdByMe}>{title}</S.Crown>
         </S.TitleContainer>
+
+        <S.NavLinks>
+          {memberList && (
+            <DashboardInfo
+              createdByMe={dashboardInfo.createdByMe}
+              dashboardId={parseInt(id, 10)}
+              memberList={memberList}
+            />
+          )}
+          <ProfileInfo />
+        </S.NavLinks>
       </S.LogoAndTitleContainer>
-      <S.NavLinks>
-        {dashboardInfo && memberList && (
-          <DashboardInfo createdByMe={dashboardInfo.createdByMe} dashboardId={dashboardId} memberList={memberList} />
-        )}
-        <ProfileInfo />
-      </S.NavLinks>
     </S.HeaderContainer>
   );
 };

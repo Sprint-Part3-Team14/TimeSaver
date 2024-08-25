@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   ${props => props.theme.displays.spaceBetween};
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
+  margin: 0 2rem;
 
   @media ${theme.device.mobile} {
     padding-left: 4rem;
@@ -22,7 +23,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoAndTitleContainer = styled.div`
-  width: 35%;
+  width: 80%;
   ${theme.displays.spaceBetween};
 `;
 
@@ -31,7 +32,6 @@ export const TitleContainer = styled.div`
   font-size: ${theme.fontSize.large};
   font-weight: bold;
   padding-left: 1rem;
-  gap: 0.5rem;
   align-items: center;
 `;
 
@@ -69,10 +69,10 @@ export const Text = styled.p`
 `;
 
 export const Crown = styled.div<{ createdByMe: boolean }>`
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   font-weight: bold;
   position: relative;
-  padding-left: ${({ createdByMe }) => (createdByMe ? "2rem" : "0")}; // 왕관 위치를 고려한 padding
+  padding-left: ${({ createdByMe }) => (createdByMe ? "2.5rem" : "0")}; // 왕관 위치를 고려한 padding
 
   ${({ createdByMe }) =>
     createdByMe &&
