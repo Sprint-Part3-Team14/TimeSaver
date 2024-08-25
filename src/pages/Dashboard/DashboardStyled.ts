@@ -30,5 +30,5 @@ export const AddColumnButtonStyled = `
 
   height : 5.5rem;
   border-radius : 0.8rem;
-  margin : 2.3rem 0;
+  margin : 2.3rem ;
 `;
