@@ -1,18 +1,23 @@
-import { ButtonHTMLAttributes } from "react";
-import PlusIcon from "src/components/Icons/PlusIcon";
-import theme from "src/styles/theme";
+import useToggle from "src/hooks/useToggle";
+import CreateDashboard from "src/components/Modal/CreateDashboard/CreateDashboard";
+import EditIcon from "src/components/Icons/EditIcon";
 import * as S from "./AddDashboardStyled";
 
-interface AddDashboardButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
-}
+const AddDashboard = () => {
+  const {
+    isTrue: isOpenCreateDashboard,
+    handleTrue: handleOpenCreateDashboard,
+    handleFalse: handleCloseCreateDashboard,
+  } = useToggle();
 
-const AddDashboard = ({ onClick }: AddDashboardButtonProp) => {
   return (
-    <S.Container onClick={onClick}>
-      <S.Title>새로운 대시보드</S.Title>
-      <PlusIcon width={16} height={16} color={theme.color.pink900} />
-    </S.Container>
+    <>
+      {isOpenCreateDashboard && <CreateDashboard handleClose={handleCloseCreateDashboard} />}
+      <S.Container onClick={handleOpenCreateDashboard}>
+        <S.Title>새로운 대시보드</S.Title>
+        <EditIcon width={16} height={16} color="#33333" />
+      </S.Container>
+    </>
   );
 };
 

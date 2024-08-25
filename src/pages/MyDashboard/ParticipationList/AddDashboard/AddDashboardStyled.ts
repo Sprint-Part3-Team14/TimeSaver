@@ -11,7 +11,6 @@ export const Container = styled.button`
   gap: 0.3rem;
   border-radius: 0.8rem;
   border: 1px solid ${theme.color.gray700};
-
   background-color: ${theme.color.white};
 `;
 
