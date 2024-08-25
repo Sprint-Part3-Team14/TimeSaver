@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ProfilePopupContainer = styled.div`
   position: absolute;
-  left: 4.3rem;
+  left: 3rem;
   top: 3rem;
   display: none;
   background-color: transparent;

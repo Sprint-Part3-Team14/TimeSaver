@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../../../Button/Button";
 import Members, { MembersProps } from "./Members";
-
 import * as S from "./DashboardInfoStyled";
 
 interface DashboardInfoProps {
@@ -15,11 +12,20 @@ const DashboardInfo = ({ createdByMe = false, memberList, dashboardId }: Dashboa
   return (
     <S.DashboardInfoContainer>
       {createdByMe && (
-        <Link to={`/dashboard/${dashboardId}/edit`}>
-          <Button styleVariant="default" size="normal" fontSize="small">
-            관리
-          </Button>
-        </Link>
+        <>
+          <S.CustomLink to={`/dashboard/${dashboardId}/edit`}>
+            <S.CustomButton>
+              <S.Icon src="/images/Icons/setting.svg" alt="Setting" />
+              <S.ButtonText>관리</S.ButtonText>
+            </S.CustomButton>
+          </S.CustomLink>
+          <S.CustomLink to={`/dashboard/${dashboardId}/invitation`}>
+            <S.CustomButton>
+              <S.Icon src="/images/Icons/plus.svg" alt="Invite" />
+              <S.ButtonText>초대하기</S.ButtonText>
+            </S.CustomButton>
+          </S.CustomLink>
+        </>
       )}
       {memberList && <Members members={memberList.members} totalCount={memberList.totalCount} />}
     </S.DashboardInfoContainer>
