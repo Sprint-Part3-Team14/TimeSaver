@@ -6,6 +6,7 @@ export const ImageLabel = styled.label`
   position: relative;
   width: fit-content;
   margin: 0 auto;
+  cursor: pointer;
 `;
 
 export const IconBox = styled.div`
@@ -18,8 +19,8 @@ export const IconBox = styled.div`
 export const ImageButton = styled.img`
   border-radius: 50%;
   background-color: ${theme.color.gray600};
-  width: 21.5rem;
-  height: 21.5rem;
+  width: 22rem;
+  height: 22rem;
 `;
 
 export const ImageInput = styled.input`
@@ -32,4 +33,14 @@ export const UserEmailStyle = styled.p`
   font-weight: 500;
   text-align: center;
   margin-top: -1.5rem;
+`;
+
+export const ImageOverlay = styled(ImageButton)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${theme.color.black800};
+  opacity: 0.8;
+  z-index: -1;
 `;
