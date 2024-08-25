@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "src/styles/theme";
 import { EditDashboardSection } from "../../EditDashboardStyled";
 
-const CommonPadding = `
+export const CommonPadding = `
   padding-left : 3.5rem;
   padding-right : 3.5rem;
 `;
@@ -35,7 +35,7 @@ export const GridText = styled.p`
   ${CommonPadding}
 `;
 
-export const MemberContainr = styled.div`
+export const MemberContainer = styled.div`
   min-height: 22rem;
 `;
 
@@ -52,5 +52,5 @@ export const MemberOne = styled.div`
 `;
 
 export const AddButtonStyle = `
-  display : inline-block;
+  width : 8.4rem;
 `;

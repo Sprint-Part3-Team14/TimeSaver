@@ -34,18 +34,22 @@ const DashboardMember = ({
       </S.HeaderLayout>
       <S.BodyLayout>
         <S.GridText>이름</S.GridText>
-        <S.MemberContainr>
+        <S.MemberContainer>
           {dashboardMemberList.members.map((member, index) => (
             <S.MemberOne>
               <UserProfile profileImageUrl={member.profileImageUrl} nickName={member.nickname} />
               {index !== 0 && (
-                <Button onClick={handleDeleteMember} styleVariant="white" width={"8.4rem"} value={member.id}>
+                <Button
+                  onClick={handleDeleteMember}
+                  styleVariant="white"
+                  value={member.id}
+                  exceptionStyle={S.AddButtonStyle}>
                   삭제
                 </Button>
               )}
             </S.MemberOne>
           ))}
-        </S.MemberContainr>
+        </S.MemberContainer>
       </S.BodyLayout>
     </S.Container>
   );
