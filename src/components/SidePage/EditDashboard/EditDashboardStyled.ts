@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 export const EditDashboardContainer = `
   width : 45%;
+  height  : 100vh;
+  overflow-y : scroll;
+  overflow-x : hidden;
 `;
 
 export const EditDashboardLayout = styled.form`
@@ -12,7 +15,6 @@ export const EditDashboardLayout = styled.form`
 
 export const EditDashboardSection = styled.div`
   padding: 3.5rem;
-  flex-grow: 1;
   flex-basis: 0;
 
   &:not(:last-child) {

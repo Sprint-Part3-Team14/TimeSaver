@@ -3,6 +3,7 @@ import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import { SidePageHeader, SidePageLayout } from "../SidePage";
 import DashboardMember from "./components/DashboardMember/DashboardMember";
 import RenameDashboard from "./components/RenameDashboard/RenameDashboard";
+import DashboardInvitation from "./components/DashboardInvitation/DashboardInvitation";
 import * as S from "./EditDashboardStyled";
 
 const EditDashboard = ({ handleClose, dashboardId }: { handleClose: () => void; dashboardId: number }) => {
@@ -22,7 +23,7 @@ const EditDashboard = ({ handleClose, dashboardId }: { handleClose: () => void; 
       <S.EditDashboardLayout>
         <RenameDashboard dashboardId={dashboardId} />
         <DashboardMember dashboardMemberList={dashboardMemberList} dashboardId={dashboardId} />
-        <S.EditDashboardSection>초대 내역</S.EditDashboardSection>
+        <DashboardInvitation dashboardId={dashboardId} />
       </S.EditDashboardLayout>
     </SidePageLayout>
   );
