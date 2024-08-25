@@ -15,7 +15,7 @@ const EditDashboard = ({ handleClose, dashboardId }: { handleClose: () => void; 
   }
 
   return (
-    <SidePageLayout handleClose={handleClose}>
+    <SidePageLayout handleClose={handleClose} addStyle={S.EditDashboardContainer}>
       <SidePageHeader handleClosing={handleClose} addStyle={S.HeaderStyled}>
         <S.SidePageTitleStyled>대시보드 관리</S.SidePageTitleStyled>
       </SidePageHeader>

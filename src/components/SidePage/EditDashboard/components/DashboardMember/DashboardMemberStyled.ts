@@ -42,7 +42,7 @@ export const MemberOne = styled.div`
   padding: 1.4rem;
   ${CommonPadding}
 
-  &:not(last-child) {
+  &:not(:last-child) {
     border-bottom: 0.1rem solid ${theme.color.gray700};
   }
 `;

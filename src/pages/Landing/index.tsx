@@ -13,11 +13,12 @@ const Page = () => {
     const res = await postAuthLogin(body);
     console.log(res);
   };
+  postAuthLogin({ email: "test@codeit.com", password: "sprint101" });
   const { isTrue, handleTrue, handleFalse } = useToggle();
 
   return (
     <>
-      {isTrue && <EditDashboard handleClose={handleFalse} />}
+      {isTrue && <EditDashboard handleClose={handleFalse} dashboardId={8137} />}
       <button type="button" onClick={handleTrue}>
         등장
       </button>
