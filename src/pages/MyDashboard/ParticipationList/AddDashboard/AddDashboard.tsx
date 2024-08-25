@@ -1,12 +1,17 @@
-import EditIcon from "../../../../components/Icons/EditIcon";
+import { ButtonHTMLAttributes } from "react";
+import PlusIcon from "src/components/Icons/PlusIcon";
+import theme from "src/styles/theme";
 import * as S from "./AddDashboardStyled";
 
-const AddDashboard = () => {
+interface AddDashboardButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
+  onClick: () => void;
+}
+
+const AddDashboard = ({ onClick }: AddDashboardButtonProp) => {
   return (
-    <S.Container>
+    <S.Container onClick={onClick}>
       <S.Title>새로운 대시보드</S.Title>
-      <EditIcon width={16} height={16} color="#33333" />
-      {/*아이콘 변경예정*/}
+      <PlusIcon width={16} height={16} color={theme.color.pink900} />
     </S.Container>
   );
 };
