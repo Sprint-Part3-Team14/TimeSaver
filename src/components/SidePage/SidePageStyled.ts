@@ -41,7 +41,7 @@ export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: strin
   ${({ addStyle }) => (addStyle ? addStyle : "")}
 `;
 
-export const SidePageHeader = styled.header`
+export const SidePageHeader = styled.header<{ addStyle?: string }>`
   padding: 1.5rem 2.3rem;
   box-sizing: border-box;
   grid-area: a;
@@ -50,6 +50,8 @@ export const SidePageHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${({ addStyle }) => addStyle}
 `;
 
 export const SidePageBody = styled.div<{ addStyle?: string }>`

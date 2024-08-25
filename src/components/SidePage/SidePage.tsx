@@ -36,9 +36,17 @@ export const SidePageLayout = ({
   );
 };
 
-export const SidePageHeader = ({ handleClosing, children }: { handleClosing: () => void; children?: ReactNode }) => {
+export const SidePageHeader = ({
+  handleClosing,
+  children,
+  addStyle,
+}: {
+  handleClosing: () => void;
+  children?: ReactNode;
+  addStyle?: string;
+}) => {
   return (
-    <S.SidePageHeader>
+    <S.SidePageHeader addStyle={addStyle}>
       <Button type="button" onClick={handleClosing}>
         <ArrowBackwardIcon width={22} height={22} />
       </Button>
