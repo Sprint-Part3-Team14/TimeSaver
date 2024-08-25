@@ -21,7 +21,7 @@ interface ColumnPropType {
 
 const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
   const { isTrue: isOpenRename, handleTrue: handleOpenRename, handleFalse: handleCloseRename } = useToggle();
-  const { isTrue: isOpenDelete, handleTrue: handleOpenDelete, handleFalse: handleClseDelete } = useToggle();
+  const { isTrue: isOpenDelete, handleTrue: handleOpenDelete, handleFalse: handleCloseDelete } = useToggle();
   const { isTrue: isCreateCard, handleTrue: handleCreateCard, handleFalse: handleCloseCreateCard } = useToggle();
   const { data: cardList } = useQuery({
     queryKey: [`column-${columnId}`, "cardList"],
@@ -51,7 +51,7 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
       {isOpenRename && (
         <RenameColumnModal handleClose={handleCloseRename} dashboardId={dashboardId} columnId={columnId} />
       )}
-      {isOpenDelete && <DeleteColumn handleClose={handleClseDelete} columnId={columnId} dashboardId={dashboardId} />}
+      {isOpenDelete && <DeleteColumn handleClose={handleCloseDelete} columnId={columnId} dashboardId={dashboardId} />}
       <S.DashboardColumnLayout>
         <S.ColumnHeader>
           <S.ColumnName>{columnTitle}</S.ColumnName>
