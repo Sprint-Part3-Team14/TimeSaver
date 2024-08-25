@@ -9,6 +9,7 @@ export const ContainerStyled = styled(EditDashboardSection)`
   flex-direction: column;
   gap: 1.2rem;
   justify-content: center;
+  flex-grow: 0;
 `;
 
 export const Title = styled.label`

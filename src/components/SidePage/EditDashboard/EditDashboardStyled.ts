@@ -7,10 +7,9 @@ export const EditDashboardLayout = styled.form`
 `;
 
 export const EditDashboardSection = styled.div`
-  padding: 4.2rem;
+  padding: 3.5rem;
   flex-grow: 1;
   flex-basis: 0;
-  min-height: 0;
 
   &:not(last-child) {
     border-bottom: 0.1rem solid ${theme.color.gray700};
