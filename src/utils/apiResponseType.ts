@@ -40,3 +40,20 @@ export interface DashboardInfoData {
   updatedAt: string;
   userId: number;
 }
+
+// 내가 받은 초대 목록 조회
+export interface MyInvitationListResponse {
+  cursorId: number | null;
+  invitations: MyInvitationResponse[];
+}
+
+export interface MyInvitationResponse {
+  id: number;
+  inviter: InviterResponse;
+}
+
+export interface InviterResponse {
+  nickname: string;
+  email: string;
+  id: number;
+}
