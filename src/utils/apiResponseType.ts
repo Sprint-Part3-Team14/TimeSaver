@@ -57,3 +57,14 @@ export interface InviterResponse {
   email: string;
   id: number;
 }
+
+// 초대 내역 조회
+export interface InvitationRecordResponse {
+  invitations: InvitationType[];
+  totalCount: number;
+}
+
+export interface InvitationType {
+  id: number;
+  inviter: InviterResponse;
+}

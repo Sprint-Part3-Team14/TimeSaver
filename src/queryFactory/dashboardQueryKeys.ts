@@ -1,6 +1,6 @@
 import { createQueryKeys } from "@lukemorales/query-key-factory";
 import { getDashboardDetails, getDashboardInvitations, getDashboards, getMembers } from "src/utils/api";
-import { DashboardListResponse, GetMembersResponse } from "src/utils/apiResponseType";
+import { DashboardListResponse, GetMembersResponse, InvitationRecordResponse } from "src/utils/apiResponseType";
 import type { DashboardInvitation, DashboardListSearch, MembersSearch } from "src/utils/apiType";
 
 export const dashboardQueryKeys = createQueryKeys("dashboard", {
@@ -14,7 +14,7 @@ export const dashboardQueryKeys = createQueryKeys("dashboard", {
   }),
   invitations: (dashboardId: number, props: DashboardInvitation) => ({
     queryKey: ["dashboardInvitations", dashboardId],
-    queryFn: async () => await getDashboardInvitations(dashboardId, props),
+    queryFn: async (): Promise<InvitationRecordResponse> => await getDashboardInvitations(dashboardId, props),
   }),
   members: (props: MembersSearch) => ({
     queryKey: ["dashboardMembers", props.dashboardId],
