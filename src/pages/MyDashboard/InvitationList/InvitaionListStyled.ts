@@ -24,6 +24,10 @@ export const CategoryBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 0.4rem 2.8rem 0.4rem;
+
+  @media ${theme.device.mobile} {
+    display: none;
+  }
 `;
 
 export const CategoryTitle = styled.h2`
