@@ -1,10 +1,10 @@
 import { createQueryKeys } from "@lukemorales/query-key-factory";
 import { getComments } from "src/utils/api";
-import { CommentsListSearch } from "src/utils/apiType";
+import type { CommentsListSearch, GetComments } from "src/utils/apiType";
 
 export const commentQueryKeys = createQueryKeys("comments", {
   list: (cardId: number, query: CommentsListSearch) => ({
     queryKey: ["commentList", cardId],
-    queryFn: async () => await getComments(query),
+    queryFn: async (): Promise<GetComments> => await getComments(query),
   }),
 });
