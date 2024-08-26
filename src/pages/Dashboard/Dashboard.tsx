@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getColumns, postAuthLogin } from "src/utils/api";
+import { getColumns } from "src/utils/api";
 import { ColumnsListSearch } from "src/utils/apiType";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
@@ -29,7 +29,7 @@ export const CurrentUserId = 3071;
 
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
-  postAuthLogin({ email: "test@codeit.com", password: "sprint101" });
+
   const {
     isTrue: isOpenCreateColumn,
     handleTrue: handleOpenCreateColumn,
