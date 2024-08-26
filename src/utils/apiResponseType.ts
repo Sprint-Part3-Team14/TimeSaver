@@ -83,3 +83,9 @@ export interface MyProfileResponse {
 export interface ProfileImageUploadResponse {
   profileImageUrl: string;
 }
+
+// 로그인
+export interface LoginResponse {
+  accessToken: string;
+  user: MyProfileResponse;
+}
