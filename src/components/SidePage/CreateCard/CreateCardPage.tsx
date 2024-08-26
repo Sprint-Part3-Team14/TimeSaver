@@ -2,10 +2,6 @@ import { SidePageLayout, SidePageHeader } from "src/components/SidePage/SidePage
 import CreateCard from "src/pages/Dashboard/components/CreateCard/CreateCard";
 import type { CurrentIdListType } from "src/pages/Dashboard/components/Card/Card";
 
-const CreateCardWidth = `
-  width : 40%;
-`;
-
 const CreateCardPage = ({
   handleClose,
   currentIdList,
@@ -14,7 +10,7 @@ const CreateCardPage = ({
   currentIdList: CurrentIdListType;
 }) => {
   return (
-    <SidePageLayout handleClose={handleClose} addStyle={CreateCardWidth}>
+    <SidePageLayout handleClose={handleClose} addStyle={"width : 40%;"}>
       <SidePageHeader handleClosing={handleClose} />
       <CreateCard currentIdList={currentIdList} handleClosePage={handleClose} />
     </SidePageLayout>
