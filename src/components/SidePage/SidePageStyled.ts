@@ -22,7 +22,7 @@ export const slideOut = keyframes`
 `;
 
 export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: string }>`
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 20;
@@ -39,6 +39,14 @@ export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: strin
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
 
   ${({ addStyle }) => (addStyle ? addStyle : "")}
+
+  @media ${theme.device.tablet} {
+    width: 100%;
+  }
+
+  @media ${theme.device.mobile} {
+    width: 100%;
+  }
 `;
 
 export const SidePageHeader = styled.header<{ addStyle?: string }>`
