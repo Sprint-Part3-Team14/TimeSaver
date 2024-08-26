@@ -9,6 +9,7 @@ import EditIcon from "src/components/Icons/EditIcon";
 import RenameColumnModal from "src/components/Modal/RenameColumn/RenameColumn";
 import DeleteColumn from "src/components/Modal/DeleteColumn/DeleteColumn";
 import CreateCardPage from "src/components/SidePage/CreateCard/CreateCardPage";
+import Button from "src/components/Button/Button";
 import Card from "../Card";
 import * as S from "./ColumnStyled";
 import type { ColumnDataType } from "src/utils/apiResponseType";
@@ -65,11 +66,9 @@ const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
             </S.EditColumnButton>
           </S.SettingIconLayout>
         </S.ColumnHeader>
-        <S.AddCard type="button" onClick={handleCreateCard}>
-          <S.RowCenter>
-            <PlusIcon width={22} height={22} color={theme.color.pink900} />
-          </S.RowCenter>
-        </S.AddCard>
+        <Button styleVariant="white" type="button" onClick={handleCreateCard}>
+          <PlusIcon width={22} height={22} color={theme.color.pink900} />
+        </Button>
         {cardList.cards.map(card => (
           <Card card={card} currentIdList={{ dashboardId: dashboardId, columnId: columnId, cardId: card.id }} />
         ))}

@@ -38,12 +38,10 @@ export const AddColumnButtonStyled = `
   margin : 2.3rem ;
 
   @media ${theme.device.tablet}{
-    width : 100%;
-    max-width : auto;
+    max-width : calc(100% - 5rem);
   }
 
   @media ${theme.device.mobile}{
-    width : 100%;
-    max-width : auto;
+    max-width : calc(100% - 5rem);
   }
 `;
