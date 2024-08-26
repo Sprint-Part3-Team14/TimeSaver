@@ -1,4 +1,4 @@
-import { DashboardListResponse } from "./apiResponseType";
+import { DashboardListResponse, LoginResponse } from "./apiResponseType";
 import {
   CardListSearch,
   ColumnsListSearch,
@@ -79,7 +79,7 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
  */
 
 // 로그인
-export async function postAuthLogin({ email, password }: SignIn) {
+export async function postAuthLogin({ email, password }: SignIn): Promise<LoginResponse> {
   const response = await fetcher("/auth/login", "POST", { email, password });
   if (response && response.accessToken) {
     setAccessTokenCookie(response.accessToken); // 쿠키 설정
