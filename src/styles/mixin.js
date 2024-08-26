@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import theme from "./theme";
 
 export const AfterCrownIcon = css`
   &::after {
@@ -33,5 +34,19 @@ export const BeforeEllipseCircle = css`
     height: 0.8rem;
     background-color: ${({ color }) => color};
     border-radius: 50%;
+  }
+`;
+
+export const ScrollCustom = css`
+  &::-webkit-scrollbar {
+    background-color: ${theme.color.gray500};
+    width: 0.5rem;
+    height: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.color.gray700};
+    border-radius: 0.8rem;
+    cursor: pointer;
   }
 `;

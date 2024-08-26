@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import theme from "../../styles/theme";
+import theme from "src/styles/theme";
+import { ScrollCustom } from "src/styles/mixin";
 
 export const DashboardLayout = styled.div`
   height: 100%;
@@ -8,15 +9,20 @@ export const DashboardLayout = styled.div`
   gap: 1.6rem;
   overflow: scroll;
 
-  &::-webkit-scrollbar {
-    background-color: ${theme.color.gray500};
-    height: 0.8rem;
+  ${ScrollCustom}
+
+  @media ${theme.device.tablet} {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${theme.color.gray700};
-    border-radius: 0.8rem;
-    cursor: pointer;
+  @media ${theme.device.mobile} {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 `;
 
@@ -27,8 +33,17 @@ export const AddColumnButtonStyled = `
   justify-content : center;
   min-width : 30rem;
   max-width : 30rem;
-
   height : 5.5rem;
   border-radius : 0.8rem;
   margin : 2.3rem ;
+
+  @media ${theme.device.tablet}{
+    width : 100%;
+    max-width : auto;
+  }
+
+  @media ${theme.device.mobile}{
+    width : 100%;
+    max-width : auto;
+  }
 `;
