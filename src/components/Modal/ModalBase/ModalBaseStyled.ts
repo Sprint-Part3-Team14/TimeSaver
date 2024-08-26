@@ -8,13 +8,21 @@ export const ModalContainer = styled.div`
   background-color: white;
   padding: 3rem;
   border-radius: 0.6rem;
-  width: 20%;
+  width: 35%;
 
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 30;
+
+  @media ${theme.device.tablet} {
+    width: 50%;
+  }
+
+  @media ${theme.device.mobile} {
+    width: 75%;
+  }
 `;
 
 export const ModalHeader = styled.div`
