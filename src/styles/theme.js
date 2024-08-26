@@ -17,7 +17,6 @@ const theme = {
   },
 
   fontSize: {
-
     large: "1.8rem",
     normal: "1.6rem",
     small: "1.4rem",
@@ -25,8 +24,8 @@ const theme = {
   },
 
   device: {
-    tablet: "screen and (max-width: 1124px)",
-    mobile: "screen and (max-width: 768px)",
+    tablet: "(min-width: 768px) and (max-width : 1023px)",
+    mobile: "(max-width: 767px)",
   },
 
   //이런식으로 사용해도 되긴하는데? 원하면 사용하는걸로
