@@ -1,3 +1,4 @@
+import { ScrollCustom } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
@@ -19,14 +20,18 @@ export const DashboardColumnLayout = styled.div`
     padding-bottom: 2rem;
   }
 
-  &::-webkit-scrollbar {
-    width: 0.5rem;
+  ${ScrollCustom}
+
+  @media ${theme.device.tablet} {
+    height: auto;
+    border-bottom: 0.1rem solid ${theme.color.gray600};
+    width: 100%;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${theme.color.gray700};
-    border-radius: 0.8rem;
-    cursor: pointer;
+  @media ${theme.device.mobile} {
+    height: auto;
+    border-bottom: 0.1rem solid ${theme.color.gray600};
+    width: 100%;
   }
 `;
 
@@ -109,8 +114,4 @@ export const AddCard = styled.button`
 export const ColumnTitle = styled.h3`
   color: ${theme.color.black700};
   font-weight: 500;
-`;
-
-export const RowCenter = styled.div`
-  padding-left: calc(50% - 1.1rem);
 `;
