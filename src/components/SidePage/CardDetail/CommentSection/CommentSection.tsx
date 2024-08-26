@@ -5,6 +5,7 @@ import useInputValue from "src/hooks/useInputValue";
 import { deleteComments, postComments } from "src/utils/api";
 import Button from "src/components/Button/Button";
 import { CurrentIdListType } from "src/pages/Dashboard/components/Card/Card";
+import { commentQueryKeys } from "src/queryFactory/commentsQueryKeys";
 import EmptyComment from "./EmptyComment";
 import * as S from "./CommentsSectionStyled";
 import EditingComment from "./EditComment/EditingComment";
@@ -22,6 +23,7 @@ const CommentSection = ({
   currentIdList: CurrentIdListType;
 }) => {
   const queryClient = useQueryClient();
+  const commentQueryKey = commentQueryKeys.list(currentIdList.cardId, { size: 10, cardId: currentIdList.cardId });
 
   const { value, handleChangeValue, handleResetValue } = useInputValue();
   const { cardId, columnId, dashboardId } = currentIdList;
@@ -32,14 +34,14 @@ const CommentSection = ({
       return postComments(props);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
+      queryClient.invalidateQueries({ queryKey: commentQueryKey.queryKey });
     },
   });
 
   const deleteCommentMutation = useMutation({
     mutationFn: async (commentId: number) => await deleteComments(commentId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["comments", cardId] });
+      queryClient.invalidateQueries({ queryKey: commentQueryKey.queryKey });
     },
   });
 
