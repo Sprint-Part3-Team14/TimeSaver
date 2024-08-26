@@ -27,13 +27,13 @@ const MainPage = () => {
       <S.MainContent>
         <S.HeroSection>
           <S.SlideShow>
+            <S.HeroText>당신의 일정을 관리하세요!</S.HeroText>
             <S.SlideWrapper>
               <S.SlideImage src={images[currentSlide]} alt="Landing Slide" />
             </S.SlideWrapper>
             <S.PrevButton onClick={handlePrevSlide}>&lt;</S.PrevButton>
             <S.NextButton onClick={handleNextSlide}>&gt;</S.NextButton>
           </S.SlideShow>
-          <S.HeroText>당신의 일정을 관리하세요!</S.HeroText>
         </S.HeroSection>
         <S.ColorSection>
           <S.ColorText>여러가지 색으로 일들을 그룹지어 관리하세요!</S.ColorText>
@@ -43,6 +43,27 @@ const MainPage = () => {
             ))}
           </S.ColorList>
         </S.ColorSection>
+        <S.FeaturesSection>
+          <S.FeaturesTitle>당신의 작업을 더 쉽게 만드세요</S.FeaturesTitle>
+          <S.FeaturesGrid>
+            <S.FeatureCard>
+              <S.FeatureIcon>📅</S.FeatureIcon>
+              <S.FeatureText>일정을 한눈에</S.FeatureText>
+            </S.FeatureCard>
+            <S.FeatureCard>
+              <S.FeatureIcon>🗂</S.FeatureIcon>
+              <S.FeatureText>프로젝트 관리</S.FeatureText>
+            </S.FeatureCard>
+            <S.FeatureCard>
+              <S.FeatureIcon>👥</S.FeatureIcon>
+              <S.FeatureText>팀 협업</S.FeatureText>
+            </S.FeatureCard>
+            <S.FeatureCard>
+              <S.FeatureIcon>💬</S.FeatureIcon>
+              <S.FeatureText>피드백과 의견</S.FeatureText>
+            </S.FeatureCard>
+          </S.FeaturesGrid>
+        </S.FeaturesSection>
       </S.MainContent>
     </S.Container>
   );

@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -33,6 +34,7 @@ export const SlideWrapper = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  border: 0.2rem solid ${theme.color.pink900};
 `;
 
 export const SlideImage = styled.img`
@@ -48,12 +50,13 @@ export const SlideImage = styled.img`
 export const PrevButton = styled.button`
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 1rem;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${theme.color.pink900};
+  opacity: 0.6;
   border: none;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   cursor: pointer;
   z-index: 1;
 `;
@@ -61,42 +64,53 @@ export const PrevButton = styled.button`
 export const NextButton = styled.button`
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 0.4rem;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${theme.color.pink900};
+  opacity: 0.6;
   border: none;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   cursor: pointer;
   z-index: 1;
 `;
 
 export const HeroText = styled.h1`
   margin-top: 2rem;
-  font-size: 2rem;
+  margin-bottom: 4rem;
+  font-size: 3rem;
+  font-weight: 800;
   color: #333;
+  background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ColorSection = styled.div`
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 4rem;
 `;
 
 export const ColorText = styled.h2`
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #555;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, #34d399, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ColorList = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
 `;
 
 export const ColorCircle = styled.div<{ color: string }>`
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   background-color: ${({ color }) => color};
   border-radius: 50%;
   opacity: 0;
@@ -109,4 +123,48 @@ export const ColorCircle = styled.div<{ color: string }>`
       transform: translateY(0);
     }
   }
+`;
+
+export const FeaturesSection = styled.div`
+  margin-top: 5rem;
+  text-align: center;
+  padding: 0 2rem;
+`;
+
+export const FeaturesTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+export const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+`;
+
+export const FeatureCard = styled.div`
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+`;
+
+export const FeatureIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+`;
+
+export const FeatureText = styled.h3`
+  font-size: 1.5rem;
+  color: #333;
 `;
