@@ -30,7 +30,7 @@ const InvitationDashboard = ({ invite, invitationId }: { invite: InviterResponse
   return (
     <S.InvitationDashboardBox>
       <S.Name>{invite.nickname}</S.Name>
-      <S.Invitor>{invite.email}</S.Invitor>
+      <S.Inviter>{invite.email}</S.Inviter>
       <S.ButtonBox>
         <Button onClick={handleAnswerInvitation} value={1}>
           수락
