@@ -7,6 +7,7 @@ interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  addStyle?: string;
 }
 
 const Pagination = (props: PaginationProps) => {
@@ -21,7 +22,7 @@ const Pagination = (props: PaginationProps) => {
   };
 
   return (
-    <S.PaginationContainer>
+    <S.PaginationContainer addStyle={props.addStyle}>
       <S.PageButton onClick={handlePrevious} disabled={currentPage === 1}>
         <ArrowForwardIcon width={16} height={16} color={"#D9D9D9"} />
       </S.PageButton>

@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import Pagination from "src/components/PagiNation/PagiNation";
 import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import AddDashboard from "./AddDashboard/AddDashboard";
-import ParticipationDashboard from "./ParicipationDashboard/ParticipationDashboard";
+import Dashboard from "./ParicipationDashboard/ParticipationDashboard";
 import * as S from "./ParticipationListStyled";
 
-const ParticipationList = () => {
+const DashboardListSection = () => {
   const { data: dashboardList } = useQuery(dashboardQueryKeys.list({ navigationMethod: "pagination" }));
 
   if (!dashboardList?.dashboards) {
@@ -21,14 +21,16 @@ const ParticipationList = () => {
             if (index > 4) {
               return;
             } else {
-              return <ParticipationDashboard dashboardItem={dashboard} key={dashboard.id} />;
+              return <Dashboard dashboardItem={dashboard} key={dashboard.id} />;
             }
           })}
           <AddDashboard />
         </S.Grid>
-        {dashboardList.dashboards.length > 0 && <Pagination currentPage={0} totalPages={0} onPageChange={() => {}} />}
+        {dashboardList.dashboards.length > 0 && (
+          <Pagination addStyle={S.ButtonPosition} currentPage={0} totalPages={0} onPageChange={() => {}} />
+        )}
       </S.Layout>
     </>
   );
 };
-export default ParticipationList;
+export default DashboardListSection;

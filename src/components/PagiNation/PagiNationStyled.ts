@@ -1,9 +1,11 @@
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
-export const PaginationContainer = styled.div`
+export const PaginationContainer = styled.div<{ addStyle?: string }>`
   ${theme.displays.rowCenter};
   margin: 20px 0;
+
+  ${({ addStyle }) => addStyle};
 `;
 
 export const PageButton = styled.button<{ disabled?: boolean }>`
