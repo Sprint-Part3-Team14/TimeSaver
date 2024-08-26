@@ -1,17 +1,12 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
 
-export const Container = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 33.2rem;
-  padding: 2.5rem 0;
-  cursor: pointer;
-  gap: 0.3rem;
-  border-radius: 0.8rem;
-  border: 1px solid ${theme.color.gray700};
-  background-color: ${theme.color.white};
+export const AddButtonStyle = `
+  display : flex;
+  gap : 1.5rem;
+  align-items : center;
+  justify-content : center;
+  padding : 2.5rem 0;
 `;
 
 export const Title = styled.h2`
