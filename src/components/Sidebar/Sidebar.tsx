@@ -15,7 +15,7 @@ const Sidebar = () => {
       <S.Container>
         {dashboardList.dashboards.map(({ title, color, createdByMe, id }) => (
           <S.Title key={id} href={`/dashboard/${id}`} createdByMe={createdByMe} color={color}>
-            {title}
+            <S.TitleText>{title}</S.TitleText>
           </S.Title>
         ))}
       </S.Container>

@@ -14,11 +14,10 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
   text-decoration: none;
   padding: 1rem 2.4rem;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items : center
   gap: 1rem;
-  color: ${({ theme }) => theme.color.gray900};
-  font-size: 1.8rem;
-  font-weight: 500;
+
   flex-shrink: 0;
 
   &::before {
@@ -27,6 +26,8 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
     height: 0.8rem;
     background-color: ${({ color }) => color};
     border-radius: 50%;
+    flex-shrink: 0;
+    margin-right : 0.6rem;
   }
 
   ${({ createdByMe }) => (createdByMe ? AfterCrownIcon : "")}
@@ -44,4 +45,14 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
       display: none;
     }
   }
+`;
+
+export const TitleText = styled.p`
+  color: ${theme.color.gray900};
+  font-size: 1.8rem;
+  font-weight: 500;
+  max-width: 20rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
