@@ -14,10 +14,8 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
   text-decoration: none;
   padding: 1rem 2.4rem;
   display: flex;
-  justify-content: space-between;
-  align-items : center
+  align-items: center;
   gap: 1rem;
-
   flex-shrink: 0;
 
   &::before {
@@ -27,7 +25,7 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
     background-color: ${({ color }) => color};
     border-radius: 50%;
     flex-shrink: 0;
-    margin-right : 0.6rem;
+    margin-right: 1.5rem;
   }
 
   ${({ createdByMe }) => (createdByMe ? AfterCrownIcon : "")}
@@ -37,10 +35,6 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
   }
 
   @media ${theme.device.tablet} {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
     &::after {
       display: none;
     }
@@ -55,4 +49,9 @@ export const TitleText = styled.p`
   text-wrap: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-right: auto;
+
+  @media ${theme.device.tablet} {
+    max-width: 9rem;
+  }
 `;
