@@ -1,3 +1,4 @@
+import { ScrollCustom } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import styled, { keyframes } from "styled-components";
 
@@ -42,10 +43,16 @@ export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: strin
 
   @media ${theme.device.tablet} {
     width: 100%;
+    overflow-y: scroll;
+
+    ${ScrollCustom};
   }
 
   @media ${theme.device.mobile} {
     width: 100%;
+    overflow-y: scroll;
+
+    ${ScrollCustom};
   }
 `;
 

@@ -53,9 +53,8 @@ const CardDetail = ({ handleClose, currentIdList }: CardDetailProps) => {
         {isEditing ? (
           <CreateCard initialData={cardDetail} currentIdList={currentIdList} handleClosePage={handleCloseEdit} />
         ) : (
-          <TodoDetailContent todoDetailData={cardDetail} addStyle={S.cardContentStyle} />
+          <TodoDetailContent todoDetailData={cardDetail} addStyle={S.CardContentStyle} />
         )}
-
         <CommentSection commentList={cardComment.comments.reverse()} currentIdList={currentIdList} />
       </SidePageBody>
     </SidePageLayout>
