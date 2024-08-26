@@ -1,9 +1,10 @@
-import { ReactNode, useRef } from "react";
+import React, { ReactElement, ReactNode, useRef } from "react";
 import Portal from "src/components/_common/Portal";
 import useToggle from "src/hooks/useToggle";
 import { Button } from "src/components/SidePage/CardDetail/CardDetailStyled";
 import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
 import useOutsideClick from "src/hooks/useOutsideClick";
+import animationClosing from "./util/animationClosing";
 import * as S from "./SidePageStyled";
 
 export const SidePageLayout = ({
@@ -18,19 +19,29 @@ export const SidePageLayout = ({
   const { isTrue: isAnimationClose, handleTrue: handleAnimationClose } = useToggle();
   const sidePageRef = useRef<HTMLDivElement>(null);
 
+  const { handleAnimationEnd, handleClosing } = animationClosing({
+    isAnimationClose: isAnimationClose,
+    animationClose: handleAnimationClose,
+    handleDeletePortal: handleClose,
+  });
+
   useOutsideClick(sidePageRef, handleClosing);
 
-  function handleClosing() {
-    handleAnimationClose();
-    setTimeout(() => {
-      handleClose();
-    }, 500);
-  }
+  const childrenWithProps = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child as ReactElement, { handleClosing });
+    }
+    return child;
+  });
 
   return (
     <Portal>
-      <S.SidePageContainer isClose={isAnimationClose} ref={sidePageRef} addStyle={addStyle}>
-        {children}
+      <S.SidePageContainer
+        isClose={isAnimationClose}
+        ref={sidePageRef}
+        addStyle={addStyle}
+        onAnimationEnd={handleAnimationEnd}>
+        {childrenWithProps}
       </S.SidePageContainer>
     </Portal>
   );
