@@ -19,3 +19,13 @@ export const BeforeCrownIcon = css`
     background-size: cover;
   }
 `;
+
+export const BeforeEllipseCircle = css`
+  &::before {
+    content: "";
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: ${({ color }) => color};
+    border-radius: 50%;
+  }
+`;

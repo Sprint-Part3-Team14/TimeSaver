@@ -9,9 +9,7 @@ function DashboardLayout() {
       <S.HeaderLayout>
         <OptionalHeader />
       </S.HeaderLayout>
-      <S.SideBarLayout>
-        <Sidebar />
-      </S.SideBarLayout>
+      <Sidebar />
       <S.ContentLayout>
         <Outlet />
       </S.ContentLayout>
