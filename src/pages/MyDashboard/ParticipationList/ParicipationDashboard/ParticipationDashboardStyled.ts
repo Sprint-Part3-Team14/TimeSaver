@@ -1,43 +1,33 @@
 import styled from "styled-components";
-import { AfterCrownIcon } from "src/styles/mixin";
 import theme from "src/styles/theme";
+import { Title, TitleText } from "src/components/Sidebar/SidebarStyled";
 
-export const TitleButton = styled.a<{ createdByMe: boolean; color: string }>`
+export const TitleButton = styled(Title)`
   border: 0.1rem solid ${theme.color.gray700};
   border-radius: 0.8rem;
   background-color: ${theme.color.white};
   padding: 2.5rem;
 
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-
-  &::before {
-    content: "";
-    width: 0.8rem;
-    height: 0.8rem;
-    background-color: ${({ color }) => color};
-    border-radius: 50%;
-    margin-right: 1.5rem;
-    flex-shrink: 0;
+  &:hover {
+    background-color: ${theme.color.gray500};
   }
 
-  ${({ createdByMe }) => (createdByMe ? AfterCrownIcon : "")}
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.gray500};
+  @media ${theme.device.tablet} {
+    &::after {
+      display: block;
+    }
   }
 `;
 
-export const TitleStyle = styled.p`
+export const TitleStyle = styled(TitleText)`
   color: ${theme.color.black700};
   font-weight: 600;
   font-size: 1.6rem;
+  max-width: auto;
 
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-right: auto;
+  @media ${theme.device.tablet} {
+    max-width: auto;
+  }
 
   @media ${theme.device.mobile} {
     max-width: 14.4rem;
