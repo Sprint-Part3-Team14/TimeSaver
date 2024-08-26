@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import Landing from "./pages/Landing";
 import Signup from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
 import Edit from "./pages/Edit";
 import DashboardLayout from "./DashboardLayout";
 import MyDashboard from "./pages/MyDashboard";
 import Notfound from "./pages/Notfound";
-import SignIn from "./pages/SignIn";
 
 const App = () => {
   const queryClient = new QueryClient();
