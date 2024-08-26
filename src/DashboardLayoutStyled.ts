@@ -9,6 +9,15 @@ export const DashboardLayout = styled.div`
   grid-template-areas:
     "a a a"
     "b c c";
+
+  @media ${theme.device.tablet} {
+    grid-template-columns: 16rem 1fr;
+  }
+
+  @media ${theme.device.mobile} {
+    grid-template-columns: 6.1rem;
+    grid-template-rows: 6rem 1fr;
+  }
 `;
 
 export const HeaderLayout = styled.header`
