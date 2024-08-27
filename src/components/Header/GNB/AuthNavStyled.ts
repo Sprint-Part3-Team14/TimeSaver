@@ -50,7 +50,7 @@ export const Logo = styled.div`
 export const NavLinks = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 
   @media ${theme.device.mobile} {
     gap: 2rem;

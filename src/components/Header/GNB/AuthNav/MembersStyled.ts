@@ -10,7 +10,7 @@ export const MembersContainer = styled.ul<{ containerSize: string }>`
 `;
 
 export const MemberImage = styled.div<{ positionClass: string }>`
-  position: absolute;
+  position: relative;
   height: 3.8rem;
   width: 3.8rem;
   ${theme.displays.rowCenter};
@@ -31,7 +31,7 @@ export const ExtraCount = styled.li`
 `;
 
 export const DefaultMemberContainer = styled.div<{ color: string; positionClass: string }>`
-  position: absolute;
+  position: relative;
   bottom: 0.3rem;
   height: 3.8rem;
   width: 3.8rem;

@@ -7,7 +7,7 @@ export const DashboardInfoContainer = styled.div`
   height: 3.4rem;
   gap: 1rem;
   border-right: 1px solid ${theme.color.gray900};
-  padding-right: 0.3rem;
+  padding-right: 1rem;
   color: ${theme.color.black800};
 
   @media ${theme.device.mobile} {
