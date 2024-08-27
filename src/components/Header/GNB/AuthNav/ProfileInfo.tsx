@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { getUserProfile } from "src/utils/api";
 import Members from "./Members";
 import * as S from "./ProfileInfoStyled";
@@ -13,18 +14,23 @@ interface UserProfile {
 const ProfileInfo = () => {
   const [myProfile, setMyProfile] = useState<UserProfile | null>(null);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const profileData = await getUserProfile();
-        setMyProfile(profileData);
-      } catch (error) {
-        console.error("Error fetching profile data:", error);
+  const { mutate: fetchProfile } = useMutation({
+    mutationFn: async () => await getUserProfile(),
+    onSuccess: data => {
+      if (data) {
+        setMyProfile(data);
+      } else {
+        console.error("Failed to fetch user profile.");
       }
-    };
+    },
+    onError: error => {
+      console.error("Error fetching profile data:", error);
+    },
+  });
 
+  useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [fetchProfile]);
 
   if (!myProfile) {
     return null;

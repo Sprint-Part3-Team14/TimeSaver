@@ -1,7 +1,7 @@
+import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
+import ArrowForwardIcon from "src/components/Icons/ArrowForwardIcon";
 import React from "react";
 import * as S from "src/components/PagiNation/PagiNationStyled";
-import ArrowBackwardIcon from "../Icons/ArrowBackwardIcon";
-import ArrowForwardIcon from "../Icons/ArrowForwardIcon";
 
 interface PaginationProps {
   currentPage: number;
