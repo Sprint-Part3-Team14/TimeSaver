@@ -89,3 +89,18 @@ export interface LoginResponse {
   accessToken: string;
   user: MyProfileResponse;
 }
+
+// 컬럼 리스트
+export interface ColumnListResponse {
+  result: string;
+  data: ColumnResponse[];
+}
+
+export interface ColumnResponse {
+  id: number;
+  title: string;
+  teamId: string;
+  dashboardId: number;
+  createdAt: string;
+  updatedAt: string;
+}

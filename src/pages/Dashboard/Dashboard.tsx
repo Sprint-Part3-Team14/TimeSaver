@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getColumns } from "src/utils/api";
-import { ColumnsListSearch } from "src/utils/apiType";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import CreateColumn from "src/components/Modal/CreateColumn/CretaeColumn";
 import useToggle from "src/hooks/useToggle";
 import theme from "src/styles/theme";
+import { columnQueryKeys } from "src/queryFactory/columnQueryKeys";
 import * as S from "./DashboardStyled";
 import Column from "./components/Column/Column";
 
@@ -24,9 +23,6 @@ export interface ColumnOneType {
   updatedAt: string;
 }
 
-// 임시 유저 정보 (없앨 예정)
-export const CurrentUserId = 3071;
-
 const Dashboard = () => {
   const { id: dashboardId } = useParams();
 
@@ -41,13 +37,7 @@ const Dashboard = () => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: [`dashboard-${dashboardId}`, "columnList"],
-    queryFn: async () => {
-      const queryParams: ColumnsListSearch = {
-        dashboardId: Number(dashboardId),
-      };
-      return await getColumns(queryParams);
-    },
+    ...columnQueryKeys.list(Number(dashboardId), { dashboardId: Number(dashboardId) }),
     enabled: !!dashboardId,
   });
 
