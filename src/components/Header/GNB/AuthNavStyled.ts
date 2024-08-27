@@ -7,15 +7,17 @@ export const HeaderContainer = styled.div`
   z-index: 10;
   height: 7rem;
   width: 100%;
-  ${props => props.theme.displays.spaceBetween};
+  ${theme.displays.spaceBetween};
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
   margin: 0 2rem;
 
   @media ${theme.device.mobile} {
+    margin: 0;
   }
 
   @media ${theme.device.tablet} {
+    margin: 0 1rem;
   }
 `;
 
@@ -52,6 +54,7 @@ export const Logo = styled.div`
   @media ${theme.device.mobile} {
     background-image: url("/images/Logo_small.png");
     width: 4rem;
+    height: 4rem;
   }
 `;
 
@@ -74,7 +77,7 @@ export const Text = styled.p`
   text-align: center;
 
   @media ${theme.device.mobile} {
-    font=size: ${theme.fontSize.small};
+    font-size: ${theme.fontSize.small};
   }
 `;
 

@@ -20,7 +20,7 @@ export const PopupContent = styled.div`
   width: 10rem;
   border-radius: 0.8rem;
   background-color: ${theme.color.white};
-  box-shadow: 0px 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
 `;
 
 export const ProfilePopupButton = styled.button`

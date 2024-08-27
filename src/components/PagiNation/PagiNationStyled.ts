@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 export const PaginationContainer = styled.div<{ addStyle?: string }>`
   ${theme.displays.rowCenter};
-  margin: 20px 0;
+  margin: 2rem 0;
 
   ${({ addStyle }) => addStyle};
 `;
 
 export const PageButton = styled.button<{ disabled?: boolean }>`
   ${theme.displays.rowCenter};
-  width: 40px;
-  height: 40px;
-  border: 1px solid ${theme.color.gray600};
+  width: 4rem;
+  height: 4rem;
+  border: 0.1rem solid ${theme.color.gray600};
   background-color: ${({ disabled }) => (disabled ? theme.color.gray500 : theme.color.white)};
   color: ${({ disabled }) => (disabled ? theme.color.gray900 : theme.color.black900)};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
@@ -20,12 +20,12 @@ export const PageButton = styled.button<{ disabled?: boolean }>`
 
   &:first-child {
     border-right: none;
-    border-radius: 4px 0 0 4px;
+    border-radius: 0.4rem 0 0 0.4rem;
   }
 
   &:last-child {
     border-left: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 0.4rem 0.4rem 0;
   }
 
   &:hover:not(:disabled) {

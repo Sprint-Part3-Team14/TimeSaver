@@ -27,7 +27,7 @@ export const ExtraCount = styled.li`
   ${theme.displays.rowCenter};
   border-radius: 50%;
   background-color: ${theme.color.pink900};
-  color: #900;
+  color: ${theme.color.white};
 `;
 
 export const DefaultMemberContainer = styled.div<{ color: string; positionClass: string }>`

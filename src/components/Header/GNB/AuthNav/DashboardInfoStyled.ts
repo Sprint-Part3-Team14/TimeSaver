@@ -6,7 +6,7 @@ export const DashboardInfoContainer = styled.div`
   ${theme.displays.rowCenter};
   height: 3.4rem;
   gap: 1rem;
-  border-right: 1px solid ${theme.color.gray900};
+  border-right: 0.1rem solid ${theme.color.gray900};
   padding-right: 1rem;
   color: ${theme.color.black800};
 
@@ -32,7 +32,7 @@ export const CustomButton = styled.button`
   background: none;
   border: 0.1rem solid ${theme.color.gray700};
   padding: 0.6rem 1rem;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   cursor: pointer;
 
   @media ${theme.device.mobile} {

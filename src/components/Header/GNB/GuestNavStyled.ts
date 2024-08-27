@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 7rem;
-  ${props => props.theme.displays.spaceBetween};
-  border-bottom: 0.1rem solid ${props => props.theme.color.gray700};
+  ${theme.displays.spaceBetween};
+  border-bottom: 0.1rem solid ${theme.color.gray700};
   margin: 0 2rem;
 `;
 
