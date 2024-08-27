@@ -39,8 +39,6 @@ export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: strin
     "b";
   animation: ${({ isClose }) => (isClose ? slideOut : slideIn)} 0.5s forwards;
 
-  ${({ addStyle }) => (addStyle ? addStyle : "")}
-
   @media ${theme.device.tablet} {
     width: 100%;
     overflow-y: scroll;
@@ -54,6 +52,8 @@ export const SidePageContainer = styled.div<{ isClose: boolean; addStyle?: strin
 
     ${ScrollCustom};
   }
+
+  ${({ addStyle }) => addStyle}
 `;
 
 export const SidePageHeader = styled.header<{ addStyle?: string }>`
@@ -73,5 +73,5 @@ export const SidePageBody = styled.div<{ addStyle?: string }>`
   padding: 2.3rem;
   grid-area: b;
 
-  ${({ addStyle }) => (addStyle ? addStyle : "")}
+  ${({ addStyle }) => addStyle}
 `;
