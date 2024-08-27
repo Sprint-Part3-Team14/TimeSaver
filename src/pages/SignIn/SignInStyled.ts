@@ -8,12 +8,13 @@ export const Container = styled.div`
   height: 100vh;
   padding: 0;
 
-  @media ${theme.device.tablet} 
+  @media ${theme.device.tablet} {
     flex-direction: column;
     width: 100%;
   }
 
-  @media ${theme.device.mobile} 
+  @media ${theme.device.mobile} {
+    flex-direction: column;
     padding: 0 1.2rem;
     width: 100%;
   }
@@ -26,19 +27,28 @@ export const SignInfoBox = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media ${theme.device.tablet} 
+  @media ${theme.device.tablet} {
+    display: none;
+  }
+
+  @media ${theme.device.mobile} {
     display: none;
   }
 `;
 
 export const SignLogoBox = styled.div`
-  width: 42.1rem;
-  height: 41.6rem;
+  width: 38.1rem;
+  height: 37.6rem;
   background-image: url("/images/SIGN_LOGO.png");
   background-size: cover;
   background-position: center;
 
-  @media ${theme.device.tablet} 
+  @media ${theme.device.tablet} {
+    width: 22.1rem;
+    height: 21.8rem;
+  }
+
+  @media ${theme.device.mobile} {
     width: 22.1rem;
     height: 21.8rem;
   }
@@ -52,13 +62,14 @@ export const SignInBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media ${theme.device.tablet} 
+  @media ${theme.device.tablet} {
     width: 60%;
     height: 100%;
     padding: 0;
   }
 
-  @media ${theme.device.mobile} 
+  @media ${theme.device.mobile} {
+    width: 60%;
     height: auto;
     padding: 0;
   }
@@ -71,11 +82,12 @@ export const Form = styled.form`
   max-width: 40rem;
   margin-top: 6rem;
 
-  @media ${theme.device.tablet} 
+  @media ${theme.device.tablet} {
     max-width: 100%;
   }
 
-  @media ${theme.device.mobile} 
+  @media ${theme.device.mobile} {
+    max-width: 100%;
     padding: 0;
   }
 `;
