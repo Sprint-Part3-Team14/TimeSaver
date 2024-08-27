@@ -43,12 +43,12 @@ const AuthNav = () => {
 
   return (
     <S.HeaderContainer>
-      <a href="/">
+      <S.LinkStyle to="/">
         <S.Logo />
-      </a>
+      </S.LinkStyle>
+
       <S.LogoAndTitleContainer>
         <S.DashboardTitle createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.DashboardTitle>
-
         <S.NavLinks>
           {id && memberList && (
             <DashboardInfo

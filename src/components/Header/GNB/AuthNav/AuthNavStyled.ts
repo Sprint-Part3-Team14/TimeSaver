@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { HeaderLayout } from "src/DashboardLayoutStyled";
 import { BeforeCrownIcon } from "src/styles/mixin";
 import theme from "src/styles/theme";
@@ -10,6 +11,7 @@ export const HeaderContainer = styled(HeaderLayout)`
   position: sticky;
   display: grid;
   grid-template-columns: 28rem 1fr;
+  grid-template-areas: "a b";
   align-items: center;
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
@@ -23,6 +25,10 @@ export const HeaderContainer = styled(HeaderLayout)`
     grid-template-columns: 5rem 1fr;
     padding: 0 1rem;
   }
+`;
+
+export const LinkStyle = styled(Link)`
+  grid-area: "a";
 `;
 
 export const LogoAndTitleContainer = styled.div`
@@ -50,7 +56,6 @@ export const Logo = styled.div`
 `;
 
 export const NavLinks = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,6 +64,7 @@ export const NavLinks = styled.div`
   @media ${theme.device.mobile} {
     gap: 1rem;
     justify-content: space-between;
+    width: 100%;
   }
 `;
 
