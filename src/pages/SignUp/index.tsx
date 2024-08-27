@@ -48,7 +48,7 @@ const SignUp = () => {
     <S.Container>
       <S.SignInfoBox />
       <S.SignUpBox>
-        <S.SignLogoBox />
+        <S.SignLogoBox onClick={() => navigate("/")} />
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <AuthInput {...getEmailInputProps(control)} />
           <AuthInput {...getUsernameInputProps(control)} />
