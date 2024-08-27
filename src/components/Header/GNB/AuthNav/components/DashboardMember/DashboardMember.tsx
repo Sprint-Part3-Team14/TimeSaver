@@ -10,7 +10,6 @@ const DashboardMember = ({ memberList }: { memberList: GetMembersResponse }) => 
           return <UserProfileImage profileImageUrl={member.profileImageUrl} addStyle={S.AddProfileStyle} />;
         }
       })}
-      <UserProfileImage profileImageUrl={memberList.members[1].profileImageUrl} addStyle={S.AddProfileStyle} />
       <S.PlusMember totalCount={memberList.totalCount} />
     </S.MemberContainer>
   );
