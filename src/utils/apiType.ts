@@ -204,6 +204,12 @@ export interface SignUp {
   password: string;
 }
 
+//q 비밀번호 변경
+export interface ChangePassword {
+  password: string;
+  newPassword: string;
+}
+
 // 내 정보 수정
 export interface FixProfile {
   nickname: string;

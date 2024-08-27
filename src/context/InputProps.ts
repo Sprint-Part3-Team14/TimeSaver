@@ -58,3 +58,15 @@ export const getPasswordConfirmInputProps = (control: Control<FieldValues>, getV
   },
   showPasswordToggle: true,
 });
+
+export const getCurrentPasswordInputProps = (control: Control<FieldValues>) => ({
+  name: "currentPassword",
+  control,
+  label: "현재 비밀번호",
+  type: "password",
+  placeholder: "현재 비밀번호 입력",
+  rules: {
+    required: "현재 비밀번호를 입력하세요.",
+  },
+  showPasswordToggle: true,
+});

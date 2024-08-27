@@ -1,6 +1,7 @@
 import { DashboardListResponse, LoginResponse } from "./apiResponseType";
 import {
   CardListSearch,
+  ChangePassword,
   ColumnsListSearch,
   CommentsListSearch,
   CreateCard,
@@ -76,6 +77,7 @@ async function fetcher(endpoint: string, method: FetchMethod, body?: object) {
  * 로그인
  * 로그아웃
  * 회원가입
+ * 비밀번호 변경
  */
 
 // 로그인
@@ -104,6 +106,11 @@ interface ApiResponse {
 // 회원가입
 export async function postAuthRegister(body: SignUp): Promise<ApiResponse> {
   return fetcher("/users", "POST", body);
+}
+
+// 비밀번호 변경
+export async function putAuthUpdatedPassword(body: ChangePassword) {
+  return fetcher("/auth/password", "PUT", body);
 }
 
 /** Cards
