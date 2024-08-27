@@ -14,13 +14,13 @@ import Card from "../Card";
 import * as S from "./ColumnStyled";
 import type { ColumnDataType } from "src/utils/apiResponseType";
 
-interface ColumnPropType {
+interface I_ColumnPropType {
   columnTitle: string;
   columnId: number;
   dashboardId: number;
 }
 
-const Column = ({ columnTitle, columnId, dashboardId }: ColumnPropType) => {
+const Column = ({ columnTitle, columnId, dashboardId }: I_ColumnPropType) => {
   const { isTrue: isOpenRename, handleTrue: handleOpenRename, handleFalse: handleCloseRename } = useToggle();
   const { isTrue: isOpenDelete, handleTrue: handleOpenDelete, handleFalse: handleCloseDelete } = useToggle();
   const { isTrue: isCreateCard, handleTrue: handleCreateCard, handleFalse: handleCloseCreateCard } = useToggle();
