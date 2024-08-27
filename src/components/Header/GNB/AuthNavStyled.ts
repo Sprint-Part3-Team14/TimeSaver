@@ -1,3 +1,4 @@
+import { BeforeCrownIcon } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
@@ -10,7 +11,7 @@ export const HeaderContainer = styled.div`
   ${props => props.theme.displays.spaceBetween};
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
-  margin: 0 2rem;
+  padding: 0 2rem;
 
   @media ${theme.device.mobile} {
   }
@@ -74,29 +75,17 @@ export const Text = styled.p`
   text-align: center;
 
   @media ${theme.device.mobile} {
-    font=size: ${theme.fontSize.small};
+    font-size: ${theme.fontSize.small};
   }
 `;
 
 export const Crown = styled.div<{ createdByMe: boolean }>`
+  display: flex;
+  gap: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
   position: relative;
   padding-left: ${({ createdByMe }) => (createdByMe ? "2.5rem" : "0")};
 
-  ${({ createdByMe }) =>
-    createdByMe &&
-    `
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1.7rem;
-        height: 1.4rem;
-        background-image: url("/images/Icons/crown.svg");
-        background-size: cover;
-      }
-    `}
+  ${({ createdByMe }) => createdByMe && BeforeCrownIcon};
 `;
