@@ -22,11 +22,10 @@ const AuthNav = () => {
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
   useEffect(() => {
-    if (!id) {
-      return;
-    }
-
     const fetchDashboardData = async () => {
+      if (!id) {
+        return;
+      }
       try {
         const numericDashboardId = parseInt(id, 10);
         const fetchedDashboardInfo = await getDashboardDetails(numericDashboardId);
@@ -43,11 +42,8 @@ const AuthNav = () => {
     fetchDashboardData();
   }, [id]);
 
-  if (!id || !dashboardInfo) {
-    return null;
-  }
-
-  const title = dashboardInfo ? dashboardInfo.title : "내 대시보드";
+  const defaultTitle = "";
+  const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
   return (
     <S.HeaderContainer>
@@ -56,13 +52,13 @@ const AuthNav = () => {
       </S.LogoContainer>
       <S.LogoAndTitleContainer>
         <S.TitleContainer>
-          <S.Crown createdByMe={dashboardInfo.createdByMe}>{title}</S.Crown>
+          <S.Crown createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.Crown>
         </S.TitleContainer>
 
         <S.NavLinks>
-          {memberList && (
+          {id && memberList && (
             <DashboardInfo
-              createdByMe={dashboardInfo.createdByMe}
+              createdByMe={dashboardInfo?.createdByMe || false}
               dashboardId={parseInt(id, 10)}
               memberList={memberList}
             />
