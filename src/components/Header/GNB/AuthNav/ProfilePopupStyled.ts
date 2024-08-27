@@ -11,10 +11,10 @@ export const ProfilePopupContainer = styled.div`
 `;
 
 export const PopupContent = styled.div`
-  display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   height: 6rem;
   width: 10rem;
