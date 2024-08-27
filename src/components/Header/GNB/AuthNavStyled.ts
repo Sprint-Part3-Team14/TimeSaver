@@ -22,6 +22,10 @@ export const HeaderContainer = styled.div`
 export const LogoAndTitleContainer = styled.div`
   width: 80%;
   ${theme.displays.spaceBetween};
+
+  @media ${theme.device.mobile} {
+    width: 90%;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -40,11 +44,15 @@ export const LogoContainer = styled.div`
 export const Logo = styled.div`
   width: 9.3rem;
   height: 4rem;
-  padding-left: 2rem;
   background-image: url("/images/Main_Logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media ${theme.device.mobile} {
+    background-image: url("/images/Logo_small.png");
+    width: 4rem;
+  }
 `;
 
 export const NavLinks = styled.div`
@@ -53,7 +61,7 @@ export const NavLinks = styled.div`
   gap: 1rem;
 
   @media ${theme.device.mobile} {
-    gap: 2rem;
+    gap: 1rem;
   }
 `;
 
@@ -64,13 +72,17 @@ export const Text = styled.p`
   font-weight: 700;
   line-height: 1.5;
   text-align: center;
+
+  @media ${theme.device.mobile} {
+    font=size: ${theme.fontSize.small};
+  }
 `;
 
 export const Crown = styled.div<{ createdByMe: boolean }>`
   font-size: 1.6rem;
   font-weight: bold;
   position: relative;
-  padding-left: ${({ createdByMe }) => (createdByMe ? "2.5rem" : "0")}; // 왕관 위치를 고려한 padding
+  padding-left: ${({ createdByMe }) => (createdByMe ? "2.5rem" : "0")};
 
   ${({ createdByMe }) =>
     createdByMe &&
