@@ -1,4 +1,7 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import SettingIcon from "src/components/Icons/SettingIcon";
+import BorderPlusIcon from "src/components/Icons/BorderPlusIcon";
+import Button from "src/components/Button/Button";
 import Members, { MembersProps } from "./Members";
 import * as S from "./DashboardInfoStyled";
 
@@ -9,23 +12,31 @@ interface DashboardInfoProps {
 }
 
 const DashboardInfo = ({ createdByMe = false, memberList, dashboardId }: DashboardInfoProps) => {
+  const navigate = useNavigate();
+
   return (
     <S.DashboardInfoContainer>
       {createdByMe && (
-        <>
-          <S.CustomLink to={`/dashboard/${dashboardId}/edit`}>
-            <S.CustomButton>
-              <S.Icon src="/images/Icons/setting.svg" alt="Setting" />
-              <S.ButtonText>관리</S.ButtonText>
-            </S.CustomButton>
-          </S.CustomLink>
-          <S.CustomLink to={`/dashboard/${dashboardId}/invitation`}>
-            <S.CustomButton>
-              <S.Icon src="/images/Icons/plus.svg" alt="Invite" />
-              <S.ButtonText>초대하기</S.ButtonText>
-            </S.CustomButton>
-          </S.CustomLink>
-        </>
+        <S.ButtonContainer>
+          <Button
+            styleVariant="white"
+            exceptionStyle={S.CustomButton}
+            onClick={() => {
+              navigate(`/dashboard/${dashboardId}/edit`);
+            }}>
+            <SettingIcon width={18} height={18} />
+            관리
+          </Button>
+          <Button
+            styleVariant="white"
+            exceptionStyle={S.CustomButton}
+            onClick={() => {
+              navigate(`/dashboard/${dashboardId}/invitation`);
+            }}>
+            <BorderPlusIcon width={18} height={18} />
+            초대하기
+          </Button>
+        </S.ButtonContainer>
       )}
       {memberList && <Members members={memberList.members} totalCount={memberList.totalCount} />}
     </S.DashboardInfoContainer>

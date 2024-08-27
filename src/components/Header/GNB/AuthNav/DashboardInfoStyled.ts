@@ -1,6 +1,5 @@
 import theme from "src/styles/theme";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const DashboardInfoContainer = styled.div`
   ${theme.displays.rowCenter};
@@ -20,39 +19,20 @@ export const DashboardInfoContainer = styled.div`
   }
 `;
 
-export const CustomLink = styled(Link)`
-  text-decoration: none;
-`;
-
-export const CustomButton = styled.button`
+export const CustomButton = `
   display: flex;
+  justify-content : center;
   align-items: center;
-  text-decoration: none;
   gap: 0.5rem;
-  background: none;
-  border: 0.1rem solid ${theme.color.gray700};
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  padding : 0.8rem;
+  width : fit-content;
 
   @media ${theme.device.mobile} {
     height: 1.8rem;
   }
 `;
 
-export const Icon = styled.img`
-  width: 1.8rem;
-  height: 1.8rem;
-  vertical-align: middle;
-
-  @media ${theme.device.mobile} {
-    display: none;
-  }
-`;
-
-export const ButtonText = styled.span`
-  vertical-align: middle;
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: ${theme.color.black800};
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1.5rem;
 `;
