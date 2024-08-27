@@ -27,10 +27,18 @@ export const CustomButton = `
 
   @media ${theme.device.mobile} {
     height: 1.8rem;
+    font-size : 1.3rem;
+    padding : 0.8rem 0.5rem;
   }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 0.3rem;
+`;
+
+export const ButtonIcon = `
+  @media ${theme.device.mobile}{
+    display : none;
+  }
 `;

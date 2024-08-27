@@ -25,7 +25,7 @@ const DashboardInfo = ({ createdByMe = false, memberList, dashboardId }: Dashboa
             onClick={() => {
               navigate(`/dashboard/${dashboardId}/edit`);
             }}>
-            <SettingIcon width={18} height={18} />
+            <SettingIcon width={18} height={18} addStyle={S.ButtonIcon} />
             관리
           </Button>
           <Button
@@ -34,7 +34,7 @@ const DashboardInfo = ({ createdByMe = false, memberList, dashboardId }: Dashboa
             onClick={() => {
               navigate(`/dashboard/${dashboardId}/invitation`);
             }}>
-            <BorderPlusIcon width={18} height={18} />
+            <BorderPlusIcon width={18} height={18} addStyle={S.ButtonIcon} />
             초대하기
           </Button>
         </S.ButtonContainer>

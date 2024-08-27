@@ -1,8 +1,15 @@
-import { IconProps } from "src/types/IconType";
+import { StyleIconProps } from "src/types/IconType";
+import styled from "styled-components";
 
-const BorderPlusIcon = ({ width, height, color = "#787486" }: IconProps) => {
+const BorderPlusIcon = ({ width, height, color = "#787486", addStyle }: StyleIconProps) => {
   return (
-    <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SvgContainer
+      addStyle={addStyle}
+      width={width}
+      height={height}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g id="add_box_FILL0_wght300_GRAD0_opsz24 3">
         <path
           id="Vector"
@@ -10,8 +17,12 @@ const BorderPlusIcon = ({ width, height, color = "#787486" }: IconProps) => {
           fill={color}
         />
       </g>
-    </svg>
+    </SvgContainer>
   );
 };
 
 export default BorderPlusIcon;
+
+export const SvgContainer = styled.svg<{ addStyle?: string }>`
+  ${({ addStyle }) => addStyle}
+`;

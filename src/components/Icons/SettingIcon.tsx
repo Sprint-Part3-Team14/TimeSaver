@@ -1,8 +1,15 @@
-import { IconProps } from "../../types/IconType";
+import { SvgContainer } from "./BorderPlusIcon";
+import type { StyleIconProps } from "../../types/IconType";
 
-const SettingIcon = ({ width, height, color = "#787486" }: IconProps) => {
+const SettingIcon = ({ width, height, color = "#787486", addStyle }: StyleIconProps) => {
   return (
-    <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SvgContainer
+      addStyle={addStyle}
+      width={width}
+      height={height}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g id="settings_FILL0_wght300_GRAD0_opsz24 1">
         <path
           id="Vector"
@@ -10,7 +17,7 @@ const SettingIcon = ({ width, height, color = "#787486" }: IconProps) => {
           fill={color}
         />
       </g>
-    </svg>
+    </SvgContainer>
   );
 };
 
