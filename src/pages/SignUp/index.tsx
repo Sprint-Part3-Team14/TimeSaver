@@ -38,7 +38,7 @@ const SignUp = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const handleOnSubmit = (data: any) => {
     if (!data.terms) {
       setError("terms", {
         type: "manual",
@@ -46,7 +46,7 @@ const SignUp = () => {
       });
       return;
     }
-    SignUpMutation.mutate(data); // 회원가입 요청
+    SignUpMutation.mutate(data);
   };
 
   return (
@@ -54,7 +54,7 @@ const SignUp = () => {
       <S.SignInfoBox />
       <S.SignUpBox>
         <S.SignLogoBox onClick={() => navigate("/")} />
-        <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
           <AuthInput {...getEmailInputProps(control)} />
           <AuthInput {...getUsernameInputProps(control)} />
           <AuthInput {...getPasswordInputProps(control)} />

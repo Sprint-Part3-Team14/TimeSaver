@@ -8,11 +8,11 @@ import * as S from "./ProfilePopupStyled";
 const ProfilePopup = () => {
   const navigate = useNavigate();
 
-  const goMyPage = () => {
+  const handleGoMyPage = () => {
     navigate("/account-menu");
   };
 
-  const logout = () => {
+  const handleLogout = () => {
     deleteCookie;
     navigate("/signin");
   };
@@ -20,10 +20,10 @@ const ProfilePopup = () => {
   return (
     <S.ProfilePopupContainer className="profile-popup">
       <S.PopupContent>
-        <Button onClick={goMyPage} styleVariant="default" size="normal" fontSize="small" width="100%">
+        <Button onClick={handleGoMyPage} styleVariant="default" size="normal" fontSize="small" width="100%">
           마이 페이지
         </Button>
-        <Button onClick={logout} styleVariant="default" size="normal" fontSize="small" width="100%">
+        <Button onClick={handleLogout} styleVariant="default" size="normal" fontSize="small" width="100%">
           로그아웃
         </Button>
       </S.PopupContent>
