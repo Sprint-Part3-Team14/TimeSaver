@@ -9,6 +9,7 @@ import {
   getPasswordInputProps,
   getUsernameInputProps,
 } from "src/context/InputProps";
+import { useMutation } from "@tanstack/react-query";
 import Button from "../../components/Button/Button";
 import * as S from "./SignUpStyled";
 
@@ -16,18 +17,10 @@ const SignUp = () => {
   const { handleSubmit, control, setError, getValues } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
-    if (!data.terms) {
-      setError("terms", {
-        type: "manual",
-        message: "이용약관에 동의해주세요.",
-      });
-      return;
-    }
-
-    try {
-      const response = await postAuthRegister(data);
-      if (response) {
+  const SignUpMutation = useMutation({
+    mutationFn: async (data: any) => await postAuthRegister(data),
+    onSuccess: data => {
+      if (data) {
         navigate("/signin");
       } else {
         setError("email", {
@@ -35,13 +28,25 @@ const SignUp = () => {
           message: "회원 가입에 실패했습니다. 입력 내용을 확인해주세요.",
         });
       }
-    } catch (error) {
+    },
+    onError: error => {
       console.error("회원 가입 요청 중 오류가 발생했습니다:", error);
       setError("email", {
         type: "manual",
         message: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
       });
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    if (!data.terms) {
+      setError("terms", {
+        type: "manual",
+        message: "이용약관에 동의해주세요.",
+      });
+      return;
     }
+    SignUpMutation.mutate(data); // 회원가입 요청
   };
 
   return (
