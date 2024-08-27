@@ -1,4 +1,28 @@
+import { useNavigate } from "react-router-dom";
+import MainLogoIcon from "src/components/Icons/MainLogoIcon";
+import Button from "src/components/Button/Button";
+import * as S from "./NotfoundStyled";
+
 const Notfound = () => {
-  return <div>notFound</div>;
+  const navigation = useNavigate();
+  return (
+    <S.Background>
+      <S.Layout>
+        <MainLogoIcon width={590} height={458} />
+        <S.Text>
+          <p>oops !</p>
+          <p>PAGE NOT FOUND</p>
+        </S.Text>
+        <Button
+          onClick={() => {
+            navigation("/");
+          }}
+          styleVariant="white"
+          exceptionStyle={S.AddButtonStyle}>
+          메인으로 가기
+        </Button>
+      </S.Layout>
+    </S.Background>
+  );
 };
 export default Notfound;
