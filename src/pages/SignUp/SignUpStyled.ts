@@ -69,7 +69,7 @@ export const Form = styled.form`
   flex-direction: column;
   width: 100%;
   max-width: 400px;
-  margin-top: 6rem;
+  margin-top: 3rem;
 
   @media (max-width: 768px) {
     max-width: 100%;
