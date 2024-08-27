@@ -1,3 +1,4 @@
+import React from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ const SignIn = () => {
     <S.Container>
       <S.SignInfoBox />
       <S.SignInBox>
-        <S.SignLogoBox />
+        <S.SignLogoBox onClick={() => navigate("/")} />
         <S.Form onSubmit={handleSubmit(handleLogin)}>
           <AuthInput {...getEmailInputProps(control)} />
           <AuthInput {...getPasswordInputProps(control)} />
