@@ -4,7 +4,7 @@ import { BeforeCrownIcon } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
-export const HeaderContainer = styled(HeaderLayout)`
+export const HeaderContainer = styled(HeaderLayout)<{ isLanding: boolean }>`
   height: 100%;
   top: 0;
   z-index: 10;
@@ -16,6 +16,13 @@ export const HeaderContainer = styled(HeaderLayout)`
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
   padding: 0 2rem;
+
+  ${({ isLanding }) =>
+    isLanding
+      ? `
+    grid-area : "a";
+    `
+      : ""}
 
   @media ${theme.device.tablet} {
     grid-template-columns: 14rem 1fr;

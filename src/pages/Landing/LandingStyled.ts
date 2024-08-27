@@ -2,23 +2,22 @@ import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
+  display: grid;
+  grid-template-rows: 7rem 1fr;
+  grid-template-areas:
+    "a"
+    "b";
 `;
 
 export const MainContent = styled.div`
   flex: 1;
-  width: 100%;
   padding: 2rem;
 `;
 
 export const HeroSection = styled.div`
   position: relative;
   text-align: center;
-  width: 100%;
+  grid-area: "b";
 `;
 
 export const SlideShow = styled.div`

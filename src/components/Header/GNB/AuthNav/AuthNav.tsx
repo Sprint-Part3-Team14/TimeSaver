@@ -10,7 +10,7 @@ import ProfilePopup from "./components/ProfilePopup";
 import * as S from "./AuthNavStyled";
 import type { DashboardInfoData, GetMembersResponse } from "src/utils/apiResponseType";
 
-const AuthNav = () => {
+const AuthNav = ({ isLanding }: { isLanding: boolean }) => {
   const { id } = useParams<{ id: string }>();
   const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
   const [memberList, setMemberList] = useState<GetMembersResponse | null>(null);
@@ -45,7 +45,7 @@ const AuthNav = () => {
   const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
   return (
-    <S.HeaderContainer>
+    <S.HeaderContainer isLanding={isLanding}>
       <S.LinkStyle to="/">
         <S.Logo />
       </S.LinkStyle>
