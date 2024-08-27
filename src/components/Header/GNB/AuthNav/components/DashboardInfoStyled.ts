@@ -5,7 +5,6 @@ export const DashboardInfoContainer = styled.div`
   ${theme.displays.rowCenter};
   height: 3.4rem;
   gap: 5rem;
-  border-right: 0.18rem solid ${theme.color.gray700};
   color: ${theme.color.black800};
 
   @media ${theme.device.mobile} {
@@ -33,5 +32,5 @@ export const CustomButton = `
 
 export const ButtonContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 0.3rem;
 `;

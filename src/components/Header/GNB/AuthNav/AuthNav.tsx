@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getDashboardDetails, getMembers } from "src/utils/api";
 import { userQueryKeys } from "src/queryFactory/userQueryKeys";
-import UserProfile from "src/components/UserProfile/UserProfile";
+import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
 import DashboardInfo from "./components/DashboardInfo";
 import * as S from "./AuthNavStyled";
 import type { DashboardInfoData, GetMembersResponse } from "src/utils/apiResponseType";
@@ -44,7 +44,7 @@ const AuthNav = () => {
   return (
     <S.HeaderContainer>
       <a href="/">
-        <S.LogoImg src="/images/Main_Logo.png" />
+        <S.Logo />
       </a>
       <S.LogoAndTitleContainer>
         <S.DashboardTitle createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.DashboardTitle>
@@ -57,12 +57,10 @@ const AuthNav = () => {
               memberList={memberList}
             />
           )}
-          <UserProfile
-            profileImageUrl={currentUser.profileImageUrl}
-            nickName={currentUser.nickname}
-            addStyle={S.ProfileTextStyle}
-            ImageAddStyle={S.AddProfileImageStyle}
-          />
+          <S.ProfileContainer>
+            <UserProfileImage profileImageUrl={currentUser.profileImageUrl} addStyle={S.AddProfileImageStyle} />
+            <S.ProfileTextStyle>{currentUser.nickname}</S.ProfileTextStyle>
+          </S.ProfileContainer>
         </S.NavLinks>
       </S.LogoAndTitleContainer>
     </S.HeaderContainer>
