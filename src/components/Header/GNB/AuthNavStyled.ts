@@ -13,12 +13,9 @@ export const HeaderContainer = styled.div`
   margin: 0 2rem;
 
   @media ${theme.device.mobile} {
-    padding-left: 4rem;
-    padding-right: 4rem;
   }
 
   @media ${theme.device.tablet} {
-    padding-right: 8rem;
   }
 `;
 
