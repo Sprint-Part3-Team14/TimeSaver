@@ -1,22 +1,35 @@
-import ArrowBackwardIcon from "../../../../components/Icons/ArrowBackwardIcon";
-import ArrowForwardIcon from "../../../../components/Icons/ArrowForwardIcon";
+import ArrowBackwardIcon from "src/components/Icons/ArrowBackwardIcon";
+import ArrowForwardIcon from "src/components/Icons/ArrowForwardIcon";
+import React from "react";
+import * as S from "src/components/PagiNation/PagiNationStyled";
 
-import * as S from "./PagiNationStyled";
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
 
-const PageNation = () => {
+const Pagination = (props: PaginationProps) => {
+  const { currentPage, totalPages, onPageChange } = props;
+
+  const handlePrevious = () => {
+    if (currentPage > 1) onPageChange(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) onPageChange(currentPage + 1);
+  };
+
   return (
-    <S.Container>
-      <S.Page> 1 페이지 중 1 </S.Page>
-      <S.ButtonBox>
-        <S.LeftButton>
-          <ArrowForwardIcon width={16} height={16} color={"#D9D9D9"} />
-        </S.LeftButton>
-        <S.RightButton>
-          <ArrowBackwardIcon width={16} height={16} color={"#D9D9D9"} />
-        </S.RightButton>
-      </S.ButtonBox>
-    </S.Container>
+    <S.PaginationContainer>
+      <S.PageButton onClick={handlePrevious} disabled={currentPage === 1}>
+        <ArrowForwardIcon width={16} height={16} color={"#D9D9D9"} />
+      </S.PageButton>
+      <S.PageButton onClick={handleNext} disabled={currentPage === totalPages}>
+        <ArrowBackwardIcon width={16} height={16} color={"#D9D9D9"} />
+      </S.PageButton>
+    </S.PaginationContainer>
   );
 };
 
-export default PageNation;
+export default Pagination;

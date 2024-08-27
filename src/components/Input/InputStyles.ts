@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -8,23 +9,23 @@ export const InputWrapper = styled.div`
 
 export const Label = styled.label`
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: ${theme.color.black700};
 `;
 
 export const StyledInput = styled.input`
   padding: 0.5rem;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  background-color: #ffffff;
-  color: #333333;
+  border: 0.1rem solid ${theme.color.gray600};
+  border-radius: 0.4rem; /* 4px -> 0.4rem */
+  background-color: ${theme.color.white};
+  color: ${theme.color.black700};
   transition: border-color 0.3s;
 
   &:hover {
-    border-color: #007bff;
+    border-color: ${theme.color.blue400};
   }
 
   &:focus {
-    border-color: #007bff;
+    border-color: ${theme.color.blue400};
     outline: none;
   }
 `;

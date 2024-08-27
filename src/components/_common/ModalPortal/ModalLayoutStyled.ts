@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 export const Overlay = styled.div`
@@ -7,7 +8,7 @@ export const Overlay = styled.div`
   z-index: 10;
   height: 100vh;
   width: 100vw;
-  background: black;
+  background: ${theme.color.black900};
   opacity: 0.7;
 `;
 
@@ -19,16 +20,17 @@ export const ModalContainer = styled.div<{ usePortal: boolean }>`
   justify-content: space-between;
   height: 95vh;
   width: 95vw;
-  background: white;
+  background: ${theme.color.white};
   padding: 1.5rem;
   padding-bottom: 2.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  @media (min-width: 768px) {
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+
+  @media ${theme.device.tablet} {
     height: min-content;
     width: 30rem;
     border-radius: 0.75rem;
     padding-bottom: 2rem;
-    outline: ${props => (props.usePortal ? "none" : "1px solid #A4a1aa")};
+    outline: ${props => (props.usePortal ? "none" : `0.1rem solid ${theme.color.gray800}`)};
     ${props =>
       props.usePortal
         ? `

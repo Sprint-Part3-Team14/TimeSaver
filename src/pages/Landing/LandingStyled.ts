@@ -1,5 +1,5 @@
-import theme from "src/styles/theme";
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const Container = styled.div`
   display: grid;
@@ -54,7 +54,7 @@ export const PrevButton = styled.button`
   background-color: ${theme.color.pink900};
   opacity: 0.6;
   border: none;
-  color: white;
+  color: ${theme.color.white};
   padding: 1.5rem 1rem;
   cursor: pointer;
   z-index: 1;
@@ -68,7 +68,7 @@ export const NextButton = styled.button`
   background-color: ${theme.color.pink900};
   opacity: 0.6;
   border: none;
-  color: white;
+  color: ${theme.color.white};
   padding: 1.5rem 1rem;
   cursor: pointer;
   z-index: 1;
@@ -79,7 +79,7 @@ export const HeroText = styled.h1`
   margin-bottom: 4rem;
   font-size: 3rem;
   font-weight: 800;
-  color: #333;
+  color: ${theme.color.black800};
   background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -93,7 +93,7 @@ export const ColorSection = styled.div`
 export const ColorText = styled.h2`
   font-size: 2.5rem;
   font-weight: 800;
-  color: #555;
+  color: ${theme.color.black700};
   margin-top: 2rem;
   margin-bottom: 3rem;
   background: linear-gradient(45deg, #34d399, #60a5fa, #a78bfa);
@@ -147,7 +147,7 @@ export const FeaturesGrid = styled.div`
 `;
 
 export const FeatureCard = styled.div`
-  background: #fff;
+  background-color: ${theme.color.white};
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
@@ -165,5 +165,5 @@ export const FeatureIcon = styled.div`
 
 export const FeatureText = styled.h3`
   font-size: 1.5rem;
-  color: #333;
+  color: ${theme.color.black800};
 `;
