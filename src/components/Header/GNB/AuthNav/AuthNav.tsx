@@ -5,6 +5,7 @@ import { getDashboardDetails, getMembers } from "src/utils/api";
 import { userQueryKeys } from "src/queryFactory/userQueryKeys";
 import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
 import useToggle from "src/hooks/useToggle";
+import { HeaderContainer, LinkStyle, Logo } from "src/components/Header/HeaderCommonStyle";
 import DashboardInfo from "./components/DashboardInfo";
 import ProfilePopup from "./components/ProfilePopup";
 import * as S from "./AuthNavStyled";
@@ -45,10 +46,10 @@ const AuthNav = ({ isLanding }: { isLanding: boolean }) => {
   const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
   return (
-    <S.HeaderContainer isLanding={isLanding}>
-      <S.LinkStyle to="/">
-        <S.Logo />
-      </S.LinkStyle>
+    <HeaderContainer isLanding={isLanding}>
+      <LinkStyle to="/">
+        <Logo />
+      </LinkStyle>
 
       <S.LogoAndTitleContainer>
         <S.DashboardTitle createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.DashboardTitle>
@@ -69,7 +70,7 @@ const AuthNav = ({ isLanding }: { isLanding: boolean }) => {
           </S.ProfileButton>
         </S.NavLinks>
       </S.LogoAndTitleContainer>
-    </S.HeaderContainer>
+    </HeaderContainer>
   );
 };
 

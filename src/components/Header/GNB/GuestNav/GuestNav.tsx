@@ -1,25 +1,38 @@
+import { useNavigate } from "react-router-dom";
 import Button from "src/components/Button/Button";
+import { LinkStyle, Logo } from "src/components/Header/HeaderCommonStyle";
 import * as S from "./GuestNavStyled";
 
 const GuestNav = () => {
+  const navigate = useNavigate();
   return (
-    <S.HeaderContainer>
-      <S.LogoContainer>
-        <S.Logo />
-      </S.LogoContainer>
+    <S.HeaderBox isLanding={true}>
+      <LinkStyle to="/">
+        <Logo />
+      </LinkStyle>
       <S.NavLinks>
-        <S.StyledLink to="/signin">
-          <Button styleVariant="default" size="normal" fontSize="small" width="6rem">
-            로그인
-          </Button>
-        </S.StyledLink>
-        <S.StyledLink to="/signup">
-          <Button styleVariant="default" size="normal" fontSize="small" width="8rem">
-            회원가입
-          </Button>
-        </S.StyledLink>
+        <Button
+          styleVariant="default"
+          size="normal"
+          fontSize="small"
+          width="6rem"
+          onClick={() => {
+            navigate("/signin");
+          }}>
+          로그인
+        </Button>
+        <Button
+          styleVariant="default"
+          size="normal"
+          fontSize="small"
+          width="8rem"
+          onClick={() => {
+            navigate("/signup");
+          }}>
+          회원가입
+        </Button>
       </S.NavLinks>
-    </S.HeaderContainer>
+    </S.HeaderBox>
   );
 };
 
