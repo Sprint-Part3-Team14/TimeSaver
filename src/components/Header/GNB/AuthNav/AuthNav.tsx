@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { getDashboardDetails, getMembers } from "src/utils/api";
+import { userQueryKeys } from "src/queryFactory/userQueryKeys";
+import UserProfile from "src/components/UserProfile/UserProfile";
 import DashboardInfo from "./components/DashboardInfo";
-import ProfileInfo from "./components/ProfileInfo";
 import * as S from "./AuthNavStyled";
 import type { DashboardInfoData, GetMembersResponse } from "src/utils/apiResponseType";
 
@@ -10,6 +12,8 @@ const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
   const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
   const [memberList, setMemberList] = useState<GetMembersResponse | null>(null);
+
+  const { data: currentUser } = useQuery(userQueryKeys.current());
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -32,6 +36,8 @@ const AuthNav = () => {
     fetchDashboardData();
   }, [id]);
 
+  if (!currentUser) return <div>아직 없어</div>;
+
   const defaultTitle = "";
   const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
@@ -51,7 +57,12 @@ const AuthNav = () => {
               memberList={memberList}
             />
           )}
-          <ProfileInfo />
+          <UserProfile
+            profileImageUrl={currentUser.profileImageUrl}
+            nickName={currentUser.nickname}
+            addStyle={S.ProfileTextStyle}
+            ImageAddStyle={S.AddProfileImageStyle}
+          />
         </S.NavLinks>
       </S.LogoAndTitleContainer>
     </S.HeaderContainer>
