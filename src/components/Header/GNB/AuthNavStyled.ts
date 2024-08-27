@@ -37,6 +37,7 @@ export const TitleContainer = styled.div`
 
 export const LogoContainer = styled.div`
   flex-shrink: 0;
+  cursor: pointer;
 `;
 
 export const Logo = styled.div`
