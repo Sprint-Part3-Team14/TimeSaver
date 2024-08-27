@@ -1,33 +1,25 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import { deleteCookie } from "src/utils/CookieSetting";
-import Button from "../../../../Button/Button";
+import Button from "src/components/Button/Button";
 import * as S from "./ProfilePopupStyled";
 
 const ProfilePopup = () => {
   const navigate = useNavigate();
 
-  const goMyPage = () => {
-    navigate("/account-menu");
-  };
-
-  const logout = () => {
+  function handleLogout() {
     deleteCookie;
     navigate("/signin");
-  };
+  }
 
   return (
-    <S.ProfilePopupContainer className="profile-popup">
-      <S.PopupContent>
-        <Button onClick={goMyPage} styleVariant="default" size="normal" fontSize="small" width="100%">
-          마이 페이지
-        </Button>
-        <Button onClick={logout} styleVariant="default" size="normal" fontSize="small" width="100%">
-          로그아웃
-        </Button>
-      </S.PopupContent>
-    </S.ProfilePopupContainer>
+    <S.PopupButtonContainer>
+      <Button styleVariant="white" exceptionStyle={S.ButtonStyle}>
+        계정 관리
+      </Button>
+      <Button styleVariant="white" exceptionStyle={S.ButtonStyle} onClick={handleLogout}>
+        로그아웃
+      </Button>
+    </S.PopupButtonContainer>
   );
 };
 

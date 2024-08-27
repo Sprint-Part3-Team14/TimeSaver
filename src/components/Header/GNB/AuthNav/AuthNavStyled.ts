@@ -127,3 +127,7 @@ export const ProfileTextStyle = styled.p`
     display: none;
   }
 `;
+
+export const ProfileButton = styled.button`
+  cursor: pointer;
+`;

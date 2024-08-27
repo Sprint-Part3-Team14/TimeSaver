@@ -4,7 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getDashboardDetails, getMembers } from "src/utils/api";
 import { userQueryKeys } from "src/queryFactory/userQueryKeys";
 import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
+import useToggle from "src/hooks/useToggle";
 import DashboardInfo from "./components/DashboardInfo";
+import ProfilePopup from "./components/ProfilePopup";
 import * as S from "./AuthNavStyled";
 import type { DashboardInfoData, GetMembersResponse } from "src/utils/apiResponseType";
 
@@ -12,6 +14,7 @@ const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
   const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
   const [memberList, setMemberList] = useState<GetMembersResponse | null>(null);
+  const { isTrue: isOpenPopup, handleToggle } = useToggle();
 
   const { data: currentUser } = useQuery(userQueryKeys.current());
 
@@ -57,10 +60,13 @@ const AuthNav = () => {
               memberList={memberList}
             />
           )}
-          <S.ProfileContainer>
-            <UserProfileImage profileImageUrl={currentUser.profileImageUrl} addStyle={S.AddProfileImageStyle} />
-            <S.ProfileTextStyle>{currentUser.nickname}</S.ProfileTextStyle>
-          </S.ProfileContainer>
+          <S.ProfileButton type="button" onClick={handleToggle}>
+            <S.ProfileContainer>
+              {isOpenPopup && <ProfilePopup />}
+              <UserProfileImage profileImageUrl={currentUser.profileImageUrl} addStyle={S.AddProfileImageStyle} />
+              <S.ProfileTextStyle>{currentUser.nickname}</S.ProfileTextStyle>
+            </S.ProfileContainer>
+          </S.ProfileButton>
         </S.NavLinks>
       </S.LogoAndTitleContainer>
     </S.HeaderContainer>
