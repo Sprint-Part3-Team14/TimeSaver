@@ -14,7 +14,7 @@ export const ProfileInfoContainer = styled.div`
 
 export const ProfileLink = styled(Link)`
   ${theme.displays.rowCenter};
-  gap: 6rem;
+  gap: 1rem;
   text-decoration: none;
   color: inherit;
 
