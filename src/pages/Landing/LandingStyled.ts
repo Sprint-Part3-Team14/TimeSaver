@@ -24,7 +24,7 @@ export const HeroSection = styled.div`
 export const SlideShow = styled.div`
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 80rem;
   margin: 0 auto;
 `;
 
@@ -33,7 +33,7 @@ export const SlideWrapper = styled.div`
   padding-top: 56.25%;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 1rem;
   border: 0.2rem solid ${theme.color.pink900};
 `;
 
@@ -114,7 +114,7 @@ export const ColorCircle = styled.div<{ color: string }>`
   background-color: ${({ color }) => color};
   border-radius: 50%;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(2rem);
   animation: fadeIn 1s forwards;
 
   @keyframes fadeIn {
@@ -143,19 +143,19 @@ export const FeaturesTitle = styled.h2`
 
 export const FeaturesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 2rem;
 `;
 
 export const FeatureCard = styled.div`
   background: #fff;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-1rem);
   }
 `;
 
