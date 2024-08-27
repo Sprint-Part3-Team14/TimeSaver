@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUserProfile } from "src/utils/api";
-import Members from "./Members";
+// import Members from "./Members";
 import * as S from "./ProfileInfoStyled";
 import ProfilePopup from "./ProfilePopup";
 
@@ -33,7 +33,7 @@ const ProfileInfo = () => {
   return (
     <S.ProfileInfoContainer>
       <S.ProfileLink to="/my-invitation">
-        <Members members={[myProfile]} totalCount={1} />
+        {/* <Members members={member} totalCount={1} /> */}
         <S.NicknameText>{myProfile.nickname}</S.NicknameText>
       </S.ProfileLink>
       <ProfilePopup />

@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 import SettingIcon from "src/components/Icons/SettingIcon";
 import BorderPlusIcon from "src/components/Icons/BorderPlusIcon";
 import Button from "src/components/Button/Button";
-import Members, { MembersProps } from "./Members";
+import Members from "./Members";
 import * as S from "./DashboardInfoStyled";
+import type { GetMembersResponse } from "src/utils/apiResponseType";
 
 interface DashboardInfoProps {
   createdByMe?: boolean;
-  memberList?: MembersProps;
+  memberList?: GetMembersResponse;
   dashboardId: number;
 }
 

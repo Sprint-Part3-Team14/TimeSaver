@@ -1,5 +1,5 @@
-import React from "react";
 import * as S from "./MembersStyled";
+import type { GetMembersResponse } from "src/utils/apiResponseType";
 
 const INDEX_POSITION = [
   "right-0 flex",
@@ -9,31 +9,9 @@ const INDEX_POSITION = [
   "right-[112px] hidden pc:flex",
 ];
 
-const CONTAINER_SIZE = [
-  "w-[40px]",
-  "w-[70px]",
-  "w-[100px]",
-  "w-[100px] pc:w-[130px]",
-  "w-[100px] pc:w-[160px]",
-];
+const CONTAINER_SIZE = ["w-[40px]", "w-[70px]", "w-[100px]", "w-[100px] pc:w-[130px]", "w-[100px] pc:w-[160px]"];
 
-export interface MembersProps {
-  members: MemberProps[];
-  totalCount: number;
-}
-
-interface MemberProps {
-  id: number;
-  userId?: number;
-  email?: string;
-  nickname: string;
-  profileImageUrl?: string | null;
-  createdAt?: string;
-  updatedAt?: string;
-  isOwner?: boolean;
-}
-
-const Members = ({ members, totalCount }: MembersProps) => {
+const Members = ({ members, totalCount }: GetMembersResponse) => {
   const extraCount = {
     pc: totalCount > 5 ? totalCount - 4 : 0,
     tablet: totalCount > 3 ? totalCount - 2 : 0,
@@ -46,29 +24,14 @@ const Members = ({ members, totalCount }: MembersProps) => {
       {slicedMembers.map((member, index) => (
         <li key={member.id}>
           {member.profileImageUrl ? (
-            <ImageMember
-              profileImageUrl={member.profileImageUrl}
-              index={slicedMembers.length - index - 1}
-            />
+            <ImageMember profileImageUrl={member.profileImageUrl} index={slicedMembers.length - index - 1} />
           ) : (
-            <DefaultMember
-              key={member.id}
-              nickname={member.nickname}
-              index={slicedMembers.length - index - 1}
-            />
+            <DefaultMember key={member.id} nickname={member.nickname} index={slicedMembers.length - index - 1} />
           )}
         </li>
       ))}
-      {extraCount.pc > 0 && (
-        <S.ExtraCount className="pc:flex">
-          {`+${extraCount.pc}`}
-        </S.ExtraCount>
-      )}
-      {extraCount.tablet > 0 && (
-        <S.ExtraCount className="pc:hidden">
-          {`+${extraCount.tablet}`}
-        </S.ExtraCount>
-      )}
+      {extraCount.pc > 0 && <S.ExtraCount className="pc:flex">{`+${extraCount.pc}`}</S.ExtraCount>}
+      {extraCount.tablet > 0 && <S.ExtraCount className="pc:hidden">{`+${extraCount.tablet}`}</S.ExtraCount>}
     </S.MembersContainer>
   );
 };
@@ -84,11 +47,7 @@ function ImageMember({ profileImageUrl, index }: ImageMemberProps) {
   const positionClass = INDEX_POSITION[index];
   return (
     <S.MemberImage positionClass={positionClass}>
-      <img
-        src={profileImageUrl}
-        style={{ objectFit: "cover" }}
-        alt="멤버 프로필 이미지"
-      />
+      <img src={profileImageUrl} style={{ objectFit: "cover" }} alt="멤버 프로필 이미지" />
     </S.MemberImage>
   );
 }

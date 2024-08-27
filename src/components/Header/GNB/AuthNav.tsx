@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDashboardDetails, getMembers } from "src/utils/api";
-import { DashboardInfoData } from "src/utils/apiResponseType";
 import DashboardInfo from "./AuthNav/DashboardInfo";
-import { MembersProps } from "./AuthNav/Members";
 import ProfileInfo from "./AuthNav/ProfileInfo";
 import * as S from "./AuthNavStyled";
+import type { DashboardInfoData, GetMembersResponse } from "src/utils/apiResponseType";
 
 const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
   const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
-  const [memberList, setMemberList] = useState<MembersProps | null>(null);
+  const [memberList, setMemberList] = useState<GetMembersResponse | null>(null);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
