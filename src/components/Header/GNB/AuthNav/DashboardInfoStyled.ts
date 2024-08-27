@@ -12,8 +12,7 @@ export const DashboardInfoContainer = styled.div`
 
   @media ${theme.device.mobile} {
     height: 3.8rem;
-    gap: 2.3rem;
-    padding-right: 0.6rem;
+    gap: 1rem;
   }
 
   @media ${theme.device.tablet} {
@@ -35,12 +34,20 @@ export const CustomButton = styled.button`
   padding: 0.6rem 1rem;
   border-radius: 8px;
   cursor: pointer;
+
+  @media ${theme.device.mobile} {
+    height: 1.8rem;
+  }
 `;
 
 export const Icon = styled.img`
   width: 1.8rem;
   height: 1.8rem;
   vertical-align: middle;
+
+  @media ${theme.device.mobile} {
+    display: none;
+  }
 `;
 
 export const ButtonText = styled.span`

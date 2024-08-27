@@ -30,4 +30,8 @@ export const NicknameText = styled.div`
   font-family: Inter;
   font-size: ${theme.fontSize.large};
   font-weight: 500;
+
+  @media ${theme.device.mobile} {
+    display: none;
+  }
 `;
