@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDashboardDetails, getMembers } from "src/utils/api";
-import * as S from "./AuthNavStyled";
+import { DashboardInfoData } from "src/utils/apiResponseType";
 import DashboardInfo from "./AuthNav/DashboardInfo";
 import { MembersProps } from "./AuthNav/Members";
 import ProfileInfo from "./AuthNav/ProfileInfo";
-
-interface I_dashboardData {
-  id: number;
-  title: string;
-  color: string;
-  createdAt: string;
-  updatedAt: string;
-  createdByMe: boolean;
-  userId: number;
-}
+import * as S from "./AuthNavStyled";
 
 const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [dashboardInfo, setDashboardInfo] = useState<I_dashboardData | null>(null);
+  const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
   useEffect(() => {
