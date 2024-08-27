@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDashboardDetails, getMembers } from "src/utils/api";
 import * as S from "./AuthNavStyled";
 import DashboardInfo from "./AuthNav/DashboardInfo";
@@ -18,6 +18,7 @@ interface I_dashboardData {
 
 const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [dashboardInfo, setDashboardInfo] = useState<I_dashboardData | null>(null);
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
@@ -45,9 +46,13 @@ const AuthNav = () => {
   const defaultTitle = "";
   const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
   return (
     <S.HeaderContainer>
-      <S.LogoContainer>
+      <S.LogoContainer onClick={handleLogoClick}>
         <S.Logo />
       </S.LogoContainer>
       <S.LogoAndTitleContainer>
