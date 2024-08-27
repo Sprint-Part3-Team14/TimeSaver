@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getDashboardDetails, getMembers } from "src/utils/api";
 import { DashboardInfoData } from "src/utils/apiResponseType";
 import DashboardInfo from "./AuthNav/DashboardInfo";
@@ -9,7 +9,6 @@ import * as S from "./AuthNavStyled";
 
 const AuthNav = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [dashboardInfo, setDashboardInfo] = useState<DashboardInfoData | null>(null);
   const [memberList, setMemberList] = useState<MembersProps | null>(null);
 
@@ -37,19 +36,13 @@ const AuthNav = () => {
   const defaultTitle = "";
   const title = dashboardInfo ? dashboardInfo.title : defaultTitle;
 
-  const handleLogoClick = () => {
-    navigate("/");
-  };
-
   return (
     <S.HeaderContainer>
-      <S.LogoContainer onClick={handleLogoClick}>
-        <S.Logo />
-      </S.LogoContainer>
+      <a href="/">
+        <S.LogoImg src="/images/Main_Logo.png" />
+      </a>
       <S.LogoAndTitleContainer>
-        <S.TitleContainer>
-          <S.Crown createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.Crown>
-        </S.TitleContainer>
+        <S.DashboardTitle createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.DashboardTitle>
 
         <S.NavLinks>
           {id && memberList && (

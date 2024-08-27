@@ -1,14 +1,16 @@
+import { HeaderLayout } from "src/DashboardLayoutStyled";
 import { BeforeCrownIcon } from "src/styles/mixin";
 import theme from "src/styles/theme";
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
-  position: sticky;
+export const HeaderContainer = styled(HeaderLayout)`
+  height: 100%;
   top: 0;
   z-index: 10;
-  height: 7rem;
-  width: 100%;
-  ${props => props.theme.displays.spaceBetween};
+  position: sticky;
+  display: grid;
+  grid-template-columns: 28rem 1fr;
+  align-items: center;
   border-bottom: 0.1rem solid ${theme.color.gray700};
   background-color: ${theme.color.white};
   padding: 0 2rem;
@@ -21,20 +23,16 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoAndTitleContainer = styled.div`
-  width: 80%;
+  padding-left: 2rem;
   ${theme.displays.spaceBetween};
 
   @media ${theme.device.mobile} {
-    width: 90%;
   }
 `;
 
-export const TitleContainer = styled.div`
-  display: flex;
-  font-size: ${theme.fontSize.large};
-  font-weight: bold;
-  padding-left: 1rem;
-  align-items: center;
+export const LogoImg = styled.img`
+  width: 9.3rem;
+  height: auto;
 `;
 
 export const LogoContainer = styled.div`
@@ -79,13 +77,17 @@ export const Text = styled.p`
   }
 `;
 
-export const Crown = styled.div<{ createdByMe: boolean }>`
+export const DashboardTitle = styled.div<{ createdByMe: boolean }>`
+  display: flex;
+  font-size: ${theme.fontSize.large};
+  font-weight: bold;
+  align-items: center;
+
   display: flex;
   gap: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
   position: relative;
-  padding-left: ${({ createdByMe }) => (createdByMe ? "2.5rem" : "0")};
 
   ${({ createdByMe }) => createdByMe && BeforeCrownIcon};
 `;
