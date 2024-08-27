@@ -6,7 +6,6 @@ import Landing from "./pages/Landing";
 import Signup from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
-import Edit from "./pages/Edit";
 import DashboardLayout from "./DashboardLayout";
 import MyDashboard from "./pages/MyDashboard";
 import Notfound from "./pages/Notfound";
@@ -24,8 +23,6 @@ const App = () => {
             <Route element={<DashboardLayout />}>
               <Route path="my-dashboard" element={<MyDashboard />} />
               <Route path="/dashboard/:id" element={<Dashboard />} />
-              <Route path="/dashboard/:id/edit" element={<Edit />} />
-
               <Route path="*" element={<Navigate to="/notFound" />} />
             </Route>
             <Route path="/notFound" element={<Notfound />} />
