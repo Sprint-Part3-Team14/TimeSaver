@@ -91,3 +91,19 @@ export const DashboardTitle = styled.div<{ createdByMe: boolean }>`
 
   ${({ createdByMe }) => createdByMe && BeforeCrownIcon};
 `;
+
+export const AddProfileImageStyle = `
+  width : 3.8rem;
+  height : 3.8rem;
+
+  @media ${theme.device.mobile}{
+    width : 3.4rem;
+    height : 3.4rem;
+  }
+`;
+
+export const ProfileTextStyle = `
+  color: ${theme.color.black700};
+  font-size: 1.7rem;
+  font-weight: 600;
+`;
