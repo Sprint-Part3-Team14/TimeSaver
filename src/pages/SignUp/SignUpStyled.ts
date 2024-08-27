@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -7,12 +8,12 @@ export const Container = styled.div`
   height: 100vh;
   padding: 0;
 
-  @media (max-width: 768px) {
+  @media ${theme.device.tablet} {
     flex-direction: column;
     width: 100%;
   }
 
-  @media (max-width: 480px) {
+  @media ${theme.device.mobile} {
     padding: 0 1.2rem;
     width: 100%;
   }
@@ -25,7 +26,7 @@ export const SignInfoBox = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media (max-width: 768px) {
+  @media ${theme.device.tablet} {
     display: none;
   }
 `;
@@ -37,7 +38,7 @@ export const SignLogoBox = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media (max-width: 768px) {
+  @media ${theme.device.tablet} {
     width: 22.1rem;
     height: 21.8rem;
   }
@@ -52,13 +53,13 @@ export const SignUpBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media ${theme.device.tablet} {
     width: 60%;
     height: 100%;
     padding: 0;
   }
 
-  @media (max-width: 480px) {
+  @media ${theme.device.mobile} {
     height: auto;
     padding: 0;
   }
@@ -68,14 +69,14 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
+  max-width: 40rem;
   margin-top: 3rem;
 
-  @media (max-width: 768px) {
+  @media ${theme.device.tablet} {
     max-width: 100%;
   }
 
-  @media (max-width: 480px) {
+  @media ${theme.device.mobile} {
     padding: 0;
   }
 `;
@@ -92,16 +93,16 @@ export const FooterText = styled.div`
   margin-top: 1.6rem;
   font-size: 1.2rem;
   text-align: center;
-  color: ${({ theme }) => theme.color.gray900};
+  color: ${theme.color.gray900};
 `;
 
 export const SignInLink = styled.span`
-  color: ${({ theme }) => theme.color.pink900};
+  color: ${theme.color.pink900};
   cursor: pointer;
   text-decoration: underline;
 
   &:hover {
-    color: ${({ theme }) => theme.color.pink400};
+    color: ${theme.color.pink400};
   }
 `;
 
@@ -115,7 +116,7 @@ export const CheckboxContainer = styled.div`
   }
 
   label {
-    font-size: ${({ theme }) => theme.fontSize.small};
-    color: ${({ theme }) => theme.color.gray900};
+    font-size: ${theme.fontSize.small};
+    color: ${theme.color.gray900};
   }
 `;

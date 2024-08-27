@@ -1,3 +1,4 @@
+import theme from "src/styles/theme";
 import styled from "styled-components";
 
 const buttonSize = {
@@ -15,27 +16,26 @@ export const Container = styled.button<{
 }>`
   text-align: center;
   width: ${({ width }) => width};
-  background-color: ${({ theme, styleVariant }) =>
-    styleVariant === "white" ? theme.color.white : theme.color.pink900};
-  color: ${({ theme, styleVariant }) => (styleVariant === "white" ? theme.color.gray900 : theme.color.white)};
-  border: ${({ theme, styleVariant }) => (styleVariant === "white" ? `1px solid ${theme.color.gray700}` : "none")};
+  background-color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.white : theme.color.pink900)};
+  color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.gray900 : theme.color.white)};
+  border: ${({ styleVariant }) => (styleVariant === "white" ? `0.1rem solid ${theme.color.gray700}` : "none")};
   padding: ${({ size }) => buttonSize[size]};
-  border-radius: ${({ size }) => (size === "large" ? "8px" : "4px")};
+  border-radius: ${({ size }) => (size === "large" ? "0.8rem" : "0.4rem")};
   cursor: pointer;
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
+  font-size: ${({ fontSize }) => theme.fontSize[fontSize]};
   font-weight: 500;
   transition: background-color 0.3s;
-  ${({ exceptionStyle }) => (exceptionStyle ? exceptionStyle : "")}
+  ${({ exceptionStyle }) => (exceptionStyle ? exceptionStyle : "")};
 
   &:hover {
-    background-color: ${({ theme, styleVariant }) => (styleVariant === "white" ? theme.color.gray600 : "#eb7575")};
+    background-color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.gray600 : "#eb7575")};
   }
 
   &:disabled {
-    background-color: ${({ theme }) => theme.color.gray600};
+    background-color: ${theme.color.gray600};
   }
 
   &:active {
-    background-color: background-color: ${({ theme, styleVariant }) => (styleVariant === "white" ? theme.color.black500 : "#df5656")};
+    background-color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.gray500 : "#df5656")};
   }
 `;

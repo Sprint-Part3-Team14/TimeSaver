@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import theme from "src/styles/theme";
 
 export const ProfileInfoContainer = styled.div`
-  ${props => props.theme.displays.rowCenter};
+  ${theme.displays.rowCenter};
   position: relative;
   gap: 1rem;
 
