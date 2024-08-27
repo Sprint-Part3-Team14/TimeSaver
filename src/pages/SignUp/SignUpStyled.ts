@@ -29,6 +29,10 @@ export const SignInfoBox = styled.div`
   @media ${theme.device.tablet} {
     display: none;
   }
+
+  @media ${theme.device.mobile} {
+    display: none;
+  }
 `;
 
 export const SignLogoBox = styled.div`
@@ -39,6 +43,11 @@ export const SignLogoBox = styled.div`
   background-position: center;
 
   @media ${theme.device.tablet} {
+    width: 22.1rem;
+    height: 21.8rem;
+  }
+
+  @media ${theme.device.mobile} {
     width: 22.1rem;
     height: 21.8rem;
   }
@@ -60,6 +69,7 @@ export const SignUpBox = styled.div`
   }
 
   @media ${theme.device.mobile} {
+    width: 60%;
     height: auto;
     padding: 0;
   }
@@ -77,6 +87,7 @@ export const Form = styled.form`
   }
 
   @media ${theme.device.mobile} {
+    max-width: 100%;
     padding: 0;
   }
 `;
