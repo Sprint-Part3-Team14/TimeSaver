@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import SettingIcon from "src/components/Icons/SettingIcon";
 import BorderPlusIcon from "src/components/Icons/BorderPlusIcon";
 import Button from "src/components/Button/Button";
-import Members from "./Members";
+import DashboardMember from "./DashboardMember/DashboardMember";
 import * as S from "./DashboardInfoStyled";
 import type { GetMembersResponse } from "src/utils/apiResponseType";
 
 interface DashboardInfoProps {
-  createdByMe?: boolean;
-  memberList?: GetMembersResponse;
+  createdByMe: boolean;
+  memberList: GetMembersResponse;
   dashboardId: number;
 }
 
@@ -39,7 +39,7 @@ const DashboardInfo = ({ createdByMe = false, memberList, dashboardId }: Dashboa
           </Button>
         </S.ButtonContainer>
       )}
-      {memberList && <Members members={memberList.members} totalCount={memberList.totalCount} />}
+      <DashboardMember memberList={memberList} />
     </S.DashboardInfoContainer>
   );
 };

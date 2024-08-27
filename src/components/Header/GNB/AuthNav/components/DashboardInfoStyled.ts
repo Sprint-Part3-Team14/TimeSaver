@@ -4,9 +4,8 @@ import styled from "styled-components";
 export const DashboardInfoContainer = styled.div`
   ${theme.displays.rowCenter};
   height: 3.4rem;
-  gap: 1rem;
+  gap: 5rem;
   border-right: 1px solid ${theme.color.gray900};
-  padding-right: 1rem;
   color: ${theme.color.black800};
 
   @media ${theme.device.mobile} {
