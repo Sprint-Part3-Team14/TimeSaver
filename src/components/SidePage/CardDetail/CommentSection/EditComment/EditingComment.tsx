@@ -34,6 +34,8 @@ const EditingComment = ({
 
   useEffect(() => {
     handleSetValue(comment.content);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
