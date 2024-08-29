@@ -63,6 +63,8 @@ const CreateCard = ({
       handleSetUrl(imageUrl);
       handleSetTagList(tags);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { data: dashboardMemberList } = useQuery<GetMembersResponse>({
