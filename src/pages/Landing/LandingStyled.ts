@@ -24,6 +24,11 @@ export const BodyContainer = styled.main`
   gap: 15rem;
   margin: 0 auto;
   padding-bottom: 10rem;
+
+  @media ${theme.device.mobile} {
+    padding: 3rem 3rem 10rem;
+    gap: 10rem;
+  }
 `;
 
 export const HeroText = styled.h1`
@@ -32,6 +37,13 @@ export const HeroText = styled.h1`
   font-size: 7rem;
   font-weight: 700;
   line-height: 9.5rem;
+  width: 60rem;
+
+  @media ${theme.device.mobile} {
+    font-size: 5rem;
+    line-height: 6rem;
+    width: fit-content;
+  }
 `;
 
 export const SubText = styled.h2`
@@ -39,6 +51,11 @@ export const SubText = styled.h2`
   text-align: center;
   font-size: 2.5rem;
   font-weight: 500;
+
+  @media ${theme.device.mobile} {
+    line-height: 2.3rem;
+    font-size: 2rem;
+  }
 `;
 
 export const Section = styled.div`
@@ -49,10 +66,23 @@ export const Section = styled.div`
   &:nth-child(odd) {
     flex-direction: row-reverse;
   }
+
+  @media ${theme.device.mobile} {
+    flex-direction: column;
+    gap: 2rem;
+
+    &:nth-child(odd) {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const SectionImg = styled.img`
   width: 45rem;
+
+  @media ${theme.device.tablet} {
+    width: 30rem;
+  }
 `;
 
 export const SectionDescription = styled.div`
@@ -61,20 +91,30 @@ export const SectionDescription = styled.div`
   gap: 1rem;
 `;
 
-export const SectionTitle = styled.h3`
+export const SectionTitle = styled.h3<{ isOdd: boolean }>`
   color: ${theme.color.black700};
   font-size: 3rem;
   font-weight: 700;
   line-height: 4rem;
+
+  ${({ isOdd }) => isOdd && "text-align-last: end"};
+
+  @media ${theme.device.mobile} {
+    font-size: 2.5rem;
+  }
 `;
 
-export const SectionSubTitle = styled.p`
+export const SectionSubTitle = styled.p<{ isOdd: boolean }>`
   color: ${theme.color.gray900};
   font-size: 2rem;
   font-weight: 400;
+  line-height: 2.5rem;
 
-  &:nth-child(even) {
-    text-align: right;
+  ${({ isOdd }) => isOdd && "text-align: right"};
+
+  @media ${theme.device.mobile} {
+    text-align: left;
+    font-size: 1.7rem;
   }
 `;
 
@@ -83,4 +123,9 @@ export const ButtonStyle = `
   font-weight : 500;
   width : 12rem;
   border-radius : 50rem;
+
+  @media ${theme.device.mobile} {
+    width : 20rem;
+    padding : 1.5rem;
+  }
 `;

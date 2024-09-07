@@ -1,3 +1,9 @@
+export interface LandingSection {
+  one: SectionType;
+  two: SectionType;
+  three: SectionType;
+}
+
 export interface SectionType {
   id: number;
   imgUrl: string;
