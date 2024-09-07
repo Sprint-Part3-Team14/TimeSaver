@@ -16,3 +16,9 @@ export const NavLinks = styled.div`
   gap: 2rem;
   align-items: center;
 `;
+
+export const ButtonStyle = `
+  padding : 1.2rem 1.5rem;
+  border-radius : 0.6rem;
+  width : fit-content;
+`;
