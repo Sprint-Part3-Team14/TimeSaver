@@ -32,7 +32,10 @@ export const BodyContainer = styled.main`
 `;
 
 export const HeroText = styled.h1`
-  color: ${theme.color.black900};
+  background: linear-gradient(90deg, #ff416e 0%, #ffa723 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   font-size: 7rem;
   font-weight: 700;
