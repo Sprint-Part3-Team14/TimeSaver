@@ -3,7 +3,7 @@ import OptionalHeader from "src/components/Header/OptionalHeader";
 import * as S from "src/pages/Landing/LandingStyled";
 import { LandingSection, SectionType } from "./constant/landingSection";
 
-const MainPage = () => {
+const Landing = () => {
   return (
     <S.Container>
       <OptionalHeader />
@@ -31,4 +31,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Landing;
