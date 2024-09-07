@@ -12,10 +12,10 @@ const GuestNav = () => {
       </LinkStyle>
       <S.NavLinks>
         <Button
-          styleVariant="default"
+          styleVariant="white"
           size="normal"
           fontSize="small"
-          width="6rem"
+          exceptionStyle={S.ButtonStyle}
           onClick={() => {
             navigate("/signin");
           }}>
@@ -25,7 +25,7 @@ const GuestNav = () => {
           styleVariant="default"
           size="normal"
           fontSize="small"
-          width="8rem"
+          exceptionStyle={S.ButtonStyle}
           onClick={() => {
             navigate("/signup");
           }}>

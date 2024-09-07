@@ -1,70 +1,32 @@
-import React, { useState } from "react";
-import { COLOR_LIST } from "src/components/Modal/CreateDashboard/ColorConstant";
+import Button from "src/components/Button/Button";
 import OptionalHeader from "src/components/Header/OptionalHeader";
 import * as S from "src/pages/Landing/LandingStyled";
+import { LandingSection, SectionType } from "./constant/landingSection";
 
 const MainPage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const images = [
-    "/images/landing1.jpg",
-    "/images/landing2.jpg",
-    "/images/landing3.jpg",
-    "/images/landing4.jpg",
-    "/images/landing5.jpg",
-  ];
-
-  const handlePrevSlide = () => {
-    setCurrentSlide(prev => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
   return (
     <S.Container>
       <OptionalHeader />
-      <S.MainContent>
-        <S.HeroSection>
-          <S.SlideShow>
-            <S.HeroText>당신의 일정을 관리하세요!</S.HeroText>
-            <S.SlideWrapper>
-              <S.SlideImage src={images[currentSlide]} alt="Landing Slide" />
-            </S.SlideWrapper>
-            <S.PrevButton onClick={handlePrevSlide}>&lt;</S.PrevButton>
-            <S.NextButton onClick={handleNextSlide}>&gt;</S.NextButton>
-          </S.SlideShow>
-        </S.HeroSection>
-        <S.ColorSection>
-          <S.ColorText>여러가지 색으로 일들을 그룹지어 관리하세요!</S.ColorText>
-          <S.ColorList>
-            {COLOR_LIST.map((color, index) => (
-              <S.ColorCircle key={index} color={color} />
-            ))}
-          </S.ColorList>
-        </S.ColorSection>
-        <S.FeaturesSection>
-          <S.FeaturesTitle>당신의 작업을 더 쉽게 만드세요</S.FeaturesTitle>
-          <S.FeaturesGrid>
-            <S.FeatureCard>
-              <S.FeatureIcon>📅</S.FeatureIcon>
-              <S.FeatureText>일정을 한눈에</S.FeatureText>
-            </S.FeatureCard>
-            <S.FeatureCard>
-              <S.FeatureIcon>🗂</S.FeatureIcon>
-              <S.FeatureText>프로젝트 관리</S.FeatureText>
-            </S.FeatureCard>
-            <S.FeatureCard>
-              <S.FeatureIcon>👥</S.FeatureIcon>
-              <S.FeatureText>팀 협업</S.FeatureText>
-            </S.FeatureCard>
-            <S.FeatureCard>
-              <S.FeatureIcon>💬</S.FeatureIcon>
-              <S.FeatureText>피드백과 의견</S.FeatureText>
-            </S.FeatureCard>
-          </S.FeaturesGrid>
-        </S.FeaturesSection>
-      </S.MainContent>
+      <S.BodyContainer>
+        <S.HeroContainer>
+          <S.HeroText>
+            당신의 일정을 관리하고 <br /> 공유 하세요 !
+          </S.HeroText>
+          <S.SubText>새로운 일정관리 서비스, 타임 세이버를 통해 일정을 관리해보세요</S.SubText>
+          <Button exceptionStyle={S.ButtonStyle}>시작하기</Button>
+        </S.HeroContainer>
+        {LandingSection.map((section: SectionType) => {
+          return (
+            <S.Section key={section.id}>
+              <S.SectionImg src={section.imgUrl} alt={section.alt} />
+              <S.SectionDescription>
+                <S.SectionTitle>{section.title}</S.SectionTitle>
+                <S.SectionSubTitle>{section.subTitle}</S.SectionSubTitle>
+              </S.SectionDescription>
+            </S.Section>
+          );
+        })}
+      </S.BodyContainer>
     </S.Container>
   );
 };
