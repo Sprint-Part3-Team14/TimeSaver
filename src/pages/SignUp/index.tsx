@@ -1,5 +1,5 @@
-import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { useNavigate } from "react-router-dom";
 import { postAuthRegister } from "src/utils/api";
@@ -50,37 +50,42 @@ const SignUp = () => {
   };
 
   return (
-    <S.Container>
-      <S.SignInfoBox />
-      <S.SignUpBox>
-        <S.SignLogoBox onClick={() => navigate("/")} />
-        <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
-          <AuthInput {...getEmailInputProps(control)} />
-          <AuthInput {...getUsernameInputProps(control)} />
-          <AuthInput {...getPasswordInputProps(control)} />
-          <AuthInput {...getPasswordConfirmInputProps(control, getValues)} />
-          <Controller
-            name="terms"
-            control={control}
-            defaultValue={false}
-            render={({ field }) => (
-              <S.CheckboxContainer>
-                <input type="checkbox" id="terms" {...field} />
-                <label htmlFor="terms">이용약관에 동의합니다.</label>
-              </S.CheckboxContainer>
-            )}
-          />
-          <S.ButtonWrapper>
-            <Button type="submit" size="large" fontSize="small">
-              가입하기
-            </Button>
-          </S.ButtonWrapper>
-        </S.Form>
-        <S.FooterText>
-          이미 가입하셨나요? <S.SignInLink onClick={() => navigate("/signin")}>로그인하기</S.SignInLink>
-        </S.FooterText>
-      </S.SignUpBox>
-    </S.Container>
+    <>
+      <Helmet>
+        <title>회원가입</title>
+      </Helmet>
+      <S.Container>
+        <S.SignInfoBox />
+        <S.SignUpBox>
+          <S.SignLogoBox onClick={() => navigate("/")} />
+          <S.Form onSubmit={handleSubmit(handleOnSubmit)}>
+            <AuthInput {...getEmailInputProps(control)} />
+            <AuthInput {...getUsernameInputProps(control)} />
+            <AuthInput {...getPasswordInputProps(control)} />
+            <AuthInput {...getPasswordConfirmInputProps(control, getValues)} />
+            <Controller
+              name="terms"
+              control={control}
+              defaultValue={false}
+              render={({ field }) => (
+                <S.CheckboxContainer>
+                  <input type="checkbox" id="terms" {...field} />
+                  <label htmlFor="terms">이용약관에 동의합니다.</label>
+                </S.CheckboxContainer>
+              )}
+            />
+            <S.ButtonWrapper>
+              <Button type="submit" size="large" fontSize="small">
+                가입하기
+              </Button>
+            </S.ButtonWrapper>
+          </S.Form>
+          <S.FooterText>
+            이미 가입하셨나요? <S.SignInLink onClick={() => navigate("/signin")}>로그인하기</S.SignInLink>
+          </S.FooterText>
+        </S.SignUpBox>
+      </S.Container>
+    </>
   );
 };
 
