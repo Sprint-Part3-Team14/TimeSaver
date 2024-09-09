@@ -1,7 +1,7 @@
-import React from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import AuthInput from "src/components/AuthInput/AuthInput";
 import { postAuthLogin } from "src/utils/api";
 import { getEmailInputProps, getPasswordInputProps } from "src/context/InputProps";
@@ -39,24 +39,29 @@ const SignIn = () => {
   }
 
   return (
-    <S.Container>
-      <S.SignInfoBox />
-      <S.SignInBox>
-        <S.SignLogoBox onClick={() => navigate("/")} />
-        <S.Form onSubmit={handleSubmit(handleLogin)}>
-          <AuthInput {...getEmailInputProps(control)} />
-          <AuthInput {...getPasswordInputProps(control)} />
-          <S.ButtonWrapper>
-            <Button type="submit" size="large" fontSize="small">
-              로그인
-            </Button>
-          </S.ButtonWrapper>
-        </S.Form>
-        <S.FooterText>
-          회원이 아니신가요? <S.SignUpLink onClick={() => navigate("/signup")}>회원 가입하기</S.SignUpLink>
-        </S.FooterText>
-      </S.SignInBox>
-    </S.Container>
+    <>
+      <Helmet>
+        <title>로그인</title>
+      </Helmet>
+      <S.Container>
+        <S.SignInfoBox />
+        <S.SignInBox>
+          <S.SignLogoBox onClick={() => navigate("/")} />
+          <S.Form onSubmit={handleSubmit(handleLogin)}>
+            <AuthInput {...getEmailInputProps(control)} />
+            <AuthInput {...getPasswordInputProps(control)} />
+            <S.ButtonWrapper>
+              <Button type="submit" size="large" fontSize="small">
+                로그인
+              </Button>
+            </S.ButtonWrapper>
+          </S.Form>
+          <S.FooterText>
+            회원이 아니신가요? <S.SignUpLink onClick={() => navigate("/signup")}>회원 가입하기</S.SignUpLink>
+          </S.FooterText>
+        </S.SignInBox>
+      </S.Container>
+    </>
   );
 };
 

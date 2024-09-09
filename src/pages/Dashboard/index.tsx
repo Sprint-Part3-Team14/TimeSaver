@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import CreateColumn from "src/components/Modal/CreateColumn/CreateColumn";
@@ -30,6 +31,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>대시보드 보기</title>
+      </Helmet>
       {isOpenCreate && <CreateColumn handleClose={handleOpenCreate} dashboardId={Number(dashboardId)} />}
       <S.DashboardLayout>
         {columnListData.data.map((column: ColumnResponse) => (
