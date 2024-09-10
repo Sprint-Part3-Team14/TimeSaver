@@ -29,7 +29,7 @@ const Column = ({ columnTitle, columnId, dashboardId }: I_ColumnPropType) => {
     queryFn: async (): Promise<ColumnDataType> => {
       const queryParams: CardListSearch = {
         size: 10,
-        cursorId: 10,
+        // cursorId: 10,
         columnId: columnId,
       };
       return await getCardList(queryParams);

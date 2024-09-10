@@ -22,7 +22,7 @@ export interface ChangePassword {
 // 카드 목록 조회 쿼리 타입
 export interface CardListSearch {
   size: number;
-  cursorId: number;
+  // cursorId: number;
   [key: string]: number;
 }
 
