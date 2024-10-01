@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { CardListSearch } from "src/utils/apiType";
 import theme from "src/styles/theme";
-import { getCardList } from "src/utils/api";
 import useToggle from "src/hooks/useToggle";
 import PlusIcon from "src/components/Icons/PlusIcon";
 import DeleteIcon from "src/components/Icons/DeleteIcon";
@@ -10,9 +8,9 @@ import RenameColumnModal from "src/components/Modal/RenameColumn/RenameColumn";
 import DeleteColumn from "src/components/Modal/DeleteColumn/DeleteColumn";
 import CreateCardPage from "src/components/SidePage/CreateCard/CreateCardPage";
 import Button from "src/components/Button/Button";
+import { cardQueryKeys } from "src/queryFactory/cardQueryKeys";
 import Card from "../Card";
 import * as S from "./ColumnStyled";
-import type { ColumnDataType } from "src/utils/apiResponseType";
 
 interface I_ColumnPropType {
   columnTitle: string;
@@ -25,20 +23,12 @@ const Column = ({ columnTitle, columnId, dashboardId }: I_ColumnPropType) => {
   const { isTrue: isOpenDelete, handleTrue: handleOpenDelete, handleFalse: handleCloseDelete } = useToggle();
   const { isTrue: isCreateCard, handleTrue: handleCreateCard, handleFalse: handleCloseCreateCard } = useToggle();
   const { data: cardList } = useQuery({
-    queryKey: [`column-${columnId}`, "cardList"],
-    queryFn: async (): Promise<ColumnDataType> => {
-      const queryParams: CardListSearch = {
-        size: 10,
-        // cursorId: 10,
-        columnId: columnId,
-      };
-      return await getCardList(queryParams);
-    },
+    ...cardQueryKeys.list(columnId, { size: 10, columnId: columnId }),
     enabled: !!columnId,
   });
 
   if (!cardList) {
-    return <div>로딩 중...</div>;
+    return <div />;
   }
 
   return (
