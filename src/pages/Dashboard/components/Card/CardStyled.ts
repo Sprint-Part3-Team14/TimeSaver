@@ -42,16 +42,17 @@ export const CardThumbnail = styled.img`
 `;
 
 export const CardTitle = styled.h3`
-  color: ${theme.color.black700}
+  color: ${theme.color.black700};
   font-weight: 500;
-  font-size : 1.6rem;
-  grid-area : b;
+  font-size: 1.6rem;
+  grid-area: b;
 `;
 
 export const CardTagList = styled.div`
   display: flex;
   gap: 1rem;
   grid-area: c;
+  overflow: hidden;
 
   @media ${theme.device.tablet} {
     margin-top: auto;

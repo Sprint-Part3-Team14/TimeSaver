@@ -3,6 +3,7 @@ import CalendarTodayIcon from "src/components/Icons/CalendarTodayIcon";
 import formatData from "src/utils/formatDate";
 import UserProfileImage from "src/components/UserProfile/UserProfileImage/UserProfileImage";
 import CardDetail from "src/components/SidePage/CardDetail/CardDetail";
+import Tag from "../CreateCard/AddTag/Tag/Tag";
 import * as S from "./CardStyled";
 
 import type { DetailCard } from "src/utils/apiType";
@@ -29,7 +30,7 @@ const Card = ({ card, currentIdList }: CardProps) => {
         <S.CardTitle>{card.title}</S.CardTitle>
         <S.CardTagList>
           {card.tags.map((tag, index) => (
-            <S.Tag key={index}>{tag}</S.Tag>
+            <Tag text={tag} isEdit={false} key={index} />
           ))}
         </S.CardTagList>
 
