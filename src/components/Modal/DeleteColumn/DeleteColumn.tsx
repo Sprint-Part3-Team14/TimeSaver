@@ -2,6 +2,7 @@ import { MouseEvent } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Button from "src/components/Button/Button";
 import { deleteColumns } from "src/utils/api";
+import { columnQueryKeys } from "src/queryFactory/columnQueryKeys";
 import ModalBase from "../ModalBase/ModalBase";
 import * as S from "./DeleteStyled";
 
@@ -18,7 +19,10 @@ const DeleteColumn = ({
   const DeleteColumnMutation = useMutation({
     mutationFn: async (columnId: number) => await deleteColumns(columnId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`dashboard-${dashboardId}`, "columnList"] });
+      queryClient.invalidateQueries({
+        queryKey: columnQueryKeys.list(dashboardId, { dashboardId: dashboardId }).queryKey,
+      });
+      handleClose();
     },
   });
 
