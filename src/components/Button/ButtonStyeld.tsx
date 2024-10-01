@@ -19,7 +19,7 @@ export const Container = styled.button<{
   background-color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.white : theme.color.pink900)};
   color: ${({ styleVariant }) => (styleVariant === "white" ? theme.color.gray900 : theme.color.white)};
   border: ${({ styleVariant }) => (styleVariant === "white" ? `0.1rem solid ${theme.color.gray700}` : "none")};
-  padding: ${({ size }) => buttonSize[size]};
+  padding: ${({ size }) => (size ? buttonSize[size] : "1.5rem 1rem")};
   border-radius: ${({ size }) => (size === "large" ? "0.8rem" : "0.4rem")};
   cursor: pointer;
   font-size: ${({ fontSize }) => theme.fontSize[fontSize]};

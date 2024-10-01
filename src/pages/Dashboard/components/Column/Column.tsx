@@ -40,7 +40,12 @@ const Column = ({ columnTitle, columnId, dashboardId }: I_ColumnPropType) => {
         />
       )}
       {isOpenRename && (
-        <RenameColumnModal handleClose={handleCloseRename} dashboardId={dashboardId} columnId={columnId} />
+        <RenameColumnModal
+          handleClose={handleCloseRename}
+          dashboardId={dashboardId}
+          columnId={columnId}
+          columnTitle={columnTitle}
+        />
       )}
       {isOpenDelete && <DeleteColumn handleClose={handleCloseDelete} columnId={columnId} dashboardId={dashboardId} />}
       <S.DashboardColumnLayout>

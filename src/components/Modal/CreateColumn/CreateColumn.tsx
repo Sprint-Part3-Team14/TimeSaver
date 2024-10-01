@@ -30,8 +30,13 @@ const CreateColumn = ({ handleClose, dashboardId }: { handleClose: () => void; d
       <S.CreateColumnFormStyled onSubmit={handleCreateColumn}>
         <S.CreateColumnNameInput placeholder="컬럼명을 입력해주세요" value={value} onChange={handleChangeValue} />
         <S.ButtonContainerStyled>
-          <Button styleVariant="white">취소</Button>
-          <Button type="button" onClick={handleCreateColumn}>
+          <Button styleVariant="white" exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
+            취소
+          </Button>
+          <Button
+            type="button"
+            onClick={handleCreateColumn}
+            exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
             생성
           </Button>
         </S.ButtonContainerStyled>
