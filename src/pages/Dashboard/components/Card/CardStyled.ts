@@ -52,6 +52,8 @@ export const CardTagList = styled.div`
   display: flex;
   gap: 1rem;
   grid-area: c;
+  flex-wrap: wrap;
+  max-height: 5.4rem;
   overflow: hidden;
 
   @media ${theme.device.tablet} {
