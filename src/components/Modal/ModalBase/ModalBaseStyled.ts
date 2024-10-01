@@ -4,12 +4,11 @@ import styled from "styled-components";
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 4rem;
   background-color: white;
-  padding: 3rem;
+  padding: 6rem 4rem;
   border-radius: 0.6rem;
-  width: 35%;
-
+  width: 50rem;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17,11 +16,11 @@ export const ModalContainer = styled.div`
   z-index: 30;
 
   @media ${theme.device.tablet} {
-    width: 50%;
+    width: 40rem;
   }
 
   @media ${theme.device.mobile} {
-    width: 75%;
+    width: 20rem;
   }
 `;
 

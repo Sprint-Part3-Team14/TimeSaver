@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const RenameForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 4rem;
 `;
 
 export const ButtonContainerStyled = styled.div`

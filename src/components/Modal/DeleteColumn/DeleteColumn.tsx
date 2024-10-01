@@ -36,10 +36,16 @@ const DeleteColumn = ({
     <ModalBase title={"컬럼 삭제"} handleClose={handleClose}>
       <S.WarningText>정말 삭제하시겠습니까?</S.WarningText>
       <S.ButtonContainer>
-        <Button styleVariant="white" onClick={handleClose}>
+        <Button
+          styleVariant="white"
+          onClick={handleClose}
+          exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
           취소
         </Button>
-        <Button type="button" onClick={handleDeleteColumn}>
+        <Button
+          type="button"
+          onClick={handleDeleteColumn}
+          exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
           삭제
         </Button>
       </S.ButtonContainer>
