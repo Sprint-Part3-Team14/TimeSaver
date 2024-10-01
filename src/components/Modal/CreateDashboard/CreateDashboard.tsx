@@ -65,10 +65,16 @@ const CreateDashboard = ({ handleClose }: { handleClose: () => void }) => {
           ))}
         </S.ColorButtonContainer>
         <S.ButtonContainerStyled>
-          <Button styleVariant="white" onClick={handleClose}>
+          <Button
+            styleVariant="white"
+            onClick={handleClose}
+            exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
             취소
           </Button>
-          <Button type="button" onClick={handleCreateDashboard}>
+          <Button
+            type="button"
+            onClick={handleCreateDashboard}
+            exceptionStyle={"padding : 1.5rem 2rem;  border-radius : 0.6rem;"}>
             생성
           </Button>
         </S.ButtonContainerStyled>

@@ -11,12 +11,10 @@ import DashboardInvitation from "./components/DashboardInvitation/DashboardInvit
 import * as S from "./EditDashboardStyled";
 
 const EditDashboard = ({
-  handleClose,
   dashboardId,
   dashboardInfo,
   handleCloseEditPage,
 }: {
-  handleClose: () => void;
   dashboardId: number;
   dashboardInfo: DashboardInfoData | null;
   handleCloseEditPage: () => void;
@@ -42,8 +40,8 @@ const EditDashboard = ({
   }
 
   return (
-    <SidePageLayout handleClose={handleClose} addStyle={S.EditDashboardContainer}>
-      <SidePageHeader handleClosing={handleClose} addStyle={S.HeaderStyled}>
+    <SidePageLayout handleClose={handleCloseEditPage} addStyle={S.EditDashboardContainer}>
+      <SidePageHeader handleClosing={handleCloseEditPage} addStyle={S.HeaderStyled}>
         <S.SidePageTitleStyled>대시보드 관리</S.SidePageTitleStyled>
       </SidePageHeader>
       <S.EditDashboardLayout>
