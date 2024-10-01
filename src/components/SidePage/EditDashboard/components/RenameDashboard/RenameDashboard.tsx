@@ -9,16 +9,34 @@ import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import * as S from "./RenameDashboardStyled";
 import type { FixDashboard } from "src/utils/apiType";
 
-const RenameDashboard = ({ dashboardId }: { dashboardId: number }) => {
+const RenameDashboard = ({
+  dashboardId,
+  dashboardTitle,
+  dashboardColor,
+  handleClose,
+}: {
+  dashboardId: number;
+  dashboardTitle: string | undefined;
+  dashboardColor: string | undefined;
+  handleClose: () => void;
+}) => {
   const [selectColor, setSelectColor] = useState<string>();
-  const { value: newTitle, handleChangeValue } = useInputValue();
+  const { value: newTitle, handleChangeValue, handleSetValue } = useInputValue();
 
   function handleSetSelectColor(event: MouseEvent<HTMLButtonElement>) {
     setSelectColor(event.currentTarget.value);
   }
 
   useEffect(() => {
-    setSelectColor(COLOR_LIST[0]);
+    if (dashboardColor) {
+      setSelectColor(dashboardColor);
+    } else {
+      setSelectColor(COLOR_LIST[0]);
+    }
+
+    if (dashboardTitle) {
+      handleSetValue(dashboardTitle);
+    }
   }, []);
 
   const queryClient = useQueryClient();
@@ -29,6 +47,7 @@ const RenameDashboard = ({ dashboardId }: { dashboardId: number }) => {
       await putDashboardDetails(dashboardId, body),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: dashboardQuery.queryKey });
+      handleClose();
     },
   });
 
