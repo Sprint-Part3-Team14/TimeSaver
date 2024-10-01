@@ -17,14 +17,17 @@ interface DashboardInfoProps {
 
 const DashboardInfo = ({ createdByMe = false, memberList, dashboardId, dashboardInfo }: DashboardInfoProps) => {
   const navigate = useNavigate();
-  const { isTrue, handleTrue, handleFalse: handleClose } = useToggle();
+  const {
+    isTrue: editDashboard,
+    handleTrue: handleOpenEditDashboard,
+    handleFalse: handleCloseEditDashboard,
+  } = useToggle();
 
   return (
     <>
-      {isTrue && (
+      {editDashboard && (
         <EditDashboard
-          handleCloseEditPage={handleClose}
-          handleClose={handleClose}
+          handleCloseEditPage={handleCloseEditDashboard}
           dashboardId={dashboardId}
           dashboardInfo={dashboardInfo}
         />
@@ -36,9 +39,7 @@ const DashboardInfo = ({ createdByMe = false, memberList, dashboardId, dashboard
               styleVariant="white"
               exceptionStyle={S.CustomButton}
               onClick={() => {
-                handleTrue();
-                console.log("hi");
-                console.log(isTrue);
+                handleOpenEditDashboard();
               }}>
               <SettingIcon width={18} height={18} addStyle={S.ButtonIcon} />
               관리
