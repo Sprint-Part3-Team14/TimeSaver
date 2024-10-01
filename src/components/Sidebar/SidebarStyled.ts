@@ -17,6 +17,7 @@ export const Title = styled.a<{ createdByMe: boolean; color: string }>`
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
+  height: max-content;
 
   &::before {
     content: "";
