@@ -22,6 +22,7 @@ const EditProfile = ({ userProfileData }: { userProfileData: MyProfileResponse }
   useEffect(() => {
     handleSetValue(userProfileData.nickname);
     handleSetUrl(userProfileData.profileImageUrl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleEditProfile(event: MouseEvent<HTMLFormElement | HTMLButtonElement>) {
