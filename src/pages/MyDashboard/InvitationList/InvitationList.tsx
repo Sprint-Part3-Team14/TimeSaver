@@ -7,6 +7,7 @@ import * as S from "./InvitaionListStyled";
 
 const InvitationList = () => {
   const { data: invitationList } = useQuery(userQueryKeys.invitationList);
+  console.log(invitationList?.invitations[0].dashboard.title);
 
   if (!invitationList) {
     return <div>없다잉</div>;
@@ -25,7 +26,12 @@ const InvitationList = () => {
           </S.CategoryBox>
           <S.ListContainer>
             {invitationList.invitations.map(invitation => (
-              <InvitationDashboard key={invitation.id} invite={invitation.inviter} invitationId={invitation.id} />
+              <InvitationDashboard
+                key={invitation.id}
+                dashboardTitle={invitation.dashboard.title}
+                invite={invitation.inviter}
+                invitationId={invitation.id}
+              />
             ))}
           </S.ListContainer>
         </>

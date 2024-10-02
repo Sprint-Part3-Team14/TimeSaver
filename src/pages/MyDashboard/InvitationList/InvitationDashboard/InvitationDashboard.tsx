@@ -8,7 +8,15 @@ import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import * as S from "./InvitationDahsboardStyled";
 import type { InviterResponse } from "src/utils/apiResponseType";
 
-const InvitationDashboard = ({ invite, invitationId }: { invite: InviterResponse; invitationId: number }) => {
+const InvitationDashboard = ({
+  invite,
+  invitationId,
+  dashboardTitle,
+}: {
+  invite: InviterResponse;
+  invitationId: number;
+  dashboardTitle: string;
+}) => {
   const queryClient = useQueryClient();
   const invitationQuery = userQueryKeys.invitationList;
   const dashboardListQuery = dashboardQueryKeys.list({ navigationMethod: "pagination" });
@@ -29,7 +37,7 @@ const InvitationDashboard = ({ invite, invitationId }: { invite: InviterResponse
   }
   return (
     <S.InvitationDashboardBox>
-      <S.Name>{invite.nickname}</S.Name>
+      <S.Name>{dashboardTitle}</S.Name>
       <S.Inviter>{invite.email}</S.Inviter>
       <S.ButtonBox>
         <Button onClick={handleAnswerInvitation} value={1}>
