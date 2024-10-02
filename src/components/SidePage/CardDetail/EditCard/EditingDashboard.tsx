@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useOutsideClick from "src/hooks/useOutsideClick";
 import { deleteCard } from "src/utils/api";
+import { cardQueryKeys } from "src/queryFactory/cardQueryKeys";
 import * as S from "./EditingDashboardStyled";
 
 const EditingDashboard = ({
@@ -25,7 +26,9 @@ const EditingDashboard = ({
     onSuccess: () => {
       handleDetailClose();
       setTimeout(() => {
-        queryClient.invalidateQueries({ queryKey: [`column-${columnId}`, "cardList"] });
+        queryClient.invalidateQueries({
+          queryKey: cardQueryKeys.list(columnId, { size: 10, columnId: columnId }).queryKey,
+        });
       }, 500);
     },
   });

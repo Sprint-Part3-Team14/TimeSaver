@@ -7,6 +7,7 @@ import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
 import TextArea from "src/components/TextArea/TextArea";
 import FileInput from "src/components/FileInput/FileInput";
+import { cardQueryKeys } from "src/queryFactory/cardQueryKeys";
 import { CurrentIdListType } from "../Card/Card";
 import DateInput from "./DateInput/DateInput";
 import DropDown from "./DropDown/DropDown";
@@ -85,7 +86,9 @@ const CreateCard = ({
   const CreateCardMutation = useMutation({
     mutationFn: async (cardData: CreateCardProps) => await postCards(cardData),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`column-${columnId}`, "cardList"] });
+      queryClient.invalidateQueries({
+        queryKey: cardQueryKeys.list(columnId, { size: 10, columnId: columnId }).queryKey,
+      });
       handleClosePage();
     },
   });
@@ -93,7 +96,7 @@ const CreateCard = ({
   const EditCardMutation = useMutation({
     mutationFn: async ({ cardId, cardData }: { cardId: number; cardData: FixCard }) => await putCard(cardId, cardData),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["cardDetail", cardId] });
+      queryClient.invalidateQueries({ queryKey: cardQueryKeys.detail(cardId).queryKey });
       handleClosePage();
     },
   });
