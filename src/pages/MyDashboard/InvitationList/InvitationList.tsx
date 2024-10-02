@@ -7,7 +7,6 @@ import * as S from "./InvitaionListStyled";
 
 const InvitationList = () => {
   const { data: invitationList } = useQuery(userQueryKeys.invitationList);
-  console.log(invitationList?.invitations[0].dashboard.title);
 
   if (!invitationList) {
     return <div>없다잉</div>;
