@@ -35,7 +35,7 @@ const EditPassword = () => {
   });
 
   const handleOnSubmit = (data: any) => {
-    updatePasswordMutation.mutate(data);
+    updatePasswordMutation.mutate({ password: data.currentPassword, newPassword: data.password });
   };
 
   return (
