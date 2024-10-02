@@ -41,6 +41,7 @@ const RenameColumnModal = ({
     if (columnTitle) {
       handleSetValue(columnTitle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

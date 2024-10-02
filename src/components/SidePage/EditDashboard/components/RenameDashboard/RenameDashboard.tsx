@@ -37,6 +37,7 @@ const RenameDashboard = ({
     if (dashboardTitle) {
       handleSetValue(dashboardTitle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const queryClient = useQueryClient();
