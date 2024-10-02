@@ -1,20 +1,29 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { dashboardQueryKeys } from "src/queryFactory/dashboardQueryKeys";
 import Button from "src/components/Button/Button";
 import PlusIcon from "src/components/Icons/PlusIcon";
-
 import Pagination from "src/components/PagiNation/PagiNation";
+import { deleteDashboardInvitations } from "src/utils/api";
 import { AddButtonStyle } from "../DashboardMember/DashboardMemberStyled";
 import * as S from "./DashboardInvitationStyled";
 
 const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 4;
+  const queryClient = useQueryClient();
 
   const { data: invitationList } = useQuery(
     dashboardQueryKeys.invitations(dashboardId, { size: pageSize, page: currentPage })
   );
+  const cancelInvitaionMutation = useMutation({
+    mutationFn: async (invitationId: number) => deleteDashboardInvitations(dashboardId, invitationId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: dashboardQueryKeys.invitations(dashboardId, { size: pageSize, page: currentPage }).queryKey,
+      });
+    },
+  });
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -43,8 +52,13 @@ const DashboardInvitation = ({ dashboardId }: { dashboardId: number }) => {
         <S.InvitationContainer>
           {invitationList.invitations.map(invitation => (
             <S.InvitationOne key={invitation.id}>
-              <S.EmailText>{invitation.inviter.email}</S.EmailText>
-              <Button styleVariant="white" exceptionStyle={AddButtonStyle}>
+              <S.EmailText>{invitation.invitee.email}</S.EmailText>
+              <Button
+                styleVariant="white"
+                exceptionStyle={AddButtonStyle}
+                onClick={() => {
+                  cancelInvitaionMutation.mutate(invitation.id);
+                }}>
                 취소
               </Button>
             </S.InvitationOne>

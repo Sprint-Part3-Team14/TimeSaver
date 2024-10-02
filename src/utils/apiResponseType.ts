@@ -112,8 +112,20 @@ export interface InvitationRecordResponse {
 }
 
 export interface InvitationType {
+  createdAt: string;
+  dashboard: { id: number; title: string };
   id: number;
-  inviter: InviterResponse;
+  inviteAccepted: null;
+  invitee: InviteeType;
+  inviter: InviteeType;
+  teamId: string;
+  updatedAt: string;
+}
+
+export interface InviteeType {
+  id: number;
+  email: string;
+  nickname: string;
 }
 
 /**
