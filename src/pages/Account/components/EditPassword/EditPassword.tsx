@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import Button from "src/components/Button/Button";
@@ -10,7 +9,6 @@ import {
 } from "src/context/InputProps";
 import { putAuthUpdatedPassword } from "src/utils/api";
 import { ChangePassword } from "src/utils/apiType";
-import * as C from "../../EditAcountStyled";
 import * as S from "./EditPasswordStyled";
 
 const EditPassword = () => {
@@ -41,8 +39,8 @@ const EditPassword = () => {
   };
 
   return (
-    <C.FormLayout onSubmit={handleSubmit(handleOnSubmit)}>
-      <C.TitleStyle>비밀번호 변경</C.TitleStyle>
+    <S.FormLayout onSubmit={handleSubmit(handleOnSubmit)}>
+      <S.TitleStyle>비밀번호 변경</S.TitleStyle>
       <S.PassWordInputBox>
         <AuthInput {...getCurrentPasswordInputProps(control)} />
       </S.PassWordInputBox>
@@ -52,10 +50,10 @@ const EditPassword = () => {
       <S.PassWordInputBox>
         <AuthInput {...getPasswordConfirmInputProps(control, getValues)} />
       </S.PassWordInputBox>
-      <Button type="submit" size="large" exceptionStyle={C.AddButtonStyle}>
+      <Button type="submit" size="large" exceptionStyle={S.AddButtonStyle}>
         변경
       </Button>
-    </C.FormLayout>
+    </S.FormLayout>
   );
 };
 

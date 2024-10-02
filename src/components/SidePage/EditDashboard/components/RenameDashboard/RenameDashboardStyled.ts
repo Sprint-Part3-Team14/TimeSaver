@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import theme from "src/styles/theme";
 import { ColorButtonContainer } from "src/components/Modal/CreateDashboard/CreateDashboardStyled";
-import { InputStyle } from "src/components/SidePage/EditAccount/EditAcountStyled";
 import { EditDashboardSection } from "../../EditDashboardStyled";
 
 export const ContainerStyled = styled(EditDashboardSection)`
@@ -20,7 +19,10 @@ export const Title = styled.label`
 
 export const ColorButtonSection = styled(ColorButtonContainer)``;
 
-export const RenameInput = styled(InputStyle)`
+export const RenameInput = styled.input`
+  border-radius: 0.6rem;
+  border: 0.1rem solid ${theme.color.gray700};
+  font-size: 1.6rem;
   padding: 1.6rem 1rem;
   outline-color: ${theme.color.pink400};
   width: auto;

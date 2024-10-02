@@ -9,6 +9,7 @@ import DashboardLayout from "./DashboardLayout";
 import MyDashboard from "./pages/MyDashboard";
 import Notfound from "./pages/Notfound";
 import Dashboard from "./pages/Dashboard";
+import Account from "./pages/Account";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="my-dashboard" element={<MyDashboard />} />
               <Route path="/dashboard/:id" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/notFound" />} />
+              <Route path="edit-account" element={<Account />} />
             </Route>
             <Route path="/notFound" element={<Notfound />} />
           </Routes>
