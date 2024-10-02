@@ -69,6 +69,15 @@ const CommentSection = ({
     });
   }
 
+  function Date(value: string) {
+    const fullDate = value.split("T");
+    const [date, time] = fullDate;
+    const [houre, minite] = time.split(":");
+    return `${date} ${houre}:${minite}`;
+  }
+
+  Date(commentList[0].createdAt);
+
   return (
     <S.Container>
       <S.CommentList>
@@ -86,7 +95,7 @@ const CommentSection = ({
                   <S.AuthorNickName>{comment.author.nickname}</S.AuthorNickName>
                   <S.BaseText>{comment.content}</S.BaseText>
                   <S.CommentFooter>
-                    <S.GrayText>{"2024-07-12 12:00"}</S.GrayText>
+                    <S.GrayText>{Date(comment.createdAt)}</S.GrayText>
                     <S.CommentEdit as="button" type="button" value={comment.id} onClick={handleEditingComment}>
                       수정
                     </S.CommentEdit>
