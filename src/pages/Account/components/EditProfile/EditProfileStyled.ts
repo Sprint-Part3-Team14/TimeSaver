@@ -44,3 +44,40 @@ export const ImageOverlay = styled(ImageButton)`
   opacity: 0.8;
   z-index: -1;
 `;
+
+export const FormLayout = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+export const TitleStyle = styled.h2`
+  color: ${theme.color.black700};
+  font-size: 2.4rem;
+  font-weight: 700;
+`;
+
+export const InputLabel = styled.label`
+  color: ${theme.color.black700};
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+`;
+
+export const InputStyle = styled.input`
+  border-radius: 0.6rem;
+  border: 0.1rem solid ${theme.color.gray700};
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  outline-color: ${theme.color.pink400};
+
+  &:placeholder {
+    color: v ${theme.color.gray800};
+  }
+`;
+
+export const AddButtonStyle = `
+  margin-top : -1.5rem;
+`;

@@ -8,7 +8,6 @@ import useInputValue from "src/hooks/useInputValue";
 import useInputImage from "src/hooks/useInputFile";
 import { postMyProfile, putMyProfile } from "src/utils/api";
 import { userQueryKeys } from "src/queryFactory/userQueryKeys";
-import * as C from "../../EditAcountStyled";
 import * as S from "./EditProfileStyled";
 import type { FixProfile } from "src/utils/apiType";
 
@@ -52,8 +51,8 @@ const EditProfile = ({ userProfileData }: { userProfileData: MyProfileResponse }
   });
 
   return (
-    <C.FormLayout>
-      <C.TitleStyle>프로필 변경</C.TitleStyle>
+    <S.FormLayout>
+      <S.TitleStyle>프로필 변경</S.TitleStyle>
       <S.ImageLabel htmlFor="profile-image">
         <S.IconBox>
           <PlusIcon width={35} height={35} color={theme.color.pink900} />
@@ -63,14 +62,14 @@ const EditProfile = ({ userProfileData }: { userProfileData: MyProfileResponse }
       </S.ImageLabel>
       <S.ImageInput type="file" id="profile-image" onChange={handleImageChange} />
       <S.UserEmailStyle>{userProfileData.email}</S.UserEmailStyle>
-      <C.InputLabel>
+      <S.InputLabel>
         닉네임 변경
-        <C.InputStyle placeholder="새로운 닉네임을 입력해주세요" value={newNickName} onChange={handleChangeValue} />
-      </C.InputLabel>
-      <Button onClick={handleEditProfile} type="button" size="large" exceptionStyle={C.AddButtonStyle}>
+        <S.InputStyle placeholder="새로운 닉네임을 입력해주세요" value={newNickName} onChange={handleChangeValue} />
+      </S.InputLabel>
+      <Button onClick={handleEditProfile} type="button" size="large" exceptionStyle={S.AddButtonStyle}>
         저장
       </Button>
-    </C.FormLayout>
+    </S.FormLayout>
   );
 };
 

@@ -26,7 +26,6 @@ const AuthNav = ({ isLanding }: { isLanding: boolean }) => {
       <LinkStyle to="/">
         <Logo />
       </LinkStyle>
-
       <S.LogoAndTitleContainer>
         <S.DashboardTitle createdByMe={dashboardInfo?.createdByMe || false}>{title}</S.DashboardTitle>
         <S.NavLinks>
