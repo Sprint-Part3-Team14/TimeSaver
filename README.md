@@ -9,7 +9,7 @@
 **타임세이버**에서 일정을 관리해보세요 !
 
 - 개발 기간 : 2024.07 ~ 2024.08
-- 프로젝트 배포 주소 : https://keep-your-time-saver.netlify.app/
+- 프로젝트 배포 주소 : <a href="https://keep-your-time-saver.netlify.app/" target="_blank"> https://keep-your-time-saver.netlify.app/ </a>
 
 ## Teams
 | <img src="https://avatars.githubusercontent.com/u/153581513?v=4" title="김유경"> | <img src="https://avatars.githubusercontent.com/u/90249043?v=4" title="한태욱"> | <img src="https://avatars.githubusercontent.com/u/105029085?v=4" title="김규헌"> | 
