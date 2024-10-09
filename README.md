@@ -12,14 +12,12 @@
 - 프로젝트 배포 주소 : <a href="https://keep-your-time-saver.netlify.app/" target="_blank"> https://keep-your-time-saver.netlify.app/ </a>
 
 <br />
-<br />
 
 ## Teams
 | <img src="https://avatars.githubusercontent.com/u/153581513?v=4" title="김유경"> | <img src="https://avatars.githubusercontent.com/u/90249043?v=4" title="한태욱"> | <img src="https://avatars.githubusercontent.com/u/105029085?v=4" title="김규헌"> | 
 | :--------: | :-------: | :--------: | 
 |[FE 김유경](https://github.com/codingaring)|[FE 한태욱](https://github.com/TaeUk471)|[FE 김규헌](https://github.com/kkh000)|
 
-<br />
 <br />
 
 ## Stacks
@@ -40,7 +38,6 @@
 <span><img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"></span>
 
 <br />
-<br />
 
 ## R&R
 **김유경** <br />
@@ -54,7 +51,6 @@
 **김규헌** <br />
 - 공통 컴포넌트 : 사이드 바
 
-<br />
 <br />
 
 ## 기능 시현
@@ -93,7 +89,7 @@
 
 <br />
 
-#### 대시보드 초대 조회 및 삭제
+#### 대시보드 초대하기 모달 및 초대 조회,삭제
 ![대시보드 초대, 삭제](https://github.com/user-attachments/assets/4ce1e461-c626-4850-8753-ecec7620e67b)
 
 <br />
@@ -126,12 +122,20 @@
 #### 카드 삭제
 ![카드 삭제](https://github.com/user-attachments/assets/944d2b2d-2d78-4f92-b2b1-f2cff4f6df4d)
 
+#### 댓글 작성 및 수정, 삭제
+![댓글 생성,수정,삭제](https://github.com/user-attachments/assets/3d09ea2d-5662-4f69-af63-d85482eec8fc)
+
 <br />
 <br />
 
 ### 유저 정보 관련 기능
 `/my-dashboard` 페이지를 통해 현재 나의 대시보드 목록을 조회하고, 내가 받은 초대 목록을 조회/수락/거절 할 수 있습니다. <br />
 `/editAccount` 페이지를 통해 닉네임과 비밀번호를 변경할 수 있습니다.
+<br />
+
+#### 내가 받은 초대 목록 조회 및 수락, 거절
+![대시보드 초대 수락, 삭제](https://github.com/user-attachments/assets/48267973-aa8c-47a0-b1f6-3792b90ea11f)
 
 
-![계정 정보 변경](https://github.com/user-attachments/assets/061ba319-7af2-4b67-b894-9d5a7c5f48c0)
+#### 계정 정보 변경
+![프로필 정보 변경](https://github.com/user-attachments/assets/c1205795-6df2-4f3a-bf05-326b5fd8e66d)
